@@ -1,21 +1,29 @@
-name: Mobile App Name
-description: A super tagline for the mobile app
-full_description: 'A more complete description of the mobile app<br>
+name: Mbogi Music
+description: Enjoy radio stations, podcasts and TV stations from all over the world. Your private media player!
+full_description: 'Mbogi Music is a one stop audio and video streaming app thats gives you access to thousands of free online radio, free IPTV and podcasts from all over the world. Browse by country or just use the search box to get your desired content.<br>
 <br>With a lot of features:
-<br>- Feature 1
-<br>- Feature 2
-<br>- Feature 3'
-android: https://telegra.ph/Replace-this-link-07-23
-iOS: https://telegra.ph/Replace-this-link-07-23
-web: https://telegra.ph/Replace-this-link-07-23
+<br>- Browse podcasts and radio/tv stations by country and categories/genres
+<br>- Search podcasts and radio/tv stations using the search box
+<br>- Subscribe to your favorite podcasts
+<br>- Download episodes of your favorite podcasts for offline listening
+<br>- Add your favorite radio/tv stations to the library
+<br>- Enjoy all your locally stored (Internal Storage) music and videos
+<br>- Cast all media to UPNP/DLNA devices'
+android: https://play.google.com/store/apps/details?id=com.mbogimusic
+iOS: false
+web: false
 screenshots:
-  - 1.png
-  - 2.png
-  - 3.png
-  - 4.png
-producthunt: https://telegra.ph/Replace-this-link-07-23
-companies:
-  - url: https://telegra.ph/Replace-this-link-07-23
-    image: androidpolice.png
-  - url: https://telegra.ph/Replace-this-link-07-23
-    image: producthunt.png
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  - 4.jpg
+  - 5.jpg
+  - 6.jpg
+  - 7.jpg
+  - 8.jpg
+#producthunt: https://telegra.ph/Replace-this-link-07-23
+#companies:
+  #- url: https://telegra.ph/Replace-this-link-07-23
+  #  image: androidpolice.png
+  #- url: https://telegra.ph/Replace-this-link-07-23
+   # image: producthunt.png

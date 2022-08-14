@@ -1,16 +1,16 @@
 app:
   screenshots: Screenshots
   description: Description
-  featured: Featured in
+  #featured: Featured in
 
 footer:
-  copyright: Made with ❤️ in Europe 🇪🇺 by <a href="https://www.sandoche.com" target="_blank">Sandoche</a>
+  copyright: Credits -  <a href="https://c4savageportfolio.web.app/" target="_blank">Laurent Juma</a>, Dr. Austin Juma
   links:
-    - title: Github
-      url: https://github.com/sandoche/Mobile-app-landingpage-template
-      target: _blank
-    - title: Donate
-      url: https://paypal.me/kanbanote
-      target: _blank
-    - title: Privacy
-      url: /privacy
+    #- title: Github
+      #url: https://github.com/sandoche/Mobile-app-landingpage-template
+      #target: _blank
+    #- title: Donate
+      #url: https://paypal.me/kanbanote
+      #target: _blank
+    #- title: Privacy
+      #url: /privacy
