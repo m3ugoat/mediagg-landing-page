@@ -4,7 +4,7 @@ app:
   #featured: Featured in
 
 footer:
-  copyright: Credits -  <a href="https://c4savageportfolio.web.app/" target="_blank">Laurent Juma</a>, Dr. Austin Juma
+  copyright: Credits -  <a href="https://laurentjuma.netlify.app/" target="_blank">Laurent Juma</a>, Dr. Austin Juma
   links:
     #- title: Github
       #url: https://github.com/sandoche/Mobile-app-landingpage-template
