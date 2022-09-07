@@ -12,5 +12,5 @@ footer:
     #- title: Donate
       #url: https://paypal.me/kanbanote
       #target: _blank
-    #- title: Privacy
-      #url: /privacy
+    - title: Privacy
+      url: /privacy
