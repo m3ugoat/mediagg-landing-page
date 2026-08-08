@@ -143,6 +143,95 @@ section{padding:104px 0;position:relative}
 .f li{margin:6px 0}
 .f li b{color:var(--muted);font-weight:600}
 
+/* ---------- screenshot carousel ---------- */
+/* Slide width lives in one variable, --shot. The screenshots are 1344x2992, so a 236px slide is a
+   503px phone — tall enough to read a track list, short enough that four fit across a 1132px rail
+   and the whole carousel still clears a laptop screen. */
+.shots{position:relative; --shot:236px}
+.rail{
+  position:relative; /* the offsetParent for the slides, so offsetLeft matches scrollLeft */
+  display:flex; gap:26px; overflow-x:auto; overscroll-behavior-x:contain;
+  /* proximity, not mandatory: the last page stops at the scroll limit, which is not a slide
+     boundary, and mandatory snapping drags it back to the previous one — taking the final
+     screenshots out of reach. Proximity tidies up a near miss and otherwise keeps out of the way. */
+  scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+  padding:8px 0 4px; scrollbar-width:none;
+  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+}
+.rail::-webkit-scrollbar{display:none}
+.rail:focus-visible{outline:2px solid rgba(255,61,61,.6);outline-offset:6px;border-radius:8px}
+/* start, not centre: with four slides visible at once the leading edge is what "current" means,
+   and centre-snap leaves the first and last slide unable to reach the position the dots imply. */
+.shot{flex:none;width:var(--shot);scroll-snap-align:start;text-align:center}
+/* same bezel as the hero phone, so the two read as one device. A button rather than a div: it opens
+   the enlarged view, so it has to be reachable by keyboard and announce itself as something to press. */
+.frame{display:block;width:100%;font:inherit;color:inherit;-webkit-appearance:none;cursor:zoom-in;
+  border-radius:34px;padding:9px;background:linear-gradient(165deg,#1b222b,#0d1116);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1);
+  transition:transform .45s var(--ease),box-shadow .45s,border-color .45s}
+.frame:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.shot:hover .frame{transform:translateY(-7px);border-color:rgba(255,61,61,.4);
+  box-shadow:0 40px 90px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.12)}
+.frame img{display:block;width:100%;height:auto;border-radius:26px;background:#0a0d11}
+.shot figcaption{margin-top:18px;font-size:13.5px;font-weight:700;color:var(--ink);padding:0 4px;line-height:1.45}
+.shot figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
+.arw{position:absolute;top:50%;translate:0 calc(-50% - 30px);z-index:5;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  font:400 26px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);
+  padding:0 0 3px;background:rgba(11,13,16,.74);border:1px solid var(--line);backdrop-filter:blur(10px);
+  transition:background .25s,border-color .25s,transform .25s var(--ease),opacity .25s}
+.arw:hover{background:rgba(255,61,61,.22);border-color:rgba(255,61,61,.55);transform:scale(1.08)}
+.arw:disabled{opacity:.22;pointer-events:none}
+.arw.prev{left:-6px}
+.arw.next{right:-6px}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:32px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:100px;cursor:pointer;
+  background:rgba(255,255,255,.18);transition:width .35s var(--ease),background .35s}
+.dots button:hover{background:rgba(255,255,255,.34)}
+.dots button.on{width:26px;background:linear-gradient(90deg,var(--red),var(--amber))}
+@media(max-width:640px){
+  .shots{--shot:70vw}
+  .rail{gap:18px}
+  .arw{display:none}
+}
+
+/* ---------- enlarged screenshot ---------- */
+/* Kept in the document rather than created on demand, and hidden with visibility so it can be
+   transitioned — and so nothing inside it is focusable while it is closed. */
+.lb{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:26px;
+  background:rgba(5,7,9,.88);backdrop-filter:blur(16px);
+  opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
+.lb.on{opacity:1;visibility:visible}
+.lbfig{margin:0;display:grid;justify-items:center;gap:18px;max-height:100%}
+.lbshell{padding:10px;border-radius:42px;background:linear-gradient(165deg,#1b222b,#0d1116);
+  border:1px solid rgba(255,255,255,.18);box-shadow:0 40px 120px rgba(0,0,0,.8);
+  transform:scale(.94);transition:transform .35s var(--ease)}
+.lb.on .lbshell{transform:none}
+/* Both maxima with auto on both axes, so the picture is fitted rather than stretched: a fixed
+   height plus a max-width would squash it on a narrow screen. */
+.lbshell img{display:block;max-height:76vh;max-width:84vw;width:auto;height:auto;
+  border-radius:32px;background:#0a0d11}
+.lbfig figcaption{text-align:center;font-size:14px;font-weight:700;color:var(--ink);max-width:min(90vw,420px)}
+.lbfig figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
+.lbfig figcaption .lbnum{margin-top:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.lbbtn{position:absolute;z-index:2;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  cursor:pointer;color:var(--ink);background:rgba(255,255,255,.07);border:1px solid var(--line);
+  font:400 26px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:0 0 3px;
+  transition:background .25s,border-color .25s,transform .25s var(--ease)}
+.lbbtn:hover{background:rgba(255,61,61,.24);border-color:rgba(255,61,61,.55);transform:scale(1.08)}
+.lbbtn:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.lbx{top:20px;right:22px;font-size:22px;padding:0}
+.lbprev{left:20px;top:50%;translate:0 -50%}
+.lbnext{right:20px;top:50%;translate:0 -50%}
+@media(max-width:640px){
+  .lb{padding:16px}
+  .lbshell img{max-height:66vh;max-width:82vw}
+  .lbbtn{width:40px;height:40px;font-size:22px}
+  .lbprev{left:6px}
+  .lbnext{right:6px}
+}
+
 /* alternating detail rows */
 .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:104px}
 .row:last-child{margin-bottom:0}
@@ -226,6 +315,7 @@ footer a:hover{color:var(--ink)}
   </a>
   <div class="navlinks">
     <a href="#features">Features</a>
+    <a href="#screens">Screens</a>
     <a href="#servers">Your server</a>
     <a href="#cast">Casting</a>
     <a href="#discover">Discover</a>
@@ -332,6 +422,90 @@ footer a:hover{color:var(--ink)}
         <li>Light, dark and true-black themes</li>
       </ul>
     </div>
+  </div>
+</div></section>
+
+<!-- SCREENSHOTS -->
+<section id="screens"><div class="wrap">
+  <div class="head rv">
+    <span class="eyebrow">See it running</span>
+    <h2>Eleven screens, no mock-ups</h2>
+    <p>Every shot below is the app as it ships — a real library, real servers, real stations. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
+  </div>
+
+  <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mbogi Music">
+    <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
+    <div class="rail" id="rail" tabindex="0">
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/01-home.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Activity home screen, with rows for Continue listening, See what's new, Get surprised and Check your classics, above a mini player."></button>
+        <figcaption>Your home screen<span>Every section can be reordered or hidden</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/02-servers.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="A Media servers screen listing a Jellyfin server and a Navidrome server, with an Add server button."></button>
+        <figcaption>Every server you run<span>Signed in to several at once</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/03-subsonic.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="A Navidrome library over Subsonic, showing Recently added, Most played and Recently played rows of album artwork."></button>
+        <figcaption>Your Subsonic library<span>Recently added, most played, played again</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/04-jellyfin.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="A Jellyfin server showing Movies, Shows and Albums tabs above Continue watching and Next up rows."></button>
+        <figcaption>Films and shows from Jellyfin<span>Continue watching, ready to resume</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/05-album.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The album Fairytale by Natasha Beller, nine songs, with its full track list and play and shuffle buttons."></button>
+        <figcaption>Albums with real artwork<span>Play or shuffle from the top of any list</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/06-search.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="Search results for the letters d-r-a, mixing Jellyfin films with radio stations from several countries in one list."></button>
+        <figcaption>One search, everything at once<span>Servers, podcasts and radio in the same list</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/07-explore.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Explore screen on the Podcasts tab, with category and country pickers above a grid of show artwork."></button>
+        <figcaption>Discover by country<span>Podcasts, radio and TV, browsable by category</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/08-queue.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="A queue of seven items mixing a podcast episode, album tracks, a radio station, a video and a local recording."></button>
+        <figcaption>One queue for every medium<span>Podcast, album, station and video together</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/09-video.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The video player showing Afrobeats in 1080p, with cast and full-screen controls and transport buttons below."></button>
+        <figcaption>Video, full screen<span>Your files or your server's, ready to cast</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/10-downloads.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Downloads screen with a saved 24 MB episode, playable with no connection."></button>
+        <figcaption>Downloads that stay put<span>Keep what you want, play it with no signal</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/11-permissions.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="A Before you start screen offering music, video and notification permissions, each with a Maybe later option."></button>
+        <figcaption>Permissions you choose<span>Each one optional, and reversible any time</span></figcaption>
+      </figure>
+
+    </div>
+    <button class="arw next" id="shotNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
+    <div class="dots" id="shotDots"></div>
   </div>
 </div></section>
 
@@ -458,6 +632,20 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></footer>
 
+<!-- The enlarged view, filled in from whichever screenshot was clicked. A child of body, not of
+     main: main sets a z-index, which makes it a stacking context, and inside one no z-index can
+     lift this above the sticky nav. -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screenshot, enlarged" aria-hidden="true">
+  <button class="lbbtn lbx" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <button class="lbbtn lbprev" id="lbPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
+  <figure class="lbfig">
+    <!-- every large screenshot is 1080x2405, so the box is the right shape before the file lands -->
+    <div class="lbshell"><img id="lbImg" width="1080" height="2405" alt=""></div>
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lbbtn lbnext" id="lbNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
+</div>
+
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
@@ -501,6 +689,133 @@ footer a:hover{color:var(--ink)}
       c.style.setProperty('--my',(e.clientY-r.top)+'px');
     });
   });
+
+  // screenshot carousel
+  //
+  // The scrolling is the browser's own — scroll-snap on the rail — so swipe, trackpad, drag and the
+  // arrow keys all work without a line of code. The arrows and dots only ever call scrollTo, and
+  // read their state back out of scrollLeft, so however the rail was moved they stay in step.
+  var rail=document.getElementById('rail');
+  if (rail){
+    var shots=[].slice.call(rail.querySelectorAll('.shot')),
+        dotbox=document.getElementById('shotDots'),
+        prevBtn=document.getElementById('shotPrev'),
+        nextBtn=document.getElementById('shotNext');
+
+    // A page is however many slides fit at once — four on a wide screen, one on a phone. Paging by
+    // the screenful rather than by the slide is what keeps the dots honest: eleven dots against a
+    // rail showing four at a time can never all be reachable, because the last four share a
+    // scroll position. Everything below is measured from the DOM, so the media query that widens
+    // a slide to 70vw needs no matching change here.
+    function step(){
+      return shots.length>1 ? shots[1].offsetLeft-shots[0].offsetLeft : rail.clientWidth;
+    }
+    function perPage(){
+      var s=step();
+      // + the gap: the last slide on a page needs no gap after it to count as fitting.
+      return Math.max(1, Math.floor((rail.clientWidth + (s-shots[0].offsetWidth)) / s));
+    }
+    function pages(){ return Math.ceil(shots.length/perPage()); }
+    function end(){ return rail.scrollWidth-rail.clientWidth; }
+    function current(){
+      var width=perPage()*step();
+      // The final page is short — it stops at the scroll limit, well before its nominal offset —
+      // so it is recognised by position rather than by arithmetic.
+      if (rail.scrollLeft>=end()-1) return pages()-1;
+      return Math.min(pages()-1, Math.round(rail.scrollLeft/width));
+    }
+    function go(p){
+      var width=perPage()*step();
+      rail.scrollTo({left:Math.max(0,Math.min(p,pages()-1))*width, behavior:'smooth'});
+    }
+    function dots(){
+      dotbox.innerHTML='';
+      var n=pages();
+      if (n<2) return;                            // one page, nothing to page through
+      for (var i=0;i<n;i++){
+        var d=document.createElement('button');
+        d.type='button';
+        d.setAttribute('aria-label','Screenshots, page '+(i+1)+' of '+n);
+        d.addEventListener('click',(function(p){ return function(){ go(p); }; })(i));
+        dotbox.appendChild(d);
+      }
+    }
+    function sync(){
+      var i=current();
+      [].slice.call(dotbox.children).forEach(function(d,n){ d.classList.toggle('on', n===i); });
+      prevBtn.disabled = rail.scrollLeft<=1;
+      nextBtn.disabled = rail.scrollLeft>=end()-1;
+    }
+
+    prevBtn.addEventListener('click',function(){ go(current()-1); });
+    nextBtn.addEventListener('click',function(){ go(current()+1); });
+    rail.addEventListener('scroll',sync,{passive:true});
+    // A resize can change how many slides fit, so the dots are rebuilt, not just re-lit.
+    addEventListener('resize',function(){ dots(); sync(); });
+    dots(); sync();
+
+    // ----- enlarged view -----
+    //
+    // The rail carries 640px-wide screenshots, which are the right weight for a 236px slide and far
+    // too soft blown up. Each has a 1080px twin under /screens/large/, fetched only when someone
+    // actually opens one — the address is derived from the thumbnail rather than repeated in an
+    // attribute on all eleven slides.
+    var lb=document.getElementById('lb'),
+        lbImg=document.getElementById('lbImg'),
+        lbCap=document.getElementById('lbCap'),
+        lbClose=document.getElementById('lbClose'),
+        lbPrev=document.getElementById('lbPrev'),
+        lbNext=document.getElementById('lbNext'),
+        opener=null, showing=0;
+
+    function bigOf(i){ return shots[i].querySelector('img').src.replace('/screens/','/screens/large/'); }
+
+    function show(i){
+      showing=(i+shots.length)%shots.length;     // wraps, so neither end is a dead stop
+      var img=shots[showing].querySelector('img');
+      lbImg.src=bigOf(showing);
+      lbImg.alt=img.alt;
+      lbCap.innerHTML=shots[showing].querySelector('figcaption').innerHTML
+        + '<span class="lbnum">'+(showing+1)+' of '+shots.length+'</span>';
+      // The neighbours, so stepping through is instant. Dropped on the floor deliberately: these
+      // are only ever wanted in the browser's cache.
+      new Image().src=bigOf((showing+1)%shots.length);
+      new Image().src=bigOf((showing-1+shots.length)%shots.length);
+    }
+    function openLb(i){
+      opener=document.activeElement;
+      show(i);
+      lb.classList.add('on');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';     // the page must not scroll behind the overlay
+      lbClose.focus();
+    }
+    function closeLb(){
+      lb.classList.remove('on');
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      // Bring the rail to the page holding whatever was last enlarged, so closing does not lose
+      // the reader's place, then hand focus back to where it came from.
+      go(Math.floor(showing/perPage()));
+      if (opener && opener.focus) opener.focus();
+    }
+
+    shots.forEach(function(s,i){
+      s.querySelector('.frame').addEventListener('click',function(){ openLb(i); });
+    });
+    lbClose.addEventListener('click',closeLb);
+    lbPrev.addEventListener('click',function(){ show(showing-1); });
+    lbNext.addEventListener('click',function(){ show(showing+1); });
+    // Only the backdrop itself closes — a click that lands on the picture or a button is not a
+    // click on the way out.
+    lb.addEventListener('click',function(e){ if (e.target===lb) closeLb(); });
+    addEventListener('keydown',function(e){
+      if (!lb.classList.contains('on')) return;
+      if (e.key==='Escape'){ closeLb(); }
+      else if (e.key==='ArrowRight'){ show(showing+1); }
+      else if (e.key==='ArrowLeft'){ show(showing-1); }
+    });
+  }
 
   // Latest release, straight from the source of truth.
   //

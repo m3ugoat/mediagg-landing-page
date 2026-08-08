@@ -5,9 +5,9 @@
 # Bundler 2.1.4 cannot load on Ruby 3.4 — it reaches for DidYouMean::SPELL_CHECKERS, which no longer
 # exists. The build died during dependency installation, so nothing had been deployed since 2022.
 #
-# There is nothing left for either tool to do. The three pages are plain HTML with their CSS inline
-# and no external requests, so Netlify simply serves the files in `public/`. Nothing to install,
-# nothing to pin, nothing that ages.
+# There is nothing left for either tool to do. The three pages are plain HTML with their CSS inline,
+# and the only assets are the screenshots in `public/screens/`, so Netlify simply serves the files in
+# `public/`. Nothing to install, nothing to pin, nothing that ages.
 #
 # The Jekyll and webpack sources are still in the repository — _layouts, _includes, _src, _scss,
 # config/, package.json, Gemfile — dormant rather than deleted, in case the templating is wanted
