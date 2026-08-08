@@ -436,12 +436,13 @@ footer a:hover{color:var(--ink)}
       <a class="btn btn-p" href="https://github.com/laurentjuma/Mbogi-Music-by-C4Entertainment/releases/latest">↓ Latest release</a>
       <a class="btn btn-g" href="https://github.com/laurentjuma/Mbogi-Music-by-C4Entertainment">View the source</a>
     </div>
-    <div class="abis">
+    <div class="abis" id="abis">
       <div class="abi"><b>arm64-v8a</b><small>Almost every current phone &amp; tablet</small></div>
       <div class="abi"><b>armeabi-v7a</b><small>Older 32-bit ARM devices</small></div>
       <div class="abi"><b>x86_64 · x86</b><small>Emulators &amp; x86 Chromebooks</small></div>
       <div class="abi"><b>universal</b><small>One file that installs anywhere</small></div>
     </div>
+    <p id="relmeta" style="margin-top:22px;font-size:13px;color:var(--dim)"></p>
   </div>
 </div></section>
 
@@ -500,6 +501,43 @@ footer a:hover{color:var(--ink)}
       c.style.setProperty('--my',(e.clientY-r.top)+'px');
     });
   });
+
+  // Latest release, straight from the source of truth.
+  //
+  // The APKs are never copied into this repository: the universal build is 262 MB and GitHub
+  // refuses any file over 100 MB, and a full set is 573 MB that git would keep a copy of forever.
+  // So the buttons point at the release assets and this fills in the real version and sizes.
+  //
+  // Silently leaves the static fallback in place if the call fails, which it will while the
+  // releases are private — an unauthenticated request gets a 404, not a 403.
+  var REPO='laurentjuma/Mbogi-Music-by-C4Entertainment';
+  var LABEL={'arm64-v8a':'Almost every current phone &amp; tablet',
+             'armeabi-v7a':'Older 32-bit ARM devices',
+             'x86_64':'64-bit emulators &amp; Chromebooks',
+             'x86':'32-bit emulators',
+             'universal':'One file that installs anywhere'};
+  function abiOf(n){
+    var m=n.match(/-(arm64-v8a|armeabi-v7a|x86_64|x86|universal)-/);
+    return m?m[1]:null;
+  }
+  fetch('https://api.github.com/repos/'+REPO+'/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(rel){
+      var apks=(rel.assets||[]).filter(function(a){ return /\.apk$/.test(a.name); });
+      if(!apks.length) throw 0;
+      var order=['arm64-v8a','armeabi-v7a','x86_64','x86','universal'];
+      apks.sort(function(a,b){ return order.indexOf(abiOf(a.name))-order.indexOf(abiOf(b.name)); });
+      document.getElementById('abis').innerHTML = apks.map(function(a){
+        var abi=abiOf(a.name)||a.name;
+        return '<a class="abi" href="'+a.browser_download_url+'" style="text-decoration:none;display:block">'
+             + '<b>'+abi+' &nbsp;<span style="color:var(--red)">↓</span></b>'
+             + '<small>'+(LABEL[abi]||'')+' · '+Math.round(a.size/1e6)+' MB</small></a>';
+      }).join('');
+      document.getElementById('relmeta').textContent =
+        'Latest: ' + (rel.name||rel.tag_name) + ' · published ' +
+        new Date(rel.published_at).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+    })
+    .catch(function(){ /* keep the static list */ });
 
   // gentle parallax on the floating cards
   var cards=[].slice.call(document.querySelectorAll('.card3d'));
