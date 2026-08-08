@@ -15,6 +15,11 @@
 
 [build]
   publish = "public"
+  # An explicit no-op rather than no command at all. With the field empty Netlify falls back to
+  # framework detection, and anything that looks like a Jekyll or Node project in the root sends it
+  # looking for a toolchain that is no longer installed. Saying "nothing to build" out loud stops it
+  # guessing.
+  command = "echo 'Static site — nothing to build.'"
 
 [[headers]]
   for = "/*"
