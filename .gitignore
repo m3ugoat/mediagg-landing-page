@@ -9,6 +9,9 @@ yarn-error.log
 # editors
 .idea
 .jekyll-cache
+
+# macOS Finder metadata
+.DS_Store
 # Local Netlify folder
 .netlify
 

@@ -1,0 +1,53 @@
+# Publishes the static site to GitHub Pages.
+#
+# There is no build step, for the same reason netlify.toml has none: the three pages are plain HTML
+# with their CSS inline, and the only assets are the screenshots in public/screens/. The job just
+# uploads public/ and hands it to Pages.
+#
+# Deploying through Actions rather than the "deploy from a branch" setting matters here. Branch
+# deploys can only serve the repository root or /docs, and neither is the site — the root holds the
+# retired Jekyll sources and /docs holds design files. Actions can publish any directory, so public/
+# stays where netlify.toml already expects it and the two hosts serve the same files.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+    # Only the site and this workflow affect the deploy. Editing README.md, or the design sources in
+    # docs/, should not spend a deploy.
+    paths:
+      - 'public/**'
+      - '.github/workflows/pages.yml'
+  # Lets a deploy be re-run from the Actions tab without an empty commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  # deploy-pages authenticates to Pages with an OIDC token rather than a stored secret; without this
+  # the deploy step fails even though `pages: write` is granted.
+  id-token: write
+
+# Queue deploys instead of cancelling in-flight ones, so a run that is already publishing finishes
+# rather than leaving the site half-updated.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
