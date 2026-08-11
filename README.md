@@ -1,100 +1,66 @@
 <p align="center">
-  <img src="/docs/animation/animation.gif" width="150">
-</p>
-<h1 align="center">Mobile App Landing Page Template</h1>
-<p>
-  <a href="/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="MIT"></a>
-  <a href="https://medium.com/@sandoche" target="_blank"><img src="https://badgen.net/badge/icon/medium?icon=medium&label" alt="medium: sandoche"></a>
-  <a href="https://twitter.com/sandochee">
-    <img alt="Twitter: sandochee" src="https://img.shields.io/twitter/follow/sandochee.svg?style=social" target="_blank" />
-  </a>
+  <img src="public/screens/01-home.webp" width="200" alt="The Mbogi Music home screen">
 </p>
 
-📱 Free to use static generated landing page template for your mobile app
+<h1 align="center">Mbogi Music — landing page</h1>
 
-## 💡 Features
-Mobile App Landing Page Template comes with pre-installed features and options:
-- Display app icon
-- Show unlimited app screenshots
-- Link to Google Play
-- Link to the AppStore
-- Link to the Web App
-- Press mention section
-- Product Hunt floating prompt
-- Privacy policy Page
-- Google Analytics
-- Cookie Consent
-- Automatic dark theme
-- Doorbell widget
-- Github forking banner
+<p align="center">
+  <a href="https://mbogimusic.com">mbogimusic.com</a>
+</p>
 
-## ✨ Demo
-Check out websites using the Mobile App Template:
-- https://mobileapplandingpage.learn.uno (demo website)
-- https://gitnews.learn.uno
-- https://textblast.learn.uno
-- https://infinideas.learn.uno
-- https://www.therandominion.com/
+The marketing site for Mbogi Music, an Android app that plays the music, podcasts, radio and video
+on your phone, on your own media server, and across the web — and casts any of it to Chromecast or
+DLNA. Free, no account required.
 
-## 📖 How to use
+**This repository holds the website, not the app.** The app is not open source and its source is not
+here. Builds are published as APKs at
+[laurentjuma/mbogi-music-releases](https://github.com/laurentjuma/mbogi-music-releases/releases/latest);
+there is no Play Store or App Store listing.
 
-### The normal way
+## What is here
 
-1. Fork this project
-2. Edit `_config.yml`, feel free to commut/uncomment what you need (google analtytics, or github for example)
-3. Edit `_data/app.yml` with your app data
-4. Update the text from `_data/strings.yml`, you can customize there the footer's links
-5. Edit icons and screenshots inside the `_images` folder and `icon.png` in the root
-6. Edit `_src/index.js` to update the product hunt modal (or to remove it) and to remove the darkmode plugin if you don't want it
-7. Deploy (on netlify, gitpages or surge, they are all free)
+| Path | |
+|---|---|
+| `public/` | The site. Three pages — home, privacy, 404 — plus the screenshots. This is what gets deployed. |
+| `public/screens/` | Eleven screenshots at 640px, with 1080px twins in `large/` for the enlarged view. |
+| `docs/` | Design sources: After Effects projects, Adobe XD files, marketing renders. Not part of the site. |
+| `legacy/` | The retired Jekyll and webpack toolchain. Kept for reference, never built. |
+| `_images/`, `icon.png` | Artwork inherited from the original template. Unused by the current pages. |
 
-### The no-code way
+## Running it
 
-1. Go to https://t3mpl.n4no.com/editor/#manifest=../templates/mobile-app-landing-page/template.yaml
-2. Edit the settings on the left part
-3. Click on the `Publish` button then `Save Webpage as .zip`
-4. Unzip and upload the folder to your server (you can drag'n'drop it in Netlify to host it there for free)
+There is no build step and nothing to install. The pages are plain HTML with their CSS inline, and
+the only assets are the screenshots, so any static file server will do:
 
-## ⚙️ How to run
-
-### Pre-requisites
-- NodeJS
-- Ruby, Bundler
-
-### Install
 ```
-npm install
-bundler install
+python3 -m http.server -d public 8000
 ```
 
-### Development
-```
-npm start
-```
+Then open http://localhost:8000.
 
-### Build
-```
-npm run build
-```
+Opening `public/index.html` directly in a browser mostly works, but the pages use root-relative paths
+(`/screens/…`, `/privacy`), so the screenshots and the privacy link will not resolve over `file://`.
+Serve the directory instead.
 
-### Deploy to netlify (for free)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sandoche/Mobile-app-landingpage-template)
+## How it deploys
 
-### More documentation
-This templates uses [Jekyll-webpack-boilerplate](https://github.com/sandoche/Jekyll-webpack-boilerplate), read more documentation there.
+Pushes to `master` that touch `public/**` publish to GitHub Pages through
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml). Editing this README or the design
+sources in `docs/` does not spend a deploy; the workflow can also be run by hand from the Actions
+tab.
 
-## 🤝 Contributing
-Contributions, issues and feature requests are welcome!
+The workflow uploads `public/` as a Pages artifact rather than using the "deploy from a branch"
+setting, because a branch deploy can only serve the repository root or `/docs`, and the site is in
+neither. `public/CNAME` claims `mbogimusic.com`, and because it travels in the artifact, every deploy
+reasserts the custom domain.
 
-## ⭐️ Show your support
-Please ⭐️ this repository if this project helped you!
+`netlify.toml` is still present and still correct. Netlify was the original host and publishes the
+same `public/` directory with no build command, so it remains a working fallback — but DNS points at
+GitHub Pages, so only one of the two is actually serving the domain at any time.
 
-<a href="https://www.patreon.com/sandoche">[![patreon.png](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/sandoche)</a>
+## Credits
 
-## 🍺 Buy me a beer 
-If you like this project, feel free to donate:
-* PayPal: https://www.paypal.me/kanbanote
-* Bitcoin: 19JiNZ1LkMaz57tewqJaTg2hQWH4RgW4Yp
-* Ethereum: 0xded81fa4624e05339924355fe3504ba9587d5419
-* Monero: 43jqzMquW2q989UKSrB2YbeffhmJhbYb2Yxu289bv7pLRh4xVgMKj5yTd52iL6x1dvCYs9ERg5biHYxMjGkpSTs6S2jMyJn
-* Motive: MOTIV-25T5-SD65-V7LJ-BBWRD (Get Motive Now: https://motive.network)
+Built from [Mobile App Landing Page Template](https://github.com/sandoche/Mobile-app-landingpage-template)
+by [Sandoche ADITTANE](https://github.com/sandoche), MIT licensed — see [LICENSE](LICENSE). The
+template's Jekyll structure has since been retired to `legacy/` and the three pages rewritten, but
+the licence and attribution stand.
