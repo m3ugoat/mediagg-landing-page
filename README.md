@@ -22,7 +22,7 @@ there is no Play Store or App Store listing.
 | Path | |
 |---|---|
 | `public/` | The site. Three pages — home, privacy, 404 — plus the screenshots. This is what gets deployed. |
-| `public/screens/` | Eleven screenshots at 640px, with 1080px twins in `large/` for the enlarged view. |
+| `public/screens/` | Eleven carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-choose-style.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. |
 | `docs/` | Design sources: After Effects projects, Adobe XD files, marketing renders. Not part of the site. |
 | `legacy/` | The retired Jekyll and webpack toolchain. Kept for reference, never built. |
 | `_images/`, `icon.png` | Artwork inherited from the original template. Unused by the current pages. |
