@@ -7,7 +7,8 @@
 <meta name="description" content="How Mediagg and Mediagg Personal handle your data.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
+<link rel="apple-touch-icon" href="/icons/mediagg.png">
 <style>
 :root{--bg:#0b0d10;--ink:#f2f5f8;--muted:#93a1b0;--dim:#6c7a89;--red:#ff3d3d;--line:rgba(255,255,255,.09)}
 *{box-sizing:border-box}
@@ -17,6 +18,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .wrap{max-width:760px;margin:0 auto;padding:0 24px}
 header{border-bottom:1px solid var(--line);padding:18px 0;position:sticky;top:0;
  background:rgba(11,13,16,.88);backdrop-filter:blur(14px);z-index:5}
+.mark{border-radius:8px;display:block}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;text-decoration:none;color:var(--ink)}
 .eq{display:flex;align-items:flex-end;gap:2.5px;height:20px}
 .eq i{width:3.5px;background:linear-gradient(180deg,var(--red),#ffb443);border-radius:2px;animation:b 1.05s ease-in-out infinite}
@@ -45,7 +47,7 @@ td{color:var(--muted)}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="/"><span class="eq"><i></i><i></i><i></i><i></i></span> Mediagg</a></div></header>
+<header><div class="wrap"><a class="brand" href="/"><img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg</a></div></header>
 <main class="wrap">
 <h1>Privacy policy</h1>
 <p class="sub">How Mediagg and Mediagg Personal handle your data. Effective 27 August 2026.</p>
