@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search in Mediagg — Mediagg</title>
+<meta name="description" content="This link runs a search in the Mediagg app.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0d10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#0b0d10;--ink:#f2f5f8;--muted:#93a1b0;--dim:#6c7a89;--red:#ff3d3d;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+ -webkit-font-smoothing:antialiased;text-align:center;padding:24px}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.4;pointer-events:none}
+.b1{width:520px;height:520px;background:radial-gradient(circle,#ff1616,transparent 62%);top:-180px;left:-140px}
+.b2{width:460px;height:460px;background:radial-gradient(circle,#8b7bff,transparent 62%);bottom:-180px;right:-140px}
+.in{position:relative;z-index:2;max-width:560px}
+.eq{display:inline-flex;align-items:flex-end;gap:4px;height:40px;margin-bottom:22px}
+.eq i{width:7px;background:linear-gradient(180deg,var(--red),#ffb443);border-radius:4px;animation:b 1.05s ease-in-out infinite}
+.eq i:nth-child(1){height:40%;animation-delay:-.5s}.eq i:nth-child(2){height:85%;animation-delay:-.25s}
+.eq i:nth-child(3){height:60%;animation-delay:-.75s}.eq i:nth-child(4){height:100%}
+@keyframes b{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
+h1{font-size:clamp(1.7rem,5.5vw,2.5rem);letter-spacing:-.03em;margin:0 0 14px}
+p{color:var(--muted);margin:0 0 22px}
+.val{display:block;border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:0 0 22px;
+ background:rgba(255,255,255,.03);color:var(--ink);font:13.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;
+ word-break:break-all;text-align:left}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+a.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:12px 24px;font-weight:700;
+ text-decoration:none;color:#fff;background:linear-gradient(120deg,var(--red),#ff7a2f);
+ box-shadow:0 10px 34px rgba(255,61,61,.3);transition:transform .25s}
+a.btn.g{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink);box-shadow:none}
+a.btn:hover{transform:translateY(-2px)}
+small{display:block;margin-top:26px;color:var(--dim);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<i class="blob b1"></i><i class="blob b2"></i>
+<div class="in">
+  <span class="eq"><i></i><i></i><i></i><i></i></span>
+  <h1>This link searches Mediagg</h1>
+  <p>It runs a search across your library, your subscriptions and every media server you are signed in to. With Mediagg installed, the app opens on the results.</p>
+  <code class="val" id="val">query</code>
+  <div class="cta">
+    <a class="btn" href="/#download">Get Mediagg</a>
+    <a class="btn g" href="/">What is Mediagg?</a>
+  </div>
+  <small>You are seeing this page because the app is not installed, or because you opened the link on something other than an Android device.</small>
+</div>
+<script>
+(function(){
+  var v = new URLSearchParams(location.search).get('query');
+  var box = document.getElementById('val');
+  if (!v) { box.remove(); return; }
+  box.textContent = v;
+})();
+</script>
+</body>
+</html>

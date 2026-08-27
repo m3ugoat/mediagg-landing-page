@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy policy — Mbogi Music</title>
-<meta name="description" content="How Mbogi Music handles your data.">
+<title>Privacy policy — Mediagg</title>
+<meta name="description" content="How Mediagg and Mediagg Personal handle your data.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
@@ -34,61 +34,134 @@ main li{margin:7px 0}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--muted);text-decoration:none;margin-left:20px}
 footer a:hover{color:var(--ink)}
+table{border-collapse:collapse;width:100%;margin:8px 0 22px;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{color:var(--ink);font-weight:700;background:rgba(255,255,255,.04)}
+td{color:var(--muted)}
+.yes{color:#ff9c9c}.no{color:#8fd6a0}
+.todo{border:1px solid var(--red);border-radius:10px;padding:14px 16px;color:var(--ink);
+ background:rgba(255,61,61,.1)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="/"><span class="eq"><i></i><i></i><i></i><i></i></span> Mbogi Music</a></div></header>
+<header><div class="wrap"><a class="brand" href="/"><span class="eq"><i></i><i></i><i></i><i></i></span> Mediagg</a></div></header>
 <main class="wrap">
 <h1>Privacy policy</h1>
-<p class="sub">How Mbogi Music handles your data.</p>
-<!-- **Privacy Policy** -->
+<p class="sub">How Mediagg and Mediagg Personal handle your data. Effective 27 August 2026.</p>
 
-<p>Laurent Juma built the Mbogi Music app as an Ad Supported app. This SERVICE is provided by Laurent Juma at no cost and is intended for use as is.</p>
-<p>This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.</p>
-<p><strong>Information Collection and Use</strong></p>
-<p>The app only records data strictly necessary for the app to function. This includes for example the list of podcasts you follow, and the app settings. The app does not include any 3rd party tracking (analytics) code, such as Google Analytics.</p>
-<p>All data provided and created when using the AntennaPod app is stored locally on your device. Mbogi Music does not send or upload your data anywhere, except where strictly necessary for the functioning of the app. Please see the second next section for the cases in which your data may be provided to third parties.</p>
-<p><strong>What app data other parties might collect, store and process</strong></p>
-<p>Discovery and search services: When opening the Podcasts screen in the app, it sends a call to Apple to collect podcast suggestions. They may store the query, including country (which by default is the device’s country). These suggestions can be disabled by choosing “off” in the region selector. When using the search feature in AntennaPod, the services PodcastIndex.org, iTunes, fyyd and gpodder.net may store your query, including the search terms. Discovery and search queries also include IP address, time, and app name “AntennaPod”. After subscribing, the feed is served from the podcast hoster, meaning the discovery/search service is no longer involved.</p>
-<p>Link to the privacy policy of third-party service providers used by the app</p>
+<p>Mediagg is an Android media player. It plays the music, podcasts, radio, TV and video on your
+device, on media servers you run yourself, and on the open web. It is built on the open-source
+podcast app <a href="https://antennapod.org">AntennaPod</a>.</p>
+
+<p><strong>There are two editions, and they differ in exactly one respect</strong></p>
+<p>Everything about how your library is stored and played is identical. What differs is what the app
+reaches out to.</p>
+
+<table>
+<tr><th>&nbsp;</th><th>Mediagg</th><th>Mediagg Personal</th></tr>
+<tr><td>Advertising</td><td class="yes">Yes — Google AdMob</td><td class="no">No</td></tr>
+<tr><td>Crash reporting and analytics</td><td class="yes">Yes — Firebase Crashlytics</td><td class="no">No</td></tr>
+<tr><td>Advertising ID and similar identifiers</td><td class="yes">Yes</td><td class="no">No</td></tr>
+<tr><td>Radio and TV directory</td><td class="yes">Yes</td><td class="no">No — no radio or TV requests are made</td></tr>
+<tr><td>Podcast search</td><td>Yes</td><td>Yes</td></tr>
+</table>
+
+<p>In Mediagg Personal the advertising and analytics libraries are <b>not present in the app at
+all</b> — not disabled by a setting, not switched off at runtime, simply not built in. There is
+therefore no advertising ID, no App Set ID and no Firebase installation identifier for it to read.</p>
+
+<p><strong>What stays on your device</strong></p>
+<p>The app records what it needs in order to work, and keeps it locally:</p>
+<ul>
+<li>The podcasts you follow, your queue, inbox, favourites, playlists and playback positions</li>
+<li>Your local music, video and file library, and the downloads you keep</li>
+<li>Sign-in details for any media server you add — Subsonic, Navidrome, Airsonic, OpenSubsonic, Jellyfin or Audiobookshelf</li>
+<li>Listening statistics, and every app setting</li>
+</ul>
+<p>None of this is uploaded. There is no Mediagg account, and no server of ours holds a copy of your
+library. Backup and restore writes a file to a location you choose, on your device.</p>
+
+<p><strong>What leaves your device, and when</strong></p>
+
+<p><b>A configuration file, at startup.</b> Both editions fetch a small configuration file from
+GitHub each time the app starts, which is how features can be turned on or off and how the app knows
+a new version is available. It carries nothing about you. As with any web request, GitHub receives
+your IP address and the time of the request. Nothing from your library is included.</p>
+
+<p><b>Podcast search and discovery.</b> When you search for a podcast, or open a discovery screen,
+your query is sent to the service you are searching. Those services are Apple (iTunes),
+<a href="https://podcastindex.org">PodcastIndex.org</a>, <a href="https://fyyd.de">fyyd</a> and
+HearThis. They may retain the query, your device's country, your IP address and the time. Once you
+subscribe, the feed comes from whoever hosts it and the search service is no longer involved. This
+applies to both editions.</p>
+
+<p><b>Radio and TV — Mediagg only.</b> The full edition downloads a directory of stations and
+channels so it can be searched and browsed. Playing a station connects your device to that
+broadcaster's stream, and the broadcaster sees your IP address as it would in any player. Mediagg
+Personal makes none of these requests and has no radio or TV feature.</p>
+
+<p><b>Podcasts, media and artwork.</b> Feeds, episodes and images are fetched from whoever hosts
+them, exactly as a browser would. Those hosts see your IP address, and their own policies apply.</p>
+
+<p><b>Your own media servers.</b> Requests go directly from your device to the address you entered.
+Nothing is proxied through us. Credentials are stored on your device.</p>
+
+<p><b>gpodder.net synchronisation.</b> Off unless you turn it on. If you do, your subscriptions and
+episode actions are sent to the gpodder.net account you signed in to.</p>
+
+<p><b>Advertising — Mediagg only.</b> The full edition shows ads through Google AdMob, which collects
+data of its own, including your device's advertising identifier. See AdMob's policy below. You can
+reset or delete the advertising ID in Android's settings. Mediagg Personal shows no ads and contains
+no advertising library.</p>
+
+<p><b>Crash reporting — Mediagg only.</b> The full edition reports crashes through Firebase
+Crashlytics so faults can be found and fixed. A report describes the failure and the device, not
+your library. Mediagg Personal contains no crash-reporting library and sends no reports.</p>
+
+<p><b>Casting.</b> Chromecast and DLNA/UPnP casting happens over your local network, between your
+device and the one you are casting to.</p>
+
+<p>Policies of the third parties involved:</p>
 <ul>
 <li><a href="https://www.google.com/policies/privacy/">Google Play Services</a></li>
-<li><a href="https://support.google.com/admob/answer/6128543?hl=en">AdMob</a></li>
+<li><a href="https://support.google.com/admob/answer/6128543?hl=en">AdMob</a> — Mediagg only</li>
+<li><a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> — Mediagg only</li>
+<li><a href="https://www.apple.com/legal/privacy/">Apple</a>, <a href="https://podcastindex.org">PodcastIndex.org</a>, <a href="https://fyyd.de">fyyd</a>, HearThis — podcast search</li>
+<li><a href="https://gpodder.net">gpodder.net</a> — only if you enable sync</li>
 </ul>
-<!-- **Log Data**
-
-I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics. -->
 
 <p><strong>Cookies</strong></p>
-<p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.</p>
-<p>This Service does not use these “cookies” explicitly. However, the app may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.</p>
-<!-- **Service Providers**
+<p>This website sets no cookies and carries no analytics. The app does not use cookies itself,
+though third-party libraries in the full edition may.</p>
 
-I may employ third-party companies and individuals due to the following reasons:
-
-*   To facilitate our Service;
-*   To provide the Service on our behalf;
-*   To perform Service-related services; or
-*   To assist us in analyzing how our Service is used.
-
-I want to inform users of this Service that these third parties have access to their Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose. -->
+<p><strong>Children's privacy</strong></p>
+<p>Mediagg is not directed at children under 13, and we do not knowingly collect personal information
+from them. If you believe a child has provided personal information, contact us and it will be
+removed.</p>
 
 <p><strong>Security</strong></p>
-<p>I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.</p>
-<p><strong>Links to Other Sites</strong></p>
-<p>This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
-<p><strong>Children’s Privacy</strong></p>
-<p>These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13 years of age. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do the necessary actions.</p>
-<p><strong>Changes to This Privacy Policy</strong></p>
-<p>I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.</p>
-<p>This policy is effective as of 2022-09-07</p>
-<p><strong>Contact Us</strong></p>
-<p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at c4Entertainment254@gmail.com.</p>
+<p>Because your library stays on your device, the protection that matters most is your device's own.
+For what does travel — server sign-ins, feed downloads — the app uses HTTPS wherever the other end
+offers it. No method of transmission or storage is completely secure, and absolute security cannot be
+guaranteed.</p>
+
+<p><strong>Links to other sites</strong></p>
+<p>The app and this site link to places we do not operate, including podcast hosts, radio
+broadcasters and app stores. Their policies are their own.</p>
+
+<p><strong>Changes to this policy</strong></p>
+<p>This page will be updated when the app changes what it does. The effective date at the top says
+when it was last revised.</p>
+
+<p><strong>Contact</strong></p>
+<p class="todo"><b>PLACEHOLDER — replace before this page is published.</b> Google Play requires a
+reachable contact for the developer, and a listing with a dead one is a policy violation. Put the
+address you want associated with Mediagg here.</p>
 </main>
 <footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
-<div>&copy; <span id="yr"></span> C4 Entertainment &middot; Mbogi Music</div>
-<div><a href="/">Home</a><a href="https://github.com/laurentjuma/mbogi-music-releases">Releases</a></div>
+<div>&copy; <span id="yr"></span> Mediagg</div>
+<div><a href="/">Home</a><a href="https://github.com/m3ugoat/mediagg-releases">Releases</a></div>
 </div></footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mbogi Music — your whole library, wherever it lives</title>
-<meta name="description" content="Mbogi Music plays the music, podcasts, radio and video on your phone, on your own media server, and across the web — and casts any of it to Chromecast or DLNA. Free, no account required.">
-<link rel="canonical" href="https://mbogimusic.com/">
+<title>Mediagg — your whole library, wherever it lives</title>
+<meta name="description" content="Mediagg plays the music, podcasts, radio and video on your phone, on your own media server, and across the web — and casts any of it to Chromecast or DLNA. Free, no account required.">
+<link rel="canonical" href="https://mediagg.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mbogi Music — your whole library, wherever it lives">
+<meta property="og:title" content="Mediagg — your whole library, wherever it lives">
 <meta property="og:description" content="Music, podcasts, radio and video. Your phone, your Subsonic or Jellyfin server, and the open web — in one player that casts to anything.">
-<meta property="og:url" content="https://mbogimusic.com/">
+<meta property="og:url" content="https://mediagg.app/">
 <meta name="theme-color" content="#0b0d10">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
 <style>
@@ -303,7 +303,7 @@ footer a:hover{color:var(--ink)}
 
 <nav id="nav"><div class="navin">
   <a class="brand" href="#top">
-    <span class="eq"><i></i><i></i><i></i><i></i></span> Mbogi Music
+    <span class="eq"><i></i><i></i><i></i><i></i></span> Mediagg
   </a>
   <div class="navlinks">
     <a href="#features">Features</a>
@@ -311,6 +311,7 @@ footer a:hover{color:var(--ink)}
     <a href="#servers">Your server</a>
     <a href="#cast">Casting</a>
     <a href="#discover">Discover</a>
+    <a href="#editions">Editions</a>
     <a class="btn btn-p" href="#download">Get the app</a>
   </div>
 </div></nav>
@@ -334,7 +335,7 @@ footer a:hover{color:var(--ink)}
       <!-- eager, and not lazy like the carousel: this one is in the first screenful, so deferring it
            only delays the largest thing the hero has to paint. -->
       <img src="/screens/hero-choose-style.webp" width="640" height="1425" decoding="async"
-           alt="Mbogi Music setup screen titled Choose your style, offering Default, Simple, Local, Server and Podcaster layouts for the tabs along the bottom of the app.">
+           alt="The Mediagg setup screen titled Choose your style, offering Default, Simple, Local, Server and Podcaster layouts for the tabs along the bottom of the app.">
     </div>
   </div>
 </header>
@@ -422,7 +423,7 @@ footer a:hover{color:var(--ink)}
     <p>Every shot below is the app as it ships — a real library, real servers, real stations. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
   </div>
 
-  <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mbogi Music">
+  <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mediagg">
     <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
     <div class="rail" id="rail" tabindex="0">
 
@@ -459,13 +460,13 @@ footer a:hover{color:var(--ink)}
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/06-search.webp" width="640" height="1425" loading="lazy" decoding="async"
           alt="Search results for the letters d-r-a, mixing Jellyfin films with radio stations from several countries in one list."></button>
-        <figcaption>One search, everything at once<span>Servers, podcasts and radio in the same list</span></figcaption>
+        <figcaption>One search, everything at once<span>Servers, podcasts and radio in one list</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/07-explore.webp" width="640" height="1425" loading="lazy" decoding="async"
           alt="The Explore screen on the Podcasts tab, with category and country pickers above a grid of show artwork."></button>
-        <figcaption>Discover by country<span>Podcasts, radio and TV, browsable by category</span></figcaption>
+        <figcaption>Discover by country<span>Podcasts, radio and TV — the full edition</span></figcaption>
       </figure>
 
       <figure class="shot">
@@ -504,7 +505,7 @@ footer a:hover{color:var(--ink)}
     <div class="txt rv">
       <span class="eyebrow">Your server, your rules</span>
       <h3>Plug in the library you already run</h3>
-      <p>Point Mbogi Music at your own media server and the whole thing appears — albums, artists, playlists, films and shows — with artwork, search and offline copies. Sign in to several at once and keep them all playing.</p>
+      <p>Point Mediagg at your own media server and the whole thing appears — albums, artists, playlists, films and shows — with artwork, search and offline copies. Sign in to several at once and keep them all playing.</p>
       <div class="chips">
         <span class="chip">Subsonic</span><span class="chip">Navidrome</span><span class="chip">Airsonic</span>
         <span class="chip">OpenSubsonic</span><span class="chip">Jellyfin</span>
@@ -553,7 +554,7 @@ footer a:hover{color:var(--ink)}
     <div class="txt rv">
       <span class="eyebrow">Send it anywhere</span>
       <h3>Casting that isn't fussy about brands</h3>
-      <p>Chromecast is supported, and so is every DLNA/UPnP renderer on your network — the smart TV, the AV receiver, the old networked speaker that nothing else will talk to. Mbogi Music even runs its own media relay, so files on your phone and tracks on your server both reach the device.</p>
+      <p>Chromecast is supported, and so is every DLNA/UPnP renderer on your network — the smart TV, the AV receiver, the old networked speaker that nothing else will talk to. Mediagg even runs its own media relay, so files on your phone and tracks on your server both reach the device.</p>
       <div class="chips">
         <span class="chip">Google Cast</span><span class="chip">DLNA / UPnP</span><span class="chip">Built-in media relay</span>
         <span class="chip">Local files</span><span class="chip">Server streams</span><span class="chip">Video &amp; audio</span>
@@ -589,15 +590,46 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
+<!-- EDITIONS -->
+<section id="editions"><div class="wrap">
+  <div class="head rv">
+    <span class="eyebrow">Two editions</span>
+    <h2>Pick how much of it you want reaching out</h2>
+    <p>The same player either way — the same library, servers, playlists, downloads, casting and
+    settings. What differs is what the app talks to when it is not talking to you.</p>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div class="f rv"><div class="ic">🎧</div><h3>Mediagg</h3>
+      <p>Everything the app can do, including the parts that need the network.</p>
+      <ul>
+        <li><b>Explore</b> — podcast, radio and TV directories</li>
+        <li>Thousands of live stations and channels</li>
+        <li>Games, and ad-supported</li>
+        <li>Crash reporting, so faults get found</li>
+      </ul>
+    </div>
+    <div class="f rv"><div class="ic">🔒</div><h3>Mediagg Personal</h3>
+      <p>The same app with the advertising and analytics libraries <b>not built in</b> — not
+      disabled, absent. No advertising identifier exists for it to read.</p>
+      <ul>
+        <li>No ads, anywhere</li>
+        <li>No analytics, no crash reporting, no identifiers</li>
+        <li>No radio or TV, and no requests for either</li>
+        <li>Everything else — identical, Chromecast included</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
 <!-- DOWNLOAD -->
 <section id="download"><div class="wrap">
   <div class="dl rv">
     <span class="eyebrow">Get it now</span>
-    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Download Mbogi Music</h2>
+    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Download Mediagg</h2>
     <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Signed builds, published straight from source. Pick the one that matches your phone — nearly every device made in the last decade wants <b style="color:var(--ink)">arm64-v8a</b>.</p>
     <div class="cta" style="margin-top:32px">
-      <a class="btn btn-p" href="https://github.com/laurentjuma/mbogi-music-releases/releases/latest">↓ Latest release</a>
-      <a class="btn btn-g" href="https://github.com/laurentjuma/mbogi-music-releases">All releases</a>
+      <a class="btn btn-p" href="https://github.com/m3ugoat/mediagg-releases/releases/latest">↓ Latest release</a>
+      <a class="btn btn-g" href="https://github.com/m3ugoat/mediagg-releases">All releases</a>
     </div>
     <div class="abis" id="abis">
       <div class="abi"><b>arm64-v8a</b><small>Almost every current phone &amp; tablet</small></div>
@@ -612,12 +644,10 @@ footer a:hover{color:var(--ink)}
 </main>
 
 <footer><div class="wrap fin">
-  <div>© <span id="yr"></span> C4 Entertainment · Mbogi Music</div>
+  <div>© <span id="yr"></span> Mediagg</div>
   <div>
     <a href="/privacy">Privacy</a>
-    <a href="https://github.com/laurentjuma/mbogi-music-releases">Releases</a>
-    <a href="https://twitter.com/mbogimusic">Twitter</a>
-    <a href="https://instagram.com/mbogimusic">Instagram</a>
+    <a href="https://github.com/m3ugoat/mediagg-releases">Releases</a>
   </div>
 </div></footer>
 
@@ -805,7 +835,7 @@ footer a:hover{color:var(--ink)}
   //
   // Silently leaves the static fallback in place if the call fails, which it will while the
   // releases are private — an unauthenticated request gets a 404, not a 403.
-  var REPO='laurentjuma/mbogi-music-releases';
+  var REPO='m3ugoat/mediagg-releases';
   var LABEL={'arm64-v8a':'Almost every current phone &amp; tablet',
              'armeabi-v7a':'Older 32-bit ARM devices',
              'x86_64':'64-bit emulators &amp; Chromebooks',
