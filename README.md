@@ -20,12 +20,24 @@ carries no install link until that listing exists.
 
 | Path | |
 |---|---|
-| `public/` | The site. Six pages — home, privacy, 404, and three `deeplink/` landing pages Android falls back to when the app is not installed — plus the screenshots and icons. This is what gets deployed. |
+| `public/` | The site. Eight pages — home, the two edition pages at `/full` and `/personal`, privacy, 404, and three `deeplink/` landing pages Android falls back to when the app is not installed — plus the screenshots and icons. This is what gets deployed. |
 | `public/screens/` | Eleven carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-choose-style.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. |
 | `public/icons/` | The two launcher icons, full and personal edition, and `og.png` for link previews. |
 | `docs/` | Design sources: After Effects projects, Adobe XD files, marketing renders. Not part of the site. |
 | `legacy/` | The retired Jekyll and webpack toolchain. Kept for reference, never built. |
 | `_images/`, `icon.png` | Artwork inherited from the original template. Unused by the current pages. |
+
+### The two edition pages
+
+`/full` champions what the full edition adds — the radio, TV and podcast directories — and
+`/personal` champions the reason to pick Personal: no ads and nothing tracking what you play, said in
+plain terms rather than SDK names. Each takes its accent from its own launcher icon, orange-magenta
+against blue-cyan, so which edition you are reading is legible before the words are.
+
+Both end in the same *shared features* section, because the two editions really are the same app
+underneath. That block is duplicated in the two files rather than shared at runtime — there is no
+build step, and the nav and footer are already duplicated the same way — so **edit it in both files
+or not at all.** They are byte-identical today and should stay that way.
 
 ## Running it
 

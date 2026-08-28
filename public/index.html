@@ -141,6 +141,14 @@ section{padding:104px 0;position:relative}
 .f ul{margin:15px 0 0;padding-left:18px;color:var(--dim);font-size:.885rem}
 .f li{margin:6px 0}
 .f li b{color:var(--muted);font-weight:600}
+/* the two edition cards are links to their own page */
+a.f{display:block;text-decoration:none;color:inherit}
+a.f:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.more{display:flex;align-items:center;gap:8px;margin-top:20px;font-weight:700;font-size:.94rem;color:var(--red)}
+.more i{font-style:normal;transition:transform .25s var(--ease)}
+a.f:hover .more i{transform:translateX(5px)}
+.ed-personal .more{color:#4aa3ff}
+.ed-personal.f::after{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(61,107,255,.16),transparent 42%)}
 
 /* ---------- screenshot carousel ---------- */
 /* Slide width lives in one variable, --shot. The screenshots are 1344x2992, so a 236px slide is a
@@ -314,6 +322,8 @@ footer a:hover{color:var(--ink)}
   </a>
   <div class="navlinks">
     <a href="#editions">Editions</a>
+    <a href="/full/">Full</a>
+    <a href="/personal/">Personal</a>
     <a href="#features">Features</a>
     <a href="#screens">Screens</a>
     <a href="#servers">Your server</a>
@@ -357,10 +367,11 @@ footer a:hover{color:var(--ink)}
     <span class="eyebrow">Two editions</span>
     <h2>Pick how much of it you want reaching out</h2>
     <p>The same player either way — the same library, servers, playlists, downloads, casting and
-    settings. What differs is what the app talks to when it is not talking to you.</p>
+    settings. What differs is what the app talks to when it is not talking to you.
+    Open either one below to see what it champions, and what the two share.</p>
   </div>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div class="f rv"><img class="ic ic-img" src="/icons/mediagg.png" width="46" height="46" alt="The Mediagg launcher icon: an M monogram in orange and magenta"><h3>Mediagg</h3>
+    <a class="f rv" href="/full/"><img class="ic ic-img" src="/icons/mediagg.png" width="46" height="46" alt="The Mediagg launcher icon: an M monogram in orange and magenta"><h3>Mediagg</h3>
       <p>Everything the app can do, including the parts that need the network.</p>
       <ul>
         <li><b>Explore</b> — podcast, radio and TV directories</li>
@@ -368,8 +379,9 @@ footer a:hover{color:var(--ink)}
         <li>Games, and ad-supported</li>
         <li>Crash reporting, so faults get found</li>
       </ul>
-    </div>
-    <div class="f rv"><img class="ic ic-img" src="/icons/mediagg-personal.png" width="46" height="46" alt="The Mediagg Personal launcher icon: the same M monogram in blue"><h3>Mediagg Personal</h3>
+      <span class="more">See the full edition <i>&rarr;</i></span>
+    </a>
+    <a class="f ed-personal rv" href="/personal/"><img class="ic ic-img" src="/icons/mediagg-personal.png" width="46" height="46" alt="The Mediagg Personal launcher icon: the same M monogram in blue"><h3>Mediagg Personal</h3>
       <p>The same app with the advertising and analytics libraries <b>not built in</b> — not
       disabled, absent. No advertising identifier exists for it to read.</p>
       <ul>
@@ -378,7 +390,8 @@ footer a:hover{color:var(--ink)}
         <li>No radio or TV, and no requests for either</li>
         <li>Everything else — identical, Chromecast included</li>
       </ul>
-    </div>
+      <span class="more">See the Personal edition <i>&rarr;</i></span>
+    </a>
   </div>
 </div></section>
 
@@ -652,6 +665,8 @@ footer a:hover{color:var(--ink)}
 <footer><div class="wrap fin">
   <div>© <span id="yr"></span> Mediagg</div>
   <div>
+    <a href="/full/">Full edition</a>
+    <a href="/personal/">Personal edition</a>
     <a href="/privacy">Privacy</a>
   </div>
 </div></footer>
