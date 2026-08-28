@@ -1,28 +1,28 @@
 <p align="center">
-  <img src="public/screens/01-home.webp" width="200" alt="The Mbogi Music home screen">
+  <img src="public/screens/01-home.webp" width="200" alt="The Mediagg home screen">
 </p>
 
-<h1 align="center">Mbogi Music — landing page</h1>
+<h1 align="center">Mediagg — landing page</h1>
 
 <p align="center">
-  <a href="https://mbogimusic.com">mbogimusic.com</a>
+  <a href="https://mediagg.app">mediagg.app</a>
 </p>
 
-The marketing site for Mbogi Music, an Android app that plays the music, podcasts, radio and video
+The marketing site for Mediagg, an Android app that plays the music, podcasts, radio and video
 on your phone, on your own media server, and across the web — and casts any of it to Chromecast or
 DLNA. Free, no account required.
 
 **This repository holds the website, not the app.** The app is not open source and its source is not
-here. Builds are published as APKs at
-[laurentjuma/mbogi-music-releases](https://github.com/laurentjuma/mbogi-music-releases/releases/latest);
-there is no Play Store or App Store listing.
+here. The site no longer links APK downloads: it says the app is coming soon to Google Play, and
+carries no install link until that listing exists.
 
 ## What is here
 
 | Path | |
 |---|---|
-| `public/` | The site. Three pages — home, privacy, 404 — plus the screenshots. This is what gets deployed. |
+| `public/` | The site. Six pages — home, privacy, 404, and three `deeplink/` landing pages Android falls back to when the app is not installed — plus the screenshots and icons. This is what gets deployed. |
 | `public/screens/` | Eleven carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-choose-style.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. |
+| `public/icons/` | The two launcher icons, full and personal edition, and `og.png` for link previews. |
 | `docs/` | Design sources: After Effects projects, Adobe XD files, marketing renders. Not part of the site. |
 | `legacy/` | The retired Jekyll and webpack toolchain. Kept for reference, never built. |
 | `_images/`, `icon.png` | Artwork inherited from the original template. Unused by the current pages. |
@@ -51,8 +51,12 @@ tab.
 
 The workflow uploads `public/` as a Pages artifact rather than using the "deploy from a branch"
 setting, because a branch deploy can only serve the repository root or `/docs`, and the site is in
-neither. `public/CNAME` claims `mbogimusic.com`, and because it travels in the artifact, every deploy
+neither. `public/CNAME` claims `mediagg.app`, and because it travels in the artifact, every deploy
 reasserts the custom domain.
+
+`.app` is HSTS-preloaded at the registry level, so the site is HTTPS-only whether it wants to be or
+not: there is no HTTP fallback, and a browser that cannot validate the certificate shows an
+interstitial the visitor cannot click through.
 
 `netlify.toml` is still present and still correct. Netlify was the original host and publishes the
 same `public/` directory with no build command, so it remains a working fallback — but DNS points at
@@ -62,5 +66,8 @@ GitHub Pages, so only one of the two is actually serving the domain at any time.
 
 Built from [Mobile App Landing Page Template](https://github.com/sandoche/Mobile-app-landingpage-template)
 by [Sandoche ADITTANE](https://github.com/sandoche), MIT licensed — see [LICENSE](LICENSE). The
-template's Jekyll structure has since been retired to `legacy/` and the three pages rewritten, but
-the licence and attribution stand.
+template's Jekyll structure has since been retired to `legacy/` and the pages rewritten, but the
+licence and attribution stand.
+
+This repository is a fork of the Mbogi Music site, which is a separate app on a separate account and
+is not affected by anything here.

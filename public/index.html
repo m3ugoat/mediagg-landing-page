@@ -282,11 +282,9 @@ section{padding:104px 0;position:relative}
 /* download */
 .dl{border:1px solid var(--line);border-radius:26px;padding:60px 34px;text-align:center;
   background:radial-gradient(900px circle at 50% 0,rgba(255,61,61,.16),transparent 62%),rgba(255,255,255,.028)}
-.abis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:34px;text-align:left}
-.abi{border:1px solid var(--line);border-radius:13px;padding:15px 17px;background:rgba(0,0,0,.28);transition:.3s}
-.abi:hover{border-color:rgba(255,61,61,.45);transform:translateY(-3px)}
-.abi b{display:block;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.abi small{color:var(--dim);font-size:11.5px}
+.soon{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:100px;
+  padding:14px 26px;font-weight:700;font-size:15px;color:var(--ink);background:rgba(0,0,0,.28);cursor:default}
+.soon svg{color:var(--red);flex:none}
 
 footer{border-top:1px solid var(--line);padding:52px 0;color:var(--dim);font-size:14px}
 .fin{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
@@ -319,7 +317,7 @@ footer a:hover{color:var(--ink)}
     <a href="#cast">Casting</a>
     <a href="#discover">Discover</a>
     <a href="#editions">Editions</a>
-    <a class="btn btn-p" href="#download">Get the app</a>
+    <a class="btn btn-p" href="#download">Coming soon</a>
   </div>
 </div></nav>
 
@@ -328,7 +326,7 @@ footer a:hover{color:var(--ink)}
   <h1 class="rv">Your whole library,<br><span class="shine">wherever it lives.</span></h1>
   <p class="lede rv">Music, podcasts, radio and video — on your phone, on your own media server, and across the open web. One player for all of it, and it casts to anything in the house.</p>
   <div class="cta rv">
-    <a class="btn btn-p" href="#download">↓ Download for Android</a>
+    <a class="btn btn-p" href="#download">Coming soon to Google Play</a>
     <a class="btn btn-g" href="#features">Explore the features</a>
   </div>
   <p class="trust rv"><b>No ads on your own library</b> · <b>No tracking of what you play</b> · <b>Works offline</b></p>
@@ -631,20 +629,15 @@ footer a:hover{color:var(--ink)}
 <!-- DOWNLOAD -->
 <section id="download"><div class="wrap">
   <div class="dl rv">
-    <span class="eyebrow">Get it now</span>
-    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Download Mediagg</h2>
-    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Signed builds, published straight from source. Pick the one that matches your phone — nearly every device made in the last decade wants <b style="color:var(--ink)">arm64-v8a</b>.</p>
+    <span class="eyebrow"><b>●</b> Coming soon</span>
+    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Coming soon to Google&nbsp;Play</h2>
+    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Mediagg is on its way to the Play Store. There is nothing to install yet — when the listing goes live, it will be one tap from here.</p>
     <div class="cta" style="margin-top:32px">
-      <a class="btn btn-p" href="https://github.com/m3ugoat/mediagg-releases/releases/latest">↓ Latest release</a>
-      <a class="btn btn-g" href="https://github.com/m3ugoat/mediagg-releases">All releases</a>
+      <span class="soon">
+        <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 2.5v19a1 1 0 0 0 1.52.86l15-9.5a1 1 0 0 0 0-1.72l-15-9.5A1 1 0 0 0 4 2.5Z" fill="currentColor"/></svg>
+        Google Play · coming soon
+      </span>
     </div>
-    <div class="abis" id="abis">
-      <div class="abi"><b>arm64-v8a</b><small>Almost every current phone &amp; tablet</small></div>
-      <div class="abi"><b>armeabi-v7a</b><small>Older 32-bit ARM devices</small></div>
-      <div class="abi"><b>x86_64 · x86</b><small>Emulators &amp; x86 Chromebooks</small></div>
-      <div class="abi"><b>universal</b><small>One file that installs anywhere</small></div>
-    </div>
-    <p id="relmeta" style="margin-top:22px;font-size:13px;color:var(--dim)"></p>
   </div>
 </div></section>
 
@@ -654,7 +647,6 @@ footer a:hover{color:var(--ink)}
   <div>© <span id="yr"></span> Mediagg</div>
   <div>
     <a href="/privacy">Privacy</a>
-    <a href="https://github.com/m3ugoat/mediagg-releases">Releases</a>
   </div>
 </div></footer>
 
@@ -833,43 +825,6 @@ footer a:hover{color:var(--ink)}
       else if (e.key==='ArrowLeft'){ show(showing-1); }
     });
   }
-
-  // Latest release, straight from the source of truth.
-  //
-  // The APKs are never copied into this repository: the universal build is 262 MB and GitHub
-  // refuses any file over 100 MB, and a full set is 573 MB that git would keep a copy of forever.
-  // So the buttons point at the release assets and this fills in the real version and sizes.
-  //
-  // Silently leaves the static fallback in place if the call fails, which it will while the
-  // releases are private — an unauthenticated request gets a 404, not a 403.
-  var REPO='m3ugoat/mediagg-releases';
-  var LABEL={'arm64-v8a':'Almost every current phone &amp; tablet',
-             'armeabi-v7a':'Older 32-bit ARM devices',
-             'x86_64':'64-bit emulators &amp; Chromebooks',
-             'x86':'32-bit emulators',
-             'universal':'One file that installs anywhere'};
-  function abiOf(n){
-    var m=n.match(/-(arm64-v8a|armeabi-v7a|x86_64|x86|universal)-/);
-    return m?m[1]:null;
-  }
-  fetch('https://api.github.com/repos/'+REPO+'/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(rel){
-      var apks=(rel.assets||[]).filter(function(a){ return /\.apk$/.test(a.name); });
-      if(!apks.length) throw 0;
-      var order=['arm64-v8a','armeabi-v7a','x86_64','x86','universal'];
-      apks.sort(function(a,b){ return order.indexOf(abiOf(a.name))-order.indexOf(abiOf(b.name)); });
-      document.getElementById('abis').innerHTML = apks.map(function(a){
-        var abi=abiOf(a.name)||a.name;
-        return '<a class="abi" href="'+a.browser_download_url+'" style="text-decoration:none;display:block">'
-             + '<b>'+abi+' &nbsp;<span style="color:var(--red)">↓</span></b>'
-             + '<small>'+(LABEL[abi]||'')+' · '+Math.round(a.size/1e6)+' MB</small></a>';
-      }).join('');
-      document.getElementById('relmeta').textContent =
-        'Latest: ' + (rel.name||rel.tag_name) + ' · published ' +
-        new Date(rel.published_at).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
-    })
-    .catch(function(){ /* keep the static list */ });
 
   // gentle parallax on the floating cards
   var cards=[].slice.call(document.querySelectorAll('.card3d'));
