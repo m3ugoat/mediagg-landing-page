@@ -282,9 +282,11 @@ section{padding:104px 0;position:relative}
 /* download */
 .dl{border:1px solid var(--line);border-radius:26px;padding:60px 34px;text-align:center;
   background:radial-gradient(900px circle at 50% 0,rgba(255,61,61,.16),transparent 62%),rgba(255,255,255,.028)}
-.soon{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:100px;
-  padding:14px 26px;font-weight:700;font-size:15px;color:var(--ink);background:rgba(0,0,0,.28);cursor:default}
-.soon svg{color:var(--red);flex:none}
+.soon{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:100px;
+  padding:12px 24px;color:var(--ink);background:rgba(0,0,0,.28);cursor:default;text-align:left}
+.soon img{flex:none;border-radius:7px}
+.soon b{display:block;font-weight:700;font-size:15px;line-height:1.25}
+.soon small{display:block;color:var(--dim);font-size:11.5px;letter-spacing:.02em}
 
 footer{border-top:1px solid var(--line);padding:52px 0;color:var(--dim);font-size:14px}
 .fin{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
@@ -311,12 +313,12 @@ footer a:hover{color:var(--ink)}
     <img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg
   </a>
   <div class="navlinks">
+    <a href="#editions">Editions</a>
     <a href="#features">Features</a>
     <a href="#screens">Screens</a>
     <a href="#servers">Your server</a>
     <a href="#cast">Casting</a>
     <a href="#discover">Discover</a>
-    <a href="#editions">Editions</a>
     <a class="btn btn-p" href="#download">Coming soon</a>
   </div>
 </div></nav>
@@ -348,6 +350,37 @@ footer a:hover{color:var(--ink)}
 <div class="marq"><div class="track" id="track"></div></div>
 
 <main>
+
+<!-- EDITIONS -->
+<section id="editions"><div class="wrap">
+  <div class="head rv">
+    <span class="eyebrow">Two editions</span>
+    <h2>Pick how much of it you want reaching out</h2>
+    <p>The same player either way — the same library, servers, playlists, downloads, casting and
+    settings. What differs is what the app talks to when it is not talking to you.</p>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div class="f rv"><img class="ic ic-img" src="/icons/mediagg.png" width="46" height="46" alt="The Mediagg launcher icon: an M monogram in orange and magenta"><h3>Mediagg</h3>
+      <p>Everything the app can do, including the parts that need the network.</p>
+      <ul>
+        <li><b>Explore</b> — podcast, radio and TV directories</li>
+        <li>Thousands of live stations and channels</li>
+        <li>Games, and ad-supported</li>
+        <li>Crash reporting, so faults get found</li>
+      </ul>
+    </div>
+    <div class="f rv"><img class="ic ic-img" src="/icons/mediagg-personal.png" width="46" height="46" alt="The Mediagg Personal launcher icon: the same M monogram in blue"><h3>Mediagg Personal</h3>
+      <p>The same app with the advertising and analytics libraries <b>not built in</b> — not
+      disabled, absent. No advertising identifier exists for it to read.</p>
+      <ul>
+        <li>No ads, anywhere</li>
+        <li>No analytics, no crash reporting, no identifiers</li>
+        <li>No radio or TV, and no requests for either</li>
+        <li>Everything else — identical, Chromecast included</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
 
 <!-- FEATURES -->
 <section id="features"><div class="wrap">
@@ -595,47 +628,20 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
-<!-- EDITIONS -->
-<section id="editions"><div class="wrap">
-  <div class="head rv">
-    <span class="eyebrow">Two editions</span>
-    <h2>Pick how much of it you want reaching out</h2>
-    <p>The same player either way — the same library, servers, playlists, downloads, casting and
-    settings. What differs is what the app talks to when it is not talking to you.</p>
-  </div>
-  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div class="f rv"><img class="ic ic-img" src="/icons/mediagg.png" width="46" height="46" alt="The Mediagg launcher icon: an M monogram in orange and magenta"><h3>Mediagg</h3>
-      <p>Everything the app can do, including the parts that need the network.</p>
-      <ul>
-        <li><b>Explore</b> — podcast, radio and TV directories</li>
-        <li>Thousands of live stations and channels</li>
-        <li>Games, and ad-supported</li>
-        <li>Crash reporting, so faults get found</li>
-      </ul>
-    </div>
-    <div class="f rv"><img class="ic ic-img" src="/icons/mediagg-personal.png" width="46" height="46" alt="The Mediagg Personal launcher icon: the same M monogram in blue"><h3>Mediagg Personal</h3>
-      <p>The same app with the advertising and analytics libraries <b>not built in</b> — not
-      disabled, absent. No advertising identifier exists for it to read.</p>
-      <ul>
-        <li>No ads, anywhere</li>
-        <li>No analytics, no crash reporting, no identifiers</li>
-        <li>No radio or TV, and no requests for either</li>
-        <li>Everything else — identical, Chromecast included</li>
-      </ul>
-    </div>
-  </div>
-</div></section>
-
 <!-- DOWNLOAD -->
 <section id="download"><div class="wrap">
   <div class="dl rv">
     <span class="eyebrow"><b>●</b> Coming soon</span>
     <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Coming soon to Google&nbsp;Play</h2>
-    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Mediagg is on its way to the Play Store. There is nothing to install yet — when the listing goes live, it will be one tap from here.</p>
+    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Both editions are on their way to the Play Store, each with its own listing. There is nothing to install yet — when they go live, they will be one tap from here.</p>
     <div class="cta" style="margin-top:32px">
       <span class="soon">
-        <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 2.5v19a1 1 0 0 0 1.52.86l15-9.5a1 1 0 0 0 0-1.72l-15-9.5A1 1 0 0 0 4 2.5Z" fill="currentColor"/></svg>
-        Google Play · coming soon
+        <img src="/icons/mediagg.png" width="24" height="24" alt="">
+        <b>Mediagg</b><small>Google Play · coming soon</small>
+      </span>
+      <span class="soon">
+        <img src="/icons/mediagg-personal.png" width="24" height="24" alt="">
+        <b>Mediagg Personal</b><small>Google Play · coming soon</small>
       </span>
     </div>
   </div>
