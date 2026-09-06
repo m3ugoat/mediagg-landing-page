@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mediagg — your whole library, wherever it lives</title>
-<meta name="description" content="Mediagg plays the music, podcasts, radio and video on your phone, on your own media server, and across the web — and casts any of it to Chromecast or DLNA. Free, no account required.">
+<meta name="description" content="Mediagg plays the music, podcasts and video on your phone, on your own media server, and across the web — and casts any of it to Chromecast or DLNA. Free to use.">
 <link rel="canonical" href="https://mediagg.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mediagg — your whole library, wherever it lives">
-<meta property="og:description" content="Music, podcasts, radio and video. Your phone, your Subsonic or Jellyfin server, and the open web — in one player that casts to anything.">
+<meta property="og:description" content="Music, podcasts and video. Your phone, your Subsonic, Jellyfin, Plex, Emby or Audiobookshelf server, and the open web — in one player that casts to anything.">
 <meta property="og:url" content="https://mediagg.app/">
 <meta property="og:image" content="https://mediagg.app/icons/og.png">
 <meta property="og:image:width" content="1200">
@@ -133,7 +133,6 @@ section{padding:104px 0;position:relative}
 .f:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.2);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
 .f::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,61,61,.13),transparent 42%);opacity:0;transition:opacity .4s;pointer-events:none}
 .f:hover::after{opacity:1}
-.ic-img{background:none;border:0;border-radius:11px}
 .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:18px;
   background:rgba(255,61,61,.13);border:1px solid rgba(255,61,61,.26)}
 .f h3{font-size:1.16rem;margin-bottom:10px}
@@ -141,15 +140,6 @@ section{padding:104px 0;position:relative}
 .f ul{margin:15px 0 0;padding-left:18px;color:var(--dim);font-size:.885rem}
 .f li{margin:6px 0}
 .f li b{color:var(--muted);font-weight:600}
-/* the two edition cards are links to their own page */
-a.f{display:block;text-decoration:none;color:inherit}
-a.f:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.more{display:flex;align-items:center;gap:8px;margin-top:20px;font-weight:700;font-size:.94rem;color:var(--red)}
-.more i{font-style:normal;transition:transform .25s var(--ease)}
-a.f:hover .more i{transform:translateX(5px)}
-.ed-personal .more{color:#4aa3ff}
-.ed-personal.f::after{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(61,107,255,.16),transparent 42%)}
-
 /* ---------- screenshot carousel ---------- */
 /* Slide width lives in one variable, --shot. The screenshots are 1344x2992, so a 236px slide is a
    503px phone — tall enough to read a track list, short enough that four fit across a 1132px rail
@@ -321,33 +311,31 @@ footer a:hover{color:var(--ink)}
     <img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg
   </a>
   <div class="navlinks">
-    <a href="#editions">Editions</a>
-    <a href="/full/">Full</a>
-    <a href="/personal/">Personal</a>
     <a href="#features">Features</a>
     <a href="#screens">Screens</a>
     <a href="#servers">Your server</a>
     <a href="#cast">Casting</a>
     <a href="#discover">Discover</a>
+    <a href="/m3ugoat">m3ugoat</a>
     <a class="btn btn-p" href="#download">Coming soon</a>
   </div>
 </div></nav>
 
 <header class="hero wrap" id="top">
-  <span class="eyebrow rv"><b>●</b> Free to use · No account required</span>
+  <span class="eyebrow rv"><b>●</b> Free to use · Android now · iOS on the way</span>
   <h1 class="rv">Your whole library,<br><span class="shine">wherever it lives.</span></h1>
-  <p class="lede rv">Music, podcasts, radio and video — on your phone, on your own media server, and across the open web. One player for all of it, and it casts to anything in the house.</p>
+  <p class="lede rv">Music, podcasts and video — on your phone, on your own media server, and across the open web. One player for all of it, and it casts to anything in the house.</p>
   <div class="cta rv">
-    <a class="btn btn-p" href="#download">Coming soon to Google Play</a>
+    <a class="btn btn-p" href="#download">Coming soon to Google&nbsp;Play</a>
     <a class="btn btn-g" href="#features">Explore the features</a>
   </div>
-  <p class="trust rv"><b>No ads on your own library</b> · <b>No tracking of what you play</b> · <b>Works offline</b></p>
+  <p class="trust rv"><b>Works offline</b> · <b>Your own servers</b> · <b>Casts to anything</b></p>
 
   <div class="stage rv">
     <div class="card3d c1"><span>🎧</span></div>
     <div class="card3d c2"><span>🎙️</span></div>
     <div class="card3d c3"><span>📺</span></div>
-    <div class="card3d c4"><span>📻</span></div>
+    <div class="card3d c4"><span>💿</span></div>
     <div class="phone">
       <!-- eager, and not lazy like the carousel: this one is in the first screenful, so deferring it
            only delays the largest thing the hero has to paint. -->
@@ -360,40 +348,6 @@ footer a:hover{color:var(--ink)}
 <div class="marq"><div class="track" id="track"></div></div>
 
 <main>
-
-<!-- EDITIONS -->
-<section id="editions"><div class="wrap">
-  <div class="head rv">
-    <span class="eyebrow">Two editions</span>
-    <h2>Pick how much of it you want reaching out</h2>
-    <p>The same player either way — the same library, servers, playlists, downloads, casting and
-    settings. What differs is what the app talks to when it is not talking to you.
-    Open either one below to see what it champions, and what the two share.</p>
-  </div>
-  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <a class="f rv" href="/full/"><img class="ic ic-img" src="/icons/mediagg.png" width="46" height="46" alt="The Mediagg launcher icon: an M monogram in orange and magenta"><h3>Mediagg</h3>
-      <p>Everything the app can do, including the parts that need the network.</p>
-      <ul>
-        <li><b>Explore</b> — podcast, radio and TV directories</li>
-        <li>Thousands of live stations and channels</li>
-        <li>Games, and ad-supported</li>
-        <li>Crash reporting, so faults get found</li>
-      </ul>
-      <span class="more">See the full edition <i>&rarr;</i></span>
-    </a>
-    <a class="f ed-personal rv" href="/personal/"><img class="ic ic-img" src="/icons/mediagg-personal.png" width="46" height="46" alt="The Mediagg Personal launcher icon: the same M monogram in blue"><h3>Mediagg Personal</h3>
-      <p>The same app with the advertising and analytics libraries <b>not built in</b> — not
-      disabled, absent. No advertising identifier exists for it to read.</p>
-      <ul>
-        <li>No ads, anywhere</li>
-        <li>No analytics, no crash reporting, no identifiers</li>
-        <li>No radio or TV, and no requests for either</li>
-        <li>Everything else — identical, Chromecast included</li>
-      </ul>
-      <span class="more">See the Personal edition <i>&rarr;</i></span>
-    </a>
-  </div>
-</div></section>
 
 <!-- FEATURES -->
 <section id="features"><div class="wrap">
@@ -434,13 +388,13 @@ footer a:hover{color:var(--ink)}
       </ul>
     </div>
 
-    <div class="f rv"><div class="ic">📻</div><h3>Radio &amp; TV, worldwide</h3>
-      <p>Thousands of live stations and channels, browsable by country and category.</p>
+    <div class="f rv"><div class="ic">🎬</div><h3>Video, in the same player</h3>
+      <p>The films and shows on your phone and on your server, without a second app to open.</p>
       <ul>
-        <li>Live radio with station artwork</li>
-        <li>TV channels alongside your own video</li>
-        <li>Discover by country — tuned to where you are</li>
-        <li>Favourite anything and find it again instantly</li>
+        <li>Local video with a full-screen player</li>
+        <li><b>Films and shows</b> from Jellyfin, Plex and Emby</li>
+        <li><b>Continue watching</b> picks up where you stopped</li>
+        <li>Cast any of it to the television</li>
       </ul>
     </div>
 
@@ -470,10 +424,15 @@ footer a:hover{color:var(--ink)}
 <section id="screens"><div class="wrap">
   <div class="head rv">
     <span class="eyebrow">See it running</span>
-    <h2>Eleven screens, no mock-ups</h2>
-    <p>Every shot below is the app as it ships — a real library, real servers, real stations. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
+    <h2>Real screens, no mock-ups</h2>
+    <p>Every shot below is the app as it ships — a real library, real servers, real files. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
   </div>
 
+  <!-- SCREENSHOT SET. Every file referenced below was captured from an Xtended build and is being
+       replaced. Drop the new .webp files into /screens (640px wide) with 1080px twins in
+       /screens/large under the same names, then add or remove <figure class="shot"> blocks to match
+       — the carousel counts them itself, so nothing else needs touching. The two slides that showed
+       Explore and station search have already been removed. -->
   <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mediagg">
     <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
     <div class="rail" id="rail" tabindex="0">
@@ -509,21 +468,9 @@ footer a:hover{color:var(--ink)}
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/06-search.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="Search results for the letters d-r-a, mixing Jellyfin films with radio stations from several countries in one list."></button>
-        <figcaption>One search, everything at once<span>Servers, podcasts and radio in one list</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/07-explore.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Explore screen on the Podcasts tab, with category and country pickers above a grid of show artwork."></button>
-        <figcaption>Discover by country<span>Podcasts, radio and TV — the full edition</span></figcaption>
-      </figure>
-
-      <figure class="shot">
         <button class="frame" type="button"><img src="/screens/08-queue.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A queue of seven items mixing a podcast episode, album tracks, a radio station, a video and a local recording."></button>
-        <figcaption>One queue for every medium<span>Podcast, album, station and video together</span></figcaption>
+          alt="A queue of seven items mixing a podcast episode, album tracks, a live stream, a video and a local recording."></button>
+        <figcaption>One queue for every medium<span>Podcast, album, stream and video together</span></figcaption>
       </figure>
 
       <figure class="shot">
@@ -559,7 +506,8 @@ footer a:hover{color:var(--ink)}
       <p>Point Mediagg at your own media server and the whole thing appears — albums, artists, playlists, films and shows — with artwork, search and offline copies. Sign in to several at once and keep them all playing.</p>
       <div class="chips">
         <span class="chip">Subsonic</span><span class="chip">Navidrome</span><span class="chip">Airsonic</span>
-        <span class="chip">OpenSubsonic</span><span class="chip">Jellyfin</span>
+        <span class="chip">OpenSubsonic</span><span class="chip">Jellyfin</span><span class="chip">Plex</span>
+        <span class="chip">Emby</span><span class="chip">Audiobookshelf</span>
       </div>
       <div class="chips" style="margin-top:12px">
         <span class="chip">Recently added</span><span class="chip">Most played</span><span class="chip">Continue watching</span>
@@ -622,11 +570,11 @@ footer a:hover{color:var(--ink)}
     <p>Search reaches your device, your subscriptions and every server you are signed in to — in the same list, at the same time. Narrow it to one server with a tap when you know where to look.</p>
   </div>
   <div class="grid">
-    <div class="f rv"><div class="ic">🔍</div><h3>Search everywhere</h3><p>Local files, podcasts, radio, and every signed-in server queried together — with a chip to scope it down to one.</p></div>
-    <div class="f rv"><div class="ic">🌍</div><h3>Browse by country</h3><p>Podcast, radio and TV discovery that starts where you are instead of defaulting to somewhere else.</p></div>
+    <div class="f rv"><div class="ic">🔍</div><h3>Search everywhere</h3><p>Local files, podcasts and every signed-in server queried together — with a chip to scope it down to one.</p></div>
+    <div class="f rv"><div class="ic">🌍</div><h3>Browse top podcasts</h3><p>The charts by country and category, from Apple and PodcastIndex, starting where you are instead of somewhere else.</p></div>
     <div class="f rv"><div class="ic">⭐</div><h3>Favourites that sync back</h3><p>Star a track and it is starred on your server too — not stranded in the app.</p></div>
     <div class="f rv"><div class="ic">📊</div><h3>Listening statistics</h3><p>See what you actually played, by year, without any of it leaving your phone.</p></div>
-    <div class="f rv"><div class="ic">🚗</div><h3>Android Auto &amp; Wear OS</h3><p>Browse and control from the dashboard or your wrist, with the same library underneath.</p></div>
+    <div class="f rv"><div class="ic">📺</div><h3>Playlists you subscribe to</h3><p>Browsable catalogues of channels and stations — internet radio, IPTV lists, and <a href="/m3ugoat" style="color:var(--red)">your own m3ugoat server</a>.</p></div>
     <div class="f rv"><div class="ic">🧩</div><h3>Home-screen widgets</h3><p>Playback controls where you need them, without opening the app at all.</p></div>
   </div>
 </div></section>
@@ -634,10 +582,10 @@ footer a:hover{color:var(--ink)}
 <!-- NUMBERS -->
 <section><div class="wrap">
   <div class="nums">
-    <div class="num rv"><b>5</b><small>Media server types supported</small></div>
+    <div class="num rv"><b>8</b><small>Server platforms it speaks to</small></div>
     <div class="num rv"><b>2</b><small>Casting protocols, no lock-in</small></div>
-    <div class="num rv"><b>0</b><small>Accounts required to start</small></div>
-    <div class="num rv"><b>4</b><small>Kinds of media, one player</small></div>
+    <div class="num rv"><b>3</b><small>Kinds of media, one library</small></div>
+    <div class="num rv"><b>1</b><small>App, Android now and iOS on the way</small></div>
   </div>
 </div></section>
 
@@ -645,18 +593,25 @@ footer a:hover{color:var(--ink)}
 <section id="download"><div class="wrap">
   <div class="dl rv">
     <span class="eyebrow"><b>●</b> Coming soon</span>
-    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Coming soon to Google&nbsp;Play</h2>
-    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Both editions are on their way to the Play Store, each with its own listing. There is nothing to install yet — when they go live, they will be one tap from here.</p>
+    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Coming soon</h2>
+    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Mediagg is on its way to the Play Store. There is nothing to install yet — when it goes live, it will be one tap from here.</p>
     <div class="cta" style="margin-top:32px">
       <span class="soon">
         <img src="/icons/mediagg.png" width="24" height="24" alt="">
-        <b>Mediagg</b><small>Google Play · coming soon</small>
+        <b>Android</b><small>Google Play · coming soon</small>
       </span>
-      <span class="soon">
-        <img src="/icons/mediagg-personal.png" width="24" height="24" alt="">
-        <b>Mediagg Personal</b><small>Google Play · coming soon</small>
+      <!-- iOS is stated as intent and nothing more. There is no date here on purpose: the app is
+           built on Compose Multiplatform and the iOS target is being worked towards, but Android is
+           what is built and shipped today. A date on this page is a promise the app then has to
+           keep. -->
+      <span class="soon" style="opacity:.72">
+        <img src="/icons/mediagg.png" width="24" height="24" alt="">
+        <b>iOS</b><small>On the way</small>
       </span>
     </div>
+    <p style="color:var(--dim);max-width:560px;margin:22px auto 0;font-size:14px">One app, the same
+    library on both. Android comes first; the iOS build is being worked towards and does not have a
+    date yet.</p>
   </div>
 </div></section>
 
@@ -665,8 +620,7 @@ footer a:hover{color:var(--ink)}
 <footer><div class="wrap fin">
   <div>© <span id="yr"></span> Mediagg</div>
   <div>
-    <a href="/full/">Full edition</a>
-    <a href="/personal/">Personal edition</a>
+    <a href="/m3ugoat">m3ugoat</a>
     <a href="/privacy">Privacy</a>
   </div>
 </div></footer>
@@ -690,8 +644,9 @@ footer a:hover{color:var(--ink)}
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   // marquee, duplicated so the loop is seamless
-  var items=['Subsonic','Navidrome','Airsonic','OpenSubsonic','Jellyfin','Chromecast','DLNA','UPnP',
-             'Podcasts','Live radio','TV','Android Auto','Wear OS','Offline','No ads'];
+  var items=['Subsonic','Navidrome','Airsonic','OpenSubsonic','Jellyfin','Plex','Emby',
+             'Audiobookshelf','Chromecast','DLNA','UPnP','Podcasts','Video','Android Auto',
+             'Wear OS','Offline'];
   var track=document.getElementById('track'), html='';
   for (var d=0;d<2;d++){ items.forEach(function(t){ html+='<span>'+t+' ✦</span>'; }); }
   track.innerHTML=html;

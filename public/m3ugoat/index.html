@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>m3ugoat — Mediagg</title>
+<meta name="description" content="m3ugoat is a playlist server you run yourself. Mediagg signs in to it and reads your IPTV playlists directly — ordering and hidden channels included.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0d10">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
+<link rel="apple-touch-icon" href="/icons/mediagg.png">
+<meta property="og:title" content="m3ugoat — Mediagg">
+<meta property="og:description" content="A playlist server you run yourself. Mediagg signs in and reads your playlists directly.">
+<meta property="og:image" content="/icons/og.png">
+<style>
+:root{--bg:#0b0d10;--ink:#f2f5f8;--muted:#93a1b0;--dim:#6c7a89;--red:#ff3d3d;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+ -webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line);padding:18px 0;position:sticky;top:0;
+ background:rgba(11,13,16,.88);backdrop-filter:blur(14px);z-index:5}
+.mark{border-radius:8px;display:block}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;text-decoration:none;color:var(--ink)}
+main{padding:56px 0 80px}
+h1{font-size:clamp(2rem,5vw,2.8rem);letter-spacing:-.03em;margin:0 0 10px}
+.sub{color:var(--dim);font-size:14px;margin-bottom:40px}
+main p{color:var(--muted);margin:0 0 18px}
+main h2{font-size:1.35rem;letter-spacing:-.02em;margin:44px 0 14px;color:var(--ink)}
+main strong{color:var(--ink)}
+main a{color:var(--red)}
+main ul,main ol{color:var(--muted);padding-left:20px}
+main li{margin:9px 0}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--muted);text-decoration:none;margin-left:20px}
+footer a:hover{color:var(--ink)}
+.note{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:rgba(255,255,255,.03);margin:0 0 18px}
+.note p:last-child{margin-bottom:0}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding-left:44px;margin:18px 0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;
+ border-radius:50%;background:rgba(255,61,61,.14);color:var(--red);font-weight:800;font-size:14px;
+ display:flex;align-items:center;justify-content:center}
+code{background:rgba(255,255,255,.07);border-radius:5px;padding:2px 7px;font-size:.9em;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.chip{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:13px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="/"><img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg</a></div></header>
+<main class="wrap">
+
+<h1>m3ugoat</h1>
+<p class="sub">A playlist server you run yourself — and one of the places Mediagg can subscribe to.</p>
+
+<p><strong>m3ugoat is a small program you run on your own network</strong>, on a computer or a home
+server. It keeps your IPTV playlists in one place: you add channels to it, put them in the order you
+want, hide the ones you never watch, and group them into playlists.</p>
+
+<p>Mediagg then signs in to it and reads those playlists directly, so what you subscribe to on your
+phone is what you arranged on the server — <strong>including the ordering and the hidden
+channels</strong>.</p>
+
+<div class="note">
+<p><strong>It is not a service, and there is nothing to sign up to.</strong> Nobody runs m3ugoat for
+you. If you are not already running one, there is nothing to add in the app yet — start with the
+server, then come back.</p>
+</div>
+
+<h2>Why not just paste a playlist link?</h2>
+
+<p>You can. m3ugoat gives every playlist a plain export link, and any IPTV player will take it —
+that is exactly what it is for.</p>
+
+<p>Mediagg does something different on purpose. It talks to the server's API rather than downloading
+the finished file, because <strong>a plain m3u file has nowhere to record two of the decisions you
+made</strong>: which channels are hidden, and what order they go in. Reading the API keeps both.</p>
+
+<p>There is a second reason. An export link can be rotated — you regenerate it when a link has been
+shared too widely. A subscription pinned to that link would quietly fork into a second copy the day
+you pressed the button. Signing in avoids that entirely.</p>
+
+<h2>Adding your server to Mediagg</h2>
+
+<ol class="steps">
+<li>In Mediagg, open <strong>Subscriptions</strong> and choose <strong>m3ugoat</strong> from the list
+of providers.</li>
+<li>Tap <strong>Add an m3ugoat server</strong> and enter its address — usually a local one, like
+<code>192.168.1.10:8080</code>.</li>
+<li>Sign in if the server asks. <strong>A server with no accounts on it needs no password</strong>,
+and Mediagg checks which case it is before offering the fields. A username is only needed once the
+server has more than one account.</li>
+<li>Open the server to see its playlists, and subscribe to the ones you want. Your m3ugoat
+categories come through as the group each channel sits in.</li>
+</ol>
+
+<p>Signing in adds that phone to the server's own device list, where you can sign it out again later
+— useful if you lose the device or simply stop using it.</p>
+
+<div class="note">
+<p><strong>You can add more than one server.</strong> The provider lists every server you have added,
+and opening one shows that account's playlists.</p>
+</div>
+
+<h2>Getting m3ugoat</h2>
+
+<p>m3ugoat is free and open source, under the GPL-3.0 licence. It is a fork of
+<a href="https://github.com/andrei-savin/m3u4me">m3u4me</a> by Andrei Savin, which is the same idea
+without the multi-user accounts and the sync API that Mediagg uses.</p>
+
+<p><a href="https://github.com/m3ugoat/m3ugoat">github.com/m3ugoat/m3ugoat</a> — installation is a
+git clone, <code>npm install</code>, <code>npm run build</code>, and PM2 to keep it running. It
+needs Node 24 or newer.</p>
+
+<div class="chips">
+  <span class="chip">Runs on your network</span>
+  <span class="chip">Free &amp; open source</span>
+  <span class="chip">GPL-3.0</span>
+  <span class="chip">Multi-user</span>
+  <span class="chip">Per-device sign-in</span>
+</div>
+
+<h2>A note on what it does not do</h2>
+
+<p><strong>m3ugoat provides no channels and no streams.</strong> It is a manager for playlists you
+already have, exactly as Mediagg is a player for media you already have. You bring your own
+content.</p>
+
+</main>
+<footer><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+  <div>© <span id="yr">2026</span> Mediagg</div>
+  <div><a href="/">Home</a><a href="/privacy">Privacy</a></div>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>
