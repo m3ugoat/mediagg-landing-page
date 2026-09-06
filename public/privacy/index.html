@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy — Mediagg</title>
-<meta name="description" content="How Mediagg and Mediagg Personal handle your data.">
+<meta name="description" content="How Mediagg handles your data.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
@@ -36,11 +36,6 @@ main li{margin:7px 0}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--muted);text-decoration:none;margin-left:20px}
 footer a:hover{color:var(--ink)}
-table{border-collapse:collapse;width:100%;margin:8px 0 22px;font-size:14.5px}
-th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
-th{color:var(--ink);font-weight:700;background:rgba(255,255,255,.04)}
-td{color:var(--muted)}
-.yes{color:#ff9c9c}.no{color:#8fd6a0}
 .todo{border:1px solid var(--red);border-radius:10px;padding:14px 16px;color:var(--ink);
  background:rgba(255,61,61,.1)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -50,35 +45,18 @@ td{color:var(--muted)}
 <header><div class="wrap"><a class="brand" href="/"><img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg</a></div></header>
 <main class="wrap">
 <h1>Privacy policy</h1>
-<p class="sub">How Mediagg and Mediagg Personal handle your data. Effective 27 August 2026.</p>
+<p class="sub">How Mediagg handles your data. Effective 31 August 2026.</p>
 
-<p>Mediagg is an Android media player. It plays the music, podcasts, radio, TV and video on your
-device, on media servers you run yourself, and on the open web. It is built on the open-source
-podcast app <a href="https://antennapod.org">AntennaPod</a>.</p>
-
-<p><strong>There are two editions, and they differ in exactly one respect</strong></p>
-<p>Everything about how your library is stored and played is identical. What differs is what the app
-reaches out to.</p>
-
-<table>
-<tr><th>&nbsp;</th><th>Mediagg</th><th>Mediagg Personal</th></tr>
-<tr><td>Advertising</td><td class="yes">Yes — Google AdMob</td><td class="no">No</td></tr>
-<tr><td>Crash reporting and analytics</td><td class="yes">Yes — Firebase Crashlytics</td><td class="no">No</td></tr>
-<tr><td>Advertising ID and similar identifiers</td><td class="yes">Yes</td><td class="no">No</td></tr>
-<tr><td>Radio and TV directory</td><td class="yes">Yes</td><td class="no">No — no radio or TV requests are made</td></tr>
-<tr><td>Podcast search</td><td>Yes</td><td>Yes</td></tr>
-</table>
-
-<p>In Mediagg Personal the advertising and analytics libraries are <b>not present in the app at
-all</b> — not disabled by a setting, not switched off at runtime, simply not built in. There is
-therefore no advertising ID, no App Set ID and no Firebase installation identifier for it to read.</p>
+<p>Mediagg is an Android media player. It plays the music, podcasts and video on your device, on
+media servers you run yourself, and on the open web. It is built on the open-source podcast app
+<a href="https://antennapod.org">AntennaPod</a>.</p>
 
 <p><strong>What stays on your device</strong></p>
 <p>The app records what it needs in order to work, and keeps it locally:</p>
 <ul>
 <li>The podcasts you follow, your queue, inbox, favourites, playlists and playback positions</li>
 <li>Your local music, video and file library, and the downloads you keep</li>
-<li>Sign-in details for any media server you add — Subsonic, Navidrome, Airsonic, OpenSubsonic, Jellyfin or Audiobookshelf</li>
+<li>Sign-in details for any media server you add — Subsonic, Navidrome, Airsonic, OpenSubsonic, Jellyfin, Plex, Emby or Audiobookshelf</li>
 <li>Listening statistics, and every app setting</li>
 </ul>
 <p>None of this is uploaded. There is no Mediagg account, and no server of ours holds a copy of your
@@ -86,22 +64,11 @@ library. Backup and restore writes a file to a location you choose, on your devi
 
 <p><strong>What leaves your device, and when</strong></p>
 
-<p><b>A configuration file, at startup.</b> Both editions fetch a small configuration file from
-GitHub each time the app starts, which is how features can be turned on or off and how the app knows
-a new version is available. It carries nothing about you. As with any web request, GitHub receives
-your IP address and the time of the request. Nothing from your library is included.</p>
-
 <p><b>Podcast search and discovery.</b> When you search for a podcast, or open a discovery screen,
 your query is sent to the service you are searching. Those services are Apple (iTunes),
 <a href="https://podcastindex.org">PodcastIndex.org</a>, <a href="https://fyyd.de">fyyd</a> and
 HearThis. They may retain the query, your device's country, your IP address and the time. Once you
-subscribe, the feed comes from whoever hosts it and the search service is no longer involved. This
-applies to both editions.</p>
-
-<p><b>Radio and TV — Mediagg only.</b> The full edition downloads a directory of stations and
-channels so it can be searched and browsed. Playing a station connects your device to that
-broadcaster's stream, and the broadcaster sees your IP address as it would in any player. Mediagg
-Personal makes none of these requests and has no radio or TV feature.</p>
+subscribe, the feed comes from whoever hosts it and the search service is no longer involved.</p>
 
 <p><b>Podcasts, media and artwork.</b> Feeds, episodes and images are fetched from whoever hosts
 them, exactly as a browser would. Those hosts see your IP address, and their own policies apply.</p>
@@ -112,14 +79,10 @@ Nothing is proxied through us. Credentials are stored on your device.</p>
 <p><b>gpodder.net synchronisation.</b> Off unless you turn it on. If you do, your subscriptions and
 episode actions are sent to the gpodder.net account you signed in to.</p>
 
-<p><b>Advertising — Mediagg only.</b> The full edition shows ads through Google AdMob, which collects
-data of its own, including your device's advertising identifier. See AdMob's policy below. You can
-reset or delete the advertising ID in Android's settings. Mediagg Personal shows no ads and contains
-no advertising library.</p>
-
-<p><b>Crash reporting — Mediagg only.</b> The full edition reports crashes through Firebase
-Crashlytics so faults can be found and fixed. A report describes the failure and the device, not
-your library. Mediagg Personal contains no crash-reporting library and sends no reports.</p>
+<p><b>Crash reporting.</b> Mediagg reports crashes through Firebase Crashlytics so faults can be
+found and fixed. A report describes the failure and the device — the model, the Android version, and
+where in the code it went wrong. It does not describe your library, and it carries nothing you
+typed.</p>
 
 <p><b>Casting.</b> Chromecast and DLNA/UPnP casting happens over your local network, between your
 device and the one you are casting to.</p>
@@ -127,15 +90,14 @@ device and the one you are casting to.</p>
 <p>Policies of the third parties involved:</p>
 <ul>
 <li><a href="https://www.google.com/policies/privacy/">Google Play Services</a></li>
-<li><a href="https://support.google.com/admob/answer/6128543?hl=en">AdMob</a> — Mediagg only</li>
-<li><a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> — Mediagg only</li>
+<li><a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> — crash reporting</li>
 <li><a href="https://www.apple.com/legal/privacy/">Apple</a>, <a href="https://podcastindex.org">PodcastIndex.org</a>, <a href="https://fyyd.de">fyyd</a>, HearThis — podcast search</li>
 <li><a href="https://gpodder.net">gpodder.net</a> — only if you enable sync</li>
 </ul>
 
 <p><strong>Cookies</strong></p>
 <p>This website sets no cookies and carries no analytics. The app does not use cookies itself,
-though third-party libraries in the full edition may.</p>
+though third-party libraries within it may.</p>
 
 <p><strong>Children's privacy</strong></p>
 <p>Mediagg is not directed at children under 13, and we do not knowingly collect personal information
@@ -149,8 +111,8 @@ offers it. No method of transmission or storage is completely secure, and absolu
 guaranteed.</p>
 
 <p><strong>Links to other sites</strong></p>
-<p>The app and this site link to places we do not operate, including podcast hosts, radio
-broadcasters and app stores. Their policies are their own.</p>
+<p>The app and this site link to places we do not operate, including podcast hosts, media servers
+and app stores. Their policies are their own.</p>
 
 <p><strong>Changes to this policy</strong></p>
 <p>This page will be updated when the app changes what it does. The effective date at the top says
