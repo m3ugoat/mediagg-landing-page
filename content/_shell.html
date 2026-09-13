@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0d10">
+<link rel="canonical" href="{{CANONICAL}}">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
+<link rel="apple-touch-icon" href="/icons/mediagg.png">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:image" content="/icons/og.png">
+<!-- The one place on this site with an external stylesheet. Every other page carries its CSS
+     inline, which is right for five hand-written pages and wrong for fifty generated ones: the
+     alternative here is the same 250 lines copied into every file. -->
+<link rel="stylesheet" href="/documentation/docs.css">
+</head>
+<body>
+<header><div class="wrap hd">
+  <a class="brand" href="/"><img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg</a>
+  <a class="back" href="/documentation">Documentation</a>
+</div></header>
+
+<main class="wrap layout">
+{{BODY}}
+</main>
+
+<footer><div class="wrap fin">
+  <div>&copy; <span id="yr">2026</span> Mediagg</div>
+  <div><a href="/">Home</a><a href="/m3ugoat">m3ugoat</a><a href="/privacy">Privacy</a></div>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+<script src="/documentation/docs.js"></script>
+</body>
+</html>

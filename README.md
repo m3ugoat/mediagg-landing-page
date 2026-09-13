@@ -27,7 +27,9 @@ carries no install link until that listing exists.
 | `public/` | The site. Home, privacy, `m3ugoat/`, 404, three `deeplink/` landing pages Android falls back to when the app is not installed, and two redirect stubs at `/full` and `/personal` — plus the screenshots and icons. This is what gets deployed. |
 | `public/screens/` | The carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-choose-style.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. **See the warning below before trusting any of them.** |
 | `public/icons/` | `mediagg.png`, the launcher icon, and `og.png` for link previews. `mediagg-personal.png` is the retired Personal edition's icon, kept but no longer used by any page. |
-| `docs/` | Design sources: After Effects projects, Adobe XD files, marketing renders. Not part of the site. |
+| `content/` | The documentation sources: Markdown with front matter, plus `_shell.html` and `docs.css`. Edited by hand; never deployed. |
+| `scripts/build-docs.py` | Renders `content/documentation/` into `public/documentation/`. Stdlib-only Python, no dependencies. |
+| `docs/` | Design sources: After Effects projects, Adobe XD files, marketing renders. **Not part of the site, and not the documentation** — that is `content/` and `public/documentation/`. |
 | `legacy/` | The retired Jekyll and webpack toolchain. Kept for reference, never built. |
 | `_images/`, `icon.png` | Artwork inherited from the original template. Unused by the current pages. |
 
@@ -45,6 +47,12 @@ Two rules follow from what that build actually is, and both are easy to break by
   search — those live in the unpublished Xtended build. It does have the podcast charts by country
   and category, reached from Add feed. Media servers, local media, playlists, podcasts, video,
   downloads and casting are all in.
+  **This ban is about Explore, not about providers.** `Add from providers` is unconditional — it is
+  on the Add subscription screen in `freePlayFull` — so subscribing to a station playlist may be
+  described. What may not be described is Explore's tabbed directory and station catalogue, which
+  `app/src/full/.../AvailableDestinations.kt` removes from the shipping edition. The documentation
+  covers the two providers whose source is the user's own (`Custom Github Directory` and `m3ugoat`)
+  and deliberately does not enumerate the catalogues that ship inside the browser.
 - **Android Auto and Wear OS are no longer claimed.** The playback service is a
   `MediaLibraryService`, which is what both browse against, but the browse tree it exposes is still
   empty — filling it is Phase 6 in the rewrite. The card that claimed them has been replaced with
@@ -79,6 +87,39 @@ file cannot say which channels are hidden or what order they go in, and an expor
 
 If that provider's `ABOUT` text, its sign-in note or its prompts change, this page should follow.
 
+## The documentation
+
+`/documentation` is fifty pages covering how the app is used. **It is generated**, which is the one
+place this repository departs from hand-written HTML — fifty pages could not carry their CSS inline,
+and a sidebar copied into every file would mean every new page edited every existing one.
+
+Sources are Markdown with front matter under `content/documentation/`. The directory layout *is* the
+navigation: `subscriptions.md` is a section index, `subscriptions/m3ugoat.md` is a page inside it,
+and the sidebar, breadcrumbs, section cards and previous/next links are all derived from that. There
+is no nav list to maintain.
+
+```
+python3 scripts/build-docs.py          # write public/documentation/
+python3 scripts/build-docs.py --check  # fail if the committed output is stale
+```
+
+**The output is committed**, so the deployed site is still plain static files and the Pages workflow
+still just uploads `public/`. The workflow runs `--check` before it deploys, so documentation that no
+longer matches its source cannot ship. A build that fails leaves the committed output untouched.
+
+Adding a page is one new file. Front matter takes `title`, `summary`, `order`, `platforms`
+(`android`, `ios`, or both — a badge under the title), an `icon` on section indexes only, and
+`stub: true` for a page whose scope is written but whose body is not.
+
+The Markdown understood is a deliberately small subset — headings, paragraphs, bold, italic, inline
+code, links, lists, tables, blockquotes and fenced code. **Anything else is a hard error**, including
+images: no screenshots ship until the warning above is resolved.
+
+Two content rules on top of the ones above. Quote the app's own wording exactly and in backticks,
+checking it against the app source rather than remembering it — the strings are still hard-coded
+English in the Compose screens, not in the app's `:i18n` module. And write the platform badge from a
+parity sweep (`.claude/skills/parity/parity.sh` in the app repository), never from memory.
+
 ## Running it
 
 There is no build step and nothing to install. The pages are plain HTML with their CSS inline, and
@@ -88,7 +129,8 @@ the only assets are the screenshots, so any static file server will do:
 python3 -m http.server -d public 8000
 ```
 
-Then open http://localhost:8000.
+Then open http://localhost:8000, or http://localhost:8000/documentation for the documentation. If
+you have edited anything under `content/`, run `python3 scripts/build-docs.py` first.
 
 Opening `public/index.html` directly in a browser mostly works, but the pages use root-relative paths
 (`/screens/…`, `/privacy`), so the screenshots and the privacy link will not resolve over `file://`.
@@ -96,7 +138,8 @@ Serve the directory instead.
 
 ## How it deploys
 
-Pushes to `master` that touch `public/**` publish to GitHub Pages through
+Pushes to `master` that touch `public/**`, `content/**` or `scripts/**` publish to GitHub Pages
+through
 [`.github/workflows/pages.yml`](.github/workflows/pages.yml). Editing this README or the design
 sources in `docs/` does not spend a deploy; the workflow can also be run by hand from the Actions
 tab.

@@ -18,6 +18,11 @@ on:
     paths:
       - 'public/**'
       - '.github/workflows/pages.yml'
+      # The documentation sources are here so that editing one WITHOUT regenerating still starts a
+      # run. public/ would be unchanged in that case, so without these two lines the stale-output
+      # check below would never get the chance to fail.
+      - 'content/**'
+      - 'scripts/**'
   # Lets a deploy be re-run from the Actions tab without an empty commit.
   workflow_dispatch:
 
@@ -42,6 +47,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      # public/documentation/ is generated from content/documentation/ and committed. This proves
+      # the two agree, so a deploy can never ship documentation that no longer matches its source.
+      # It installs nothing: the generator is stdlib-only and ubuntu-latest already has python3.
+      - name: Documentation is up to date
+        run: python3 scripts/build-docs.py --check
 
       - uses: actions/configure-pages@v5
 
