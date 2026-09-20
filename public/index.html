@@ -93,32 +93,40 @@ nav.stuck{border-bottom-color:var(--line);background:rgba(11,13,16,.9)}
 .trust b{color:var(--muted);font-weight:600}
 
 /* ---------- floating cards ---------- */
-/* The stage is shorter than the phone on purpose — the device oversails the hero's bottom padding
-   and meets the marquee. Its height tracks the phone's: a 250px phone is 530px tall framed, so 456
-   keeps the same 74px overhang the drawn mockup had. */
-.stage{position:relative;height:456px;margin-top:56px;perspective:1400px}
+/* The stage is shorter than the shot on purpose — the render oversails the hero's bottom padding
+   and meets the marquee. Its height tracks the shot's: a 560px landscape render is 464px tall, so
+   390 keeps the same 74px overhang the drawn mockup had. */
+.stage{position:relative;height:390px;margin-top:56px;perspective:1400px}
 .card3d{position:absolute;width:150px;height:150px;border-radius:20px;overflow:hidden;
   box-shadow:0 26px 70px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);
   animation:float 7.5s ease-in-out infinite;will-change:transform}
 .card3d span{position:absolute;inset:0;display:grid;place-items:center;font-size:44px}
-.c1{left:6%;top:26%;transform:rotate(-13deg);animation-delay:-.4s;background:linear-gradient(140deg,#ff1616,#7a0000)}
-.c2{left:22%;top:6%;transform:rotate(7deg);animation-delay:-2.1s;background:linear-gradient(140deg,#8b7bff,#2a1e6b)}
-.c3{right:22%;top:9%;transform:rotate(-6deg);animation-delay:-3.4s;background:linear-gradient(140deg,#3ddad7,#0d4f4d)}
-.c4{right:6%;top:29%;transform:rotate(12deg);animation-delay:-1.3s;background:linear-gradient(140deg,#ffb443,#7a4a00)}
+/* Pushed out to the margins: a landscape render is far wider than the portrait phone that used to
+   stand here, so cards at 22% would sit on top of the screenshot instead of floating beside it. */
+.c1{left:1%;top:28%;transform:rotate(-13deg);animation-delay:-.4s;background:linear-gradient(140deg,#ff1616,#7a0000)}
+.c2{left:11%;top:6%;transform:rotate(7deg);animation-delay:-2.1s;background:linear-gradient(140deg,#8b7bff,#2a1e6b)}
+.c3{right:11%;top:9%;transform:rotate(-6deg);animation-delay:-3.4s;background:linear-gradient(140deg,#3ddad7,#0d4f4d)}
+.c4{right:1%;top:31%;transform:rotate(12deg);animation-delay:-1.3s;background:linear-gradient(140deg,#ffb443,#7a4a00)}
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 -26px}}
-@media(max-width:860px){.c1,.c4{display:none}.stage{height:345px}}
+/* Each step keeps the shot's 74px-ish overhang and drops whichever cards the wider picture has run
+   out of room for. */
+@media(max-width:1000px){.stage{height:315px}}
+@media(max-width:860px){.c1,.c4{display:none}.c2{left:2%}.c3{right:2%}.stage{height:250px}}
+@media(max-width:560px){.c2,.c3{display:none}.stage{height:200px}}
 
-/* phone */
-/* No fixed height: the screenshot sets it. The padding is the bezel and the image is the screen —
-   the same construction as the carousel's .frame, so the two read as one device. */
-.phone{position:absolute;left:50%;top:0;translate:-50% 0;width:250px;border-radius:38px;
-  background:linear-gradient(165deg,#1b222b,#0d1116);border:1px solid rgba(255,255,255,.16);
-  box-shadow:0 40px 100px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.1);padding:11px}
-/* aspect-ratio, not just height:auto — it reserves the 508px the screenshot will occupy before it
+/* hero shot */
+/* The screenshots are landscape renders that already contain their own two devices and their own
+   background, so this draws no bezel of its own — a hairline card and a shadow, nothing more. Any
+   padding or phone gradient here would be a second frame around a picture of a frame. */
+.shotcard{position:absolute;left:50%;top:0;translate:-50% 0;width:560px;border-radius:18px;
+  border:1px solid rgba(255,255,255,.16);overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.1)}
+/* aspect-ratio, not just height:auto — it reserves the height the render will occupy before it
    loads, so the hero does not reflow the marquee and everything below it on arrival. */
-.phone img{display:block;width:100%;height:auto;aspect-ratio:640/1425;
-  border-radius:28px;background:#0a0d11}
-@media(max-width:860px){.phone{width:212px}}
+.shotcard img{display:block;width:100%;height:auto;aspect-ratio:2238/1854;background:#0a0d11}
+@media(max-width:1000px){.shotcard{width:470px}}
+@media(max-width:860px){.shotcard{width:390px}}
+@media(max-width:560px){.shotcard{width:min(330px,92%)}}
 
 /* ---------- sections ---------- */
 section{padding:104px 0;position:relative}
@@ -141,10 +149,11 @@ section{padding:104px 0;position:relative}
 .f li{margin:6px 0}
 .f li b{color:var(--muted);font-weight:600}
 /* ---------- screenshot carousel ---------- */
-/* Slide width lives in one variable, --shot. The screenshots are 1344x2992, so a 236px slide is a
-   503px phone — tall enough to read a track list, short enough that four fit across a 1132px rail
-   and the whole carousel still clears a laptop screen. */
-.shots{position:relative; --shot:236px}
+/* Slide width lives in one variable, --shot. The screenshots are landscape 2238x1854 renders, each
+   holding the same screen on two devices, so a 520px slide is 431px tall and two fit across a
+   1132px rail. Two wide slides rather than four narrow ones: half of a 520px slide is one phone at
+   about 230px, which is the smallest a screen can be and still read as one. */
+.shots{position:relative; --shot:520px}
 .rail{
   position:relative; /* the offsetParent for the slides, so offsetLeft matches scrollLeft */
   display:flex; gap:26px; overflow-x:auto; overscroll-behavior-x:contain;
@@ -159,18 +168,22 @@ section{padding:104px 0;position:relative}
 .rail:focus-visible{outline:2px solid rgba(255,61,61,.6);outline-offset:6px;border-radius:8px}
 /* start, not centre: with four slides visible at once the leading edge is what "current" means,
    and centre-snap leaves the first and last slide unable to reach the position the dots imply. */
-.shot{flex:none;width:var(--shot);scroll-snap-align:start;text-align:center}
-/* same bezel as the hero phone, so the two read as one device. A button rather than a div: it opens
-   the enlarged view, so it has to be reachable by keyboard and announce itself as something to press. */
+/* margin-inline:0 kills the 40px a <figure> carries by default. With 236px slides that padded the
+   26px gap out to 106px and looked deliberate; with a 520px landscape slide it is the difference
+   between two fitting across the rail and one, which would give the carousel a dot per slide. */
+.shot{flex:none;width:var(--shot);scroll-snap-align:start;text-align:center;margin:16px 0}
+/* Same construction as the hero's .shotcard, so the two read alike: no bezel, because the render
+   already contains its devices and its own background. A button rather than a div: it opens the
+   enlarged view, so it has to be reachable by keyboard and announce itself as something to press. */
 .frame{display:block;width:100%;font:inherit;color:inherit;-webkit-appearance:none;cursor:zoom-in;
-  border-radius:34px;padding:9px;background:linear-gradient(165deg,#1b222b,#0d1116);
+  border-radius:18px;padding:0;overflow:hidden;background:#0a0d11;
   border:1px solid rgba(255,255,255,.16);
   box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1);
   transition:transform .45s var(--ease),box-shadow .45s,border-color .45s}
 .frame:focus-visible{outline:2px solid var(--red);outline-offset:4px}
 .shot:hover .frame{transform:translateY(-7px);border-color:rgba(255,61,61,.4);
   box-shadow:0 40px 90px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.12)}
-.frame img{display:block;width:100%;height:auto;border-radius:26px;background:#0a0d11}
+.frame img{display:block;width:100%;height:auto;border-radius:17px;background:#0a0d11}
 .shot figcaption{margin-top:18px;font-size:13.5px;font-weight:700;color:var(--ink);padding:0 4px;line-height:1.45}
 .shot figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
 .arw{position:absolute;top:50%;translate:0 calc(-50% - 30px);z-index:5;
@@ -188,7 +201,7 @@ section{padding:104px 0;position:relative}
 .dots button:hover{background:rgba(255,255,255,.34)}
 .dots button.on{width:26px;background:linear-gradient(90deg,var(--red),var(--amber))}
 @media(max-width:640px){
-  .shots{--shot:70vw}
+  .shots{--shot:88vw}
   .rail{gap:18px}
   .arw{display:none}
 }
@@ -201,14 +214,14 @@ section{padding:104px 0;position:relative}
   opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
 .lb.on{opacity:1;visibility:visible}
 .lbfig{margin:0;display:grid;justify-items:center;gap:18px;max-height:100%}
-.lbshell{padding:10px;border-radius:42px;background:linear-gradient(165deg,#1b222b,#0d1116);
+.lbshell{padding:0;border-radius:20px;overflow:hidden;background:#0a0d11;
   border:1px solid rgba(255,255,255,.18);box-shadow:0 40px 120px rgba(0,0,0,.8);
-  transform:scale(.94);transition:transform .35s var(--ease)}
+  transform:scale(.94);transition:transform .35s var(--ease);line-height:0}
 .lb.on .lbshell{transform:none}
 /* Both maxima with auto on both axes, so the picture is fitted rather than stretched: a fixed
    height plus a max-width would squash it on a narrow screen. */
-.lbshell img{display:block;max-height:76vh;max-width:84vw;width:auto;height:auto;
-  border-radius:32px;background:#0a0d11}
+.lbshell img{display:block;max-height:76vh;max-width:92vw;width:auto;height:auto;
+  border-radius:19px;background:#0a0d11}
 .lbfig figcaption{text-align:center;font-size:14px;font-weight:700;color:var(--ink);max-width:min(90vw,420px)}
 .lbfig figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
 .lbfig figcaption .lbnum{margin-top:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
@@ -337,11 +350,11 @@ footer a:hover{color:var(--ink)}
     <div class="card3d c2"><span>🎙️</span></div>
     <div class="card3d c3"><span>📺</span></div>
     <div class="card3d c4"><span>💿</span></div>
-    <div class="phone">
+    <div class="shotcard">
       <!-- eager, and not lazy like the carousel: this one is in the first screenful, so deferring it
            only delays the largest thing the hero has to paint. -->
-      <img src="/screens/hero-home.webp" width="640" height="1425" decoding="async"
-           alt="The Mediagg home screen: a Mix row offering Track mix and Audiobook mix, a Continue row holding the 1942 Jungle Book, a Surprise me list mixing a reading from Aesop's Fables, a Podcasting 2.0 episode and the 1931 Dracula, and a Subscriptions row below — with a mini player across the bottom and tabs for Library, Home, Search and Settings.">
+      <img src="/screens/hero-home.webp" width="1119" height="927" decoding="async"
+           alt="The Mediagg home screen on two phones side by side — an iPhone in the light theme, an Android phone in the dark — each showing a Mix row offering Track mix and Audiobook mix, a Continue row holding the 1942 Jungle Book, a Surprise me list mixing a reading from Aesop's Fables, a Podcasting 2.0 episode and the 1931 Dracula, and a Subscriptions row below, with a mini player across the bottom and tabs for Library, Home, Search and Settings.">
     </div>
   </div>
 </header>
@@ -425,101 +438,104 @@ footer a:hover{color:var(--ink)}
 <section id="screens"><div class="wrap">
   <div class="head rv">
     <span class="eyebrow">See it running</span>
-    <h2>Real screens, no mock-ups</h2>
-    <p>Every shot below is the app as it ships — a real library, real servers, real files. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
+    <h2>Real screens, both themes</h2>
+    <p>Every shot below is the app as it ships — a real library, real servers, real files — each screen in the light theme and the dark. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
   </div>
 
-  <!-- SCREENSHOT SET. Captured from the shipping build: the bottom bar is Library, Home, Search
-       and Settings, with no Explore tab, and nothing below is from an Xtended build. Each is the
-       dark-theme screen on its own, cropped out of the device mock-up, because .frame draws the
-       bezel itself. To change the set, drop .webp files into /screens (640px wide) with 1080px
-       twins under the same names in /screens/large, then add or remove <figure class="shot">
-       blocks — the carousel counts them itself, so nothing else needs touching. -->
+  <!-- SCREENSHOT SET. The renders as they were supplied: one landscape picture per screen, each
+       holding the same screen twice — an iPhone in the light theme on the left, an Android phone
+       in the dark on the right — so every slide says both platforms at once. Nothing is cropped
+       out of them, which is why .frame draws no bezel: the devices and their background are in
+       the picture already. All from the shipping build — the bottom bar is Library, Home, Search
+       and Settings, with no Explore tab. To change the set, drop .webp files into /screens at
+       1119px wide with 2238px twins under the same names in /screens/large, then add or remove
+       <figure class="shot"> blocks — the carousel counts them itself, so nothing else needs
+       touching. -->
   <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mediagg">
     <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
     <div class="rail" id="rail" tabindex="0">
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/01-servers.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Media servers screen with navidrome, Jellyfin and AudioBookShelf already added and each server&rsquo;s address beneath its name, and a Choose a provider sheet open over it offering Subsonic &mdash; described as Navidrome, Airsonic, Gonic and other Subsonic servers &mdash; Jellyfin, Audiobookshelf, Plex and Emby."></button>
+        <button class="frame" type="button"><img src="/screens/01-servers.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media servers screen with navidrome, Jellyfin and AudioBookShelf already added and each server&rsquo;s address beneath its name, and a Choose a provider sheet open over it offering Subsonic &mdash; described as Navidrome, Airsonic, Gonic and other Subsonic servers &mdash; Jellyfin, Audiobookshelf, Plex and Emby."></button>
         <figcaption>Five kinds of server<span>Subsonic, Jellyfin, Plex, Emby, Audiobookshelf</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/02-server-home.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Media Servers screen on its Activity tab: a Mix row offering Track mix and Artist mix, a Continue watching row of film posters &mdash; The Great Train Robbery from 1903, Jungle Book from 1942, Night of the Living Dead from 1968 &mdash; and a Recently added row of album covers under it."></button>
+        <button class="frame" type="button"><img src="/screens/02-server-home.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media Servers screen on its Activity tab, with a Mix row offering Track mix and Artist mix, a Continue watching row of film posters &mdash; The Great Train Robbery from 1903, Jungle Book from 1942, Night of the Living Dead from 1968 &mdash; and a Recently added row of album covers under it."></button>
         <figcaption>Every server, on one page<span>Continue watching, recently added, most played</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/03-film.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The details page for Jungle Book: the 1942 poster, the year, a running time of 1:44:54, an NR certificate and a 6.3 rating, a Play button, the full synopsis, then genres, director Zoltan Korda, writers Rudyard Kipling and Laurence Stallings, the studio, a More like this row and a Cast row."></button>
+        <button class="frame" type="button"><img src="/screens/03-film.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the details page for Jungle Book, with the 1942 poster, the year, a running time of 1:44:54, an NR certificate and a 6.3 rating, a Play button, the full synopsis, then genres, director Zoltan Korda, writers Rudyard Kipling and Laurence Stallings, the studio, a More like this row and a Cast row."></button>
         <figcaption>Films with everything attached<span>Synopsis, cast, genres and what to watch next</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/04-series.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The details page for the web series Pioneer One, running 2010 to 2011, with its description, genres of Sci-Fi &amp; Fantasy, War &amp; Politics and Drama, a Next up card showing series 1 episode 3 with a still from it, and a Seasons row beneath."></button>
+        <button class="frame" type="button"><img src="/screens/04-series.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the details page for the web series Pioneer One, running 2010 to 2011, with its description, genres of Sci-Fi &amp; Fantasy, War &amp; Politics and Drama, a Next up card showing series 1 episode 3 with a still from it, and a Seasons row beneath."></button>
         <figcaption>Shows remember where you stopped<span>Next up, then every season</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/05-music.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Media Servers screen on its Activity tab, showing a music library: a Mix row with Track mix and Artist mix, then rows of album artwork under Recently added, Most played and Recently played, each cover captioned with its album title and artist."></button>
+        <button class="frame" type="button"><img src="/screens/05-music.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media Servers screen showing a music library: a Mix row with Track mix and Artist mix, then rows of album artwork under Recently added, Most played and Recently played, each cover captioned with its album title and artist."></button>
         <figcaption>Your music, sorted properly<span>Mixes, recently added, most played, played again</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/06-player.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The full player showing the LibriVox cover of Aesop&rsquo;s Fables Volume 6, the whole screen tinted gold to match it. Below the artwork: a Chapters button, the title The Prophet, the file details MP3 at 64 kb/s and 24 kHz, a scrubber at 7:22 of 31:17, transport controls, and buttons for 1.0x speed, Sleep and More."></button>
+        <button class="frame" type="button"><img src="/screens/06-player.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the full player showing the LibriVox cover of Aesop&rsquo;s Fables Volume 6, the whole screen tinted to match it. Below the artwork: a Chapters button, the title The Prophet, the file details MP3 at 64 kb/s and 24 kHz, a scrubber at 7:22 of 31:17, transport controls, and buttons for 1.0x speed, Sleep and More."></button>
         <figcaption>One player for all of it<span>And it takes its colours from the artwork</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/07-chapters.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The player with its chapter list open over the artwork: The Prophet at 6:26 highlighted as the chapter playing, then The Hound and The Hare, The Lion, The Mouse, and The Fox, The Trumpeter Taken Prisoner, The Wolf and The Crane, and The Eagle, The Cat, and The Wild Sow &mdash; each with its length."></button>
+        <button class="frame" type="button"><img src="/screens/07-chapters.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player with its chapter list open over the artwork: The Prophet at 6:26 highlighted as the chapter playing, then The Hound and The Hare, The Lion, The Mouse, and The Fox, The Trumpeter Taken Prisoner, The Wolf and The Crane, and The Eagle, The Cat, and The Wild Sow &mdash; each with its length."></button>
         <figcaption>Chapters, one tap away<span>Jump anywhere in a long file</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/08-transcript.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The player on its Transcript tab for Episode 271: Foot Terminal from Podcasting 2.0, with the line currently being spoken highlighted in a box as the transcript scrolls. Chapters, Transcript and Notes tabs sit below it."></button>
+        <button class="frame" type="button"><img src="/screens/08-transcript.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player on its Transcript tab for Episode 271: Foot Terminal from Podcasting 2.0, with the line currently being spoken highlighted in a box as the transcript scrolls, and Chapters, Transcript and Notes tabs below it."></button>
         <figcaption>Transcripts that follow along<span>The spoken line, highlighted as it plays</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/09-video.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The player with a scene from Jungle Book playing in it, the screen tinted green to match the picture. Underneath: the title, the year 1942, the file details AAC at 129 kb/s and 44.1 kHz, a progress bar at 1:29:11 of 1:44:54 and a pause button. Full-screen and cast buttons sit at the top."></button>
+        <button class="frame" type="button"><img src="/screens/09-video.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player with a scene from Jungle Book playing in it and the screen tinted to match the picture. Underneath: the title, the year 1942, the file details AAC at 129 kb/s and 44.1 kHz, a progress bar at 1:29:11 of 1:44:54 and a pause button, with full-screen and cast buttons at the top."></button>
         <figcaption>Video, in the same player<span>No second app, and it casts to the television</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/10-playlist.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A playlist called Seamless Playlist holding 4 items, its cover a mosaic of the four, with Play and Shuffle buttons. The items are The Prophet from Aesop&rsquo;s Fables Volume 6, the 1942 Jungle Book film, the track Footsteps by Jeff Kaale, and Episode 271: Foot Terminal from Podcasting 2.0 &mdash; each with a small icon saying which kind it is."></button>
+        <button class="frame" type="button"><img src="/screens/10-playlist.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: a playlist called Seamless Playlist holding 4 items, its cover a mosaic of the four, with Play and Shuffle buttons. The items are The Prophet from Aesop&rsquo;s Fables Volume 6, the 1942 Jungle Book film, the track Footsteps by Jeff Kaale, and Episode 271: Foot Terminal from Podcasting 2.0 &mdash; each with a small icon saying which kind it is."></button>
         <figcaption>One playlist, four kinds of media<span>Audiobook, film, track and podcast episode</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/11-search.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Search screen with dracula typed into it and a Library and Discover toggle underneath, the results grouped by source: a Videos heading with the 1931 Dracula held on the phone, and a Jellyfin heading with the 1931 Dracula held on the server."></button>
+        <button class="frame" type="button"><img src="/screens/11-search.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Search screen with dracula typed into it and a Library and Discover toggle underneath, the results grouped by source: a Videos heading with the 1931 Dracula held on the phone, and a Jellyfin heading with the 1931 Dracula held on the server."></button>
         <figcaption>Search your phone and your servers<span>Results grouped by where they live</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/12-subscribe.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Add subscription screen listing Add from providers, Add from synchronisation server for keeping subscriptions and positions in step with your other devices, Add a local folder, Browse top podcasts by country and category, Add a podcast by address for an RSS feed you already have, and Import subscriptions from a file for OPML exported from another app &mdash; with a Search every directory box below it."></button>
+        <button class="frame" type="button"><img src="/screens/12-subscribe.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Add subscription screen listing Add from providers, Add from synchronisation server for keeping subscriptions and positions in step with your other devices, Add a local folder, Browse top podcasts by country and category, Add a podcast by address for an RSS feed you already have, and Import subscriptions from a file for OPML exported from another app &mdash; with a Search every directory box below it."></button>
         <figcaption>Six ways to add a podcast<span>An RSS address, an OPML file, the charts, a folder</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/13-favourites.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Favourites screen with filter chips for All, Playlists, Local media, Subscriptions and Media servers, above a list of favourited tracks: Time Lines by Pete Lund, Feij&atilde;o by Dr. Quandary, He Was (Clementine) and Fairytale by Natasha Beller, Rain by Ugress, 999,999 by Nine Inch Nails, Footsteps by Jeff Kaale and Seasons by Aso."></button>
+        <button class="frame" type="button"><img src="/screens/13-favourites.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Favourites screen with filter chips for All, Playlists, Local media, Subscriptions and Media servers, above a list of favourited tracks: Time Lines by Pete Lund, Feij&atilde;o by Dr. Quandary, He Was (Clementine) and Fairytale by Natasha Beller, Rain by Ugress, 999,999 by Nine Inch Nails, Footsteps by Jeff Kaale and Seasons by Aso."></button>
         <figcaption>Favourites, wherever they came from<span>Filter by playlists, files, podcasts or servers</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/14-downloads.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Downloads screen with Subscriptions and Media servers chips to filter by source, listing the downloaded track Footsteps by Jeff Kaale with a download tick beside its name."></button>
+        <button class="frame" type="button"><img src="/screens/14-downloads.webp" width="1119" height="927" loading="lazy" decoding="async"
+          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Downloads screen with Subscriptions and Media servers chips to filter by source, listing the downloaded track Footsteps by Jeff Kaale with a download tick beside its name."></button>
         <figcaption>Downloads that stay put<span>Keep what you want, play it with no signal</span></figcaption>
       </figure>
 
@@ -665,8 +681,8 @@ footer a:hover{color:var(--ink)}
   <button class="lbbtn lbx" id="lbClose" type="button" aria-label="Close">&times;</button>
   <button class="lbbtn lbprev" id="lbPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
   <figure class="lbfig">
-    <!-- every large screenshot is 1080x2405, so the box is the right shape before the file lands -->
-    <div class="lbshell"><img id="lbImg" width="1080" height="2405" alt=""></div>
+    <!-- every large screenshot is 2238x1854, so the box is the right shape before the file lands -->
+    <div class="lbshell"><img id="lbImg" width="2238" height="1854" alt=""></div>
     <figcaption id="lbCap"></figcaption>
   </figure>
   <button class="lbbtn lbnext" id="lbNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
@@ -774,10 +790,11 @@ footer a:hover{color:var(--ink)}
 
     // ----- enlarged view -----
     //
-    // The rail carries 640px-wide screenshots, which are the right weight for a 236px slide and far
-    // too soft blown up. Each has a 1080px twin under /screens/large/, fetched only when someone
+    // The rail carries 1119px-wide screenshots, which are the right weight for a 520px slide and
+    // too soft blown up — a render enlarged to 92vw wants more than that. Each has a 2238px twin
+    // under /screens/large/, the size the renders were supplied at, fetched only when someone
     // actually opens one — the address is derived from the thumbnail rather than repeated in an
-    // attribute on all eleven slides.
+    // attribute on all fourteen slides.
     var lb=document.getElementById('lb'),
         lbImg=document.getElementById('lbImg'),
         lbCap=document.getElementById('lbCap'),

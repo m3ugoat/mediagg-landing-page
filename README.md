@@ -25,7 +25,7 @@ carries no install link until that listing exists.
 | Path | |
 |---|---|
 | `public/` | The site. Home, privacy, `m3ugoat/`, 404, three `deeplink/` landing pages Android falls back to when the app is not installed, and two redirect stubs at `/full` and `/personal` — plus the screenshots and icons. This is what gets deployed. |
-| `public/screens/` | The fourteen carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-home.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. All from the shipping build; see below. |
+| `public/screens/` | The fourteen carousel screenshots at 1119px, with full-size 2238px twins in `large/` for the enlarged view, plus `hero-home.webp` — the one at the top of the home page, which is not part of the carousel and so has no twin. Landscape renders, two phones each, from the shipping build; see below. |
 | `public/icons/` | `mediagg.png`, the launcher icon, and `og.png` for link previews. `mediagg-personal.png` is the retired Personal edition's icon, kept but no longer used by any page. |
 | `content/` | The documentation sources: Markdown with front matter, plus `_shell.html` and `docs.css`. Edited by hand; never deployed. |
 | `scripts/build-docs.py` | Renders `content/documentation/` into `public/documentation/`. Stdlib-only Python, no dependencies. |
@@ -71,18 +71,36 @@ Search, Settings, there is no **Explore** tab, and no slide shows a radio statio
 Xtended-build shots that used to be here — Explore tab in the navigation, station search, an Explore
 slide — are gone, along with the warning that said not to deploy.
 
-Fourteen carousel slides and the hero, all **dark theme**, because the page is dark. The sources are
-landscape mock-up renders, one per screen, each holding the same screen twice — light on the left in
-an iPhone frame, dark on the right in an Android one. The site ships the **Android** one, cropped to
-the screen alone at `(1250, 37)`–`(2049, 1816)`, which is 799×1779 and the same 2.2266 aspect the
-page already used. Two reasons for cropping the frame off: `.frame` in `public/index.html` draws the
-bezel itself, and the iPhone shell would promise a build that does not exist.
+Fourteen carousel slides and the hero. The sources are **landscape mock-up renders, used as they
+were supplied** — one picture per screen, each holding the same screen twice: an iPhone in the light
+theme on the left, an Android phone in the dark on the right, on a background that splits light to
+dark down the middle. Nothing is cropped out of them, so every slide shows both platforms and both
+themes at once. They are 2238×1854; the carousel gets an exact half at 1119×927 and the enlarged
+view gets the full size, so **nothing is upscaled**.
 
-That crop is 799px wide, so the 1080px twins are upscaled about 1.35×. The enlarged view is capped at
-`76vh`/`84vw` and so paints at roughly 500px at most, which the twins still cover at 2× — but a
-future capture at 1080px or more of real screen width would be better than this one.
+Two layout consequences, both already handled, and both easy to undo by accident:
 
-To change the set: drop `.webp` files into `public/screens/` at 640px wide with 1080px twins under
+- **Nothing here draws a bezel.** `.frame` and the hero's `.shotcard` are a hairline border, a
+  radius and a shadow, with no padding — the devices and their background are in the picture
+  already, so a phone shell around one would be a frame around a picture of a frame.
+- **`.shot` sets `margin:16px 0`.** A `<figure>` carries `margin: 1em 40px` by default, which padded
+  the rail's 26px gap out to 106px. That looked deliberate behind 236px portrait slides; behind a
+  520px landscape slide it is the difference between two fitting across the rail and one, and one
+  per page gives the carousel a dot per slide.
+
+The hero's floating cards moved out to 1% and 11% for the same reason: a landscape render is more
+than twice the width of the portrait phone that used to stand there, and cards at 22% would sit on
+top of it. `.stage` heights are per breakpoint, each keeping the render's ~74px overhang into the
+marquee.
+
+**iOS is in every picture, and the copy must not follow it there.** The renders show an iPhone
+because that is how they were supplied and what was asked for. There is still no iOS build — see the
+top of this file — so the page says "Android now · iOS on the way" in the hero eyebrow and nowhere
+claims you can install it on an iPhone today. The screenshots section is headed "Real screens, both
+themes", not anything about iOS, and that wording is load-bearing: it is also why it no longer says
+"no mock-ups", which these renders plainly are.
+
+To change the set: drop `.webp` files into `public/screens/` at 1119px wide with 2238px twins under
 the same names in `public/screens/large/`, then add or remove `<figure class="shot">` blocks in
 `public/index.html` to match — the carousel counts its own slides, so the dots, arrows and enlarged
 view need no other change. The hero is `hero-home.webp`, is not part of the carousel, and so has no
@@ -90,6 +108,14 @@ twin. There is a comment above the rail saying the same thing.
 
 Captions and `alt` describe what is actually on screen, down to the titles, timings and bitrates, so
 a caption cannot drift from its picture without someone noticing. Keep that when swapping a shot.
+
+The other nineteen renders in the set — `arrange_navbar`, `library`, `queue`, `podcast`,
+`podcast_synchronization`, `subscriptions`, `subscriptions_episodes`, `media_servers_manage`,
+`media_servers_filter`, `media_servers_home_audiobookshelf`, `player_2`, `player_more_details`,
+`search_2`, `media_server_albums`, `media_server_combined`, `media_server_combined_2`,
+`media_servers_home_jellyfin_2` and `player_video_fullscreen` — are not on the site. They are not
+rejects; there was no slot. `player_video_fullscreen` is the one that could not be used as-is: its
+phones are landscape, so it does not share the others' shape.
 
 ## The m3ugoat page
 
