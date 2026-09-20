@@ -340,8 +340,8 @@ footer a:hover{color:var(--ink)}
     <div class="phone">
       <!-- eager, and not lazy like the carousel: this one is in the first screenful, so deferring it
            only delays the largest thing the hero has to paint. -->
-      <img src="/screens/hero-choose-style.webp" width="640" height="1425" decoding="async"
-           alt="The Mediagg setup screen titled Choose your style, offering Default, Simple, Local, Server and Podcaster layouts for the tabs along the bottom of the app.">
+      <img src="/screens/hero-home.webp" width="640" height="1425" decoding="async"
+           alt="The Mediagg home screen: a Mix row offering Track mix and Audiobook mix, a Continue row holding the 1942 Jungle Book, a Surprise me list mixing a reading from Aesop's Fables, a Podcasting 2.0 episode and the 1931 Dracula, and a Subscriptions row below — with a mini player across the bottom and tabs for Library, Home, Search and Settings.">
     </div>
   </div>
 </header>
@@ -429,67 +429,98 @@ footer a:hover{color:var(--ink)}
     <p>Every shot below is the app as it ships — a real library, real servers, real files. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
   </div>
 
-  <!-- SCREENSHOT SET. Every file referenced below was captured from an Xtended build and is being
-       replaced. Drop the new .webp files into /screens (640px wide) with 1080px twins in
-       /screens/large under the same names, then add or remove <figure class="shot"> blocks to match
-       — the carousel counts them itself, so nothing else needs touching. The two slides that showed
-       Explore and station search have already been removed. -->
+  <!-- SCREENSHOT SET. Captured from the shipping build: the bottom bar is Library, Home, Search
+       and Settings, with no Explore tab, and nothing below is from an Xtended build. Each is the
+       dark-theme screen on its own, cropped out of the device mock-up, because .frame draws the
+       bezel itself. To change the set, drop .webp files into /screens (640px wide) with 1080px
+       twins under the same names in /screens/large, then add or remove <figure class="shot">
+       blocks — the carousel counts them itself, so nothing else needs touching. -->
   <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mediagg">
     <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
     <div class="rail" id="rail" tabindex="0">
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/01-home.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Activity home screen, with rows for Continue listening, See what's new, Get surprised and Check your classics, above a mini player."></button>
-        <figcaption>Your home screen<span>Every section can be reordered or hidden</span></figcaption>
+        <button class="frame" type="button"><img src="/screens/01-servers.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Media servers screen with navidrome, Jellyfin and AudioBookShelf already added and each server&rsquo;s address beneath its name, and a Choose a provider sheet open over it offering Subsonic &mdash; described as Navidrome, Airsonic, Gonic and other Subsonic servers &mdash; Jellyfin, Audiobookshelf, Plex and Emby."></button>
+        <figcaption>Five kinds of server<span>Subsonic, Jellyfin, Plex, Emby, Audiobookshelf</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/02-servers.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A Media servers screen listing a Jellyfin server and a Navidrome server, with an Add server button."></button>
-        <figcaption>Every server you run<span>Signed in to several at once</span></figcaption>
+        <button class="frame" type="button"><img src="/screens/02-server-home.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Media Servers screen on its Activity tab: a Mix row offering Track mix and Artist mix, a Continue watching row of film posters &mdash; The Great Train Robbery from 1903, Jungle Book from 1942, Night of the Living Dead from 1968 &mdash; and a Recently added row of album covers under it."></button>
+        <figcaption>Every server, on one page<span>Continue watching, recently added, most played</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/03-subsonic.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A Navidrome library over Subsonic, showing Recently added, Most played and Recently played rows of album artwork."></button>
-        <figcaption>Your Subsonic library<span>Recently added, most played, played again</span></figcaption>
+        <button class="frame" type="button"><img src="/screens/03-film.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The details page for Jungle Book: the 1942 poster, the year, a running time of 1:44:54, an NR certificate and a 6.3 rating, a Play button, the full synopsis, then genres, director Zoltan Korda, writers Rudyard Kipling and Laurence Stallings, the studio, a More like this row and a Cast row."></button>
+        <figcaption>Films with everything attached<span>Synopsis, cast, genres and what to watch next</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/04-jellyfin.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A Jellyfin server showing Movies, Shows and Albums tabs above Continue watching and Next up rows."></button>
-        <figcaption>Films and shows from Jellyfin<span>Continue watching, ready to resume</span></figcaption>
+        <button class="frame" type="button"><img src="/screens/04-series.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The details page for the web series Pioneer One, running 2010 to 2011, with its description, genres of Sci-Fi &amp; Fantasy, War &amp; Politics and Drama, a Next up card showing series 1 episode 3 with a still from it, and a Seasons row beneath."></button>
+        <figcaption>Shows remember where you stopped<span>Next up, then every season</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/05-album.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The album Fairytale by Natasha Beller, nine songs, with its full track list and play and shuffle buttons."></button>
-        <figcaption>Albums with real artwork<span>Play or shuffle from the top of any list</span></figcaption>
+        <button class="frame" type="button"><img src="/screens/05-music.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Media Servers screen on its Activity tab, showing a music library: a Mix row with Track mix and Artist mix, then rows of album artwork under Recently added, Most played and Recently played, each cover captioned with its album title and artist."></button>
+        <figcaption>Your music, sorted properly<span>Mixes, recently added, most played, played again</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/08-queue.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A queue of seven items mixing a podcast episode, album tracks, a live stream, a video and a local recording."></button>
-        <figcaption>One queue for every medium<span>Podcast, album, stream and video together</span></figcaption>
+        <button class="frame" type="button"><img src="/screens/06-player.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The full player showing the LibriVox cover of Aesop&rsquo;s Fables Volume 6, the whole screen tinted gold to match it. Below the artwork: a Chapters button, the title The Prophet, the file details MP3 at 64 kb/s and 24 kHz, a scrubber at 7:22 of 31:17, transport controls, and buttons for 1.0x speed, Sleep and More."></button>
+        <figcaption>One player for all of it<span>And it takes its colours from the artwork</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/07-chapters.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The player with its chapter list open over the artwork: The Prophet at 6:26 highlighted as the chapter playing, then The Hound and The Hare, The Lion, The Mouse, and The Fox, The Trumpeter Taken Prisoner, The Wolf and The Crane, and The Eagle, The Cat, and The Wild Sow &mdash; each with its length."></button>
+        <figcaption>Chapters, one tap away<span>Jump anywhere in a long file</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/08-transcript.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The player on its Transcript tab for Episode 271: Foot Terminal from Podcasting 2.0, with the line currently being spoken highlighted in a box as the transcript scrolls. Chapters, Transcript and Notes tabs sit below it."></button>
+        <figcaption>Transcripts that follow along<span>The spoken line, highlighted as it plays</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/09-video.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The video player showing Afrobeats in 1080p, with cast and full-screen controls and transport buttons below."></button>
-        <figcaption>Video, full screen<span>Your files or your server's, ready to cast</span></figcaption>
+          alt="The player with a scene from Jungle Book playing in it, the screen tinted green to match the picture. Underneath: the title, the year 1942, the file details AAC at 129 kb/s and 44.1 kHz, a progress bar at 1:29:11 of 1:44:54 and a pause button. Full-screen and cast buttons sit at the top."></button>
+        <figcaption>Video, in the same player<span>No second app, and it casts to the television</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/10-downloads.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="The Downloads screen with a saved 24 MB episode, playable with no connection."></button>
+        <button class="frame" type="button"><img src="/screens/10-playlist.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="A playlist called Seamless Playlist holding 4 items, its cover a mosaic of the four, with Play and Shuffle buttons. The items are The Prophet from Aesop&rsquo;s Fables Volume 6, the 1942 Jungle Book film, the track Footsteps by Jeff Kaale, and Episode 271: Foot Terminal from Podcasting 2.0 &mdash; each with a small icon saying which kind it is."></button>
+        <figcaption>One playlist, four kinds of media<span>Audiobook, film, track and podcast episode</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/11-search.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Search screen with dracula typed into it and a Library and Discover toggle underneath, the results grouped by source: a Videos heading with the 1931 Dracula held on the phone, and a Jellyfin heading with the 1931 Dracula held on the server."></button>
+        <figcaption>Search your phone and your servers<span>Results grouped by where they live</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/12-subscribe.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Add subscription screen listing Add from providers, Add from synchronisation server for keeping subscriptions and positions in step with your other devices, Add a local folder, Browse top podcasts by country and category, Add a podcast by address for an RSS feed you already have, and Import subscriptions from a file for OPML exported from another app &mdash; with a Search every directory box below it."></button>
+        <figcaption>Six ways to add a podcast<span>An RSS address, an OPML file, the charts, a folder</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/13-favourites.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Favourites screen with filter chips for All, Playlists, Local media, Subscriptions and Media servers, above a list of favourited tracks: Time Lines by Pete Lund, Feij&atilde;o by Dr. Quandary, He Was (Clementine) and Fairytale by Natasha Beller, Rain by Ugress, 999,999 by Nine Inch Nails, Footsteps by Jeff Kaale and Seasons by Aso."></button>
+        <figcaption>Favourites, wherever they came from<span>Filter by playlists, files, podcasts or servers</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame" type="button"><img src="/screens/14-downloads.webp" width="640" height="1425" loading="lazy" decoding="async"
+          alt="The Downloads screen with Subscriptions and Media servers chips to filter by source, listing the downloaded track Footsteps by Jeff Kaale with a download tick beside its name."></button>
         <figcaption>Downloads that stay put<span>Keep what you want, play it with no signal</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/11-permissions.webp" width="640" height="1425" loading="lazy" decoding="async"
-          alt="A Before you start screen offering music, video and notification permissions, each with a Maybe later option."></button>
-        <figcaption>Permissions you choose<span>Each one optional, and reversible any time</span></figcaption>
       </figure>
 
     </div>

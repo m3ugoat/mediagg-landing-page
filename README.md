@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/screens/01-home.webp" width="200" alt="The Mediagg home screen">
+  <img src="public/screens/hero-home.webp" width="200" alt="The Mediagg home screen">
 </p>
 
 <h1 align="center">Mediagg — landing page</h1>
@@ -25,7 +25,7 @@ carries no install link until that listing exists.
 | Path | |
 |---|---|
 | `public/` | The site. Home, privacy, `m3ugoat/`, 404, three `deeplink/` landing pages Android falls back to when the app is not installed, and two redirect stubs at `/full` and `/personal` — plus the screenshots and icons. This is what gets deployed. |
-| `public/screens/` | The carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-choose-style.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. **See the warning below before trusting any of them.** |
+| `public/screens/` | The fourteen carousel screenshots at 640px, with 1080px twins in `large/` for the enlarged view, plus `hero-home.webp` — the one in the phone at the top of the home page, which is not part of the carousel and so has no twin. All from the shipping build; see below. |
 | `public/icons/` | `mediagg.png`, the launcher icon, and `og.png` for link previews. `mediagg-personal.png` is the retired Personal edition's icon, kept but no longer used by any page. |
 | `content/` | The documentation sources: Markdown with front matter, plus `_shell.html` and `docs.css`. Edited by hand; never deployed. |
 | `scripts/build-docs.py` | Renders `content/documentation/` into `public/documentation/`. Stdlib-only Python, no dependencies. |
@@ -63,20 +63,33 @@ Two rules follow from what that build actually is, and both are easy to break by
   only because it must be accurate: it names Crashlytics, which is genuinely in the build, and is
   silent about advertising rather than boasting of its absence.
 
-### ⚠ Every screenshot on the site is from the wrong build
+### The screenshots, and where they come from
 
-The eleven carousel shots and the hero were all captured from an Xtended build, and it shows: the
-bottom navigation has an **Explore** tab, the search results are full of radio stations, and one
-whole slide is the Explore screen itself. The two worst — station search and Explore — have been
-removed from the carousel; the rest are still there and still wrong in the navigation bar.
+**They are from the shipping build.** Every shot on the site was replaced in September 2026 with a
+capture of the build the app repository calls `freePlayFull`: the bottom bar reads Library, Home,
+Search, Settings, there is no **Explore** tab, and no slide shows a radio station. The eleven
+Xtended-build shots that used to be here — Explore tab in the navigation, station search, an Explore
+slide — are gone, along with the warning that said not to deploy.
 
-**They are being replaced.** Drop the new files into `public/screens/` at 640px wide with 1080px
-twins under the same names in `public/screens/large/`, replace `hero-choose-style.webp`, then add or
-remove `<figure class="shot">` blocks in `public/index.html` to match — the carousel counts its own
-slides, so the dots, arrows and enlarged view need no other change. There is a comment above the
-rail saying the same thing.
+Fourteen carousel slides and the hero, all **dark theme**, because the page is dark. The sources are
+landscape mock-up renders, one per screen, each holding the same screen twice — light on the left in
+an iPhone frame, dark on the right in an Android one. The site ships the **Android** one, cropped to
+the screen alone at `(1250, 37)`–`(2049, 1816)`, which is 799×1779 and the same 2.2266 aspect the
+page already used. Two reasons for cropping the frame off: `.frame` in `public/index.html` draws the
+bezel itself, and the iPhone shell would promise a build that does not exist.
 
-**Do not deploy until that is done.**
+That crop is 799px wide, so the 1080px twins are upscaled about 1.35×. The enlarged view is capped at
+`76vh`/`84vw` and so paints at roughly 500px at most, which the twins still cover at 2× — but a
+future capture at 1080px or more of real screen width would be better than this one.
+
+To change the set: drop `.webp` files into `public/screens/` at 640px wide with 1080px twins under
+the same names in `public/screens/large/`, then add or remove `<figure class="shot">` blocks in
+`public/index.html` to match — the carousel counts its own slides, so the dots, arrows and enlarged
+view need no other change. The hero is `hero-home.webp`, is not part of the carousel, and so has no
+twin. There is a comment above the rail saying the same thing.
+
+Captions and `alt` describe what is actually on screen, down to the titles, timings and bitrates, so
+a caption cannot drift from its picture without someone noticing. Keep that when swapping a shot.
 
 ## The m3ugoat page
 
@@ -113,7 +126,8 @@ Adding a page is one new file. Front matter takes `title`, `summary`, `order`, `
 
 The Markdown understood is a deliberately small subset — headings, paragraphs, bold, italic, inline
 code, links, lists, tables, blockquotes and fenced code. **Anything else is a hard error**, including
-images: no screenshots ship until the warning above is resolved.
+images — the generator has no image support, so the documentation is text even now that the home
+page has real screenshots again.
 
 Two content rules on top of the ones above. Quote the app's own wording exactly and in backticks,
 checking it against the app source rather than remembering it — the strings are still hard-coded
