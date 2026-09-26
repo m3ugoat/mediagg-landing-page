@@ -115,15 +115,14 @@ nav.stuck{border-bottom-color:var(--line);background:rgba(11,13,16,.9)}
 @media(max-width:560px){.c2,.c3{display:none}.stage{height:200px}}
 
 /* hero shot */
-/* The screenshots are landscape renders that already contain their own two devices and their own
-   background, so this draws no bezel of its own — a hairline card and a shadow, nothing more. Any
-   padding or phone gradient here would be a second frame around a picture of a frame. */
-.shotcard{position:absolute;left:50%;top:0;translate:-50% 0;width:560px;border-radius:18px;
-  border:1px solid rgba(255,255,255,.16);overflow:hidden;
-  box-shadow:0 40px 100px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.1)}
+/* The screenshots are landscape renders of two devices cut out on a transparent background, so
+   this draws no card of its own. The shadow is a drop-shadow on the image, not a box-shadow, so it
+   follows the phones' outline instead of the picture's rectangle. */
+.shotcard{position:absolute;left:50%;top:0;translate:-50% 0;width:560px}
 /* aspect-ratio, not just height:auto — it reserves the height the render will occupy before it
    loads, so the hero does not reflow the marquee and everything below it on arrival. */
-.shotcard img{display:block;width:100%;height:auto;aspect-ratio:2238/1854;background:#0a0d11}
+.shotcard img{display:block;width:100%;height:auto;aspect-ratio:2238/1854;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
 @media(max-width:1000px){.shotcard{width:470px}}
 @media(max-width:860px){.shotcard{width:390px}}
 @media(max-width:560px){.shotcard{width:min(330px,92%)}}
@@ -172,18 +171,15 @@ section{padding:104px 0;position:relative}
    26px gap out to 106px and looked deliberate; with a 520px landscape slide it is the difference
    between two fitting across the rail and one, which would give the carousel a dot per slide. */
 .shot{flex:none;width:var(--shot);scroll-snap-align:start;text-align:center;margin:16px 0}
-/* Same construction as the hero's .shotcard, so the two read alike: no bezel, because the render
-   already contains its devices and its own background. A button rather than a div: it opens the
+/* Same construction as the hero's .shotcard, so the two read alike: no bezel and no card, because
+   the render is its two devices on a transparent background. A button rather than a div: it opens the
    enlarged view, so it has to be reachable by keyboard and announce itself as something to press. */
 .frame{display:block;width:100%;font:inherit;color:inherit;-webkit-appearance:none;cursor:zoom-in;
-  border-radius:18px;padding:0;overflow:hidden;background:#0a0d11;
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:0 30px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1);
-  transition:transform .45s var(--ease),box-shadow .45s,border-color .45s}
+  border-radius:18px;padding:0;background:none;border:0;
+  transition:transform .45s var(--ease)}
 .frame:focus-visible{outline:2px solid var(--red);outline-offset:4px}
-.shot:hover .frame{transform:translateY(-7px);border-color:rgba(255,61,61,.4);
-  box-shadow:0 40px 90px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.12)}
-.frame img{display:block;width:100%;height:auto;border-radius:17px;background:#0a0d11}
+.shot:hover .frame{transform:translateY(-7px)}
+.frame img{display:block;width:100%;height:auto}
 .shot figcaption{margin-top:18px;font-size:13.5px;font-weight:700;color:var(--ink);padding:0 4px;line-height:1.45}
 .shot figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
 .arw{position:absolute;top:50%;translate:0 calc(-50% - 30px);z-index:5;
@@ -214,14 +210,13 @@ section{padding:104px 0;position:relative}
   opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
 .lb.on{opacity:1;visibility:visible}
 .lbfig{margin:0;display:grid;justify-items:center;gap:18px;max-height:100%}
-.lbshell{padding:0;border-radius:20px;overflow:hidden;background:#0a0d11;
-  border:1px solid rgba(255,255,255,.18);box-shadow:0 40px 120px rgba(0,0,0,.8);
+.lbshell{padding:0;
   transform:scale(.94);transition:transform .35s var(--ease);line-height:0}
 .lb.on .lbshell{transform:none}
 /* Both maxima with auto on both axes, so the picture is fitted rather than stretched: a fixed
    height plus a max-width would squash it on a narrow screen. */
 .lbshell img{display:block;max-height:76vh;max-width:92vw;width:auto;height:auto;
-  border-radius:19px;background:#0a0d11}
+  filter:drop-shadow(0 30px 50px rgba(0,0,0,.7))}
 .lbfig figcaption{text-align:center;font-size:14px;font-weight:700;color:var(--ink);max-width:min(90vw,420px)}
 .lbfig figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
 .lbfig figcaption .lbnum{margin-top:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
@@ -445,9 +440,9 @@ footer a:hover{color:var(--ink)}
   <!-- SCREENSHOT SET. The renders as they were supplied: one landscape picture per screen, each
        holding the same screen twice — an iPhone in the light theme on the left, an Android phone
        in the dark on the right — so every slide says both platforms at once. Nothing is cropped
-       out of them, which is why .frame draws no bezel: the devices and their background are in
-       the picture already. All from the shipping build — the bottom bar is Library, Home, Search
-       and Settings, with no Explore tab. To change the set, drop .webp files into /screens at
+       out of them, but their background is cut away, so each is two phones on transparency and
+       .frame draws neither bezel nor card around them. All from the shipping build — the bottom
+       bar is Library, Home, Search and Settings, with no Explore tab. To change the set, drop .webp files into /screens at
        1119px wide with 2238px twins under the same names in /screens/large, then add or remove
        <figure class="shot"> blocks — the carousel counts them itself, so nothing else needs
        touching. -->

@@ -71,18 +71,23 @@ Search, Settings, there is no **Explore** tab, and no slide shows a radio statio
 Xtended-build shots that used to be here — Explore tab in the navigation, station search, an Explore
 slide — are gone, along with the warning that said not to deploy.
 
-Fourteen carousel slides and the hero. The sources are **landscape mock-up renders, used as they
-were supplied** — one picture per screen, each holding the same screen twice: an iPhone in the light
-theme on the left, an Android phone in the dark on the right, on a background that splits light to
-dark down the middle. Nothing is cropped out of them, so every slide shows both platforms and both
-themes at once. They are 2238×1854; the carousel gets an exact half at 1119×927 and the enlarged
-view gets the full size, so **nothing is upscaled**.
+Fourteen carousel slides and the hero. The sources are **landscape mock-up renders** — one picture
+per screen, each holding the same screen twice: an iPhone in the light theme on the left, an Android
+phone in the dark on the right. The renders came on a grey background; that has been **cut away to
+transparency**, so each picture is the two devices and nothing else. The source PNGs in
+`../mediagg_screenshots/` are the cut-out versions, and the untouched renders are kept alongside in
+`../mediagg_screenshots_originals/`. Nothing else is cropped out of them, so every slide shows both
+platforms and both themes at once. They are 2238×1854; the carousel gets an exact half at 1119×927
+and the enlarged view gets the full size, so **nothing is upscaled**. The WebPs keep the alpha
+channel, so re-encode with transparency if you regenerate them.
 
 Two layout consequences, both already handled, and both easy to undo by accident:
 
-- **Nothing here draws a bezel.** `.frame` and the hero's `.shotcard` are a hairline border, a
-  radius and a shadow, with no padding — the devices and their background are in the picture
-  already, so a phone shell around one would be a frame around a picture of a frame.
+- **Nothing here draws a bezel or a card.** `.frame`, the hero's `.shotcard` and the enlarged
+  view's `.lbshell` have no border, background or box-shadow — the pictures are transparent around
+  the phones, so any of those would draw a rectangle round two phone shapes. The hero and the
+  enlarged view put a `drop-shadow` filter on the image instead, which follows the phones' outline.
+  The carousel has none: headless Chrome did not paint the slides with one.
 - **`.shot` sets `margin:16px 0`.** A `<figure>` carries `margin: 1em 40px` by default, which padded
   the rail's 26px gap out to 106px. That looked deliberate behind 236px portrait slides; behind a
   520px landscape slide it is the difference between two fitting across the rail and one, and one
