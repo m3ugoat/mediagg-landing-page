@@ -1,0 +1,44 @@
+/*
+ * Mediagg's Chromecast receiver skin — for a Styled Media Receiver.
+ *
+ * Paste https://mediagg.app/cast/receiver.css into the receiver's "Skin URL" in the Google Cast SDK
+ * Developer Console (cast.google.com/publish). The Chromecast loads it, and the images below, from
+ * this site over HTTPS; nothing in the apps refers to any of it.
+ *
+ * A Styled Media Receiver reads exactly these five classes and only the properties used here —
+ * anything else is ignored, so there is no point adding layout or fonts.
+ *
+ *   .background   behind everything, while idle and around letterboxed video
+ *   .logo         on the idle screen, before anything is cast
+ *   .splash       while the receiver is starting up
+ *   .progressBar  the playback position under the title
+ *   .watermark    over the picture while something plays
+ *
+ * The images are generated from the app's own mark (`ic_logo_mark` in :ui) on the launcher icon's
+ * background gradient, #5f5f6d to #3f374a. The progress bar is the red at the middle of the mark,
+ * #fb4e37. Absolute URLs, because the stylesheet is applied inside the receiver's page on the
+ * Chromecast and a relative one would resolve against that page, not this site.
+ *
+ * A Chromecast caches the skin: after changing anything here, restart it to see the change.
+ */
+
+.background {
+  background: url("https://mediagg.app/cast/background.png") center / cover no-repeat #3f374a;
+}
+
+.logo {
+  background-image: url("https://mediagg.app/cast/logo.png");
+}
+
+.splash {
+  background-image: url("https://mediagg.app/cast/splash.png");
+}
+
+.progressBar {
+  background-color: #fb4e37;
+}
+
+.watermark {
+  background-image: url("https://mediagg.app/cast/watermark.png");
+  background-size: 64px 64px;
+}
