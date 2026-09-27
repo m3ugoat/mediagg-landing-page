@@ -1,0 +1,3 @@
+User-agent: *
+# Screen recordings for Play Console reviewers, not for search results.
+Disallow: /play/

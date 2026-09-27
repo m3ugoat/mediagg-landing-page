@@ -29,7 +29,9 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 # Screen recordings linked from Play Console declarations (foreground service, picture-in-picture,
-# downloads). They are there for reviewers, not visitors, so keep them out of search results.
+# downloads). They are there for reviewers, not visitors, so keep them out of search results. This
+# header only applies on Netlify; GitHub Pages, which serves mediagg.app, cannot set headers, so
+# public/robots.txt disallows /play/ as well.
 [[headers]]
   for = "/play/*"
   [headers.values]
