@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>m3ugoat — Mediagg</title>
-<meta name="description" content="m3ugoat is a playlist server you run yourself. Mediagg signs in to it and reads your IPTV playlists directly — ordering and hidden channels included.">
+<meta name="description" content="m3ugoat is a self-hosted IPTV playlist manager. Mediagg connects to it and reads your playlists directly, including channel order and hidden channels.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="m3ugoat — Mediagg">
-<meta property="og:description" content="A playlist server you run yourself. Mediagg signs in and reads your playlists directly.">
+<meta property="og:description" content="A self-hosted IPTV playlist manager that Mediagg can subscribe to.">
 <meta property="og:image" content="/icons/og.png">
 <style>
 :root{--bg:#0b0d10;--ink:#f2f5f8;--muted:#93a1b0;--dim:#6c7a89;--red:#ff3d3d;--line:rgba(255,255,255,.09)}
@@ -53,51 +53,47 @@ code{background:rgba(255,255,255,.07);border-radius:5px;padding:2px 7px;font-siz
 <main class="wrap">
 
 <h1>m3ugoat</h1>
-<p class="sub">A playlist server you run yourself — and one of the places Mediagg can subscribe to.</p>
+<p class="sub">A self-hosted IPTV playlist manager that Mediagg can subscribe to.</p>
 
-<p><strong>m3ugoat is a small program you run on your own network</strong>, on a computer or a home
-server. It keeps your IPTV playlists in one place: you add channels to it, put them in the order you
-want, hide the ones you never watch, and group them into playlists.</p>
+<p><strong>m3ugoat is a server you run on your own network</strong>, on a computer or a home server.
+It stores your IPTV playlists in one place, where you can add channels, set their order, hide
+channels and group them into playlists.</p>
 
-<p>Mediagg then signs in to it and reads those playlists directly, so what you subscribe to on your
-phone is what you arranged on the server — <strong>including the ordering and the hidden
-channels</strong>.</p>
+<p>Mediagg connects to m3ugoat through its API and reads your playlists directly, so your
+subscriptions in the app match what you set up on the server, <strong>including channel order and
+hidden channels</strong>.</p>
 
 <div class="note">
-<p><strong>It is not a service, and there is nothing to sign up to.</strong> Nobody runs m3ugoat for
-you. If you are not already running one, there is nothing to add in the app yet — start with the
-server, then come back.</p>
+<p><strong>m3ugoat is self-hosted.</strong> There is no account to create and no hosted version. To
+use it with Mediagg, set up an m3ugoat server first, then add it in the app.</p>
 </div>
 
-<h2>Why not just paste a playlist link?</h2>
+<h2>Why Mediagg uses the API instead of a playlist link</h2>
 
-<p>You can. m3ugoat gives every playlist a plain export link, and any IPTV player will take it —
-that is exactly what it is for.</p>
+<p>m3ugoat provides a standard export link for every playlist, which any IPTV player can use.</p>
 
-<p>Mediagg does something different on purpose. It talks to the server's API rather than downloading
-the finished file, because <strong>a plain m3u file has nowhere to record two of the decisions you
-made</strong>: which channels are hidden, and what order they go in. Reading the API keeps both.</p>
+<p>Mediagg reads the server's API instead of the exported file, because <strong>an m3u file does not
+record which channels are hidden or the order you set</strong>. The API includes both.</p>
 
-<p>There is a second reason. An export link can be rotated — you regenerate it when a link has been
-shared too widely. A subscription pinned to that link would quietly fork into a second copy the day
-you pressed the button. Signing in avoids that entirely.</p>
+<p>Export links can also be regenerated, for example when a link has been shared too widely. A
+subscription tied to the old link would stop matching the server. Signing in avoids this.</p>
 
 <h2>Adding your server to Mediagg</h2>
 
 <ol class="steps">
 <li>In Mediagg, open <strong>Subscriptions</strong>, tap <strong>+</strong>, choose <strong>Add from
 providers</strong>, then <strong>m3ugoat</strong>.</li>
-<li>Tap <strong>Add an m3ugoat server</strong> and enter its address — usually a local one, like
+<li>Tap <strong>Add an m3ugoat server</strong> and enter its address, usually a local one such as
 <code>192.168.1.10:8080</code>.</li>
-<li>Sign in if the server asks. <strong>A server with no accounts on it needs no password</strong>,
-and Mediagg checks which case it is before offering the fields. A username is only needed once the
-server has more than one account.</li>
+<li>Sign in if the server requires it. <strong>A server with no accounts does not need a
+password</strong>; Mediagg checks this before showing the sign-in fields. A username is only required
+when the server has more than one account.</li>
 <li>Open the server to see its playlists, and subscribe to the ones you want. Your m3ugoat
-categories come through as the group each channel sits in.</li>
+categories are used as the channel groups.</li>
 </ol>
 
-<p>Signing in adds that phone to the server's own device list, where you can sign it out again later
-— useful if you lose the device or simply stop using it.</p>
+<p>Signing in adds the device to the server's device list, where you can sign it out later, for
+example if the device is lost or no longer used.</p>
 
 <div class="note">
 <p><strong>You can add more than one server.</strong> The provider lists every server you have added,
@@ -108,9 +104,9 @@ and opening one shows that account's playlists.</p>
 
 <p>m3ugoat is free and open source.</p>
 
-<p><a href="https://github.com/m3ugoat/m3ugoat-playlist-manager/">github.com/m3ugoat/m3ugoat-playlist-manager</a> — installation is a
-git clone, <code>npm install</code>, <code>npm run build</code>, and PM2 to keep it running. It
-needs Node 24 or newer.</p>
+<p><a href="https://github.com/m3ugoat/m3ugoat-playlist-manager/">github.com/m3ugoat/m3ugoat-playlist-manager</a>. Installation uses
+git clone, <code>npm install</code> and <code>npm run build</code>, with PM2 to keep the server
+running. It requires Node 24 or newer.</p>
 
 <div class="chips">
   <span class="chip">Runs on your network</span>
@@ -119,11 +115,10 @@ needs Node 24 or newer.</p>
   <span class="chip">Per-device sign-in</span>
 </div>
 
-<h2>A note on what it does not do</h2>
+<h2>What m3ugoat does not include</h2>
 
-<p><strong>m3ugoat provides no channels and no streams.</strong> It is a manager for playlists you
-already have, exactly as Mediagg is a player for media you already have. You bring your own
-content.</p>
+<p><strong>m3ugoat does not provide channels or streams.</strong> It manages playlists you already
+have, in the same way that Mediagg plays media you already have.</p>
 
 </main>
 <footer><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">

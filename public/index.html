@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mediagg — your whole library, wherever it lives</title>
-<meta name="description" content="Mediagg plays the music, podcasts and video on your phone, on your own media server, and across the web — and casts any of it to Chromecast or DLNA. Free to use.">
+<title>Mediagg — music, podcasts and video in one player</title>
+<meta name="description" content="Mediagg plays music, podcasts and video from your device, your media servers and podcast feeds, and casts to Chromecast and DLNA devices. Free to use.">
 <link rel="canonical" href="https://mediagg.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mediagg — your whole library, wherever it lives">
-<meta property="og:description" content="Music, podcasts and video. Your phone, your Subsonic, Jellyfin, Plex, Emby or Audiobookshelf server, and the open web — in one player that casts to anything.">
+<meta property="og:title" content="Mediagg — music, podcasts and video in one player">
+<meta property="og:description" content="Play music, podcasts and video from your device and from Subsonic, Jellyfin, Plex, Emby or Audiobookshelf servers, and cast to Chromecast and DLNA devices.">
 <meta property="og:url" content="https://mediagg.app/">
 <meta property="og:image" content="https://mediagg.app/icons/og.png">
 <meta property="og:image:width" content="1200">
@@ -269,7 +269,7 @@ section{padding:104px 0;position:relative}
 .wave span:nth-child(2){animation-delay:.85s}
 .wave span:nth-child(3){animation-delay:1.7s}
 @keyframes ripple{from{transform:scale(.32);opacity:1}to{transform:scale(1.35);opacity:0}}
-.wave b{font-size:36px;z-index:2}
+.wave svg{width:44px;height:44px;fill:var(--ink);z-index:2}
 
 /* marquee */
 .marq{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;
@@ -331,14 +331,14 @@ footer a:hover{color:var(--ink)}
 </div></nav>
 
 <header class="hero wrap" id="top">
-  <span class="eyebrow rv"><b>●</b> Free to use · Android now · iOS on the way</span>
-  <h1 class="rv">Your whole library,<br><span class="shine">wherever it lives.</span></h1>
-  <p class="lede rv">Music, podcasts and video — on your phone, on your own media server, and across the open web. One player for all of it, and it casts to anything in the house.</p>
+  <span class="eyebrow rv"><b>●</b> Free · Coming to Google Play · iOS to follow</span>
+  <h1 class="rv">Your media library,<br><span class="shine">in one player.</span></h1>
+  <p class="lede rv">Mediagg plays music, podcasts and video from your device, your own media servers and podcast feeds, and casts to Chromecast and DLNA devices.</p>
   <div class="cta rv">
     <a class="btn btn-p" href="#download">Coming soon to Google&nbsp;Play</a>
-    <a class="btn btn-g" href="#features">Explore the features</a>
+    <a class="btn btn-g" href="#features">View features</a>
   </div>
-  <p class="trust rv"><b>Works offline</b> · <b>Your own servers</b> · <b>Casts to anything</b></p>
+  <p class="trust rv"><b>Offline playback</b> · <b>Self-hosted servers</b> · <b>Chromecast and DLNA</b></p>
 
   <div class="stage rv">
     <div class="card3d c1"><span>🎧</span></div>
@@ -361,69 +361,69 @@ footer a:hover{color:var(--ink)}
 <!-- FEATURES -->
 <section id="features"><div class="wrap">
   <div class="head rv">
-    <span class="eyebrow">Everything in one place</span>
-    <h2>Built for people with real libraries</h2>
-    <p>Not a streaming subscription. A player that respects the music you already own, the shows you already follow, and the server you already run.</p>
+    <span class="eyebrow">Features</span>
+    <h2>Built for your own media collection</h2>
+    <p>Mediagg plays the media you own, the podcasts you follow and the content on the servers you run. No subscription is required.</p>
   </div>
 
   <div class="grid">
-    <div class="f rv"><div class="ic">🎵</div><h3>Local media, properly organised</h3>
-      <p>Everything on your device, sorted the way a music app should sort it — not dumped into one list.</p>
+    <div class="f rv"><div class="ic">🎵</div><h3>Local media</h3>
+      <p>Music, video and files on your device, organised into separate views.</p>
       <ul>
-        <li><b>Songs</b> — every track, sortable by name, date added or length</li>
-        <li><b>Albums</b>, artists, genres and years — built from your tags</li>
-        <li><b>Videos</b> — local video with a full-screen player</li>
-        <li><b>Filesystem</b> — a genuine file browser with breadcrumbs and storage volumes</li>
+        <li><b>Songs</b> — sort by name, date added or length</li>
+        <li><b>Albums</b>, artists, genres and years, built from your file tags</li>
+        <li><b>Videos</b> — full-screen video player</li>
+        <li><b>Filesystem</b> — file browser with support for multiple storage volumes</li>
       </ul>
     </div>
 
-    <div class="f rv"><div class="ic">📚</div><h3>Playlists that are yours</h3>
-      <p>Build them in the app or bring the ones you already have. Nothing is locked in.</p>
+    <div class="f rv"><div class="ic">📚</div><h3>Playlists</h3>
+      <p>Create playlists in the app or import existing ones.</p>
       <ul>
-        <li>Create, rename, pin to the top and give a cover</li>
-        <li><b>Import M3U</b> playlists straight from your storage</li>
-        <li>Add anything to a playlist from any screen</li>
-        <li>Play all or shuffle from the top of any list</li>
+        <li>Create, rename, pin and add cover images</li>
+        <li><b>Import M3U</b> playlists from device storage</li>
+        <li>Add items to a playlist from any screen</li>
+        <li>Play or shuffle any list</li>
       </ul>
     </div>
 
-    <div class="f rv"><div class="ic">🎙️</div><h3>A serious podcast player</h3>
-      <p>The full podcast experience, not an afterthought bolted onto a music app.</p>
+    <div class="f rv"><div class="ic">🎙️</div><h3>Podcasts</h3>
+      <p>A complete podcast player with subscriptions, downloads and sync.</p>
       <ul>
         <li>Subscriptions, queue, inbox and downloads</li>
-        <li><b>Chapters</b> and <b>transcripts</b> with follow-along</li>
-        <li>Automatic downloads that make room for themselves</li>
-        <li><b>OPML import</b>, and sync with gpodder.net or Nextcloud</li>
+        <li><b>Chapters</b> and <b>transcripts</b> that follow playback</li>
+        <li>Automatic downloads that free up space as needed</li>
+        <li><b>OPML import</b> and sync with gpodder.net or Nextcloud</li>
       </ul>
     </div>
 
-    <div class="f rv"><div class="ic">🎬</div><h3>Video, in the same player</h3>
-      <p>The films and shows on your phone and on your server, without a second app to open.</p>
+    <div class="f rv"><div class="ic">🎬</div><h3>Video</h3>
+      <p>Play films and shows from your device and your media servers.</p>
       <ul>
-        <li>Local video with a full-screen player</li>
+        <li>Local video playback</li>
         <li><b>Films and shows</b> from Jellyfin, Plex and Emby</li>
-        <li><b>Continue watching</b> picks up where you stopped</li>
-        <li>Cast any of it to the television</li>
+        <li><b>Continue watching</b> resumes where you left off</li>
+        <li>Cast to your TV</li>
       </ul>
     </div>
 
-    <div class="f rv"><div class="ic">🎚️</div><h3>Playback that behaves</h3>
-      <p>The controls you actually reach for, where you expect them.</p>
+    <div class="f rv"><div class="ic">🎚️</div><h3>Playback controls</h3>
+      <p>Control how your media plays.</p>
       <ul>
-        <li>Variable speed and a <b>sleep timer</b></li>
-        <li><b>Timed lyrics</b> from your files or LrcLib</li>
-        <li>A queue you can drag, search and keep sorted</li>
+        <li>Variable playback speed and <b>sleep timer</b></li>
+        <li><b>Synchronised lyrics</b> from your files or LrcLib</li>
+        <li>Queue with drag-to-reorder, search and sorting</li>
         <li>Lock-screen and notification controls</li>
       </ul>
     </div>
 
-    <div class="f rv"><div class="ic">🎨</div><h3>Make it yours</h3>
-      <p>Very few apps let you move this much furniture. This one does.</p>
+    <div class="f rv"><div class="ic">🎨</div><h3>Customisation</h3>
+      <p>Adjust the layout to suit how you use the app.</p>
       <ul>
-        <li>Put the home-screen shelves in your order</li>
-        <li>Choose which tabs the bottom bar carries</li>
-        <li>Grid or list, remembered per screen</li>
-        <li>Light, dark or true black, with accents from the artwork</li>
+        <li>Reorder the home-screen sections</li>
+        <li>Choose the tabs in the bottom bar</li>
+        <li>Grid or list view, saved per screen</li>
+        <li>Light, dark and true-black themes, with colours taken from the artwork</li>
       </ul>
     </div>
   </div>
@@ -432,9 +432,9 @@ footer a:hover{color:var(--ink)}
 <!-- SCREENSHOTS -->
 <section id="screens"><div class="wrap">
   <div class="head rv">
-    <span class="eyebrow">See it running</span>
-    <h2>Real screens, both themes</h2>
-    <p>Every shot below is the app as it ships — a real library, real servers, real files — each screen in the light theme and the dark. Swipe, drag or use the arrows, and click any screen to see it full size.</p>
+    <span class="eyebrow">Screenshots</span>
+    <h2>Light and dark themes</h2>
+    <p>Each screen is shown in both the light and the dark theme. Use the arrows or swipe to browse, and select a screenshot to view it at full size.</p>
   </div>
 
   <!-- SCREENSHOT SET. The renders as they were supplied: one landscape picture per screen, each
@@ -453,85 +453,85 @@ footer a:hover{color:var(--ink)}
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/01-servers.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media servers screen with navidrome, Jellyfin and AudioBookShelf already added and each server&rsquo;s address beneath its name, and a Choose a provider sheet open over it offering Subsonic &mdash; described as Navidrome, Airsonic, Gonic and other Subsonic servers &mdash; Jellyfin, Audiobookshelf, Plex and Emby."></button>
-        <figcaption>Five kinds of server<span>Subsonic, Jellyfin, Plex, Emby, Audiobookshelf</span></figcaption>
+        <figcaption>Media servers<span>Subsonic, Jellyfin, Plex, Emby and Audiobookshelf</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/02-server-home.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media Servers screen on its Activity tab, with a Mix row offering Track mix and Artist mix, a Continue watching row of film posters &mdash; The Great Train Robbery from 1903, Jungle Book from 1942, Night of the Living Dead from 1968 &mdash; and a Recently added row of album covers under it."></button>
-        <figcaption>Every server, on one page<span>Continue watching, recently added, most played</span></figcaption>
+        <figcaption>Server home<span>Continue watching, recently added and most played</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/03-film.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the details page for Jungle Book, with the 1942 poster, the year, a running time of 1:44:54, an NR certificate and a 6.3 rating, a Play button, the full synopsis, then genres, director Zoltan Korda, writers Rudyard Kipling and Laurence Stallings, the studio, a More like this row and a Cast row."></button>
-        <figcaption>Films with everything attached<span>Synopsis, cast, genres and what to watch next</span></figcaption>
+        <figcaption>Film details<span>Synopsis, cast, genres and recommendations</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/04-series.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the details page for the web series Pioneer One, running 2010 to 2011, with its description, genres of Sci-Fi &amp; Fantasy, War &amp; Politics and Drama, a Next up card showing series 1 episode 3 with a still from it, and a Seasons row beneath."></button>
-        <figcaption>Shows remember where you stopped<span>Next up, then every season</span></figcaption>
+        <figcaption>Series details<span>Next episode and season list</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/05-music.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media Servers screen showing a music library: a Mix row with Track mix and Artist mix, then rows of album artwork under Recently added, Most played and Recently played, each cover captioned with its album title and artist."></button>
-        <figcaption>Your music, sorted properly<span>Mixes, recently added, most played, played again</span></figcaption>
+        <figcaption>Music library<span>Mixes, recently added, most played and recently played</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/06-player.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the full player showing the LibriVox cover of Aesop&rsquo;s Fables Volume 6, the whole screen tinted to match it. Below the artwork: a Chapters button, the title The Prophet, the file details MP3 at 64 kb/s and 24 kHz, a scrubber at 7:22 of 31:17, transport controls, and buttons for 1.0x speed, Sleep and More."></button>
-        <figcaption>One player for all of it<span>And it takes its colours from the artwork</span></figcaption>
+        <figcaption>Player<span>Colours adapt to the artwork</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/07-chapters.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player with its chapter list open over the artwork: The Prophet at 6:26 highlighted as the chapter playing, then The Hound and The Hare, The Lion, The Mouse, and The Fox, The Trumpeter Taken Prisoner, The Wolf and The Crane, and The Eagle, The Cat, and The Wild Sow &mdash; each with its length."></button>
-        <figcaption>Chapters, one tap away<span>Jump anywhere in a long file</span></figcaption>
+        <figcaption>Chapters<span>Jump to any chapter in a long recording</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/08-transcript.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player on its Transcript tab for Episode 271: Foot Terminal from Podcasting 2.0, with the line currently being spoken highlighted in a box as the transcript scrolls, and Chapters, Transcript and Notes tabs below it."></button>
-        <figcaption>Transcripts that follow along<span>The spoken line, highlighted as it plays</span></figcaption>
+        <figcaption>Transcripts<span>The current line is highlighted during playback</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/09-video.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player with a scene from Jungle Book playing in it and the screen tinted to match the picture. Underneath: the title, the year 1942, the file details AAC at 129 kb/s and 44.1 kHz, a progress bar at 1:29:11 of 1:44:54 and a pause button, with full-screen and cast buttons at the top."></button>
-        <figcaption>Video, in the same player<span>No second app, and it casts to the television</span></figcaption>
+        <figcaption>Video playback<span>Uses the same player, with casting to your TV</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/10-playlist.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: a playlist called Seamless Playlist holding 4 items, its cover a mosaic of the four, with Play and Shuffle buttons. The items are The Prophet from Aesop&rsquo;s Fables Volume 6, the 1942 Jungle Book film, the track Footsteps by Jeff Kaale, and Episode 271: Foot Terminal from Podcasting 2.0 &mdash; each with a small icon saying which kind it is."></button>
-        <figcaption>One playlist, four kinds of media<span>Audiobook, film, track and podcast episode</span></figcaption>
+        <figcaption>Mixed playlists<span>Audiobooks, films, tracks and podcast episodes in one list</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/11-search.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Search screen with dracula typed into it and a Library and Discover toggle underneath, the results grouped by source: a Videos heading with the 1931 Dracula held on the phone, and a Jellyfin heading with the 1931 Dracula held on the server."></button>
-        <figcaption>Search your phone and your servers<span>Results grouped by where they live</span></figcaption>
+        <figcaption>Search<span>Results from your device and servers, grouped by source</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/12-subscribe.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Add subscription screen listing Add from providers, Add from synchronisation server for keeping subscriptions and positions in step with your other devices, Add a local folder, Browse top podcasts by country and category, Add a podcast by address for an RSS feed you already have, and Import subscriptions from a file for OPML exported from another app &mdash; with a Search every directory box below it."></button>
-        <figcaption>Six ways to add a podcast<span>An RSS address, an OPML file, the charts, a folder</span></figcaption>
+        <figcaption>Adding podcasts<span>RSS feed, OPML import, top charts or a local folder</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/13-favourites.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Favourites screen with filter chips for All, Playlists, Local media, Subscriptions and Media servers, above a list of favourited tracks: Time Lines by Pete Lund, Feij&atilde;o by Dr. Quandary, He Was (Clementine) and Fairytale by Natasha Beller, Rain by Ugress, 999,999 by Nine Inch Nails, Footsteps by Jeff Kaale and Seasons by Aso."></button>
-        <figcaption>Favourites, wherever they came from<span>Filter by playlists, files, podcasts or servers</span></figcaption>
+        <figcaption>Favourites<span>Filter by playlists, local media, podcasts or servers</span></figcaption>
       </figure>
 
       <figure class="shot">
         <button class="frame" type="button"><img src="/screens/14-downloads.webp" width="1119" height="927" loading="lazy" decoding="async"
           alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Downloads screen with Subscriptions and Media servers chips to filter by source, listing the downloaded track Footsteps by Jeff Kaale with a download tick beside its name."></button>
-        <figcaption>Downloads that stay put<span>Keep what you want, play it with no signal</span></figcaption>
+        <figcaption>Downloads<span>Saved for offline playback</span></figcaption>
       </figure>
 
     </div>
@@ -544,9 +544,9 @@ footer a:hover{color:var(--ink)}
 <section id="servers"><div class="wrap">
   <div class="row">
     <div class="txt rv">
-      <span class="eyebrow">Your server, your rules</span>
-      <h3>Plug in the library you already run</h3>
-      <p>Point Mediagg at your own media server and the whole thing appears — albums, artists, playlists, films, shows and audiobooks — with artwork, search and offline copies. Sign in to several at once and keep them all playing.</p>
+      <span class="eyebrow">Media servers</span>
+      <h3>Connect your media server</h3>
+      <p>Sign in to your media server to browse its albums, artists, playlists, films, shows and audiobooks, with artwork, search and offline downloads. You can connect several servers at the same time.</p>
       <div class="chips">
         <span class="chip">Subsonic</span><span class="chip">Navidrome</span><span class="chip">Airsonic</span>
         <span class="chip">OpenSubsonic</span><span class="chip">Jellyfin</span><span class="chip">Plex</span>
@@ -567,19 +567,18 @@ footer a:hover{color:var(--ink)}
 
   <div class="row rev">
     <div class="txt rv">
-      <span class="eyebrow">Never staring at a spinner</span>
-      <h3>It remembers what it showed you</h3>
-      <p>Every screen keeps the last answer your server gave. Open an album you have browsed before and it is on screen immediately, while a fresh copy loads quietly behind it. Lose the network and you still get your library, not an error page.</p>
+      <h3>Cached browsing</h3>
+      <p>Mediagg stores server responses on your device. Screens you have visited before open immediately from the cache and update when the server responds. If the connection drops, your library remains available to browse.</p>
       <div class="chips">
-        <span class="chip">Saved copy first</span><span class="chip">Silent refresh</span><span class="chip">Offline browsing</span>
-        <span class="chip">Failure never blanks the screen</span>
+        <span class="chip">Cached responses</span><span class="chip">Background refresh</span><span class="chip">Offline browsing</span>
+        <span class="chip">No blank screens on errors</span>
       </div>
     </div>
     <div class="visual rv" style="display:grid;place-items:center">
       <div style="text-align:center">
         <div style="font-size:60px;margin-bottom:14px">⚡</div>
-        <div style="font-weight:800;font-size:1.28rem">Instant, then accurate</div>
-        <p style="color:var(--muted);margin-top:10px;font-size:.94rem;max-width:290px">The screen fills from cache, then corrects itself the moment the server answers.</p>
+        <div style="font-weight:800;font-size:1.28rem">Cache first, then refresh</div>
+        <p style="color:var(--muted);margin-top:10px;font-size:.94rem;max-width:290px">Screens load from the cache and update when the server responds.</p>
       </div>
     </div>
   </div>
@@ -589,14 +588,14 @@ footer a:hover{color:var(--ink)}
 <section id="cast"><div class="wrap">
   <div class="row">
     <div class="visual rv"><div class="cast">
-      <div class="wave"><span></span><span></span><span></span><b>📡</b></div>
+      <div class="wave"><span></span><span></span><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/></svg></div>
       <div style="font-weight:800;margin-top:8px">Searching for devices…</div>
       <small style="color:var(--dim)">Chromecast · DLNA · UPnP renderers</small>
     </div></div>
     <div class="txt rv">
-      <span class="eyebrow">Send it anywhere</span>
-      <h3>Casting that isn't fussy about brands</h3>
-      <p>Chromecast is supported, and so is every DLNA/UPnP renderer on your network — the smart TV, the AV receiver, the old networked speaker that nothing else will talk to. Mediagg even runs its own media relay while it casts, so the files on your phone reach the device as readily as the tracks on your server.</p>
+      <span class="eyebrow">Casting</span>
+      <h3>Chromecast and DLNA casting</h3>
+      <p>Cast to Chromecast devices and to DLNA/UPnP renderers on your network, including smart TVs, AV receivers and networked speakers. While casting, Mediagg runs a built-in media relay, so files on your device can be played as well as streams from your servers.</p>
       <div class="chips">
         <span class="chip">Google Cast</span><span class="chip">DLNA / UPnP</span><span class="chip">Built-in media relay</span>
         <span class="chip">Local files</span><span class="chip">Server streams</span><span class="chip">Video &amp; audio</span>
@@ -608,27 +607,27 @@ footer a:hover{color:var(--ink)}
 <!-- DISCOVER -->
 <section id="discover"><div class="wrap">
   <div class="head rv">
-    <span class="eyebrow">Find something new</span>
-    <h2>One search, everything at once</h2>
-    <p>Search reaches your device, your subscriptions and every server you are signed in to — in the same list, at the same time. Flip it to Discover and the same box searches the podcast directories instead.</p>
+    <span class="eyebrow">Search and discovery</span>
+    <h2>Search across all your sources</h2>
+    <p>A single search covers your device, your podcast subscriptions and every connected server. Switch to Discover to search podcast directories instead.</p>
   </div>
   <div class="grid">
-    <div class="f rv"><div class="ic">🔍</div><h3>Search everywhere</h3><p>Local files, podcasts and every signed-in server queried together, with the results grouped by where they live.</p></div>
-    <div class="f rv"><div class="ic">🌍</div><h3>Browse top podcasts</h3><p>The Apple Podcasts charts by country and category, starting where you are instead of somewhere else — and PodcastIndex in the directory search.</p></div>
-    <div class="f rv"><div class="ic">⭐</div><h3>Favourites that sync back</h3><p>Star a track and it is starred on your server too — not stranded in the app.</p></div>
-    <div class="f rv"><div class="ic">📊</div><h3>Listening statistics</h3><p>See what you actually played — show by show, and charted month by month.</p></div>
-    <div class="f rv"><div class="ic">📺</div><h3>Playlists you subscribe to</h3><p>Station and channel playlists from any public GitHub directory, or from <a href="/m3ugoat" style="color:var(--red)">your own m3ugoat server</a> — re-read, so they stay current.</p></div>
-    <div class="f rv"><div class="ic">🎲</div><h3>Mixes and surprises</h3><p>Track, artist, album, film and show mixes built by your own server — and a Surprise me shelf on Home that deals a fresh handful from your library.</p></div>
+    <div class="f rv"><div class="ic">🔍</div><h3>Unified search</h3><p>Search local files, podcasts and all connected servers at once, with results grouped by source.</p></div>
+    <div class="f rv"><div class="ic">🌍</div><h3>Top podcasts</h3><p>Browse the Apple Podcasts charts by country and category, starting with your region. Directory search also includes PodcastIndex.</p></div>
+    <div class="f rv"><div class="ic">⭐</div><h3>Synced favourites</h3><p>Starring a track in Mediagg also stars it on your server.</p></div>
+    <div class="f rv"><div class="ic">📊</div><h3>Listening statistics</h3><p>View your listening history by show, with monthly charts.</p></div>
+    <div class="f rv"><div class="ic">📺</div><h3>Playlist subscriptions</h3><p>Subscribe to station and channel playlists from a public GitHub directory or an <a href="/m3ugoat" style="color:var(--red)">m3ugoat server</a>. Subscribed playlists are refreshed to stay up to date.</p></div>
+    <div class="f rv"><div class="ic">🎲</div><h3>Mixes</h3><p>Track, artist, album, film and show mixes generated by your server, plus a Surprise me section on Home with a random selection from your library.</p></div>
   </div>
 </div></section>
 
 <!-- NUMBERS -->
 <section><div class="wrap">
   <div class="nums">
-    <div class="num rv"><b>5</b><small>Kinds of media server it speaks to</small></div>
-    <div class="num rv"><b>2</b><small>Casting protocols, no lock-in</small></div>
-    <div class="num rv"><b>3</b><small>Kinds of media, one library</small></div>
-    <div class="num rv"><b>1</b><small>App, Android now and iOS on the way</small></div>
+    <div class="num rv"><b>5</b><small>Supported media server types</small></div>
+    <div class="num rv"><b>2</b><small>Casting protocols</small></div>
+    <div class="num rv"><b>3</b><small>Media types in one library</small></div>
+    <div class="num rv"><b>1</b><small>App for Android, with iOS to follow</small></div>
   </div>
 </div></section>
 
@@ -637,7 +636,7 @@ footer a:hover{color:var(--ink)}
   <div class="dl rv">
     <span class="eyebrow"><b>●</b> Coming soon</span>
     <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Coming soon</h2>
-    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Mediagg is on its way to the Play Store. There is nothing to install yet — when it goes live, it will be one tap from here.</p>
+    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Mediagg will be available on Google Play soon. A download link will be added here when it is released.</p>
     <div class="cta" style="margin-top:32px">
       <span class="soon">
         <img src="/icons/mediagg.png" width="24" height="24" alt="">
@@ -649,12 +648,11 @@ footer a:hover{color:var(--ink)}
            keep. -->
       <span class="soon" style="opacity:.72">
         <img src="/icons/mediagg.png" width="24" height="24" alt="">
-        <b>iOS</b><small>On the way</small>
+        <b>iOS</b><small>To follow</small>
       </span>
     </div>
-    <p style="color:var(--dim);max-width:560px;margin:22px auto 0;font-size:14px">One app, the same
-    library on both. Android comes first; the iOS build is being worked towards and does not have a
-    date yet.</p>
+    <p style="color:var(--dim);max-width:560px;margin:22px auto 0;font-size:14px">Android is the first
+    release. An iOS version will follow; it does not yet have a release date.</p>
   </div>
 </div></section>
 
