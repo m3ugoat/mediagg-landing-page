@@ -6,21 +6,23 @@ order: 20
 ---
 
 **Mediagg has more kinds of content than a bar has room for.** Rather than guess which of them you
-use, it lets you say. Open Settings and find `What the bar shows` under `Tabs`.
+use, it lets you say. Open Settings and find `Tabs`. Its one row, `Arrange`, lists what the bar
+holds now, in order, and pressing it opens the editor.
 
 ## Choosing
 
-The editor lists everything that can go on the bar. Turn one on to add it, off to remove it. What
-you can choose from is `Home`, `Library`, `Search`, and the seven Library sections —
-`Subscriptions`, `Local media`, `Media servers`, `Playlists`, `Favourites`, `Downloads` and
-`History`.
+The editor has two headings. `In order` is what is on the bar; `Not in the order` is everything
+else that could be. Tick a row to add it, untick it to remove it. What you can choose from is
+`Home`, `Library`, `Search`, and the seven Library sections — `Subscriptions`, `Local media`,
+`Media servers`, `Playlists`, `Favourites`, `Downloads` and `History`.
 
 `Settings` is marked `Always shown` and cannot be removed, which is what keeps this screen
 reachable.
 
 ## Ordering
 
-Drag a row by its handle to move it. The order in the list is the order along the bottom.
+On Android, drag a row by its handle to move it. On an iPhone, press `Edit` and then drag. The
+order in the list is the order along the bottom.
 
 ## Past five
 

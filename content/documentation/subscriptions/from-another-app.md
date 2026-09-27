@@ -29,8 +29,21 @@ An `.m3u` or `.pls` file opened from a file manager or from your downloads offer
 are matched by their type rather than their extension, because that is what a file manager actually
 passes along.
 
-## What happens next
+## Where it goes
 
-Whatever arrives, it goes through the same check as anything typed in by hand — see
-[Adding by address](/documentation/subscriptions/add-by-address). Mediagg works out whether it is a
-podcast, a playlist or a single stream, and takes you to the right place to add it.
+Before anything opens, Mediagg asks `Add this link`, with the address underneath, because the same
+address can honestly be either of two things and only you know which you meant:
+
+| Choice | What the app says about it |
+|---|---|
+| `Subscriptions` | `Keep it up to date — a podcast, a list of stations, a stream` |
+| `Playlists` | `Take what is in it now, as a playlist of your own` |
+
+`Playlists` opens the Playlists section with its import dialog already holding the address.
+
+`Subscriptions` puts up `Looking at that address` while Mediagg asks what is there, then takes you to
+the right place: a podcast opens and is subscribed to, a list of stations opens the dialog that
+subscribes to it, and a single stream opens `Add a stream`. It is the same check as a stream typed in
+by hand — see [Adding by address](/documentation/subscriptions/add-by-address).
+
+Dismissing the question drops the link, and nothing is added.

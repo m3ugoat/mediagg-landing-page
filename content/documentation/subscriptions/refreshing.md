@@ -10,9 +10,9 @@ appeared. How often it does that is under `Refreshing` in Settings.
 
 ## How often
 
-`Check for new episodes` offers `Never`, `Every hour`, and then longer intervals up to a day.
-**The default is every 12 hours**, which suits most podcasts: a show that publishes weekly gains
-nothing from being asked hourly.
+`Check for new episodes` offers `Never`, `Every hour`, `Every 3 hours`, `Every 6 hours`,
+`Every 12 hours` and `Every 24 hours`. **The default is `Every 12 hours`**, which suits most
+podcasts: a show that publishes weekly gains nothing from being asked hourly.
 
 `Never` stops the automatic check entirely. Your subscriptions still refresh when you ask them to.
 
@@ -27,13 +27,14 @@ nothing, and downloading has its own separate setting. See
 
 ## By hand
 
-Pull down on a list to refresh it. A single subscription can be refreshed from its own page.
+Pull down on a list to refresh it. A single subscription can be refreshed the same way, by pulling
+down on its own page.
 
 ## What a refresh actually does
 
 It fetches each feed and compares what is there with what you already have. Episodes that are new to
 you arrive marked as new, which is what the `New` chip under Subscriptions lists and what the
-**What is new** shelf on Home shows.
+`New Episodes` shelf on Home shows.
 
 > **A refresh does not download anything by itself.** Finding an episode and fetching its audio are
 > two different things, and the second one is off unless you turn it on.

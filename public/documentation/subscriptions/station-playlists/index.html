@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -66,12 +66,15 @@
 <p>A <strong>station playlist</strong> is a list of live streams — radio or TV — that lives at an address somewhere and is re-read rather than downloaded once. Subscribing to one puts every station in it into your library as something you can play.</p>
 <p>They behave differently from a podcast in one way that matters: <strong>a station has no episodes</strong>. There is nothing to download and nothing to keep; there is whatever is being broadcast when you press play.</p>
 <h2 id="where-they-come-from">Where they come from</h2>
-<p><code>Add from providers</code>, on the <code>Add subscription</code> screen, browses catalogues of playlists. A provider is somewhere playlists are kept — you open it, look through its folders and subscribe to the ones you want.</p>
-<p>Two of them are yours to point at:</p>
+<p><code>Add from providers</code>, on the <code>Add subscription</code> screen, is where you browse playlists kept somewhere else. A provider is somewhere playlists are kept — you open it, look through its folders and subscribe to the ones you want.</p>
+<p>There are two, and both are yours to point at — neither has anything in it until you do:</p>
 <ul><li><strong><a href="/documentation/subscriptions/your-own-catalogue">Your own catalogue</a></strong> — any public Github directory of m3u playlists</li><li><strong><a href="/documentation/subscriptions/m3ugoat">m3ugoat</a></strong> — a playlist server you run yourself</li></ul>
+<h2 id="by-address">By address</h2>
+<p>If you already have the address of one playlist, <code>Add a playlist by address</code> — <code>An m3u of stations, kept up to date</code> — takes it directly. It opens <code>Add a playlist of stations</code>, which says what will happen: <code>It is kept as a subscription, and shows under Providers.</code> It asks for a <code>Playlist address</code> and a <code>Name (optional)</code>, and <code>Subscribe</code> adds it.</p>
+<p>A single station is <code>Add a stream by address</code> instead — see <a href="/documentation/subscriptions/add-by-address">Adding by address</a>.</p>
 <h2 id="in-the-library">In the library</h2>
 <p>Subscribed playlists are filed under <code>Subscriptions</code>, on the <code>Providers</code> chip — kept apart from podcasts so a station list does not sit in a grid of show artwork with nothing to show.</p>
-<p>The folder a playlist came out of becomes part of its name. A catalogue that holds <code>countries/uk</code>, <code>categories/uk</code> and <code>languages/uk</code> would otherwise give you three library rows all called the same thing.</p>
+<p>The folder a playlist came out of becomes part of its name. A repository that holds <code>countries/uk</code>, <code>categories/uk</code> and <code>languages/uk</code> would otherwise give you three library rows all called the same thing.</p>
 <div class="note"><p><strong>The playlist is re-read, not copied.</strong> When the list at the other end changes, your subscription follows it. Stations that were removed go, and new ones arrive, which is the point of subscribing to a list rather than importing it once.</p></div>
 <div class="pnav"><a class="pn prev" href="/documentation/subscriptions/add-by-address"><b>Previous</b>Adding by address</a><a class="pn next" href="/documentation/subscriptions/your-own-catalogue"><b>Next</b>Your own catalogue</a></div>
 </article>

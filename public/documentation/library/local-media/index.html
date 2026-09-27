@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Local media — Mediagg documentation</title>
-<meta name="description" content="The music and video on your device, and the seven ways of cutting it.">
+<meta name="description" content="The music and video on your device, and the chips that cut it different ways.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/library/local-media">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="Local media — Mediagg documentation">
-<meta property="og:description" content="The music and video on your device, and the seven ways of cutting it.">
+<meta property="og:description" content="The music and video on your device, and the chips that cut it different ways.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -62,25 +62,27 @@
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/library">Your library</a><i>/</i><span>Local media</span></nav>
 <h1>Local media</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
-<p class="sub">The music and video on your device, and the seven ways of cutting it.</p>
+<p class="sub">The music and video on your device, and the chips that cut it different ways.</p>
 <p><code>Local media</code> is what is on the device itself, rather than anything fetched from a feed or a server.</p>
 <p><strong>It is one section with chips rather than several sections</strong>, because songs, videos and folders are the same question — what is on this device — asked different ways.</p>
 <h2 id="the-chips">The chips</h2>
-<p><code>Songs</code> and <code>Videos</code> lead, because they are what the section is. The five after them are ways of cutting the first:</p>
-<div class="tablewrap"><table><thead><tr><th>Chip</th><th>What it shows</th></tr></thead><tbody><tr><td><code>Songs</code></td><td>Every track</td></tr><tr><td><code>Videos</code></td><td>Every video</td></tr><tr><td><code>Albums</code></td><td>A grid of sleeves; open one for its tracks</td></tr><tr><td><code>Artists</code></td><td>Grouped by the artist tag</td></tr><tr><td><code>Genres</code></td><td>Grouped by the genre tag</td></tr><tr><td><code>Years</code></td><td>Grouped by year</td></tr><tr><td><code>Folders</code></td><td>Where the files actually are</td></tr></tbody></table></div>
-<p><code>Albums</code>, <code>Artists</code>, <code>Genres</code> and <code>Years</code> are built from the tags inside your files. <strong><code>Folders</code> ignores the tags entirely</strong> and shows the real shape of your storage, which is the one to reach for when a file's tags are wrong or missing.</p>
-<h2 id="folders">Folders</h2>
-<p><code>Folders</code> is a tree you walk one level at a time, each row a directory with a count of what is beneath it.</p>
+<p><code>Songs</code> and <code>Videos</code> lead, because they are what the section is. The ones after them are ways of cutting the first:</p>
+<div class="tablewrap"><table><thead><tr><th>Chip</th><th>What it shows</th></tr></thead><tbody><tr><td><code>Songs</code></td><td>Every track</td></tr><tr><td><code>Videos</code></td><td>Every video</td></tr><tr><td><code>Albums</code></td><td>A grid of sleeves; open one for its tracks</td></tr><tr><td><code>Artists</code></td><td>Grouped by the artist tag</td></tr><tr><td><code>Genres</code></td><td>Grouped by the genre tag</td></tr><tr><td><code>Years</code></td><td>Grouped by year</td></tr><tr><td><code>Folders</code></td><td>Every folder holding something, by name</td></tr><tr><td><code>Filesystem</code></td><td>The device's storage, walked one level at a time — Android only</td></tr></tbody></table></div>
+<p><code>Albums</code>, <code>Artists</code>, <code>Genres</code> and <code>Years</code> are built from the tags inside your files. <strong><code>Folders</code> and <code>Filesystem</code> ignore the tags entirely</strong> and show where the files actually are, which is what to reach for when a file's tags are wrong or missing.</p>
+<p>Each chip has its own sort, from <code>As listed</code>, <code>Name</code>, <code>Date added</code>, <code>Length</code> and <code>Size</code> — only the ones its rows can answer — and remembers it separately.</p>
+<h2 id="folders-and-filesystem">Folders and Filesystem</h2>
+<p><code>Folders</code> is the quick way to a folder you already know: a flat list of every one that holds something, by name. Open one and you are in the same place the tree would have walked you to.</p>
+<p><code>Filesystem</code> is the tree itself. Each row is a directory, <code>..</code> takes you up a level, and a trail under the chips says where you are. A folder you added yourself is a starting point of its own here, beside the device's own storage.</p>
 <p><strong>It is worked out from the files themselves, not from a list you maintain.</strong> Every track and video already knows where it came from, so the folder structure is read from that — nothing to set up, and nothing to keep in step.</p>
-<p>This also means it can only ever show you folders Mediagg was allowed to read. A folder that produced no files is not in the tree at all.</p>
+<p>This also means it can only ever show you folders Mediagg was allowed to read. A folder that produced no files is not there at all.</p>
 <h2 id="where-the-files-come-from">Where the files come from</h2>
 <p>This is the one part that works differently on each device.</p>
 <p><strong>On Android</strong>, the phone keeps a media library of its own, and Mediagg reads it. Your music and video are simply there. <code>Scan for media</code> in the toolbar looks again, and which kinds of audio and which folders are included is yours to set — see <a href="/documentation/settings/scanning">Scanning</a>.</p>
 <p>You can add a folder as well, with <code>Add a local folder</code> on the <code>Add subscription</code> screen — useful for anything the phone's own library does not cover.</p>
-<p><strong>On iOS</strong>, there is no device-wide music library to read, so <strong>local media is the folders you choose</strong>. <code>Add a folder</code> in the toolbar opens the Files app; pick a folder and everything in it fills the chips above. Choosing it <em>is</em> the permission — there is no separate grant to give.</p>
+<p><strong>On iOS</strong>, there is no device-wide music library to read, so <strong>local media is the folders you choose</strong>. <code>Add a folder</code> in the toolbar opens the Files app; pick a folder and everything in it fills the chips above — the folder itself is listed under <code>Folders</code>, as there is no <code>Filesystem</code> chip on iOS. Choosing it <em>is</em> the permission — there is no separate grant to give.</p>
 <p><code>Scan for media</code> re-walks the folders you picked, to catch anything added since.</p>
 <h2 id="permission">Permission</h2>
-<p>On Android, Mediagg has to be allowed to read the device's media before it can find any: <code>Mediagg needs permission to list the music on this device.</code>, with an <code>Allow access</code> button. Video is asked for separately.</p>
+<p>On Android, Mediagg has to be allowed to read the device's media before it can find any: <code>Mediagg needs permission to list the music on this device.</code>, with an <code>Allow access</code> button. Video is asked for separately — <code>Mediagg needs permission to list the video on this device.</code> — and where only one of the two was allowed, the folder chips say which half they are missing, for instance <code>Video is not shown here: Mediagg has not been allowed to read this device's video.</code></p>
 <h2 id="playing-a-whole-chip">Playing a whole chip</h2>
 <p><code>Play all</code> and <code>Shuffle all</code> are in the toolbar.</p>
 <div class="note"><p><strong>Where a chip lists groupings rather than files</strong> — albums, artists, genres, years and folders — you open one first. Shuffling every track on the device from a screen of sleeves is not what the button would mean there.</p></div>

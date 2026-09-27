@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -63,15 +63,15 @@
 <h1>Your own catalogue</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">Pointing Mediagg at any public Github directory of m3u playlists.</p>
-<p><code>Custom Github Directory</code> is a provider with nothing in it until you supply the source — <strong>"Any public Github directory of m3u playlists"</strong>. If you keep your playlists in a repository, or know of one worth browsing, this is how Mediagg reads it.</p>
+<p><code>Custom Github Directory</code> is a provider with nothing in it until you supply the source — <strong><code>Any public Github directory of m3u playlists</code></strong>. If you keep your playlists in a repository, or know of one worth browsing, this is how Mediagg reads it.</p>
 <h2 id="adding-a-directory">Adding a directory</h2>
-<p>Open <code>Add from providers</code> on the <code>Add subscription</code> screen, choose <code>Custom Github Directory</code>, then <code>Add a github directory</code>. It asks for <code>The directory's address</code>, and takes either form:</p>
+<p>Open <code>Add from providers</code> on the <code>Add subscription</code> screen, choose <code>Custom Github Directory</code>, then the <code>+</code> for <code>Add a github directory</code>. It asks for <code>The directory's address</code> — <code>github.com/owner/repo, or a link to a folder in one</code> — and takes either form:</p>
 <ul><li><code>github.com/owner/repo</code> — the whole repository</li><li>a link to a folder inside one, if only part of it is playlists</li></ul>
-<p>You can add more than one. The provider lists everything you have added at its top level, and any of them can be let go of later.</p>
+<p>You can add more than one. The provider lists everything you have added at its top level, and any of them can be let go of later: <code>It stops being listed here. Anything you already subscribed to from it stays.</code></p>
 <h2 id="what-you-will-see-inside">What you will see inside</h2>
 <p><strong>The repository's own shape is left alone.</strong> Mediagg invents no categories and reorganises nothing: directories are directories and m3u files are playlists, at every level, because there is no honest way to guess the structure of somewhere it has never seen.</p>
 <p>Open folders until you reach a playlist, then subscribe to it.</p>
-<div class="note"><p><strong>Github allows 60 requests an hour.</strong> Each folder you open costs one; going back costs none. The allowance is per hour and frees up on its own, so a large repository is best browsed a little at a time.</p></div>
+<div class="note"><p><strong><code>GitHub allows 60 requests an hour. Each folder you open costs one; going back costs none.</code></strong> The add dialog says so before you start. The allowance is per hour and frees up on its own, so a large repository is best browsed a little at a time.</p></div>
 <h2 id="naming">Naming</h2>
 <p>A subscription taken from here is named after the playlist and the folder above it, so that several playlists with the same file name stay tellable apart in your library. You can rename it afterwards, and clearing your rename falls back to the catalogue's own name rather than to nothing.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/subscriptions/station-playlists"><b>Previous</b>Station playlists</a><a class="pn next" href="/documentation/subscriptions/m3ugoat"><b>Next</b>m3ugoat</a></div>

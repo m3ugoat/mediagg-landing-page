@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -79,8 +79,9 @@
 <h2 id="nothing-is-at-that-address"><code>Nothing is at that address.</code></h2>
 <p>Something answered, but not that server. Check for a stray path on the end of the address — most of these want the root, not a page inside the web interface.</p>
 <h2 id="it-worked-yesterday-and-not-today">It worked yesterday and not today</h2>
-<p>That is a lapsed session rather than a wrong password. Playback says so plainly: <code>Signing in to &lt;server&gt; has stopped working — the password may have changed, or the session may have been ended on the server.</code> Sign in to it again under <code>Media servers</code>.</p>
-<p>When a server that was unreachable comes back, Mediagg says <code>One server is back. Sign in to it to start using it.</code></p>
+<p>That is a lapsed session rather than a wrong password. Playback says so plainly, naming the server — <code>Signing in to Jellyfin has stopped working — the password may have changed, or the session may have been ended on the server.</code> Sign in to it again under <code>Media servers</code>.</p>
+<h2 id="after-restoring-your-servers">After restoring your servers</h2>
+<p>A server list brought over with <code>Import servers</code> never carries passwords, so every server on it needs signing in to again. Mediagg says so when the import finishes: <code>One server is back. Sign in to it to start using it.</code> — see <a href="/documentation/settings/backup">Backup</a>.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/help/episodes-are-missing"><b>Previous</b>Episodes have disappeared</a><a class="pn next" href="/documentation/help/downloads-do-not-start"><b>Next</b>Downloads will not start</a></div>
 </article>
 </main>

@@ -24,9 +24,10 @@ Six kinds can be skipped, each with a line saying what it means:
 | `Audiobooks` | `Books the device has tagged as such` |
 | `Podcast files` | `Episodes downloaded by another app` |
 
-The last two are the interesting ones. **Audiobooks and podcast files are skipped by default**
-because they are usually another app's business — but if your audiobooks live on the device and you
-want them here, this is where to let them in.
+**The first four are skipped by default** — ringtones, notification sounds and alarms are sounds the
+phone makes at you rather than plays for you, and voice recordings are a notes app's business.
+Audiobooks and podcast files are let in by default; if another app looks after those and you would
+rather not see them here, this is where to leave them out.
 
 ## Folders
 

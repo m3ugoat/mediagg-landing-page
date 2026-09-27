@@ -20,14 +20,14 @@ and how many episodes of that show you have started, or space used and how many 
 
 ## Over what period
 
-Four windows: `All time`, `This year`, `Last 30 days` and `Last 7 days`.
+On `Listening`, four windows: `All time`, `This year`, `Last 30 days` and `Last 7 days`.
 
 **`This year` means the year where you are**, not where a server is — which is the one thing about a
 date window people notice being wrong, and only in January.
 
 ## Counting what you never played
 
-`Count episodes marked as played` is a switch, and its own line says what it does:
+`Count episodes marked as played` is a switch on `Listening`, and its own line says what it does:
 **`Uses their length as the time, even if you never played them`**.
 
 Off, the figures are time you actually listened. On, an episode you swiped away as done counts its
@@ -36,6 +36,7 @@ I get through".
 
 ## Empty
 
-`Nothing played in this period yet.` means exactly that — narrow the window or widen it. The
+`Nothing played in this period yet.` means exactly that — narrow the window or widen it.
+`Downloads` says `Nothing downloaded yet.` when nothing is kept on the device. The
 `Months` chart says `Nothing has been played yet, so there is nothing to chart.` until there is
 something to draw.

@@ -1,12 +1,39 @@
 ---
 title: Reporting a problem
-summary: What to include so a problem can be found and fixed rather than guessed at.
+summary: Report an issue from Settings, hand over a crash log, and what to include so a problem can be found.
 platforms: android, ios
 order: 60
 ---
 
 Most reports that go nowhere are missing the same few things. These are what make a problem
-reproducible.
+reproducible — and the app fills in some of them for you.
+
+## Report an issue
+
+In Settings, under `Diagnostics`, `Report an issue` is
+**`On GitHub, with this device's details filled in`**. It opens a new issue on GitHub in your
+browser, already laid out with three headings to answer — `What happened`,
+`What you expected to happen` and `Steps to reproduce` — and, below a line, which build of Mediagg
+this is and what it is running on. If the app has crashed, the most recent crash is named there too,
+with when it happened.
+
+**Nothing is sent until you send it.** The issue is a page in your browser; you read it, write the
+rest, and submit it yourself — GitHub asks you to be signed in. Edit or delete anything in it first
+if you would rather not share it.
+
+## Crash logs
+
+Mediagg has no crash reporter. When it crashes, the report is written to a file **on the device and
+nowhere else**, and `Crash logs`, beside `Report an issue`, is where you find it. The row says how
+many there are — `None recorded`, or `2 recorded on this device`.
+
+Each crash is listed by when it happened, with what went wrong and the top of the trace — enough to
+tell which one you just hit. `Copy this one` copies
+`The whole report, including which build it came from`, ready to paste into the issue. There is also
+`Copy all of them`, and `Forget them` — `Deletes every report below`.
+
+With nothing recorded, the screen says `Nothing has crashed on this device since Mediagg was
+installed. If something does, it will be kept here — on the device, and nowhere else.`
 
 ## Say exactly what you saw
 
@@ -41,8 +68,10 @@ matters.
 
 ## Include
 
-- The Mediagg version
-- Your phone and its Android or iOS version
+- The Mediagg version and your Android or iOS version — already there if you started from
+  `Report an issue`; otherwise the version is under `About Mediagg` in Settings
+- Your phone's make and model
+- The crash log, if it crashed — pasted from `Copy this one`
 - Any relevant settings you have changed from their defaults
 
 > **Never include a password or a token.** The name of the server software and its version are

@@ -9,7 +9,10 @@ Mediagg is a client for five kinds of media server. **Your library stays where i
 copied to the phone unless you download it — and Mediagg reports your progress back, so the server
 and your other players stay in step.
 
-Open `Add a server` from `Get started`, or `Media servers` in the Library.
+Open `Add a server` from `Get started`, or press `Add a server` in the bar of `Media servers` in
+the Library. `Choose a provider` lists the five kinds, each with a line saying which server software
+it means, and picking one opens its sign-in: an `Address`, a `Name (optional)`, a `Username` and a
+`Password`.
 
 ## The five
 
@@ -28,10 +31,27 @@ plex.tv, even when the server is sitting in the same room.
 `Subsonic` is a protocol rather than one program. If your server says it is Subsonic-compatible —
 Navidrome, Airsonic, Gonic and others — choose `Subsonic`.
 
+## Jellyfin: signing in with a code
+
+A Jellyfin server can be signed in to without typing a password on the phone. Once an address is
+in, the form offers `Sign in with a code instead` — `Shows a code to enter in Jellyfin on a device
+you are already signed in on.`
+
+Mediagg asks the server for a code and shows it: `Open Jellyfin on a device you are already signed
+in on, find Quick Connect, and enter this code.` It signs in the moment the code is accepted.
+
+- `This server does not offer signing in with a code. Use a password instead.` — Quick Connect is
+  switched off on that server.
+- `Nobody entered the code in time, so the server has forgotten it. Ask for a new one.` — press
+  `Ask for a new code`.
+
+`Use a password instead` goes back to the form with everything you had typed still there.
+
 ## More than one
 
-You can add several servers, including several of the same kind. Each appears as its own entry under
-`Media servers`, with its own sign-in.
+You can add several servers, including several of the same kind. Each is its own entry in
+`Manage servers`, with its own sign-in, and its menu offers `Sign in` or `Sign out` and
+`Forget this server`.
 
 If you would rather see one library than several, they can be merged — see
 [One library, several servers](/documentation/media-servers/one-library-many-servers).

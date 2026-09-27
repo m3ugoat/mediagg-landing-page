@@ -44,8 +44,14 @@ Whatever the setting, a video can be taken full screen from the player. There yo
 - **A fit control** that cycles `Fitted; tap to crop`, `Cropped; tap to stretch`,
   `Stretched; tap to fit`
 - `Audio and subtitles`, where the file offers more than one track
-- `Picture in picture`
+- `Picture in picture`, on Android
 - `Lock controls`, which stops a stray touch doing anything — and `Unlock controls` to release it
+- `Back ten seconds` and `On thirty seconds` either side of play and pause
+- **A skip button** — `Skip intro`, `Skip recap`, `Skip credits` — while a stretch the server has
+  marked is playing
+- **Pictures while you scrub**, where the server has made thumbnails for the film
+
+`Leave full screen` takes you back out.
 
 ## Video podcasts
 

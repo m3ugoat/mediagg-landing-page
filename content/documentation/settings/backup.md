@@ -12,27 +12,35 @@ There are two files, deliberately, and they carry different things.
 
 ## The database
 
-`Database export` writes **`subscriptions, play state and queue`** to a single file, named for the
-day it was made. It is the whole library in one piece — a straight copy, taken consistently, so it
+`Database export` — `Transfer subscriptions, play state and queue to Mediagg on another device` —
+writes all three to a single file, named for the day it was made. It is the whole library in one piece — a straight copy, taken consistently, so it
 restores as exactly what you had.
 
 `Database import` reads one back: `Import Mediagg database from another device`.
 
 > **Importing replaces everything.** `Importing a database will replace all of your current
 > subscriptions and playing history. You should export your current database as a backup.` Mediagg
-> asks before it does it.
+> asks before it does it, with `Replace` to go ahead.
+
+Once the file has been read and checked, a second question, `Ready to restore`, asks before anything
+is actually replaced. On Android it offers `Restore and restart`, and the app starts again on the
+restored library. On an iPhone it offers `Restore`, and you then close Mediagg and open it again —
+`Your library has been restored` says so.
 
 A backup from a newer version of the app is refused rather than half-read:
 `That backup was made by a newer version of Mediagg. Update the app and try again.` A file that is
-not a Mediagg database is refused too.
+not a Mediagg database is refused too: `That file is not a Mediagg database.`
 
 ## Doing it on a schedule
 
-Where the device can hold a durable folder grant, `Automatic database export` appears as a switch —
-`Create a backup of the Mediagg database every 3 days. Only keep the 5 most recent backups.`
+On Android, `Automatic database export` appears as a switch —
+`Create a backup of the Mediagg database every 3 days. Only keep the 5 most recent backups.` An
+iPhone does not let an app keep writing to a folder you picked days ago, so the switch is not shown
+there.
 
 **The folder is the switch.** Turning it on asks where backups should go; turning it off forgets the
-folder. If an automatic backup fails, a line of text on this screen says why.
+folder. If an automatic backup fails, a line on this screen says why — it starts
+`The last automatic backup did not happen:`.
 
 ## Your servers are separate
 
@@ -46,8 +54,8 @@ That second one is literal: the file the old Mediagg wrote is still read, alongs
 format. A server for a kind this build does not carry is skipped rather than rejecting the whole
 file.
 
-When it has finished: `One server is back. Sign in to it to start using it.` — which is the
-consequence of the passwords never being written down.
+When it has finished: `One server is back. Sign in to it to start using it.`, or however many there
+were — which is the consequence of the passwords never being written down.
 
 ## Moving to a new phone
 

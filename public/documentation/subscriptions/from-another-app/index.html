@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -71,8 +71,12 @@
 <p><strong>No filtering is done by how the address is spelled.</strong> Mediagg accepts anything of that shape and then asks the server what is actually there — which is the only workable rule, because most radio stations carry no file extension at all and <code>.m3u8</code> is the commonest way to write a single live stream. Turning addresses away by their suffix would turn away most of what the app exists to play.</p>
 <h2 id="opening-a-playlist-file">Opening a playlist file</h2>
 <p>An <code>.m3u</code> or <code>.pls</code> file opened from a file manager or from your downloads offers Mediagg too. These are matched by their type rather than their extension, because that is what a file manager actually passes along.</p>
-<h2 id="what-happens-next">What happens next</h2>
-<p>Whatever arrives, it goes through the same check as anything typed in by hand — see <a href="/documentation/subscriptions/add-by-address">Adding by address</a>. Mediagg works out whether it is a podcast, a playlist or a single stream, and takes you to the right place to add it.</p>
+<h2 id="where-it-goes">Where it goes</h2>
+<p>Before anything opens, Mediagg asks <code>Add this link</code>, with the address underneath, because the same address can honestly be either of two things and only you know which you meant:</p>
+<div class="tablewrap"><table><thead><tr><th>Choice</th><th>What the app says about it</th></tr></thead><tbody><tr><td><code>Subscriptions</code></td><td><code>Keep it up to date — a podcast, a list of stations, a stream</code></td></tr><tr><td><code>Playlists</code></td><td><code>Take what is in it now, as a playlist of your own</code></td></tr></tbody></table></div>
+<p><code>Playlists</code> opens the Playlists section with its import dialog already holding the address.</p>
+<p><code>Subscriptions</code> puts up <code>Looking at that address</code> while Mediagg asks what is there, then takes you to the right place: a podcast opens and is subscribed to, a list of stations opens the dialog that subscribes to it, and a single stream opens <code>Add a stream</code>. It is the same check as a stream typed in by hand — see <a href="/documentation/subscriptions/add-by-address">Adding by address</a>.</p>
+<p>Dismissing the question drops the link, and nothing is added.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/subscriptions/import-opml"><b>Previous</b>Importing an OPML file</a><a class="pn next" href="/documentation/subscriptions/refreshing"><b>Next</b>Checking for new episodes</a></div>
 </article>
 </main>

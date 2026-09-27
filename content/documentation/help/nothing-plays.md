@@ -26,13 +26,14 @@ the file. **Refreshing that subscription often finds it at its new address** —
 ## `The host would not send this`
 
 The server holding the episode refused. `That is usually temporary, or the episode has been
-withdrawn.` Try later, or another episode of the same show — if the rest play, the episode is the
+withdrawn` — try later, or another episode of the same show — if the rest play, the episode is the
 problem rather than the subscription.
 
 ## `<server> would not let this play`
 
-`Jellyfin would not let this play`, and so on for whichever server it was. Your sign-in has lapsed. `The password may have changed, or the session may have been ended on the
-server.` Sign in again under `Media servers` and it will play. See
+`Jellyfin would not let this play`, and so on for whichever server it was. Your sign-in has lapsed:
+`Signing in to Jellyfin has stopped working — the password may have changed, or the session may have
+been ended on the server.` Sign in to it again under `Media servers` and it will play. See
 [A server will not sign in](/documentation/help/a-server-will-not-sign-in).
 
 ## `This will not play on this device`

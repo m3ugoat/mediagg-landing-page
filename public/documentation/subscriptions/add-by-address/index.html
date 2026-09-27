@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -63,14 +63,20 @@
 <h1>Adding by address</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">Pasting an address you already have, and how Mediagg works out what is at the other end.</p>
-<p>If you already have the address of a podcast feed, <code>Add a podcast by address</code> on the <code>Add subscription</code> screen takes it directly. Mediagg fills the field from your clipboard if there is an address on it, so in most cases there is nothing to type.</p>
+<p>If you already have an address, three rows on the <code>Add subscription</code> screen take one directly:</p>
+<div class="tablewrap"><table><thead><tr><th>Row</th><th>What it is for</th></tr></thead><tbody><tr><td><code>Add a podcast by address</code></td><td><code>An RSS address you already have</code></td></tr><tr><td><code>Add a playlist by address</code></td><td><code>An m3u of stations, kept up to date</code></td></tr><tr><td><code>Add a stream by address</code></td><td><code>One station, or anything else that plays live</code></td></tr></tbody></table></div>
+<p>Each fills its field from your clipboard if there is an address on it, so in most cases there is nothing to type. Pasting a podcast's address into <code>Search every directory</code> works too — an address is not a search term, so it is opened as a feed rather than looked up.</p>
+<h2 id="a-podcast">A podcast</h2>
+<p><code>Add a podcast by address</code> opens <code>Add a feed</code>, with one <code>Feed address</code> field. Press <code>Add</code> and Mediagg fetches the feed, subscribes, and opens the show.</p>
 <h2 id="it-asks-the-server-not-the-spelling">It asks the server, not the spelling</h2>
 <p>Addresses do not reliably say what they point at. A podcast feed does not have to end in <code>.xml</code>, a playlist does not have to end in <code>.m3u</code>, and a live stream often ends in nothing at all.</p>
-<p>So <strong>Mediagg fetches the address and looks at what comes back</strong> rather than guessing from how it is written. While it is doing that, the screen says <code>Looking at that address</code>. That check is what lets one field accept several different kinds of thing without asking you to classify it first.</p>
+<p>So <strong><code>Add a stream by address</code> fetches the address and looks at what comes back</strong> rather than guessing from how it is written. If what is there is not a single stream, it says so and offers the flow it belongs in, with the address already filled in:</p>
+<ul><li><code>That address lists several things. Import it as a playlist instead?</code></li><li><code>That address is a podcast. Add it as a subscription instead?</code></li></ul>
+<p>A stream that is added starts playing straight away, because bringing one in is asking to hear it.</p>
 <p>It also means a working address is never turned away for having the wrong shape, and a broken one fails with the server's own answer rather than a guess.</p>
 <h2 id="what-a-redirect-does">What a redirect does</h2>
-<p>Feeds move. If the address you have redirects somewhere else, Mediagg follows it and subscribes to where it actually ended up, so the subscription keeps working after the publisher has moved on.</p>
-<div class="note"><p><strong>An address that needs a sign-in will say so.</strong> A server answering "not authorised" is a real answer, not a failure to parse — you will be told the address is fine but the credentials are missing, rather than told the address could not be read.</p></div>
+<p>Feeds move. If the address you have redirects somewhere else, Mediagg follows it every time it checks, so the subscription keeps working after the publisher has moved on — and it stays filed under the address you gave it, rather than turning into a second copy of the same show.</p>
+<div class="note"><p><strong>A refusal is reported as the server's answer.</strong> An address that needs a sign-in fails with what the server said — <code>The server answered 401.</code> — rather than being called unreadable. An address where something answered but was not a feed says <code>That address is not a feed we can read.</code></p></div>
 <div class="pnav"><a class="pn prev" href="/documentation/subscriptions/add-a-podcast"><b>Previous</b>Adding a podcast</a><a class="pn next" href="/documentation/subscriptions/station-playlists"><b>Next</b>Station playlists</a></div>
 </article>
 </main>

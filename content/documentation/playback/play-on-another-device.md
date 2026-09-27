@@ -5,11 +5,10 @@ platforms: android, ios
 order: 60
 ---
 
-The cast control sits in the top bar. **It is always there where the app can cast at all**, rather
-than appearing and disappearing as devices come and go — a control that vanishes is a control you
-cannot learn.
-
 ## On Android
+
+The cast control sits in the top bar. **It is always there**, rather than appearing and disappearing
+as devices come and go — a control that vanishes is a control you cannot learn.
 
 Tapping it opens `Play on`. While it is still looking you get `Looking for devices…`, and then a row
 per device, each labelled with how it is reached:
@@ -27,7 +26,8 @@ the bottom of the sheet.
 ## On iOS
 
 iOS uses **AirPlay**, through Apple's own picker — so what you see is the system sheet rather than a
-list Mediagg drew.
+list Mediagg drew. The AirPlay button is on the full player, first in the row with the speed and
+the sleep timer.
 
 **The AirPlay button hides itself when no receiver is in range.** That is Apple's behaviour rather
 than the app's, so a blank space where you expected a button means nothing was found, not that
@@ -39,17 +39,22 @@ and routed onward instead, so the app's own card and artwork stay.
 
 ## Files on your phone
 
-A receiver cannot reach inside your phone's storage. So when you cast something that only exists on
-the device — a download, or a track from a folder you added — **Mediagg serves it over your own
+A receiver cannot reach inside your phone's storage. So when you cast from Android something that
+only exists on the device — a download, or a track from a folder you added — **Mediagg serves it over your own
 network** for the receiver to fetch. This happens on its own; there is nothing to configure and
 nothing to switch on.
 
 Anything with a public address — a podcast episode, a radio station, a media-server track — is
 handed over as an address and fetched by the receiver directly.
 
-## Which builds can cast
+## With the screen off
 
-The build on Google Play has both Chromecast and DLNA.
+While something is cast, the phone is still working — serving files, steering the receiver, sending
+it the next track — and Android may put an app to sleep a while after the screen goes off. Settings
+says which way that is, under `In the background`:
 
-A sideloaded or F-Droid build carries no Google Play Services, so **it has no Chromecast — but DLNA
-still works**, and the cast control and the `Play on` sheet are there for it.
+- `Battery optimisation` — `On — Android may stop playing or casting a while after the screen goes off`
+- or `Off — playing and casting carry on with the screen off`
+
+Pressing the row goes to Android's own setting, which is the only place it can be changed. If a cast
+stops some minutes after you put the phone down, this is the thing to turn off.

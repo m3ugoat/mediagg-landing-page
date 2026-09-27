@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -65,7 +65,7 @@
 <p class="sub">Battery, mobile data, and a limit that has already been reached.</p>
 <p>If automatic downloads are not happening, <strong>three settings under <code>Downloads</code> will stop them</strong>, and each one is doing its job.</p>
 <h2 id="the-switch-itself">The switch itself</h2>
-<p><code>Download new episodes automatically</code> is the master switch. Everything below it is meaningless while it is off, and Mediagg greys the rest of the group out to say so.</p>
+<p><code>Download new episodes automatically</code> is the master switch. Everything below it is meaningless while it is off, so Mediagg hides the rest of the group until it is on — if you cannot see the rows this page names, that is why.</p>
 <h2 id="it-is-waiting-for-a-charger">It is waiting for a charger</h2>
 <p><code>Download on battery</code> — <code>Off means it waits until you are charging</code>.</p>
 <h2 id="it-is-waiting-for-wi-fi">It is waiting for Wi-Fi</h2>
@@ -73,8 +73,8 @@
 <p>These two are the usual answer. Nothing is wrong; the conditions have not been met yet, and the downloads will happen when they are.</p>
 <h2 id="the-limit-is-already-reached">The limit is already reached</h2>
 <p><code>Keep at most</code> caps how many downloaded episodes are held. Once that number is reached, nothing new is fetched until something is removed — and what gets removed depends on <code>When the limit is reached, delete</code>. If that is set to <code>Nothing</code>, the ceiling is a hard stop.</p>
-<p>Either raise <code>Keep at most</code>, set it to <code>As many as fit</code>, or delete some downloads by hand.</p>
-<h2 id="only-queued-episodes-are-being-fetched">Only queued episodes are being fetched</h2>
+<p>Either raise <code>Keep at most</code> — <code>5 episodes</code> up to <code>100 episodes</code> — set it to <code>As many as fit</code>, or delete some downloads by hand.</p>
+<h2 id="something-you-queued-is-not-being-fetched">Something you queued is not being fetched</h2>
 <p><code>Include the queue</code> — <code>Fetch what you have queued, not only what arrived unheard</code>. With it off, only newly arrived unplayed episodes are downloaded, so something you queued from your back catalogue is left alone.</p>
 <h2 id="a-single-download-failed">A single download failed</h2>
 <p><code>Download failed. Try again</code> is about that one file, not your settings. The host refused or the connection dropped part-way. Retrying usually works; if one episode fails repeatedly while others succeed, the file is the problem.</p>

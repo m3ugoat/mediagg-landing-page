@@ -8,29 +8,34 @@ order: 20
 The queue is what plays next. It is shared across everything in the app, so a podcast episode, an
 album track and a station can sit in it together and play one after the other.
 
-Reach it by pulling up from the bottom of the full player. **It is a sheet inside a sheet** — its own
-drag, its own peek — so you can open the queue without losing the player behind it.
+On Android, reach it by pulling up from the bottom of the full player. **It is a sheet inside a
+sheet** — its own drag, its own peek — so you can open the queue without losing the player behind
+it. On iOS, the chevron on the player — `Show the queue` — shrinks the cover to a thumbnail and
+puts the queue in its place; the same chevron puts it away.
+
+The queue's own header carries shuffle and repeat, `Search the queue` for finding one row in a long
+list, and `Scroll to what is playing`.
 
 ## Reordering and removing
 
-Drag a row to move it. Swipe it away to take it out. Removing something from the queue does not
-remove it from your library.
+Drag a row by its handle to move it. To take one out, open its menu and choose
+`Remove from queue`. Removing something from the queue does not remove it from your library.
 
 ## Where new things land
 
 When you add something to the queue, where it goes is a setting: `New items go`, under `Queue` in
 Settings.
 
-| Choice | What it does |
+| Choice | What the app says about it |
 |---|---|
-| `At the end` | Behind everything already waiting |
-| `At the front` | Next, ahead of everything else |
-| `After what is playing` | Immediately after the current item, leaving the rest in place |
-| `Anywhere` | Dropped in at random |
+| `At the end` | `Behind everything already queued` |
+| `At the front` | `Next, ahead of everything else` |
+| `After what is playing` | `Straight after the episode you are on` |
+| `Anywhere` | `Somewhere in the queue, chosen at random` |
 
 ## Keeping it sorted
 
-`Keep the queue sorted` re-sorts the queue after every change, by whichever order you have chosen.
+`Keep the queue sorted` — `Re-sorts after every change, discarding any order you dragged`.
 
 > **It discards any order you dragged.** Sorting and arranging by hand are two answers to the same
 > question, and the last one to run wins. Leave it off if you reorder the queue yourself.

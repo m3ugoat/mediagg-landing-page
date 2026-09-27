@@ -19,8 +19,8 @@ what you arranged on the server.
 ## Adding your server
 
 1. Open `Add from providers` on the `Add subscription` screen and choose `m3ugoat`.
-2. Tap `Add an m3ugoat server`. It asks for `The server's address` — usually a local one, like `192.168.1.10:8080`.
-3. Sign in if the server asks. **A server with no accounts on it needs no password**, and Mediagg checks which case it is before offering the fields. A username is only needed once the server has more than one account.
+2. Tap the `+` to open `Add an m3ugoat server`. It asks for `The server's address` — usually a local one, like `192.168.1.10:8080`.
+3. Fill in `Username` and `Password` if the server has accounts. **A server with no accounts on it needs no password** — leave them empty, and Mediagg checks which case it is when you press `Add`. A username is only needed once the server has more than one account: `That server has more than one account, so it needs a username as well.`
 4. Open the server to see its playlists, and subscribe to the ones you want.
 
 You can add more than one server. The provider lists every server you have added, and opening one

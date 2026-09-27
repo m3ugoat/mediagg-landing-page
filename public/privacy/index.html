@@ -33,6 +33,7 @@ main strong{color:var(--ink);display:inline-block;margin-top:14px;font-size:1.05
 main a{color:var(--red)}
 main ul{color:var(--muted);padding-left:20px}
 main li{margin:7px 0}
+main code{font:.9em ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--muted);text-decoration:none;margin-left:20px}
 footer a:hover{color:var(--ink)}
@@ -43,58 +44,105 @@ footer a:hover{color:var(--ink)}
 <header><div class="wrap"><a class="brand" href="/"><img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg</a></div></header>
 <main class="wrap">
 <h1>Privacy policy</h1>
-<p class="sub">How Mediagg handles your data. Effective 31 August 2026.</p>
+<p class="sub">How Mediagg handles your data. Last updated 27 September 2026.</p>
 
-<p>Mediagg is an Android media player. It plays the music, podcasts and video on your device, on
-media servers you run yourself, and on the open web.</p>
+<p>Mediagg is a media player for Android. It plays the music, podcasts and video on your device, on
+media servers you run yourself, and on the open web. There is no Mediagg account, and we run no
+server that receives your library, your listening or your settings.</p>
 
 <p><strong>What stays on your device</strong></p>
-<p>The app records what it needs in order to work, and keeps it locally:</p>
+<p>The app keeps what it needs in order to work, on the device:</p>
 <ul>
-<li>The podcasts you follow, your queue, inbox, favourites, playlists and playback positions</li>
+<li>Your subscriptions, episodes, queue, favourites, playlists and playback positions</li>
 <li>Your local music, video and file library, and the downloads you keep</li>
-<li>Sign-in details for any media server you add — Subsonic, Navidrome, Airsonic, OpenSubsonic, Jellyfin, Plex, Emby or Audiobookshelf</li>
-<li>Listening statistics, and every app setting</li>
+<li>Sign-in details for any media server or sync account you add</li>
+<li>Your settings, and a record of any tips you have given</li>
+<li>Crash logs, described below</li>
 </ul>
-<p>None of this is uploaded. There is no Mediagg account, and no server of ours holds a copy of your
-library. Backup and restore writes a file to a location you choose, on your device.</p>
+
+<p><b>Backups.</b> Settings → <code>Backup</code> exports your library to a file, or on a schedule to a
+folder, that you choose. If Android's own device backup is switched on, Android may also copy the
+library and your settings to your Google account or to a new phone, under Google's terms. Media
+server passwords and access tokens are excluded from Android's backup and never leave the device
+that way. <code>Export servers</code> writes your servers to a file you choose, without their
+passwords.</p>
+
+<p><b>Crash logs.</b> When the app crashes it writes a summary of the failure to a file on the device,
+together with the app version, the system version and the device model. It is not sent anywhere.
+You can read and copy it under Settings → Diagnostics → <code>Crash logs</code>.</p>
+
+<p><b>Reporting an issue.</b> <code>Report an issue</code> opens a new issue on GitHub
+(<a href="https://github.com/m3ugoat/mediagg-releases">github.com/m3ugoat/mediagg-releases</a>) in
+your browser, with the app version, system version and device model filled in, and the time and
+summary of the most recent crash if there is one. Nothing is sent until you choose to submit it, and
+you can edit or delete any of it first. Issues on that repository are public, and GitHub's policies
+apply.</p>
 
 <p><strong>What leaves your device, and when</strong></p>
 
-<p><b>Podcast search and discovery.</b> When you search for a podcast, or open a discovery screen,
-your query is sent to the service you are searching. Those services are Apple (iTunes),
-<a href="https://podcastindex.org">PodcastIndex.org</a>, <a href="https://fyyd.de">fyyd</a> and
-HearThis. They may retain the query, your device's country, your IP address and the time. Once you
-subscribe, the feed comes from whoever hosts it and the search service is no longer involved.</p>
+<p><b>Your own media servers.</b> Requests go directly from your device to the address you entered —
+Jellyfin, Emby, Plex, Audiobookshelf or a Subsonic-compatible server such as Navidrome. Nothing is
+proxied through us. The app reports what you play and how far you got to the same server, so it can
+resume and count plays. Signing in to Plex goes through
+<a href="https://plex.tv">plex.tv</a>, which is how Plex finds your servers; Plex's policy applies to
+that.</p>
 
-<p><b>Podcasts, media and artwork.</b> Feeds, episodes and images are fetched from whoever hosts
-them, exactly as a browser would. Those hosts see your IP address, and their own policies apply.</p>
+<p><b>Podcasts, streams, playlists and artwork.</b> Feeds, episodes, streams, playlists and images
+are fetched from whoever hosts them, as a browser would. Those hosts see your IP address and their
+own policies apply.</p>
 
-<p><b>Your own media servers.</b> Requests go directly from your device to the address you entered.
-Nothing is proxied through us. Credentials are stored on your device.</p>
+<p><b>Podcast search and charts.</b> When you search for a podcast, your search terms go to the
+directory you are searching: Apple (iTunes), <a href="https://podcastindex.org">Podcast Index</a> or
+<a href="https://hearthis.at">hearthis.at</a> — or all of them, if you search every directory.
+Browsing top podcasts asks Apple for its charts for the country and category you pick. These
+services may keep the request, your IP address and the time. Once you subscribe, the feed comes
+from whoever hosts it.</p>
 
-<p><b>gpodder.net synchronisation.</b> Off unless you turn it on. If you do, your subscriptions and
-episode actions are sent to the gpodder.net account you signed in to.</p>
+<p><b>Live stream artwork.</b> When a radio stream names the track it is playing but sends no
+picture, the app sends that track name to Apple's search to find cover art.</p>
 
-<p><b>Crash reporting.</b> Mediagg reports crashes through Firebase Crashlytics so faults can be
-found and fixed. A report describes the failure and the device — the model, the Android version, and
-where in the code it went wrong. It does not describe your library, and it carries nothing you
-typed.</p>
+<p><b>Lyrics.</b> When the song you are playing has no lyrics of its own, the app asks
+<a href="https://lrclib.net">LrcLib</a> for them, sending the track title, artist, album and length.
+You can stop this in Settings → Playback → <code>Where to look</code> → <code>Only the file</code>.</p>
 
-<p><b>Casting.</b> Chromecast and DLNA/UPnP casting happens over your local network, between your
-device and the one you are casting to.</p>
+<p><b>Providers on GitHub.</b> A GitHub directory of playlists that you add under
+<code>Add from providers</code> is read from GitHub (github.com, api.github.com and
+raw.githubusercontent.com). GitHub sees your IP address and which repository is being read.</p>
+
+<p><b>m3ugoat.</b> If you add an m3ugoat server, the app signs in to it at the address you entered,
+and the server adds your device to its own device list.</p>
+
+<p><b>Podcast synchronisation.</b> Off unless you set it up. If you connect
+<a href="https://gpodder.net">gpodder.net</a>, another gpodder-compatible server, or a Nextcloud
+server with GPodder Sync, your podcast subscriptions and episode actions (such as what you played and
+how far) are sent to the account you signed in to.</p>
+
+<p><b>Casting.</b> Chromecast casting uses Google's Cast service, part of Google Play Services. DLNA
+and UPnP casting happens on your local network. Either way the device you cast to fetches the media
+itself — from where it is hosted, or from your phone over your network for a file stored on it.</p>
+
+<p><b>Purchases.</b> Mediagg is free to use. You can tip once, or support it every month; supporters
+can choose an alternative app icon and are shown a supporter badge. These purchases are made through
+Google Play, which handles the payment and your payment details — we never see them. Google Play
+tells the app which purchases your account has made, and the app keeps a record of your tips on the
+device. Google's policy applies to the payment.</p>
+
+<p><b>This website.</b> Opening the documentation or this policy from the app loads the page from
+mediagg.app, which is hosted on GitHub Pages.</p>
 
 <p>Policies of the third parties involved:</p>
 <ul>
-<li><a href="https://www.google.com/policies/privacy/">Google Play Services</a></li>
-<li><a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> — crash reporting</li>
-<li><a href="https://www.apple.com/legal/privacy/">Apple</a>, <a href="https://podcastindex.org">PodcastIndex.org</a>, <a href="https://fyyd.de">fyyd</a>, HearThis — podcast search</li>
-<li><a href="https://gpodder.net">gpodder.net</a> — only if you enable sync</li>
+<li><a href="https://policies.google.com/privacy">Google</a> — Google Play, Google Play Services, Google Cast and Android backup</li>
+<li><a href="https://www.apple.com/legal/privacy/">Apple</a>, <a href="https://podcastindex.org">Podcast Index</a>, <a href="https://hearthis.at">hearthis.at</a> — podcast search and charts</li>
+<li><a href="https://lrclib.net">LrcLib</a> — lyrics</li>
+<li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a> — providers, issue reports, and hosting this website</li>
+<li><a href="https://www.plex.tv/about/privacy-legal/">Plex</a> — only if you sign in to Plex</li>
+<li><a href="https://gpodder.net">gpodder.net</a> — only if you enable sync with it</li>
 </ul>
 
 <p><strong>Cookies</strong></p>
 <p>This website sets no cookies and carries no analytics. The app does not use cookies itself,
-though third-party libraries within it may.</p>
+though a media server or website you sign in to may set its own.</p>
 
 <p><strong>Children's privacy</strong></p>
 <p>Mediagg is not directed at children under 13, and we do not knowingly collect personal information
@@ -104,16 +152,17 @@ removed.</p>
 <p><strong>Security</strong></p>
 <p>Because your library stays on your device, the protection that matters most is your device's own.
 For what does travel — server sign-ins, feed downloads — the app uses HTTPS wherever the other end
-offers it. No method of transmission or storage is completely secure, and absolute security cannot be
-guaranteed.</p>
+offers it. It will also connect over plain HTTP to an address that only offers that, which is common
+for servers on a home network. No method of transmission or storage is completely secure, and
+absolute security cannot be guaranteed.</p>
 
 <p><strong>Links to other sites</strong></p>
 <p>The app and this site link to places we do not operate, including podcast hosts, media servers
 and app stores. Their policies are their own.</p>
 
 <p><strong>Changes to this policy</strong></p>
-<p>This page will be updated when the app changes what it does. The effective date at the top says
-when it was last revised.</p>
+<p>This page will be updated when the app changes what it does. The date at the top says when it was
+last revised.</p>
 
 <p><strong>Contact</strong></p>
 <p>Questions about this policy, or requests about your data, go to

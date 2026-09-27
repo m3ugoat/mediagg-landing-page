@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -68,8 +68,12 @@
 <h2 id="opening-it-out">Opening it out</h2>
 <p>The mini player opens into the full player, and it is <strong>dragged rather than switched</strong>. Pull it up and it follows your finger: the artwork grows, the controls arrive, and the bar along the bottom slides down out of the way as the player rises to take its place.</p>
 <p>Because it is a drag, it can be part-way. Let go before the top and it settles back.</p>
+<p>On iOS the full player is the system's own sheet instead: tap the mini player and it rises, drag it down by its grabber to put it away.</p>
 <h2 id="what-is-on-the-full-player">What is on the full player</h2>
 <p>The artwork, the title and who it is by, a position bar you can scrub, and the transport controls. What else appears depends on what is playing — an episode with chapters offers them, one with a transcript offers that, a track with lyrics offers those.</p>
+<p>For a video from a server, a few more things can appear on Android:</p>
+<ul><li><strong>A skip chip</strong>, while an intro, a recap or the closing credits is playing — <code>Skip intro</code>, <code>Skip recap</code>, <code>Skip credits</code>. It jumps to the end of that stretch and nothing further. It appears only where the server has marked those stretches, which on Jellyfin means an analyser has been run over the library.</li><li><strong>Pictures while you scrub.</strong> Dragging the position bar shows the frame you are passing, where the server has made the thumbnails for it — on Jellyfin that is switched on per library.</li><li><strong><code>Audio</code></strong>, where a film has more than one soundtrack or any subtitles, opening <code>Audio and subtitles</code> to choose between them. Subtitles are drawn on the picture here as well as in full screen.</li></ul>
+<p>Full screen offers all three on iOS too — see <a href="/documentation/playback/video">Video</a>.</p>
 <p>Live stations are the exception to scrubbing: <strong>there is no position to move to</strong>, so the bar shows what is being broadcast now rather than a place in a recording. Many stations announce the current track, and where they do, Mediagg shows the record rather than the station's own name.</p>
 <h2 id="the-queue-underneath">The queue underneath</h2>
 <p>The queue is its own sheet inside the player, with its own peek and its own drag. Pull it up from the bottom of the full player to see what is coming and reorder it. See <a href="/documentation/playback/the-queue">The queue</a>.</p>

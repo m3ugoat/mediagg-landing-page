@@ -18,21 +18,22 @@ Set `Keep at most` to `As many as fit` to stop this happening by count.
 
 ## Which one went
 
-The four policies under `Making room`, and what each spares:
+The four policies under `Making room`, and what each takes. None of them ever takes a favourite:
 
 | Policy | What it deletes |
 |---|---|
 | `Nothing` | Nothing is ever deleted automatically |
-| `Anything not in the queue` | Queued episodes are safe |
-| `Anything but favourites` | Favourited episodes are safe |
-| `Episodes you have finished` | Only what you have played through |
+| `Anything not in the queue` | The oldest first; queued episodes are safe |
+| `Anything but favourites` | The oldest first, queued or not |
+| `Episodes you have finished` | Only what you have played through and is no longer queued |
 
-**Favouriting an episode is the simplest way to keep it.** Under `Anything but favourites`, a
-favourite is never taken.
+**Favouriting an episode is the simplest way to keep it.** Whichever policy is chosen, a favourite
+is never taken.
 
 ## It went right after I finished it
 
-`Wait after playing` decides how long a finished episode is kept before it becomes eligible.
+With `Episodes you have finished` chosen, `Wait after playing` decides how long a finished episode
+is kept before it becomes eligible.
 `Straight away` means exactly that. Give it a few hours if you tend to re-listen.
 
 ## The episode is still in the list, just not downloaded

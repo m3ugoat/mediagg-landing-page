@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -63,22 +63,23 @@
 <h1>Playing on another device</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">Sending what is playing to a speaker, a television or another player in the house.</p>
-<p>The cast control sits in the top bar. <strong>It is always there where the app can cast at all</strong>, rather than appearing and disappearing as devices come and go — a control that vanishes is a control you cannot learn.</p>
 <h2 id="on-android">On Android</h2>
+<p>The cast control sits in the top bar. <strong>It is always there</strong>, rather than appearing and disappearing as devices come and go — a control that vanishes is a control you cannot learn.</p>
 <p>Tapping it opens <code>Play on</code>. While it is still looking you get <code>Looking for devices…</code>, and then a row per device, each labelled with how it is reached:</p>
 <ul><li><strong><code>Chromecast</code></strong> — Chromecast, Google TV, and speakers that speak it</li><li><strong><code>DLNA</code></strong> — the UPnP renderers built into most televisions and network receivers</li></ul>
 <div class="note"><p><strong>The same television often appears twice, once under each label.</strong> That is not a mistake and the two are not equivalent — they are genuinely different routes to the same box, and one may work where the other does not. Try the other if the first disappoints.</p></div>
 <p>Picking a device disconnects any other. When something is connected, a <code>Stop casting</code> row appears at the bottom of the sheet.</p>
 <h2 id="on-ios">On iOS</h2>
-<p>iOS uses <strong>AirPlay</strong>, through Apple's own picker — so what you see is the system sheet rather than a list Mediagg drew.</p>
+<p>iOS uses <strong>AirPlay</strong>, through Apple's own picker — so what you see is the system sheet rather than a list Mediagg drew. The AirPlay button is on the full player, first in the row with the speed and the sleep timer.</p>
 <p><strong>The AirPlay button hides itself when no receiver is in range.</strong> That is Apple's behaviour rather than the app's, so a blank space where you expected a button means nothing was found, not that something is broken.</p>
 <p>There is one thing worth knowing. When a receiver plays a video itself, the now-playing card on your lock screen is the receiver's, without artwork or title from Mediagg. Audio is decoded on the phone and routed onward instead, so the app's own card and artwork stay.</p>
 <h2 id="files-on-your-phone">Files on your phone</h2>
-<p>A receiver cannot reach inside your phone's storage. So when you cast something that only exists on the device — a download, or a track from a folder you added — <strong>Mediagg serves it over your own network</strong> for the receiver to fetch. This happens on its own; there is nothing to configure and nothing to switch on.</p>
+<p>A receiver cannot reach inside your phone's storage. So when you cast from Android something that only exists on the device — a download, or a track from a folder you added — <strong>Mediagg serves it over your own network</strong> for the receiver to fetch. This happens on its own; there is nothing to configure and nothing to switch on.</p>
 <p>Anything with a public address — a podcast episode, a radio station, a media-server track — is handed over as an address and fetched by the receiver directly.</p>
-<h2 id="which-builds-can-cast">Which builds can cast</h2>
-<p>The build on Google Play has both Chromecast and DLNA.</p>
-<p>A sideloaded or F-Droid build carries no Google Play Services, so <strong>it has no Chromecast — but DLNA still works</strong>, and the cast control and the <code>Play on</code> sheet are there for it.</p>
+<h2 id="with-the-screen-off">With the screen off</h2>
+<p>While something is cast, the phone is still working — serving files, steering the receiver, sending it the next track — and Android may put an app to sleep a while after the screen goes off. Settings says which way that is, under <code>In the background</code>:</p>
+<ul><li><code>Battery optimisation</code> — <code>On — Android may stop playing or casting a while after the screen goes off</code></li><li>or <code>Off — playing and casting carry on with the screen off</code></li></ul>
+<p>Pressing the row goes to Android's own setting, which is the only place it can be changed. If a cast stops some minutes after you put the phone down, this is the thing to turn off.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/playback/lyrics"><b>Previous</b>Lyrics</a><a class="pn next" href="/documentation/downloads"><b>Next</b>Downloads and storage</a></div>
 </article>
 </main>

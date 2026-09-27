@@ -17,8 +17,9 @@ order: 30
 | `Anything but favourites` | `Oldest first, the queue included` |
 | `Episodes you have finished` | `Least recently finished first, once they have sat a while` |
 
-**Favourites are safe under three of the four.** Favouriting an episode is the simplest way to keep
-something you are not ready to lose.
+**Favourites are never deleted automatically, under any of the four.** Favouriting an episode is the
+simplest way to keep something you are not ready to lose. `Episodes you have finished` also leaves
+anything in the queue alone, and never takes an episode you have not played through.
 
 `Nothing` is a real choice, not a way of switching the feature off badly: it means you manage the
 space yourself, and nothing is ever taken without you asking.
@@ -40,6 +41,10 @@ argument for leaving it off:
 
 A download can always be fetched again. A file in a folder you added cannot — if Mediagg deletes it,
 it is gone. Turn this on only if you are sure those files exist somewhere else too.
+
+It also decides what `Keep at most` counts. Off, the files in your folders are left out of the count
+entirely, so a large folder cannot fill the limit and stop new episodes arriving. On, they are
+counted, and may be deleted to keep within it.
 
 ## Nothing is being deleted
 

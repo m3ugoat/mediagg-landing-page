@@ -13,11 +13,17 @@ Open `Media servers` and the server's own content is read live. Two chips split 
 ## Shelves
 
 Shelves are named consistently whatever your server calls them — `Recently added`, `Most played`,
-`Continue watching`, `Latest films`, `Books`, `Playlists` and so on. **Only shelves with something
-in them are drawn.**
+`Continue watching`, `Latest films`, `Audiobooks`, `Playlists` and so on. **Only shelves with
+something in them are drawn.**
 
-Each heading has a *See all*, and where its contents are playable, `Play all` and `Shuffle all`
-beside it.
+Each heading ends in a chevron that opens the whole list, and where its contents are playable,
+`Play all` and `Shuffle all` sit beside it.
+
+The order of the shelves is yours: under `Media servers` in Settings, `The order of the shelves`
+lists every shelf a server's Activity can show — `Every shelf a server's Activity can show. One that
+a server does not have, or has nothing on, is not drawn` — and `Arrange` drags them into the order
+you want. The shelves that carry on something you started — `Continue watching`, `Continue
+listening`, `Continue reading` — lead until you move them.
 
 Shelves load as you scroll to them rather than all at once, which is what keeps a large library from
 being a long wait. Pull down to refresh past the saved copy.

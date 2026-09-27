@@ -10,9 +10,10 @@ between them.
 
 ## Choosing
 
-**There is no merge switch.** The server name in the bar of the `Media servers` screen is a control
-— tap it and `Show servers` opens, with a tick per server you are signed in to. Tick the ones you
-want and press `Apply`.
+**There is no merge switch.** Once you are signed in to more than one server, the bar of the
+`Media servers` screen carries a `Choose servers` button — press it and `Show servers` opens, with a
+tick per server you are signed in to. Tick the ones you want and press `Apply`. At least one has to
+stay ticked.
 
 - **One server ticked** — that server, on its own.
 - **Several ticked** — one library made of those.
@@ -37,10 +38,11 @@ noise.
 Its mark is drawn faded rather than replaced by a warning icon — **so the row still says which
 server it is**. Sign in again and it comes back to full strength.
 
-When a server that had been unreachable returns, Mediagg says
-`One server is back. Sign in to it to start using it.`
+`Manage servers` says what is wrong with each one: `Sign in again — the server refused these
+credentials`, `Not answering from this network`, or `Signed out` with the kind of server beside it.
 
 ## Managing the list
 
-`Manage servers` sits alongside the ticks in the same sheet, and on a single-server setup it is in
-the bar instead.
+`Manage servers` sits alongside the ticks in the same sheet, and on a single-server setup it is the
+button in the bar instead. It lists every server you have added, with `Add a server` in its own
+bar.

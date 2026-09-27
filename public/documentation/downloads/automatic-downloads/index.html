@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -63,19 +63,19 @@
 <h1>Automatic downloads</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">Fetching new episodes without being asked, and the conditions that hold it back.</p>
-<p><code>Download new episodes automatically</code>, under <code>Downloads</code> in Settings, lets Mediagg fetch what arrives so it is waiting for you. <strong>The rest of the group is hidden while it is off</strong>, because a screen of controls that do nothing is how a setting comes to look broken.</p>
+<p><code>Download new episodes automatically</code>, under <code>Downloads</code> in Settings, in the group headed <code>Automatically</code>, lets Mediagg fetch what arrives so it is waiting for you. <strong>The rest of the group is hidden while it is off</strong>, because a screen of controls that do nothing is how a setting comes to look broken.</p>
 <h2 id="it-is-not-all-or-nothing">It is not all-or-nothing</h2>
 <p>The switch's own line says so: <strong><code>Only feeds that have it switched on, and only what their filters allow</code></strong>.</p>
-<p>This is a permission, not a command. Turning it on here lets automatic downloading happen; <strong>which subscriptions take part is set on each subscription</strong>. A library of forty shows does not start downloading all forty.</p>
+<p>This is a permission, not a command: nothing is fetched until it is on. <strong>Every podcast you subscribe to takes part</strong>, and none has a filter set, so once it is on, new episodes of all of them are fetched — up to the limit below. Station playlists, streams and anything else with no file to fetch never take part.</p>
 <h2 id="the-conditions">The conditions</h2>
-<div class="tablewrap"><table><thead><tr><th>Setting</th><th>What off means</th></tr></thead><tbody><tr><td><code>Include the queue</code></td><td><code>Fetch what you have queued, not only what arrived unheard</code></td></tr><tr><td><code>Download on battery</code></td><td><code>Off means it waits until you are charging</code></td></tr><tr><td><code>Download on mobile data</code></td><td><code>Off means it waits for Wi-Fi</code></td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Setting</th><th>What its line says</th></tr></thead><tbody><tr><td><code>Include the queue</code></td><td><code>Fetch what you have queued, not only what arrived unheard</code></td></tr><tr><td><code>Download on battery</code></td><td><code>Off means it waits until you are charging</code></td></tr><tr><td><code>Download on mobile data</code></td><td><code>Off means it waits for Wi-Fi</code></td></tr></tbody></table></div>
 <p>The last two are why downloads often appear to do nothing during the day and then all arrive at once. Nothing is wrong — the conditions have not been met yet.</p>
 <p><code>Include the queue</code> is worth turning on if you queue things from your back catalogue rather than only listening to what has just arrived.</p>
 <h2 id="how-many-to-keep">How many to keep</h2>
-<p><code>Keep at most</code> is the ceiling: <code>5 episodes</code>, <code>10</code>, <code>20</code>, <code>50</code>, <code>100</code>, or <code>As many as fit</code>.</p>
-<p><strong>Once the ceiling is reached, nothing new is fetched until something goes.</strong> What goes is the next setting — see <a href="/documentation/downloads/making-room">Making room</a>. With that set to <code>Nothing</code>, the ceiling is a hard stop.</p>
+<p><code>Keep at most</code> is the ceiling: <code>As many as fit</code>, <code>5 episodes</code>, <code>10 episodes</code>, <code>20 episodes</code>, <code>50 episodes</code> or <code>100 episodes</code>.</p>
+<p><strong>Once the ceiling is reached, nothing new is fetched until something goes.</strong> What counts towards it is what Mediagg downloaded — the files in a folder you added count only if cleanup is allowed to delete them. What goes is the next setting — see <a href="/documentation/downloads/making-room">Making room</a>. With that set to <code>Nothing</code>, the ceiling is a hard stop.</p>
 <h2 id="nothing-is-downloading">Nothing is downloading</h2>
-<p>Work down the list: the master switch, then the subscription's own setting, then battery, then mobile data, then whether <code>Keep at most</code> is already reached. See <a href="/documentation/help/downloads-do-not-start">Downloads will not start</a>.</p>
+<p>Work down the list: the master switch, then battery, then mobile data, then whether <code>Keep at most</code> is already reached. See <a href="/documentation/help/downloads-do-not-start">Downloads will not start</a>.</p>
 <div class="note"><p><strong>Refreshing has to happen first.</strong> Automatic downloads act on episodes that have arrived, so if nothing has been checked for, there is nothing to fetch.</p></div>
 <div class="pnav"><a class="pn prev" href="/documentation/downloads/downloading"><b>Previous</b>Downloading an episode</a><a class="pn next" href="/documentation/downloads/making-room"><b>Next</b>Making room</a></div>
 </article>

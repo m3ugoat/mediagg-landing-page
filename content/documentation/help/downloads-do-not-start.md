@@ -11,7 +11,8 @@ each one is doing its job.
 ## The switch itself
 
 `Download new episodes automatically` is the master switch. Everything below it is meaningless while
-it is off, and Mediagg greys the rest of the group out to say so.
+it is off, so Mediagg hides the rest of the group until it is on — if you cannot see the rows this
+page names, that is why.
 
 ## It is waiting for a charger
 
@@ -30,9 +31,10 @@ downloads will happen when they are.
 is fetched until something is removed — and what gets removed depends on
 `When the limit is reached, delete`. If that is set to `Nothing`, the ceiling is a hard stop.
 
-Either raise `Keep at most`, set it to `As many as fit`, or delete some downloads by hand.
+Either raise `Keep at most` — `5 episodes` up to `100 episodes` — set it to `As many as fit`, or
+delete some downloads by hand.
 
-## Only queued episodes are being fetched
+## Something you queued is not being fetched
 
 `Include the queue` — `Fetch what you have queued, not only what arrived unheard`. With it off, only
 newly arrived unplayed episodes are downloaded, so something you queued from your back catalogue is

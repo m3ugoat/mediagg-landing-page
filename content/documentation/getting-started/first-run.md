@@ -17,21 +17,29 @@ queue together and play one after the other.
 
 ## The three ways in
 
-The first screen you see is `Get started`, and it offers exactly three things. They map onto the
-three libraries above.
+A new install opens on **Home**, which has nothing to show yet and says so:
+`Nothing playing yet. Anything you start, queue or download shows up here.` Beside that is the way
+out of it — a `Get Started` button on Android, a `+` in the bar on iOS — and it opens `Get started`.
+It offers three things, which map onto the three libraries above.
 
 | Option | What it is for |
 |---|---|
-| `Add a subscription` | Follow a podcast by name or by its address |
-| `Add a server` | Jellyfin, Subsonic, Plex, Emby or Audiobookshelf |
-| `Add a playlist` | An m3u file on this device, or a station list from the web |
+| `Add a subscription` | `Follow a podcast by name or by its address` |
+| `Add a server` | `Jellyfin, Subsonic, Plex, Emby or Audiobookshelf` |
+| `Add a playlist` | `An m3u file on this device, or a station list from the web` |
 
 You do not have to choose one. Most people end up with all three, and nothing about adding one
 closes off the others.
 
+**The music already on the device comes first**, above those three, until it has been dealt with.
+On Android that is two rows, `Request audio permissions for local media` and
+`Request video permissions for local media`, and they go once answered. On iOS, where there is no
+device-wide library for an app to read, it is `Add local media folder` —
+`Read a folder of music straight into this device's library`.
+
 > **Nothing is added for you.** Mediagg starts genuinely empty — there are no suggested podcasts and
-> no sample content. Until you add something, Home has nothing to show, which is why `Get started`
-> is what you land on.
+> no sample content. The way into `Get started` stays on Home only until a shelf has something on
+> it.
 
 ## Where things go afterwards
 

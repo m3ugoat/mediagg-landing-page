@@ -44,8 +44,9 @@ working.
 **It is not a web page.** There is no browser engine behind it, nothing runs, and nothing is
 fetched, so opening the notes cannot load anything or call home.
 
-For a song or a track from a media server there are no notes; you get a table of facts about the
-track instead. An episode with neither says so: `Nothing was written about this one.`
+A song or a track from a media server has no notes, so the chip is not there. Its own page shows a
+table of facts about the track instead, and an episode whose page has neither says so:
+`Nothing was written about this one.`
 
 > **A broken transcript costs you the transcript and nothing else.** If one will not parse, the
 > episode plays exactly as it would have.

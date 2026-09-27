@@ -47,9 +47,13 @@ these want the root, not a page inside the web interface.
 
 ## It worked yesterday and not today
 
-That is a lapsed session rather than a wrong password. Playback says so plainly:
-`Signing in to <server> has stopped working — the password may have changed, or the session may
+That is a lapsed session rather than a wrong password. Playback says so plainly, naming the server —
+`Signing in to Jellyfin has stopped working — the password may have changed, or the session may
 have been ended on the server.` Sign in to it again under `Media servers`.
 
-When a server that was unreachable comes back, Mediagg says `One server is back. Sign in to it to
-start using it.`
+## After restoring your servers
+
+A server list brought over with `Import servers` never carries passwords, so every server on it
+needs signing in to again. Mediagg says so when the import finishes:
+`One server is back. Sign in to it to start using it.` — see
+[Backup](/documentation/settings/backup).

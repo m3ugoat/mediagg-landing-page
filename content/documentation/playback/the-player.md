@@ -19,11 +19,28 @@ slides down out of the way as the player rises to take its place.
 
 Because it is a drag, it can be part-way. Let go before the top and it settles back.
 
+On iOS the full player is the system's own sheet instead: tap the mini player and it rises, drag it
+down by its grabber to put it away.
+
 ## What is on the full player
 
 The artwork, the title and who it is by, a position bar you can scrub, and the transport controls.
 What else appears depends on what is playing — an episode with chapters offers them, one with a
 transcript offers that, a track with lyrics offers those.
+
+For a video from a server, a few more things can appear on Android:
+
+- **A skip chip**, while an intro, a recap or the closing credits is playing — `Skip intro`,
+  `Skip recap`, `Skip credits`. It jumps to the end of that stretch and nothing further. It appears
+  only where the server has marked those stretches, which on Jellyfin means an analyser has been run
+  over the library.
+- **Pictures while you scrub.** Dragging the position bar shows the frame you are passing, where the
+  server has made the thumbnails for it — on Jellyfin that is switched on per library.
+- **`Audio`**, where a film has more than one soundtrack or any subtitles, opening
+  `Audio and subtitles` to choose between them. Subtitles are drawn on the picture here as well as
+  in full screen.
+
+Full screen offers all three on iOS too — see [Video](/documentation/playback/video).
 
 Live stations are the exception to scrubbing: **there is no position to move to**, so the bar shows
 what is being broadcast now rather than a place in a recording. Many stations announce the current

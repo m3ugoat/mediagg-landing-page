@@ -45,7 +45,8 @@ Four moments, without you asking:
 `Sync now` sits at the bottom of the Synchronisation screen once something is connected:
 `Bring subscriptions and positions up to date`. It answers `Up to date.` when there was nothing to do.
 
-Only the six-hourly repeat waits for Wi-Fi; anything you asked for happens straight away.
+Only the six-hourly repeat waits for Wi-Fi, and only while `Refresh on mobile data` is off; anything
+you asked for happens straight away.
 
 ## What is synced
 
@@ -66,8 +67,9 @@ recently played episodes, each with its own date.
 
 ## Disconnecting
 
-Tap a connected row. `It stops syncing and what is stored for your account is forgotten. Your
-subscriptions and positions stay exactly as they are, here and there.`
+Tap a connected row — it reads `Connected as` and your account name — and confirm `Disconnect`. It
+stops syncing and what is stored for that account is forgotten:
+`Your subscriptions and positions stay exactly as they are, here and there.`
 
 > **A password changed elsewhere goes quiet rather than warning you.** If a device has stopped
 > keeping up, open this screen and press `Sync now` — the failure is reported there.

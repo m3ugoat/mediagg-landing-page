@@ -19,8 +19,12 @@ several at once gives you `Favourite` and `Unfavourite`.
 Chips narrow it to where things came from: `All`, `Subscriptions`, `Local media`, `Media servers`
 and `Playlists`. More than one can be lit at a time.
 
-**Favouriting is also how you protect a download.** Three of the four clearing-out policies spare
-favourites — see [Making room](/documentation/downloads/making-room).
+If you are signed in to a media server, **pull down to ask the servers again** for what you have
+starred there — the one part of Favourites that can change without Mediagg being told. A server's
+favourites are also brought in when it signs in.
+
+**Favouriting is also how you protect a download.** None of the four clearing-out policies ever
+deletes a favourite — see [Making room](/documentation/downloads/making-room).
 
 ## Downloads
 
@@ -30,6 +34,10 @@ and Mediagg will not remove them.
 
 Two chips, `Subscriptions` and `Media servers`, and with neither lit you see both.
 
+If some downloads have lost their files, a banner says so:
+`The files for 3 downloads are no longer on this device.` `They still play, by streaming.`, and
+`Restore missing` fetches them again.
+
 ## History
 
 **What you have actually listened to, most recently first.** No chips.
@@ -37,7 +45,7 @@ Two chips, `Subscriptions` and `Media servers`, and with neither lit you see bot
 A thing counts as history if you got anywhere into it. An episode abandoned halfway is there, and so
 is one you finished — History means what a listener means by it, not "finished".
 
-Empty, it says `Nothing playing yet. Anything you start, queue or download shows up here.`
+Empty, it says `Nothing here yet.`
 
 > **All three can be promoted onto the bar** along the bottom, if you use one often enough to want
 > it a tap away. See [What the bar shows](/documentation/settings/what-the-bar-shows).

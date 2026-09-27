@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -68,11 +68,11 @@
 <p><code>Keep at most</code> puts a ceiling on how many downloaded episodes are held. When a new one arrives and the ceiling is already reached, something has to go — and <code>When the limit is reached, delete</code> says what.</p>
 <p>Set <code>Keep at most</code> to <code>As many as fit</code> to stop this happening by count.</p>
 <h2 id="which-one-went">Which one went</h2>
-<p>The four policies under <code>Making room</code>, and what each spares:</p>
-<div class="tablewrap"><table><thead><tr><th>Policy</th><th>What it deletes</th></tr></thead><tbody><tr><td><code>Nothing</code></td><td>Nothing is ever deleted automatically</td></tr><tr><td><code>Anything not in the queue</code></td><td>Queued episodes are safe</td></tr><tr><td><code>Anything but favourites</code></td><td>Favourited episodes are safe</td></tr><tr><td><code>Episodes you have finished</code></td><td>Only what you have played through</td></tr></tbody></table></div>
-<p><strong>Favouriting an episode is the simplest way to keep it.</strong> Under <code>Anything but favourites</code>, a favourite is never taken.</p>
+<p>The four policies under <code>Making room</code>, and what each takes. None of them ever takes a favourite:</p>
+<div class="tablewrap"><table><thead><tr><th>Policy</th><th>What it deletes</th></tr></thead><tbody><tr><td><code>Nothing</code></td><td>Nothing is ever deleted automatically</td></tr><tr><td><code>Anything not in the queue</code></td><td>The oldest first; queued episodes are safe</td></tr><tr><td><code>Anything but favourites</code></td><td>The oldest first, queued or not</td></tr><tr><td><code>Episodes you have finished</code></td><td>Only what you have played through and is no longer queued</td></tr></tbody></table></div>
+<p><strong>Favouriting an episode is the simplest way to keep it.</strong> Whichever policy is chosen, a favourite is never taken.</p>
 <h2 id="it-went-right-after-i-finished-it">It went right after I finished it</h2>
-<p><code>Wait after playing</code> decides how long a finished episode is kept before it becomes eligible. <code>Straight away</code> means exactly that. Give it a few hours if you tend to re-listen.</p>
+<p>With <code>Episodes you have finished</code> chosen, <code>Wait after playing</code> decides how long a finished episode is kept before it becomes eligible. <code>Straight away</code> means exactly that. Give it a few hours if you tend to re-listen.</p>
 <h2 id="the-episode-is-still-in-the-list-just-not-downloaded">The episode is still in the list, just not downloaded</h2>
 <p>Deleting a download does not unsubscribe you and does not remove the episode. It goes back to being something you stream or download again — the row stays.</p>
 <h2 id="local-files">Local files</h2>

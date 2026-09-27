@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mixes — Mediagg documentation</title>
-<meta name="description" content="The Mix row, how it is offered, in what order, and what each tile plays.">
+<title>Reading a book — Mediagg documentation</title>
+<meta name="description" content="Opening an ebook from Audiobookshelf, turning through it, and making it read the way you like.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
-<link rel="canonical" href="https://mediagg.app/documentation/media-servers/mixes">
+<link rel="canonical" href="https://mediagg.app/documentation/media-servers/reading-a-book">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
-<meta property="og:title" content="Mixes — Mediagg documentation">
-<meta property="og:description" content="The Mix row, how it is offered, in what order, and what each tile plays.">
+<meta property="og:title" content="Reading a book — Mediagg documentation">
+<meta property="og:description" content="Opening an ebook from Audiobookshelf, turning through it, and making it read the way you like.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="on" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
+<ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="on" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -59,28 +59,26 @@
 <ul><li><a class="" href="/documentation/help/nothing-plays">Something will not play</a></li><li><a class="" href="/documentation/help/a-feed-will-not-refresh">A subscription will not refresh</a></li><li><a class="" href="/documentation/help/episodes-are-missing">Episodes have disappeared</a></li><li><a class="" href="/documentation/help/a-server-will-not-sign-in">A server will not sign in</a></li><li><a class="" href="/documentation/help/downloads-do-not-start">Downloads will not start</a></li><li><a class="" href="/documentation/help/report-a-problem">Reporting a problem</a></li></ul>
 </div></div></details></nav>
 <article class="doc">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/media-servers">Media servers</a><i>/</i><span>Mixes</span></nav>
-<h1>Mixes</h1>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/media-servers">Media servers</a><i>/</i><span>Reading a book</span></nav>
+<h1>Reading a book</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
-<p class="sub">The Mix row, how it is offered, in what order, and what each tile plays.</p>
-<p>A <strong>mix</strong> is something to play built from a server's own suggestions. The <code>Mix</code> row is the first thing on the <code>Activity</code> chip of the <code>Media servers</code> screen, and it appears on Home too.</p>
-<p>Tapping a tile builds the mix and starts it — the tile says <code>Starting…</code> while it does.</p>
-<h2 id="how-the-row-is-offered">How the row is offered</h2>
-<p><code>How the row is offered</code>, under <code>Mix</code> in Settings, has two answers:</p>
-<div class="tablewrap"><table><thead><tr><th>Choice</th><th>What it does</th></tr></thead><tbody><tr><td><code>All servers combined</code></td><td><code>A tile for each kind of mix, played from whichever server can</code></td></tr><tr><td><code>One tile per server</code></td><td><code>A tile for each server, playing what the setting below says</code></td></tr></tbody></table></div>
-<p>The first is the default. It asks "what would you like?" — the second asks "from where?".</p>
-<h2 id="the-kinds-of-mix">The kinds of mix</h2>
-<p>Under <code>All servers combined</code>, there is a tile per kind: <code>Audiobook mix</code>, <code>Track mix</code>, <code>Artist mix</code>, <code>Album mix</code>, <code>Movie mix</code> and <code>Show mix</code>.</p>
-<p><code>The order of the row</code> lets you drag them into the order you want. There are no checkboxes, because <strong><code>A kind is hidden anyway when no server can build it</code></strong> — a music server contributes no film mix, so no film tile appears, and nothing needs switching off.</p>
-<p><code>Audiobook mix</code> leads by default, and it is the only kind that <strong>resumes</strong> rather than starting fresh.</p>
-<h2 id="what-a-server-s-mix-plays">What a server's mix plays</h2>
-<p>Under <code>One tile per server</code>, the tile <em>is</em> the choice of where, so a second question appears — <code>What a server's mix plays</code>:</p>
-<div class="tablewrap"><table><thead><tr><th>Choice</th><th>What it does</th></tr></thead><tbody><tr><td><code>Tracks</code></td><td><code>Whatever the server suggests right now, played as it came</code></td></tr><tr><td><code>An artist</code></td><td><code>One artist, and what the server says goes with them</code></td></tr><tr><td><code>An album</code></td><td><code>One record, played through in its own order</code></td></tr></tbody></table></div>
-<p>This row is hidden under <code>All servers combined</code>, where the tile already says what it plays.</p>
-<h2 id="elsewhere">Elsewhere</h2>
-<p>An artist's own page has an <code>Artist mix</code> button, whatever these settings say.</p>
-<div class="note"><p><strong>Which servers a mix may reach is the same choice as the merged library.</strong> A mix draws only from the servers you have ticked under <code>Show servers</code> — see <a href="/documentation/media-servers/one-library-many-servers">One library, several servers</a>.</p></div>
-<div class="pnav"><a class="pn prev" href="/documentation/media-servers/one-library-many-servers"><b>Previous</b>One library, several servers</a><a class="pn next" href="/documentation/media-servers/reading-a-book"><b>Next</b>Reading a book</a></div>
+<p class="sub">Opening an ebook from Audiobookshelf, turning through it, and making it read the way you like.</p>
+<p>Mediagg reads books as well as playing them. <strong>The books come from Audiobookshelf</strong> — it is the one kind of server here that holds ebooks — and three formats open: <strong>EPUB</strong>, <strong>CBZ</strong> comics and <strong>PDF</strong>.</p>
+<p>Open one from the server's <code>Ebooks</code> or <code>Continue reading</code> shelf. Anything else says so rather than opening a blank page: <code>This app cannot open a … book.</code></p>
+<h2 id="kept-on-the-device">Kept on the device</h2>
+<p>The first time a book is opened it is downloaded, and <strong>the copy on the device is used from then on</strong> — a book opened once opens again with the server switched off, or on a train. A download that fails part-way is not kept, so there is never half a book to open.</p>
+<h2 id="turning-through-it">Turning through it</h2>
+<p>The book is shown one section at a time: a chapter of an EPUB, a page of a comic or a PDF.</p>
+<ul><li><strong>Swipe</strong> left for the next, right for the one before.</li><li><code>Previous</code> and <code>Next</code> along the bottom, with a counter between them — <code>12 of 40</code>.</li><li>A bar above them to drag through the whole book; the counter follows your thumb, so you can see where you are about to land.</li><li><code>Contents</code>, in the top bar, jumps to a chapter — where the book has a table of contents. A comic usually has none, so the button is not there.</li></ul>
+<h2 id="full-screen">Full screen</h2>
+<p><code>Full screen</code> takes every bar away, the phone's own included, and leaves the page. <strong>A tap anywhere brings them back</strong>, and so does going back — back leaves full screen before it leaves the book. Turning the phone keeps you in full screen.</p>
+<h2 id="how-this-reads">How this reads</h2>
+<p><code>How this reads</code>, in the top bar, changes the look of an EPUB. Each choice applies to the page as you make it, and <code>Done</code> closes the sheet.</p>
+<div class="tablewrap"><table><thead><tr><th>Row</th><th>Choices</th></tr></thead><tbody><tr><td><code>Theme</code></td><td><code>Match app</code>, <code>Light</code>, <code>Dark</code>, <code>Black</code></td></tr><tr><td><code>Font</code></td><td><code>Publisher</code>, <code>Serif</code>, <code>Sans</code></td></tr><tr><td><code>Size</code></td><td><code>80%</code>, <code>100%</code>, <code>125%</code>, <code>150%</code>, <code>200%</code></td></tr><tr><td><code>Line spacing</code></td><td><code>Tight</code>, <code>Normal</code>, <code>Loose</code></td></tr><tr><td><code>Weight</code></td><td><code>Normal</code>, <code>Medium</code>, <code>Bold</code></td></tr></tbody></table></div>
+<p><strong>Your choices overrule the publisher's styling.</strong> A comic and a PDF are pictures, so there is no face or spacing to change and the button is not offered for them.</p>
+<h2 id="where-you-got-to">Where you got to</h2>
+<p><strong>Your place is kept on the server, not in Mediagg.</strong> Every turn tells Audiobookshelf how far through the book you are, and opening it again starts from there — so a book read on your phone picks up where you left it on any other reader signed in to the same server.</p>
+<div class="pnav"><a class="pn prev" href="/documentation/media-servers/mixes"><b>Previous</b>Mixes</a><a class="pn next" href="/documentation/playback"><b>Next</b>Playback</a></div>
 </article>
 </main>
 

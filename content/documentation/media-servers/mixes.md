@@ -23,14 +23,14 @@ The first is the default. It asks "what would you like?" — the second asks "fr
 
 ## The kinds of mix
 
-Under `All servers combined`, there is a tile per kind: `Book mix`, `Track mix`, `Artist mix`,
+Under `All servers combined`, there is a tile per kind: `Audiobook mix`, `Track mix`, `Artist mix`,
 `Album mix`, `Movie mix` and `Show mix`.
 
 `The order of the row` lets you drag them into the order you want. There are no checkboxes, because
 **`A kind is hidden anyway when no server can build it`** — a music server contributes no film mix,
 so no film tile appears, and nothing needs switching off.
 
-`Book mix` leads by default, and it is the only kind that **resumes** rather than starting fresh.
+`Audiobook mix` leads by default, and it is the only kind that **resumes** rather than starting fresh.
 
 ## What a server's mix plays
 

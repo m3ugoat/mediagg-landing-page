@@ -9,7 +9,8 @@ The bar along the bottom starts with three: `Home`, `Library` and `Search`. Plus
 is always there and cannot be removed.
 
 **Mediagg carries more kinds of content than a bar has room for**, so which tabs you get is yours to
-choose. Open Settings and find `What the bar shows`.
+choose. Open Settings, find `Tabs`, and press `Arrange` — see
+[What the bar shows](/documentation/settings/what-the-bar-shows).
 
 ## What you can promote
 
@@ -37,6 +38,11 @@ and because `More` takes a slot of its own, the overflow starts one early.
 
 ## Search
 
-Search looks across everything at once: your subscriptions, what is on the device, and the libraries
-of any servers you have signed in to. It is a tab by default because it is the fastest route to
-something you know you have.
+Search has two halves, switched at the top: `Library` and `Discover`.
+
+`Library` looks across everything you already have at once — your subscriptions, what is on the
+device, and the libraries of any servers you have signed in to. `Discover` asks podcast directories
+instead — its prompt is `Find a podcast to subscribe to`. They are kept apart so that a show you follow is not
+listed beside a directory's copy of itself.
+
+It is a tab by default because it is the fastest route to something you know you have.

@@ -19,7 +19,7 @@ own music and somebody's media server into one scroll, and those are not the sam
 | `Subscriptions` | Podcasts, subscribed station playlists and single streams |
 | `Local media` | What is on this device — its music, its video, and the folders they were found in |
 | `Media servers` | The servers you have signed in to, read live rather than from a stored copy |
-| `Playlists` | Playlists brought in from the device |
+| `Playlists` | Playlists kept on this device — made here, or imported |
 | `Favourites` | Everything you have marked, whatever it came from |
 | `Downloads` | What is currently kept on the device |
 | `History` | What you have actually listened to, most recent first |
@@ -33,14 +33,17 @@ See [The tabs along the bottom](/documentation/getting-started/the-tabs) for cho
 
 ## Chips, where a section needs them
 
-Two of the sections split further, and they do it with chips along the top rather than with more
+Four of the sections split further, and they do it with chips along the top rather than with more
 rows in the hub:
 
 - `Subscriptions` has `Podcasts`, `Episodes`, `New` and `Providers`
-- `Local media` has `Songs`, `Videos`, `Albums`, `Artists`, `Genres`, `Years` and `Folders`
+- `Local media` has `Songs`, `Videos`, `Albums`, `Artists`, `Genres`, `Years`, `Folders` and, on
+  Android, `Filesystem`
+- `Favourites` narrows by where something came from, with `All` beside them
+- `Downloads` has `Subscriptions` and `Media servers`
 
-**The chip you last used is remembered per section**, so a section reopens where you left it rather
-than resetting to the first one.
+**The chips you last used are remembered per section**, so a section reopens where you left it
+rather than resetting to the first one.
 
 > **Media servers is the one section read live.** The others list what is already stored on the
 > device. Opening `Media servers` asks the servers themselves, so it needs them to be reachable.

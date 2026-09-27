@@ -5,16 +5,16 @@ platforms: android, ios
 order: 10
 ---
 
-Every episode row carries a download button. Tap it and the glyph becomes **a progress ring you can
-tap again to stop**. When it finishes, the button goes away — there is nothing left to ask for.
+Every episode row carries a `Download` button. Tap it and the glyph becomes **a progress ring you can
+tap again to stop** — `Stop downloading`. When it finishes, the button goes away — there is nothing left to ask for.
 
 If it fails, the button becomes an error glyph reading `Download failed. Try again`, and tapping it
 retries.
 
 ## From the menu
 
-An episode's own menu offers `Download` — or `Download again`, when some of it is already on the
-device — and `Remove download` to delete what has been fetched.
+An episode's own menu offers `Download` — or `Download again`, when something Mediagg had downloaded
+has since gone missing from the device — and `Remove download` to delete what has been fetched.
 
 Removing a download does not unsubscribe you and does not remove the episode. It goes back to being
 something you stream.

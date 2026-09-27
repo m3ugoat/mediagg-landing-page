@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="on" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li></ul>
+<ul><li><a class="on" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -52,7 +52,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/settings">Settings</a>
-<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li></ul>
+<ul><li><a class="" href="/documentation/settings/appearance">Appearance</a></li><li><a class="" href="/documentation/settings/what-the-bar-shows">What the bar shows</a></li><li><a class="" href="/documentation/settings/synchronisation">Synchronisation</a></li><li><a class="" href="/documentation/settings/backup">Backup</a></li><li><a class="" href="/documentation/settings/statistics">Statistics</a></li><li><a class="" href="/documentation/settings/scanning">Scanning</a></li><li><a class="" href="/documentation/settings/supporting">Supporting Mediagg</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/help">Problems and first aid</a>
@@ -64,13 +64,18 @@
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">The five kinds of server, what each sign-in asks for, and the one that is different.</p>
 <p>Mediagg is a client for five kinds of media server. <strong>Your library stays where it is</strong> — nothing is copied to the phone unless you download it — and Mediagg reports your progress back, so the server and your other players stay in step.</p>
-<p>Open <code>Add a server</code> from <code>Get started</code>, or <code>Media servers</code> in the Library.</p>
+<p>Open <code>Add a server</code> from <code>Get started</code>, or press <code>Add a server</code> in the bar of <code>Media servers</code> in the Library. <code>Choose a provider</code> lists the five kinds, each with a line saying which server software it means, and picking one opens its sign-in: an <code>Address</code>, a <code>Name (optional)</code>, a <code>Username</code> and a <code>Password</code>.</p>
 <h2 id="the-five">The five</h2>
 <div class="tablewrap"><table><thead><tr><th>Server</th><th>What the sign-in wants</th><th>A typical address</th></tr></thead><tbody><tr><td><code>Subsonic</code></td><td>Your account on the server — Navidrome, Airsonic, Gonic and the rest speak this</td><td><code>https://music.example.com</code></td></tr><tr><td><code>Jellyfin</code></td><td>Your Jellyfin user on this server</td><td><code>http://192.168.1.10:8096</code></td></tr><tr><td><code>Audiobookshelf</code></td><td>Your Audiobookshelf user on this server</td><td><code>https://books.example.com</code></td></tr><tr><td><code>Emby</code></td><td>Your Emby user on this server</td><td><code>http://192.168.1.10:8096</code></td></tr><tr><td><code>Plex</code></td><td>Your plex.tv account, not a user on the server</td><td><code>http://192.168.1.10:32400</code></td></tr></tbody></table></div>
 <p><strong>Plex is the one that works differently.</strong> Signing in goes to plex.tv for a token rather than checking a username and password against the server, so the account you need is the one you use at plex.tv, even when the server is sitting in the same room.</p>
 <p><code>Subsonic</code> is a protocol rather than one program. If your server says it is Subsonic-compatible — Navidrome, Airsonic, Gonic and others — choose <code>Subsonic</code>.</p>
+<h2 id="jellyfin-signing-in-with-a-code">Jellyfin: signing in with a code</h2>
+<p>A Jellyfin server can be signed in to without typing a password on the phone. Once an address is in, the form offers <code>Sign in with a code instead</code> — <code>Shows a code to enter in Jellyfin on a device you are already signed in on.</code></p>
+<p>Mediagg asks the server for a code and shows it: <code>Open Jellyfin on a device you are already signed in on, find Quick Connect, and enter this code.</code> It signs in the moment the code is accepted.</p>
+<ul><li><code>This server does not offer signing in with a code. Use a password instead.</code> — Quick Connect is switched off on that server.</li><li><code>Nobody entered the code in time, so the server has forgotten it. Ask for a new one.</code> — press <code>Ask for a new code</code>.</li></ul>
+<p><code>Use a password instead</code> goes back to the form with everything you had typed still there.</p>
 <h2 id="more-than-one">More than one</h2>
-<p>You can add several servers, including several of the same kind. Each appears as its own entry under <code>Media servers</code>, with its own sign-in.</p>
+<p>You can add several servers, including several of the same kind. Each is its own entry in <code>Manage servers</code>, with its own sign-in, and its menu offers <code>Sign in</code> or <code>Sign out</code> and <code>Forget this server</code>.</p>
 <p>If you would rather see one library than several, they can be merged — see <a href="/documentation/media-servers/one-library-many-servers">One library, several servers</a>.</p>
 <h2 id="addresses">Addresses</h2>
 <p>A local address is fine, and is what most people use. Include the port if the server runs on one — <code>8096</code> for Jellyfin and Emby, <code>32400</code> for Plex are the usual defaults.</p>

@@ -6,19 +6,21 @@ order: 40
 ---
 
 `Custom Github Directory` is a provider with nothing in it until you supply the source —
-**"Any public Github directory of m3u playlists"**. If you keep your playlists in a repository, or
+**`Any public Github directory of m3u playlists`**. If you keep your playlists in a repository, or
 know of one worth browsing, this is how Mediagg reads it.
 
 ## Adding a directory
 
 Open `Add from providers` on the `Add subscription` screen, choose `Custom Github Directory`, then
-`Add a github directory`. It asks for `The directory's address`, and takes either form:
+the `+` for `Add a github directory`. It asks for `The directory's address` —
+`github.com/owner/repo, or a link to a folder in one` — and takes either form:
 
 - `github.com/owner/repo` — the whole repository
 - a link to a folder inside one, if only part of it is playlists
 
 You can add more than one. The provider lists everything you have added at its top level, and any of
-them can be let go of later.
+them can be let go of later: `It stops being listed here. Anything you already subscribed to from it
+stays.`
 
 ## What you will see inside
 
@@ -28,9 +30,9 @@ way to guess the structure of somewhere it has never seen.
 
 Open folders until you reach a playlist, then subscribe to it.
 
-> **Github allows 60 requests an hour.** Each folder you open costs one; going back costs none. The
-> allowance is per hour and frees up on its own, so a large repository is best browsed a little at a
-> time.
+> **`GitHub allows 60 requests an hour. Each folder you open costs one; going back costs none.`** The
+> add dialog says so before you start. The allowance is per hour and frees up on its own, so a large
+> repository is best browsed a little at a time.
 
 ## Naming
 
