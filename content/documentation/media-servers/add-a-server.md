@@ -31,6 +31,9 @@ plex.tv, even when the server is sitting in the same room.
 `Subsonic` is a protocol rather than one program. If your server says it is Subsonic-compatible —
 Navidrome, Airsonic, Gonic and others — choose `Subsonic`.
 
+> **No server yet?** The Navidrome, Jellyfin and Audiobookshelf projects run public demo servers —
+> see [Trying a demo server](/documentation/media-servers/try-a-demo-server) for their sign-ins.
+
 ## Jellyfin: signing in with a code
 
 A Jellyfin server can be signed in to without typing a password on the phone. Once an address is

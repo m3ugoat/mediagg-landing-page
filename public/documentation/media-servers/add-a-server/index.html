@@ -40,7 +40,7 @@
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
-<ul><li><a class="on" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
+<ul><li><a class="on" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/try-a-demo-server">Trying a demo server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -69,6 +69,7 @@
 <div class="tablewrap"><table><thead><tr><th>Server</th><th>What the sign-in wants</th><th>A typical address</th></tr></thead><tbody><tr><td><code>Subsonic</code></td><td>Your account on the server — Navidrome, Airsonic, Gonic and the rest speak this</td><td><code>https://music.example.com</code></td></tr><tr><td><code>Jellyfin</code></td><td>Your Jellyfin user on this server</td><td><code>http://192.168.1.10:8096</code></td></tr><tr><td><code>Audiobookshelf</code></td><td>Your Audiobookshelf user on this server</td><td><code>https://books.example.com</code></td></tr><tr><td><code>Emby</code></td><td>Your Emby user on this server</td><td><code>http://192.168.1.10:8096</code></td></tr><tr><td><code>Plex</code></td><td>Your plex.tv account, not a user on the server</td><td><code>http://192.168.1.10:32400</code></td></tr></tbody></table></div>
 <p><strong>Plex is the one that works differently.</strong> Signing in goes to plex.tv for a token rather than checking a username and password against the server, so the account you need is the one you use at plex.tv, even when the server is sitting in the same room.</p>
 <p><code>Subsonic</code> is a protocol rather than one program. If your server says it is Subsonic-compatible — Navidrome, Airsonic, Gonic and others — choose <code>Subsonic</code>.</p>
+<div class="note"><p><strong>No server yet?</strong> The Navidrome, Jellyfin and Audiobookshelf projects run public demo servers — see <a href="/documentation/media-servers/try-a-demo-server">Trying a demo server</a> for their sign-ins.</p></div>
 <h2 id="jellyfin-signing-in-with-a-code">Jellyfin: signing in with a code</h2>
 <p>A Jellyfin server can be signed in to without typing a password on the phone. Once an address is in, the form offers <code>Sign in with a code instead</code> — <code>Shows a code to enter in Jellyfin on a device you are already signed in on.</code></p>
 <p>Mediagg asks the server for a code and shows it: <code>Open Jellyfin on a device you are already signed in on, find Quick Connect, and enter this code.</code> It signs in the moment the code is accepted.</p>
@@ -82,7 +83,7 @@
 <div class="note"><p><strong>If a sign-in is refused, the address is usually right and something else is wrong.</strong> See <a href="/documentation/help/a-server-will-not-sign-in">A server will not sign in</a>.</p></div>
 <h2 id="what-mediagg-sends-back">What Mediagg sends back</h2>
 <p>Where you got to in something is reported to the server as you listen, so finishing an episode on your phone leaves it finished everywhere. Marking a favourite is sent back too, where the server keeps such a thing.</p>
-<div class="pnav"><a class="pn prev" href="/documentation/media-servers"><b>Previous</b>Media servers</a><a class="pn next" href="/documentation/media-servers/browsing-a-server"><b>Next</b>Browsing a server</a></div>
+<div class="pnav"><a class="pn prev" href="/documentation/media-servers"><b>Previous</b>Media servers</a><a class="pn next" href="/documentation/media-servers/try-a-demo-server"><b>Next</b>Trying a demo server</a></div>
 </article>
 </main>
 
