@@ -7,31 +7,33 @@ order: 30
 
 `Local media` is what is on the device itself, rather than anything fetched from a feed or a server.
 
-**It is one section with chips rather than several sections**, because songs, videos and folders are
-the same question — what is on this device — asked different ways.
+**It is one section with chips rather than several sections**, because songs, videos, books and
+folders are the same question — what is on this device — asked different ways.
 
 ## The chips
 
-`Songs` and `Videos` lead, because they are what the section is. The ones after them are ways of
-cutting the first:
+`Songs`, `Videos` and `Audiobooks` lead, because they are what the section holds. The ones after
+them are ways of cutting the first — where the files are, then what their tags say:
 
 | Chip | What it shows |
 |---|---|
 | `Songs` | Every track |
 | `Videos` | Every video |
+| `Audiobooks` | A cover per book, however many files it is — see [Audiobooks on your device](/documentation/library/audiobooks) |
+| `Folders` | Every folder holding something, by name |
+| `Filesystem` | The device's storage, walked one level at a time — Android only |
 | `Albums` | A grid of sleeves; open one for its tracks |
 | `Artists` | Grouped by the artist tag |
 | `Genres` | Grouped by the genre tag |
 | `Years` | Grouped by year |
-| `Folders` | Every folder holding something, by name |
-| `Filesystem` | The device's storage, walked one level at a time — Android only |
 
 `Albums`, `Artists`, `Genres` and `Years` are built from the tags inside your files. **`Folders`
 and `Filesystem` ignore the tags entirely** and show where the files actually are, which is what to
 reach for when a file's tags are wrong or missing.
 
 Each chip has its own sort, from `As listed`, `Name`, `Date added`, `Length` and `Size` — only the
-ones its rows can answer — and remembers it separately.
+ones its rows can answer — and remembers it separately. `Audiobooks` also has a filter beside the
+sort — `All`, `New`, `In progress` and `Finished`.
 
 ## Folders and Filesystem
 
@@ -79,6 +81,6 @@ only one of the two was allowed, the folder chips say which half they are missin
 
 `Play all` and `Shuffle all` are in the toolbar.
 
-> **Where a chip lists groupings rather than files** — albums, artists, genres, years and folders —
+> **Where a chip lists groupings rather than files** — books, albums, artists, genres, years and folders —
 > you open one first. Shuffling every track on the device from a screen of sleeves is not what the
 > button would mean there.

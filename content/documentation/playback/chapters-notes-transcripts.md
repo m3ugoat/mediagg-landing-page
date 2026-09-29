@@ -41,8 +41,13 @@ A transcript with no timings is shown as a plain block of text to read at your o
 `Notes` is the publisher's own episode description, as the feed carried it — links included and
 working.
 
-**It is not a web page.** There is no browser engine behind it, nothing runs, and nothing is
-fetched, so opening the notes cannot load anything or call home.
+**The notes themselves are not a web page.** There is no browser engine behind them, nothing runs,
+and nothing is fetched, so opening the notes cannot load anything or call home.
+
+**A link in them opens inside Mediagg**, on a page of its own with the site's name in the bar, so
+reading what an episode links to does not take you out of the app. Back steps back through the
+page's own links first, then returns you to where you were. An email address or a phone number
+still goes to the app that handles it.
 
 A song or a track from a media server has no notes, so the chip is not there. Its own page shows a
 table of facts about the track instead, and an episode whose page has neither says so:

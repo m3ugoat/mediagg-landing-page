@@ -41,6 +41,12 @@ Tracks draw as a list, films and albums as a grid of covers. A sort control offe
 how many tracks and how long it runs, `Play` and `Shuffle`, and its contents. The word follows the thing:
 chapters for a book, episodes for a season.
 
+**An audiobook lists its chapters**, where the server states them — Audiobookshelf does — rather
+than its files: numbered, named, with where each starts in the whole book, and the one playing
+marked. Tap one to play the book from there. Beside `Play` — where an album has `Shuffle` — a book
+has `Download`, which keeps the whole book on the device — the same as `Download all` in the menu. The player treats it as one book;
+see [Listening to a book](/documentation/playback/listening-to-a-book).
+
 **An artist** opens to a portrait, their albums, top tracks, who they appear alongside, similar
 artists, an `Artist mix` button and a link to look them up on Wikipedia.
 

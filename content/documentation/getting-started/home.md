@@ -19,7 +19,7 @@ Pull down on Home to check your subscriptions for new episodes there and then.
 
 | Shelf | What is on it |
 |---|---|
-| `Mix` | Mixes from your media servers — press one and it starts |
+| `Media Server Mix` | Mixes from your media servers — press one and it starts |
 | `Continue` | What you have started and not finished |
 | `New Episodes` | Episodes that have arrived and you have not dealt with |
 | `Surprise me` | A handful of things from your library, dealt at random |
@@ -27,7 +27,7 @@ Pull down on Home to check your subscriptions for new episodes there and then.
 | `Favourites` | What you have marked |
 | `Downloads` | What is kept on the device |
 
-## Mix
+## Media Server Mix
 
 If you have signed in to a media server, Home leads with mixes built from it — a handful of tracks,
 an artist or an album, depending on how you have set it up. **This shelf is the one most affected by
@@ -62,6 +62,6 @@ The order of the shelves is yours. In Settings, under `Home`, `The order of the 
 **`A shelf with nothing on it is not drawn at all`** — there is nothing to hide that does not hide
 itself.
 
-The Mix row's own order is arranged separately, under `Media servers` in Settings. The bar along the
+The `Media Server Mix` row's own order is arranged separately, under `Media servers` in Settings. The bar along the
 bottom is a different setting again — see
 [The tabs along the bottom](/documentation/getting-started/the-tabs).

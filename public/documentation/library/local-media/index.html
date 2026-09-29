@@ -36,7 +36,7 @@
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/library">Your library</a>
-<ul><li><a class="" href="/documentation/library/the-library">The Library</a></li><li><a class="" href="/documentation/library/subscriptions-section">The Subscriptions section</a></li><li><a class="on" href="/documentation/library/local-media">Local media</a></li><li><a class="" href="/documentation/library/playlists">Playlists</a></li><li><a class="" href="/documentation/library/favourites-downloads-history">Favourites, Downloads and History</a></li></ul>
+<ul><li><a class="" href="/documentation/library/the-library">The Library</a></li><li><a class="" href="/documentation/library/subscriptions-section">The Subscriptions section</a></li><li><a class="on" href="/documentation/library/local-media">Local media</a></li><li><a class="" href="/documentation/library/audiobooks">Audiobooks on your device</a></li><li><a class="" href="/documentation/library/playlists">Playlists</a></li><li><a class="" href="/documentation/library/favourites-downloads-history">Favourites, Downloads and History</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/media-servers">Media servers</a>
@@ -44,7 +44,7 @@
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
-<ul><li><a class="" href="/documentation/playback/the-player">The player</a></li><li><a class="" href="/documentation/playback/the-queue">The queue</a></li><li><a class="" href="/documentation/playback/video">Video</a></li><li><a class="" href="/documentation/playback/chapters-notes-transcripts">Chapters, notes and transcripts</a></li><li><a class="" href="/documentation/playback/lyrics">Lyrics</a></li><li><a class="" href="/documentation/playback/play-on-another-device">Playing on another device</a></li></ul>
+<ul><li><a class="" href="/documentation/playback/the-player">The player</a></li><li><a class="" href="/documentation/playback/the-queue">The queue</a></li><li><a class="" href="/documentation/playback/video">Video</a></li><li><a class="" href="/documentation/playback/chapters-notes-transcripts">Chapters, notes and transcripts</a></li><li><a class="" href="/documentation/playback/listening-to-a-book">Listening to a book</a></li><li><a class="" href="/documentation/playback/lyrics">Lyrics</a></li><li><a class="" href="/documentation/playback/play-on-another-device">Playing on another device</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/downloads">Downloads and storage</a>
@@ -64,12 +64,12 @@
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">The music and video on your device, and the chips that cut it different ways.</p>
 <p><code>Local media</code> is what is on the device itself, rather than anything fetched from a feed or a server.</p>
-<p><strong>It is one section with chips rather than several sections</strong>, because songs, videos and folders are the same question — what is on this device — asked different ways.</p>
+<p><strong>It is one section with chips rather than several sections</strong>, because songs, videos, books and folders are the same question — what is on this device — asked different ways.</p>
 <h2 id="the-chips">The chips</h2>
-<p><code>Songs</code> and <code>Videos</code> lead, because they are what the section is. The ones after them are ways of cutting the first:</p>
-<div class="tablewrap"><table><thead><tr><th>Chip</th><th>What it shows</th></tr></thead><tbody><tr><td><code>Songs</code></td><td>Every track</td></tr><tr><td><code>Videos</code></td><td>Every video</td></tr><tr><td><code>Albums</code></td><td>A grid of sleeves; open one for its tracks</td></tr><tr><td><code>Artists</code></td><td>Grouped by the artist tag</td></tr><tr><td><code>Genres</code></td><td>Grouped by the genre tag</td></tr><tr><td><code>Years</code></td><td>Grouped by year</td></tr><tr><td><code>Folders</code></td><td>Every folder holding something, by name</td></tr><tr><td><code>Filesystem</code></td><td>The device's storage, walked one level at a time — Android only</td></tr></tbody></table></div>
+<p><code>Songs</code>, <code>Videos</code> and <code>Audiobooks</code> lead, because they are what the section holds. The ones after them are ways of cutting the first — where the files are, then what their tags say:</p>
+<div class="tablewrap"><table><thead><tr><th>Chip</th><th>What it shows</th></tr></thead><tbody><tr><td><code>Songs</code></td><td>Every track</td></tr><tr><td><code>Videos</code></td><td>Every video</td></tr><tr><td><code>Audiobooks</code></td><td>A cover per book, however many files it is — see <a href="/documentation/library/audiobooks">Audiobooks on your device</a></td></tr><tr><td><code>Folders</code></td><td>Every folder holding something, by name</td></tr><tr><td><code>Filesystem</code></td><td>The device's storage, walked one level at a time — Android only</td></tr><tr><td><code>Albums</code></td><td>A grid of sleeves; open one for its tracks</td></tr><tr><td><code>Artists</code></td><td>Grouped by the artist tag</td></tr><tr><td><code>Genres</code></td><td>Grouped by the genre tag</td></tr><tr><td><code>Years</code></td><td>Grouped by year</td></tr></tbody></table></div>
 <p><code>Albums</code>, <code>Artists</code>, <code>Genres</code> and <code>Years</code> are built from the tags inside your files. <strong><code>Folders</code> and <code>Filesystem</code> ignore the tags entirely</strong> and show where the files actually are, which is what to reach for when a file's tags are wrong or missing.</p>
-<p>Each chip has its own sort, from <code>As listed</code>, <code>Name</code>, <code>Date added</code>, <code>Length</code> and <code>Size</code> — only the ones its rows can answer — and remembers it separately.</p>
+<p>Each chip has its own sort, from <code>As listed</code>, <code>Name</code>, <code>Date added</code>, <code>Length</code> and <code>Size</code> — only the ones its rows can answer — and remembers it separately. <code>Audiobooks</code> also has a filter beside the sort — <code>All</code>, <code>New</code>, <code>In progress</code> and <code>Finished</code>.</p>
 <h2 id="folders-and-filesystem">Folders and Filesystem</h2>
 <p><code>Folders</code> is the quick way to a folder you already know: a flat list of every one that holds something, by name. Open one and you are in the same place the tree would have walked you to.</p>
 <p><code>Filesystem</code> is the tree itself. Each row is a directory, <code>..</code> takes you up a level, and a trail under the chips says where you are. A folder you added yourself is a starting point of its own here, beside the device's own storage.</p>
@@ -85,8 +85,8 @@
 <p>On Android, Mediagg has to be allowed to read the device's media before it can find any: <code>Mediagg needs permission to list the music on this device.</code>, with an <code>Allow access</code> button. Video is asked for separately — <code>Mediagg needs permission to list the video on this device.</code> — and where only one of the two was allowed, the folder chips say which half they are missing, for instance <code>Video is not shown here: Mediagg has not been allowed to read this device's video.</code></p>
 <h2 id="playing-a-whole-chip">Playing a whole chip</h2>
 <p><code>Play all</code> and <code>Shuffle all</code> are in the toolbar.</p>
-<div class="note"><p><strong>Where a chip lists groupings rather than files</strong> — albums, artists, genres, years and folders — you open one first. Shuffling every track on the device from a screen of sleeves is not what the button would mean there.</p></div>
-<div class="pnav"><a class="pn prev" href="/documentation/library/subscriptions-section"><b>Previous</b>The Subscriptions section</a><a class="pn next" href="/documentation/library/playlists"><b>Next</b>Playlists</a></div>
+<div class="note"><p><strong>Where a chip lists groupings rather than files</strong> — books, albums, artists, genres, years and folders — you open one first. Shuffling every track on the device from a screen of sleeves is not what the button would mean there.</p></div>
+<div class="pnav"><a class="pn prev" href="/documentation/library/subscriptions-section"><b>Previous</b>The Subscriptions section</a><a class="pn next" href="/documentation/library/audiobooks"><b>Next</b>Audiobooks on your device</a></div>
 </article>
 </main>
 

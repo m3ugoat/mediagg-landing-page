@@ -21,13 +21,17 @@ Six kinds can be skipped, each with a line saying what it means:
 | `Notification sounds` | `The short sounds apps install` |
 | `Alarm sounds` | `What wakes you up` |
 | `Voice recordings` | `Voice memos and call recordings` |
-| `Audiobooks` | `Books the device has tagged as such` |
+| `Audiobooks in Songs` | `They are always under Audiobooks; this lists them among your songs too` |
 | `Podcast files` | `Episodes downloaded by another app` |
 
 **The first four are skipped by default** — ringtones, notification sounds and alarms are sounds the
 phone makes at you rather than plays for you, and voice recordings are a notes app's business.
-Audiobooks and podcast files are let in by default; if another app looks after those and you would
-rather not see them here, this is where to leave them out.
+Podcast files are let in by default; if another app looks after those and you would rather not see
+them here, this is where to leave them out.
+
+**`Audiobooks in Songs` is different from the rest.** It never hides a book: books always appear
+under the `Audiobooks` chip — see [Audiobooks on your device](/documentation/library/audiobooks).
+It is off by default, which keeps them out of `Songs`; turn it on to list them there as well.
 
 ## Folders
 
