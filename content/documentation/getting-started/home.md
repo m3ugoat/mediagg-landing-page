@@ -55,9 +55,11 @@ server ticked under `Show servers`, merged — and then each server has a group 
 can have one server's `Recently added` without the others'. A single server's shelf is headed with
 the server's name: `Living room · Recently added`.
 
-### From a podcast or a playlist
+### From a podcast, a station list or a playlist
 
-The menu on a podcast or a playlist offers the same two choices without opening Edit Home:
+The menu of a podcast, a station list, a folder or a playlist offers the same two choices without
+opening Edit Home. It is the `More` button — ⋮ — at the end of its row and in its own screen's bar;
+holding its row or its cover raises it too.
 
 - `Show on Home` — `Its newest as a shelf on Home`. Once it is there, the entry reads `Take off Home`.
 - `Add Home shortcut` — `A tile at the top of Home that opens it`, and `Remove Home shortcut` after.
