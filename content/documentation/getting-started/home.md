@@ -34,8 +34,9 @@ shortcuts, and their order`. Every change is saved as you make it; there is noth
 
 The page is in the order Home draws things: the tiles first, then the shelves.
 
-- **`Places at the top of Home`** — the shortcut tiles. Switch on any section of the Library, or any
-  playlist: `Up to 8, in the order you switch them on. A tile opens its place.`
+- **`Places at the top of Home`** — the shortcut tiles. Switch on any section of the Library: `Up to
+  8, in the order you switch them on. A tile opens its place. A playlist or a podcast is added from
+  its own menu.`
 - **`Shelves on Home`** — the shelves Home shows now, in order. `Drag to change the order. Switch one
   off to take it away.`
 - **The shelves you can add**, in groups:
@@ -44,7 +45,7 @@ The page is in the order Home draws things: the tiles first, then the shelves.
 |---|---|
 | `What is going on` | `Continue`, `Surprise me`, `Media Server Mix`, `Local Media Mix` |
 | `Podcasts` | `Subscriptions`, `Podcast episodes`, `New Episodes`, `Stations and streams` |
-| `Library` | `Favourites`, `Downloads`, `History`, `Playlists`, and each of your playlists on its own |
+| `Library` | `Favourites`, `Downloads`, `History`, `Playlists` |
 | `On this device` | `Local songs`, `Local videos`, `Local audiobooks`, `Local albums`, `Local artists` |
 | `Media server` | Each shelf a server's Activity has — `Recently added`, `Continue listening` and so on |
 
@@ -57,9 +58,10 @@ the server's name: `Living room · Recently added`.
 
 ### From a podcast, a station list or a playlist
 
-The menu of a podcast, a station list, a folder or a playlist offers the same two choices without
-opening Edit Home. It is the `More` button — ⋮ — at the end of its row and in its own screen's bar;
-holding its row or its cover raises it too.
+**One podcast, station list, folder or playlist is put on Home from its own menu**, not from Edit
+Home — a library can hold hundreds of them. Once one is on Home, Edit Home lists it, so it can be
+moved or taken off there too. The menu is the `More` button — ⋮ — at the end of its row and in its
+own screen's bar; holding its row or its cover raises it too.
 
 - `Show on Home` — `Its newest as a shelf on Home`. Once it is there, the entry reads `Take off Home`.
 - `Add Home shortcut` — `A tile at the top of Home that opens it`, and `Remove Home shortcut` after.
