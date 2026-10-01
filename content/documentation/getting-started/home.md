@@ -1,67 +1,115 @@
 ---
 title: The Home screen
-summary: What each shelf on Home is, and why one you were expecting might not be there.
+summary: Home as a way into the whole library — which shelves it shows, the shortcut tiles, and how to change both.
 platforms: android, ios
 order: 20
 ---
 
-Home is the overview: what you were in the middle of, what has just arrived, and a few suggestions
-from what you already have. **Most shelves are a shortcut** — a chevron at the end of the heading
-opens the full list behind it.
+Home is the way into everything else. It is a column of **shelves** — a podcast's new episodes, your
+favourites, the albums on your phone, a server's recently added — with, if you want them, a grid
+of **shortcut tiles** above them that open a part of the library in one press.
 
-It draws on everything in the library at once. A shelf can hold a podcast episode, a track from your
-phone and something off a server, side by side, because Home is asking *what should I play* rather
-than *where is it stored*.
+**Which shelves, in what order, and which tiles, are all yours to choose.** A shelf can be any part of
+the library: a chip of Subscriptions or Local media, a section such as Favourites, one playlist, or a
+shelf from a media server.
 
-Pull down on Home to check your subscriptions for new episodes there and then.
+Each shelf heading ends in a chevron that opens the full list behind it. Pull down on Home to check
+your subscriptions for new episodes there and then.
 
-## The shelves, in their usual order
+## What Home starts with
 
 | Shelf | What is on it |
 |---|---|
-| `Media Server Mix` | Mixes from your media servers — press one and it starts |
-| `Continue` | What you have started and not finished |
-| `New Episodes` | Episodes that have arrived and you have not dealt with |
+| `New Episodes` | Episodes that have arrived from your subscriptions and that you have not dealt with |
 | `Surprise me` | A handful of things from your library, dealt at random |
-| `Subscriptions` | What you follow, as covers |
-| `Favourites` | What you have marked |
+| `Favourites` | What you have marked, the most recently favourited first |
 | `Downloads` | What is kept on the device |
 
-## Media Server Mix
+Everything else is a switch away in `Edit Home`.
 
-If you have signed in to a media server, Home leads with mixes built from it — a handful of tracks,
-an artist or an album, depending on how you have set it up. **This shelf is the one most affected by
-settings**: whether there is one tile per server or a single combined row, what order the kinds
-appear in, and what a mix plays are all yours to change under `Media servers` in Settings. It only
-draws from the servers you have ticked under `Show servers`.
+## Edit Home
 
-## Continue
+Press `Edit Home` in Home's bar — or, in Settings, `Edit Home` under `Home`: `Choose shelves and
+shortcuts, and their order`. Every change is saved as you make it; there is nothing to confirm.
 
-What you have already started and not finished — minus whatever is in the player right now. In most
-sessions the thing you want is the thing you were listening to last time, which is why Home is worth
-opening rather than going straight to the Library.
+The page is in the order Home draws things: the tiles first, then the shelves.
 
-## New Episodes
+- **`Places at the top of Home`** — the shortcut tiles. Switch on any section of the Library, or any
+  playlist: `Up to 8, in the order you switch them on. A tile opens its place.`
+- **`Shelves on Home`** — the shelves Home shows now, in order. `Drag to change the order. Switch one
+  off to take it away.`
+- **The shelves you can add**, in groups:
 
-Episodes that have arrived from your subscriptions and that you have not dealt with yet. It is the
-same set the `New` chip shows under Subscriptions in the Library, and its chevron opens that chip.
+| Group | Shelves |
+|---|---|
+| `What is going on` | `Continue`, `Surprise me`, `Media Server Mix`, `Local Media Mix` |
+| `Podcasts` | `Subscriptions`, `Podcast episodes`, `New Episodes`, `Stations and streams` |
+| `Library` | `Favourites`, `Downloads`, `History`, `Playlists`, and each of your playlists on its own |
+| `On this device` | `Local songs`, `Local videos`, `Local audiobooks`, `Local albums`, `Local artists` |
+| `Media server` | Each shelf a server's Activity has — `Recently added`, `Continue listening` and so on |
 
-## Surprise me
+A shelf you switch on joins the end of Home; drag it up from there.
 
-A handful of things picked from your library. It is dealt again each time you come back to Home,
-after a refresh, and whenever you press the dice — `Show me something else`.
+**With more than one server**, the server group is `Media servers, together` — the shelves of every
+server ticked under `Show servers`, merged — and then each server has a group of its own, so you
+can have one server's `Recently added` without the others'. A single server's shelf is headed with
+the server's name: `Living room · Recently added`.
 
-> **A shelf with nothing in it is not drawn at all.** An empty row under a heading is worse than no
-> row, so Home hides what it cannot fill. If a shelf you expected is missing, it is because there is
-> nothing to put in it yet — not because it has been turned off.
+### From a podcast or a playlist
 
-## Changing what Home shows
+The menu on a podcast or a playlist offers the same two choices without opening Edit Home:
 
-The order of the shelves is yours. In Settings, under `Home`, `The order of the shelves` has an
-`Arrange` row: drag the shelves into the order you want. There are no switches, because
-**`A shelf with nothing on it is not drawn at all`** — there is nothing to hide that does not hide
-itself.
+- `Show on Home` — `Its newest as a shelf on Home`. Once it is there, the entry reads `Take off Home`.
+- `Add Home shortcut` — `A tile at the top of Home that opens it`, and `Remove Home shortcut` after.
 
-The `Media Server Mix` row's own order is arranged separately, under `Media servers` in Settings. The bar along the
-bottom is a different setting again — see
-[The tabs along the bottom](/documentation/getting-started/the-tabs).
+## Empty shelves
+
+`Hide shelves with nothing in them` is on unless you change it — `They come back as soon as something
+arrives`. **If a shelf you switched on is missing, it has nothing in it yet**; it has not been turned
+off. Switch the setting off to see every shelf, empty ones included.
+
+## The shelves worth knowing about
+
+**`Continue`** is what you have started and not finished, minus whatever is in the player right now.
+
+**`Surprise me`** is dealt again each time you come back to Home, after a refresh, and whenever you
+press the dice — `Show me something else`.
+
+**`Media Server Mix`** is the Mix row of your media servers — press a tile and it starts. What it
+offers and in what order is set under `Media servers` in Settings — see
+[Mixes](/documentation/media-servers/mixes).
+
+**`Local Media Mix`** is the same idea built from the songs on your device, with nothing asked of a
+server — see [Mixes from your device](#mixes-from-your-device) below.
+
+**`Local songs`** leaves out audiobooks, as the `Songs` chip does, once audiobooks have been set up.
+
+**`Local audiobooks`** leads with the book you listened to most recently, if you have not finished
+it; then the books you have not started; then the rest you are part-way through; then the finished
+ones. It reorders as you listen.
+
+## Mixes from your device
+
+The `Local Media Mix` row has five tiles. Each builds a mix from the tags and the listening history
+of the music on the device, leaving out books and video.
+
+| Tile | What it plays |
+|---|---|
+| `Track mix` | Every song on the device, shuffled |
+| `Artist mix` | One artist's songs, shuffled — a different artist, picked at random, each press |
+| `Genre mix` | Opens a list of your genres, with how many songs each has; pick one |
+| `Year mix` | Opens a list of decades — `1990s`, `2000s` — the same way |
+| `Rediscover` | Favourites, and songs you have played all the way through, that you have not heard for three months |
+
+**A genre is the same genre however it is spelled**: `Hip Hop`, `Hip-Hop` and `hiphop` are one
+entry, and so is `Rap`. A genre or a decade needs at least ten songs before it is listed.
+
+A tile with nothing to build from says so rather than doing nothing — for instance `Nothing for
+Rediscover yet`, with what it needs.
+
+## Other settings
+
+The tabs along the bottom are a different setting — see
+[The tabs along the bottom](/documentation/getting-started/the-tabs). Which of a server's shelves
+its Activity shows, and in what order, is `Manage shelves` — see
+[Browsing a server](/documentation/media-servers/browsing-a-server).

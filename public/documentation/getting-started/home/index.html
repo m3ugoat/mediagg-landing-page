@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Home screen — Mediagg documentation</title>
-<meta name="description" content="What each shelf on Home is, and why one you were expecting might not be there.">
+<meta name="description" content="Home as a way into the whole library — which shelves it shows, the shortcut tiles, and how to change both.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/getting-started/home">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="The Home screen — Mediagg documentation">
-<meta property="og:description" content="What each shelf on Home is, and why one you were expecting might not be there.">
+<meta property="og:description" content="Home as a way into the whole library — which shelves it shows, the shortcut tiles, and how to change both.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -62,24 +62,39 @@
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/getting-started">Getting started</a><i>/</i><span>The Home screen</span></nav>
 <h1>The Home screen</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
-<p class="sub">What each shelf on Home is, and why one you were expecting might not be there.</p>
-<p>Home is the overview: what you were in the middle of, what has just arrived, and a few suggestions from what you already have. <strong>Most shelves are a shortcut</strong> — a chevron at the end of the heading opens the full list behind it.</p>
-<p>It draws on everything in the library at once. A shelf can hold a podcast episode, a track from your phone and something off a server, side by side, because Home is asking <em>what should I play</em> rather than <em>where is it stored</em>.</p>
-<p>Pull down on Home to check your subscriptions for new episodes there and then.</p>
-<h2 id="the-shelves-in-their-usual-order">The shelves, in their usual order</h2>
-<div class="tablewrap"><table><thead><tr><th>Shelf</th><th>What is on it</th></tr></thead><tbody><tr><td><code>Media Server Mix</code></td><td>Mixes from your media servers — press one and it starts</td></tr><tr><td><code>Continue</code></td><td>What you have started and not finished</td></tr><tr><td><code>New Episodes</code></td><td>Episodes that have arrived and you have not dealt with</td></tr><tr><td><code>Surprise me</code></td><td>A handful of things from your library, dealt at random</td></tr><tr><td><code>Subscriptions</code></td><td>What you follow, as covers</td></tr><tr><td><code>Favourites</code></td><td>What you have marked</td></tr><tr><td><code>Downloads</code></td><td>What is kept on the device</td></tr></tbody></table></div>
-<h2 id="media-server-mix">Media Server Mix</h2>
-<p>If you have signed in to a media server, Home leads with mixes built from it — a handful of tracks, an artist or an album, depending on how you have set it up. <strong>This shelf is the one most affected by settings</strong>: whether there is one tile per server or a single combined row, what order the kinds appear in, and what a mix plays are all yours to change under <code>Media servers</code> in Settings. It only draws from the servers you have ticked under <code>Show servers</code>.</p>
-<h2 id="continue">Continue</h2>
-<p>What you have already started and not finished — minus whatever is in the player right now. In most sessions the thing you want is the thing you were listening to last time, which is why Home is worth opening rather than going straight to the Library.</p>
-<h2 id="new-episodes">New Episodes</h2>
-<p>Episodes that have arrived from your subscriptions and that you have not dealt with yet. It is the same set the <code>New</code> chip shows under Subscriptions in the Library, and its chevron opens that chip.</p>
-<h2 id="surprise-me">Surprise me</h2>
-<p>A handful of things picked from your library. It is dealt again each time you come back to Home, after a refresh, and whenever you press the dice — <code>Show me something else</code>.</p>
-<div class="note"><p><strong>A shelf with nothing in it is not drawn at all.</strong> An empty row under a heading is worse than no row, so Home hides what it cannot fill. If a shelf you expected is missing, it is because there is nothing to put in it yet — not because it has been turned off.</p></div>
-<h2 id="changing-what-home-shows">Changing what Home shows</h2>
-<p>The order of the shelves is yours. In Settings, under <code>Home</code>, <code>The order of the shelves</code> has an <code>Arrange</code> row: drag the shelves into the order you want. There are no switches, because <strong><code>A shelf with nothing on it is not drawn at all</code></strong> — there is nothing to hide that does not hide itself.</p>
-<p>The <code>Media Server Mix</code> row's own order is arranged separately, under <code>Media servers</code> in Settings. The bar along the bottom is a different setting again — see <a href="/documentation/getting-started/the-tabs">The tabs along the bottom</a>.</p>
+<p class="sub">Home as a way into the whole library — which shelves it shows, the shortcut tiles, and how to change both.</p>
+<p>Home is the way into everything else. It is a column of <strong>shelves</strong> — a podcast's new episodes, your favourites, the albums on your phone, a server's recently added — with, if you want them, a grid of <strong>shortcut tiles</strong> above them that open a part of the library in one press.</p>
+<p><strong>Which shelves, in what order, and which tiles, are all yours to choose.</strong> A shelf can be any part of the library: a chip of Subscriptions or Local media, a section such as Favourites, one playlist, or a shelf from a media server.</p>
+<p>Each shelf heading ends in a chevron that opens the full list behind it. Pull down on Home to check your subscriptions for new episodes there and then.</p>
+<h2 id="what-home-starts-with">What Home starts with</h2>
+<div class="tablewrap"><table><thead><tr><th>Shelf</th><th>What is on it</th></tr></thead><tbody><tr><td><code>New Episodes</code></td><td>Episodes that have arrived from your subscriptions and that you have not dealt with</td></tr><tr><td><code>Surprise me</code></td><td>A handful of things from your library, dealt at random</td></tr><tr><td><code>Favourites</code></td><td>What you have marked, the most recently favourited first</td></tr><tr><td><code>Downloads</code></td><td>What is kept on the device</td></tr></tbody></table></div>
+<p>Everything else is a switch away in <code>Edit Home</code>.</p>
+<h2 id="edit-home">Edit Home</h2>
+<p>Press <code>Edit Home</code> in Home's bar — or, in Settings, <code>Edit Home</code> under <code>Home</code>: <code>Choose shelves and shortcuts, and their order</code>. Every change is saved as you make it; there is nothing to confirm.</p>
+<p>The page is in the order Home draws things: the tiles first, then the shelves.</p>
+<ul><li><strong><code>Places at the top of Home</code></strong> — the shortcut tiles. Switch on any section of the Library, or any playlist: <code>Up to 8, in the order you switch them on. A tile opens its place.</code></li><li><strong><code>Shelves on Home</code></strong> — the shelves Home shows now, in order. <code>Drag to change the order. Switch one off to take it away.</code></li><li><strong>The shelves you can add</strong>, in groups:</li></ul>
+<div class="tablewrap"><table><thead><tr><th>Group</th><th>Shelves</th></tr></thead><tbody><tr><td><code>What is going on</code></td><td><code>Continue</code>, <code>Surprise me</code>, <code>Media Server Mix</code>, <code>Local Media Mix</code></td></tr><tr><td><code>Podcasts</code></td><td><code>Subscriptions</code>, <code>Podcast episodes</code>, <code>New Episodes</code>, <code>Stations and streams</code></td></tr><tr><td><code>Library</code></td><td><code>Favourites</code>, <code>Downloads</code>, <code>History</code>, <code>Playlists</code>, and each of your playlists on its own</td></tr><tr><td><code>On this device</code></td><td><code>Local songs</code>, <code>Local videos</code>, <code>Local audiobooks</code>, <code>Local albums</code>, <code>Local artists</code></td></tr><tr><td><code>Media server</code></td><td>Each shelf a server's Activity has — <code>Recently added</code>, <code>Continue listening</code> and so on</td></tr></tbody></table></div>
+<p>A shelf you switch on joins the end of Home; drag it up from there.</p>
+<p><strong>With more than one server</strong>, the server group is <code>Media servers, together</code> — the shelves of every server ticked under <code>Show servers</code>, merged — and then each server has a group of its own, so you can have one server's <code>Recently added</code> without the others'. A single server's shelf is headed with the server's name: <code>Living room · Recently added</code>.</p>
+<h3 id="from-a-podcast-or-a-playlist">From a podcast or a playlist</h3>
+<p>The menu on a podcast or a playlist offers the same two choices without opening Edit Home:</p>
+<ul><li><code>Show on Home</code> — <code>Its newest as a shelf on Home</code>. Once it is there, the entry reads <code>Take off Home</code>.</li><li><code>Add Home shortcut</code> — <code>A tile at the top of Home that opens it</code>, and <code>Remove Home shortcut</code> after.</li></ul>
+<h2 id="empty-shelves">Empty shelves</h2>
+<p><code>Hide shelves with nothing in them</code> is on unless you change it — <code>They come back as soon as something arrives</code>. <strong>If a shelf you switched on is missing, it has nothing in it yet</strong>; it has not been turned off. Switch the setting off to see every shelf, empty ones included.</p>
+<h2 id="the-shelves-worth-knowing-about">The shelves worth knowing about</h2>
+<p><strong><code>Continue</code></strong> is what you have started and not finished, minus whatever is in the player right now.</p>
+<p><strong><code>Surprise me</code></strong> is dealt again each time you come back to Home, after a refresh, and whenever you press the dice — <code>Show me something else</code>.</p>
+<p><strong><code>Media Server Mix</code></strong> is the Mix row of your media servers — press a tile and it starts. What it offers and in what order is set under <code>Media servers</code> in Settings — see <a href="/documentation/media-servers/mixes">Mixes</a>.</p>
+<p><strong><code>Local Media Mix</code></strong> is the same idea built from the songs on your device, with nothing asked of a server — see <a href="#mixes-from-your-device">Mixes from your device</a> below.</p>
+<p><strong><code>Local songs</code></strong> leaves out audiobooks, as the <code>Songs</code> chip does, once audiobooks have been set up.</p>
+<p><strong><code>Local audiobooks</code></strong> leads with the book you listened to most recently, if you have not finished it; then the books you have not started; then the rest you are part-way through; then the finished ones. It reorders as you listen.</p>
+<h2 id="mixes-from-your-device">Mixes from your device</h2>
+<p>The <code>Local Media Mix</code> row has five tiles. Each builds a mix from the tags and the listening history of the music on the device, leaving out books and video.</p>
+<div class="tablewrap"><table><thead><tr><th>Tile</th><th>What it plays</th></tr></thead><tbody><tr><td><code>Track mix</code></td><td>Every song on the device, shuffled</td></tr><tr><td><code>Artist mix</code></td><td>One artist's songs, shuffled — a different artist, picked at random, each press</td></tr><tr><td><code>Genre mix</code></td><td>Opens a list of your genres, with how many songs each has; pick one</td></tr><tr><td><code>Year mix</code></td><td>Opens a list of decades — <code>1990s</code>, <code>2000s</code> — the same way</td></tr><tr><td><code>Rediscover</code></td><td>Favourites, and songs you have played all the way through, that you have not heard for three months</td></tr></tbody></table></div>
+<p><strong>A genre is the same genre however it is spelled</strong>: <code>Hip Hop</code>, <code>Hip-Hop</code> and <code>hiphop</code> are one entry, and so is <code>Rap</code>. A genre or a decade needs at least ten songs before it is listed.</p>
+<p>A tile with nothing to build from says so rather than doing nothing — for instance <code>Nothing for Rediscover yet</code>, with what it needs.</p>
+<h2 id="other-settings">Other settings</h2>
+<p>The tabs along the bottom are a different setting — see <a href="/documentation/getting-started/the-tabs">The tabs along the bottom</a>. Which of a server's shelves its Activity shows, and in what order, is <code>Manage shelves</code> — see <a href="/documentation/media-servers/browsing-a-server">Browsing a server</a>.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/getting-started/first-run"><b>Previous</b>Your first minutes</a><a class="pn next" href="/documentation/getting-started/the-tabs"><b>Next</b>The tabs along the bottom</a></div>
 </article>
 </main>

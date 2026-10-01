@@ -84,3 +84,13 @@ only one of the two was allowed, the folder chips say which half they are missin
 > **Where a chip lists groupings rather than files** — books, albums, artists, genres, years and folders —
 > you open one first. Shuffling every track on the device from a screen of sleeves is not what the
 > button would mean there.
+
+## Radio, and mixes
+
+An artist's page under `Artists` has a `Radio` button beside `Shuffle`: the artist's own songs,
+spread through songs from other artists who share their genres and their years — all from this
+device, with nothing asked of a server.
+
+For a mix to start with, add `Local Media Mix` to Home — `Track mix`, `Artist mix`, `Genre mix`,
+`Year mix` and `Rediscover`. See
+[Mixes from your device](/documentation/getting-started/home#mixes-from-your-device).

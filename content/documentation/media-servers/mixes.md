@@ -47,7 +47,11 @@ This row is hidden under `All servers combined`, where the tile already says wha
 
 ## Elsewhere
 
-An artist's own page has an `Artist mix` button, whatever these settings say.
+An artist's own page has a `Radio` button, whatever these settings say: the artist, and artists
+like them.
+
+Your device's own music has a mix row of its own, `Local Media Mix` — see
+[Mixes from your device](/documentation/getting-started/home#mixes-from-your-device).
 
 > **Which servers a mix may reach is the same choice as the merged library.** A mix draws only from
 > the servers you have ticked under `Show servers` — see

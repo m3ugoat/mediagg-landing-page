@@ -20,7 +20,7 @@ stay ticked.
 - **All ticked** — stored as "all servers", which means **a server you sign in to later joins
   automatically** rather than being left out of a list you made before it existed.
 
-Your choice is remembered, and it also decides which servers the Mix row on Home may draw from.
+Your choice is remembered, and it also decides which servers the Mix row on Home may draw from, and what Home's `Media servers, together` shelves hold.
 
 ## Telling the rows apart
 
@@ -44,5 +44,6 @@ credentials`, `Not answering from this network`, or `Signed out` with the kind o
 ## Managing the list
 
 `Manage servers` sits alongside the ticks in the same sheet, and on a single-server setup it is the
-button in the bar instead. It lists every server you have added, with `Add a server` in its own
+button in the bar instead. Under it is `Manage shelves`, for which shelves Activity shows — see
+[Browsing a server](/documentation/media-servers/browsing-a-server). It lists every server you have added, with `Add a server` in its own
 bar.
