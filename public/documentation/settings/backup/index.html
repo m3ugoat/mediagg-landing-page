@@ -63,7 +63,7 @@
 <h1>Backup</h1>
 <div class="plats" aria-label="Available on Android and iOS"><span class="plat">Android</span><span class="plat">iOS</span></div>
 <p class="sub">Taking a copy of your library and your server list, and bringing one over.</p>
-<p><code>Database and servers</code>, under <code>Backup</code> in Settings, is <strong><code>Take a copy of your library, or bring one over from another device</code></strong>.</p>
+<p><code>Database and servers</code>, under <code>Backup and sync</code> in Settings, is <strong><code>Take a copy of your library, or bring one over from another device</code></strong>.</p>
 <p>There are two files, deliberately, and they carry different things.</p>
 <h2 id="the-database">The database</h2>
 <p><code>Database export</code> — <code>Transfer subscriptions, play state and queue to Mediagg on another device</code> — writes all three to a single file, named for the day it was made. It is the whole library in one piece — a straight copy, taken consistently, so it restores as exactly what you had.</p>
@@ -77,11 +77,14 @@
 <h2 id="your-servers-are-separate">Your servers are separate</h2>
 <div class="note"><p><strong><code>Servers are not part of the database backup. Export them separately. Passwords and tokens are never written to the file, so a restored server asks you to sign in again.</code></strong></p></div>
 <ul><li><code>Export servers</code> — <code>Write every remembered server to a file</code></li><li><code>Import servers</code> — <code>Read servers from a file exported here or by the old app</code></li></ul>
+<p><strong>Every kind of server is in it</strong> — Subsonic, Jellyfin, Emby, Plex, Audiobookshelf, Kodi, WebDAV, and SMB shares on Android — with its address and username.</p>
 <p>That second one is literal: the file the old Mediagg wrote is still read, alongside the current format. A server for a kind this build does not carry is skipped rather than rejecting the whole file.</p>
 <p>When it has finished: <code>One server is back. Sign in to it to start using it.</code>, or however many there were — which is the consequence of the passwords never being written down.</p>
 <h2 id="moving-to-a-new-phone">Moving to a new phone</h2>
 <ol class="steps"><li>On the old device, <code>Database export</code>, then <code>Export servers</code>.</li><li>Move both files across.</li><li>On the new device, <code>Database import</code>, then <code>Import servers</code>.</li><li>Sign in to each server again.</li></ol>
 <p>Podcast subscriptions and positions can also be kept in step continuously rather than moved in one go — see <a href="/documentation/settings/synchronisation">Synchronisation</a>.</p>
+<h2 id="synchronisation">Synchronisation</h2>
+<p><code>Synchronisation</code>, beside <code>Database and servers</code>, is the other way a library reaches another device: an account that keeps your subscriptions and positions in step as you go, rather than a copy taken once. See <a href="/documentation/settings/synchronisation">Synchronisation</a>.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/settings/synchronisation"><b>Previous</b>Synchronisation</a><a class="pn next" href="/documentation/settings/statistics"><b>Next</b>Statistics</a></div>
 </article>
 </main>

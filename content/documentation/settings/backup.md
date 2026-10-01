@@ -5,7 +5,7 @@ platforms: android, ios
 order: 40
 ---
 
-`Database and servers`, under `Backup` in Settings, is
+`Database and servers`, under `Backup and sync` in Settings, is
 **`Take a copy of your library, or bring one over from another device`**.
 
 There are two files, deliberately, and they carry different things.
@@ -50,6 +50,9 @@ folder. If an automatic backup fails, a line on this screen says why — it star
 - `Export servers` — `Write every remembered server to a file`
 - `Import servers` — `Read servers from a file exported here or by the old app`
 
+**Every kind of server is in it** — Subsonic, Jellyfin, Emby, Plex, Audiobookshelf, Kodi, WebDAV,
+and SMB shares on Android — with its address and username.
+
 That second one is literal: the file the old Mediagg wrote is still read, alongside the current
 format. A server for a kind this build does not carry is skipped rather than rejecting the whole
 file.
@@ -66,3 +69,9 @@ were — which is the consequence of the passwords never being written down.
 
 Podcast subscriptions and positions can also be kept in step continuously rather than moved in one
 go — see [Synchronisation](/documentation/settings/synchronisation).
+
+## Synchronisation
+
+`Synchronisation`, beside `Database and servers`, is the other way a library reaches another device:
+an account that keeps your subscriptions and positions in step as you go, rather than a copy taken
+once. See [Synchronisation](/documentation/settings/synchronisation).

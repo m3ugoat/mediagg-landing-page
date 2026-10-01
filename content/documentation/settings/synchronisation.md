@@ -5,8 +5,9 @@ platforms: android, ios
 order: 30
 ---
 
-`Synchronisation provider`, in Settings, is **`Keep subscriptions and positions in step with your
-other devices`**. Two services are supported.
+`Synchronisation`, under `Backup and sync` in Settings, is **`Sign in to gpodder.net or Nextcloud
+to keep subscriptions and positions in step with your other devices`**. `Add subscription` opens the
+same screen. Two services are supported.
 
 | Service | What it is |
 |---|---|
