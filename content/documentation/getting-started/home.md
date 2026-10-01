@@ -63,7 +63,7 @@ Home — a library can hold hundreds of them. Once one is on Home, Edit Home lis
 moved or taken off there too. The menu is the `More` button — ⋮ — at the end of its row and in its
 own screen's bar; holding its row or its cover raises it too.
 
-- `Show on Home` — `Its newest as a shelf on Home`. Once it is there, the entry reads `Take off Home`.
+- `Show on Home` — `Its own row on Home`. Once it is there, the entry reads `Take off Home`.
 - `Add Home shortcut` — `A tile at the top of Home that opens it`, and `Remove Home shortcut` after.
 
 ## Empty shelves
