@@ -14,7 +14,7 @@ only one at full strength, and tapping a line jumps to it.
 Two places. Your files can carry them — either as a `.lrc` file sitting beside the track, or as a
 tag inside the track itself — and **LrcLib**, a community lyrics database, can be asked online.
 
-`Where to look`, under `Playback` in Settings, decides which is tried:
+`Source of lyrics`, under `Playback` in Settings, decides which is tried:
 
 | Choice | What the app says about it |
 |---|---|
