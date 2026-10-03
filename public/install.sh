@@ -19,6 +19,29 @@ fail() { printf '\033[31m%s\033[0m\n' "$*" >&2; exit 1; }
 
 [ "$(uname -s)" = "Darwin" ] || fail "This installer is for macOS for now."
 
+# ---------------------------------------------------------------- where the media goes
+# Asked first, with the ordinary macOS folder picker, so the manager is only ever given this folder
+# and its own — never the whole home folder, which made macOS ask about Dropbox, Desktop and drives
+# the user never pointed it at. Kept from the last run once the stack is set up.
+state="$STACK_HOME/manager/state.json"
+media="${MEDIAGG_MEDIA:-}"
+if [ -z "$media" ] && [ -f "$state" ]; then
+    media="$(sed -n 's/.*"mediaFolder": "\(.*\)".*/\1/p' "$state" | head -1)"
+fi
+if [ -z "$media" ] && [ -z "${SSH_CONNECTION:-}" ] && command -v osascript >/dev/null 2>&1; then
+    say "Choose where your films and series will go. Mediagg Arr Stack will only ever see that folder."
+    media="$(osascript -e 'POSIX path of (choose folder with prompt "Where should your films and series go? Mediagg Arr Stack will only ever see this folder." default location (path to movies folder))' 2>/dev/null || true)"
+fi
+media="${media%/}"
+if [ -z "$media" ]; then
+    media="$STACK_HOME/media"
+    say "Using $media for your films and series."
+fi
+mkdir -p "$media" || fail "Cannot create $media."
+case "$media" in
+    /Volumes/*) say "macOS may ask once whether Docker can use that drive — it is the folder you just chose." ;;
+esac
+
 # ---------------------------------------------------------------- Docker
 if ! command -v docker >/dev/null 2>&1 && [ ! -d /Applications/Docker.app ]; then
     case "$(uname -m)" in arm64) arch=arm64 ;; *) arch=amd64 ;; esac
@@ -94,6 +117,12 @@ while lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1 && ! docker port "$NAM
 done
 
 zone="$(readlink /etc/localtime | sed 's#.*/zoneinfo/##')"
+# The media folder gets its own mount unless it is inside the stack's folder already. Kept in the
+# argument list rather than a variable, so a folder whose name has a space in it survives.
+case "$media/" in
+    "$STACK_HOME"/*) set -- ;;
+    *) set -- -v "$media:$media" ;;
+esac
 # A container cannot see the computer's own addresses, so they are found here and handed in.
 addresses="$(for i in $(ifconfig -l); do ipconfig getifaddr "$i" 2>/dev/null || true; done | grep -E '^(192\.168|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)' | paste -sd, -)"
 computer="$(scutil --get ComputerName 2>/dev/null || hostname)"
@@ -106,13 +135,14 @@ docker run -d --name "$NAME" --restart unless-stopped \
     --label app.mediagg.stack=manager \
     -p "$bind:$port:7979" \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v "$HOME:$HOME" \
-    -v /Volumes:/Volumes \
+    -v "$STACK_HOME:$STACK_HOME" \
+    "$@" \
     -e STACK_HOME="$STACK_HOME" \
     -e HOST_USER="$(id -un)" \
     -e PUID="$(id -u)" -e PGID="$(id -g)" \
     -e TZ="${zone:-Etc/UTC}" \
-    -e BROWSE_ROOTS="$HOME:/Volumes" \
+    -e BROWSE_ROOTS="$media" \
+    -e MEDIA_FOLDER="$media" \
     -e SETUP_TOKEN="$token" \
     -e HOST_ADDRESSES="$addresses" \
     -e HOST_NAME="$computer" \
@@ -136,4 +166,6 @@ else
     say "Mediagg Arr Stack is running:"
 fi
 printf '\n    %s\n\n' "$url"
+say "Your films and series go in: $media"
+say "Your password and every service's API key are kept in: $state (only your account can read it)"
 [ -n "${MEDIAGG_NO_OPEN:-}" ] || open "$url" 2>/dev/null || true
