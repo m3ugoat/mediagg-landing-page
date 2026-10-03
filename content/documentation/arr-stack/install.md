@@ -16,7 +16,7 @@ needs it.
 
 ## On a Mac
 
-1. **You choose a folder for your films and series.** The ordinary macOS folder picker opens, asking
+1. **You choose the drive or folder the stack may use** — the one your media is in, or a new one for it. The ordinary macOS folder picker opens, asking
    `Where should your films and series go?` Pick a folder in your home folder or on an external drive.
    The stack will only ever see this folder and its own — not your Desktop, Documents, Dropbox or
    anything else — so macOS has nothing else to ask about.
@@ -30,8 +30,9 @@ you just chose — say yes.
 
 ## On Linux
 
-1. **You choose a folder for your films and series.** On a desktop a folder picker opens; otherwise
-   the terminal asks, and Enter takes `MediaggStack/media` in your home folder. For an external drive,
+1. **You choose the drive or folder the stack may use** — the one your media is in, or a new one for it.
+   On a desktop a folder picker opens; otherwise the terminal asks, **Tab completes the path** as at any
+   prompt, and Enter takes `MediaggStack/media` in your home folder. For an external drive,
    give its folder under `/media` or `/mnt` — and keep it mounted there.
 2. **Docker is installed, if it is not already**, with Docker's own install script, and set to start
    with the computer — so the stack is back after a restart even with nobody signed in.

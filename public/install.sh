@@ -118,22 +118,35 @@ fi
 # Asked first, so the manager is only ever given this folder and its own — never the whole home
 # folder, which made macOS ask about Dropbox, Desktop and drives the user never pointed it at. Kept
 # from the last run once the stack is set up.
-QUESTION="Where are your films, series and music — or where should they go? Mediagg Arr Stack will only ever see this folder."
+QUESTION="Which drive or folder may Mediagg Arr Stack use? Your media goes in it, or already is. It will only ever see this folder."
 pick_folder_macos() {
-    if [ -n "${SSH_CONNECTION:-}" ] || ! command -v osascript >/dev/null 2>&1; then return 0; fi
-    say "Choose the folder your films, series and music are in — or a new one for them. Mediagg Arr Stack will only ever see that folder." >&2
+    if [ -n "${SSH_CONNECTION:-}" ] || ! command -v osascript >/dev/null 2>&1; then ask_folder; return 0; fi
+    say "Choose the drive or folder Mediagg Arr Stack may use — your media goes in it, or already is. It will only ever see that one." >&2
     osascript -e "POSIX path of (choose folder with prompt \"$QUESTION\" default location (path to movies folder))" 2>/dev/null || true
 }
 pick_folder_linux() {
     if [ "$headless" = false ] && command -v zenity >/dev/null 2>&1; then
-        say "Choose the folder your films, series and music are in — or a new one for them. Mediagg Arr Stack will only ever see that folder." >&2
+        say "Choose the drive or folder Mediagg Arr Stack may use — your media goes in it, or already is. It will only ever see that one." >&2
         zenity --file-selection --directory --title="$QUESTION" --filename="$HOME/Videos/" 2>/dev/null || true
         return 0
     fi
-    # No picker: asked in the terminal. Under `curl | sh` the script is stdin, so the answer comes
-    # from the terminal itself.
-    { printf '\033[1m%s\033[0m\n' "$QUESTION"; printf 'A folder, or Enter for %s: ' "$STACK_HOME/media"; } >/dev/tty 2>/dev/null || return 0
-    read -r answer </dev/tty 2>/dev/null || answer=""
+    ask_folder
+}
+# Asked in the terminal. Under `curl | sh` the script is stdin, so the answer comes from the terminal
+# itself. bash's own line editor where there is bash: Tab completes a path, as at a prompt; the
+# answer goes through a file, since its editing is drawn on the terminal.
+ask_folder() {
+    { printf '\033[1m%s\033[0m\n' "$QUESTION"; } >/dev/tty 2>/dev/null || return 0
+    prompt="A folder (Tab completes), or Enter for $STACK_HOME/media: "
+    if command -v bash >/dev/null 2>&1; then
+        answer_file="$(mktemp)"
+        bash -c 'read -e -r -p "$1" a && printf %s "$a" >"$2"' _ "$prompt" "$answer_file" </dev/tty >/dev/tty 2>/dev/tty || true
+        answer="$(cat "$answer_file" 2>/dev/null || true)"
+        rm -f "$answer_file"
+    else
+        printf '%s' "$prompt" >/dev/tty
+        read -r answer </dev/tty 2>/dev/null || answer=""
+    fi
     printf '%s' "$answer"
 }
 state="$STACK_HOME/manager/state.json"

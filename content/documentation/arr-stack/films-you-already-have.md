@@ -28,15 +28,16 @@ terminal and run `pwd`.
 
 ## While setting up
 
-In the wizard, under `Where your films and series go`, open `I already have films or series` and give
-the `Folder of films`, the `Folder of series`, or both. They are checked before anything starts — the
-stack must be able to find the folder, and there must be videos in it — and added as part of the
-install.
+When the install command asks which drive or folder the stack may use, give the one your media is in —
+`/mnt/nvme/files`, say. Then in the wizard, under `Your media`, give each kind's folder: `Films`
+`/mnt/nvme/files/movies`, `Series` `/mnt/nvme/files/tv`, and so on — with `+ another` for a kind in
+several folders, and your old downloads folder for `Downloads`. Leave a kind empty and the stack makes a
+new folder for it.
 
 ## When the stack is already set up
 
-At the bottom of the stack's page, open `Films and series you already have`. Give the `Folder`, choose
-`Films` or `Series`, and press `Add`. Add as many folders as you have, one at a time.
+At the bottom of the stack's page, open `Your media`, choose the kind, give the `Folder`, and press
+`Add`. A folder that is not there yet is made.
 
 ## What happens to each folder
 

@@ -34,11 +34,20 @@ files, and Mediagg plays from every one.
 Each choice shows how much it adds to the download. Requests need a video server and Films or Series;
 subtitles need Films or Series — the page says so if one is missing.
 
-## Where your films and series go
+## Your media
 
-The folder you picked when you installed, shown for you to check. Under it the stack makes
-`media/movies`, `media/tv`, `media/music`, `media/audiobooks`, `media/podcasts` and `torrents`. To use another folder, run the install command again
-before you press Install.
+For each kind — `Films`, `Series`, `Music`, `Audiobooks`, `Podcasts` — the folder it is in, and
+where `Downloads` go. Everything is inside the folder you chose when you installed.
+
+- **A folder that is there** is used as it is: nothing is moved, and what is in your films and series
+  folders is added to Radarr and Sonarr where it is.
+- **A folder that is not there yet** is made.
+- **Left empty**, the stack makes a new folder for it — never one already there: if `music` is taken,
+  it makes `music-2`. The page says which, under the box.
+- **`+ another`** adds more folders of the same kind, each a library of its own — music spread over
+  several folders, say.
+
+Someone with no library leaves every box empty and gets a new folder for each.
 
 The page also checks the drive: how much space is free, and whether it can **link** files. A drive
 formatted as exFAT, or a network drive, cannot — each finished download is then copied into your
