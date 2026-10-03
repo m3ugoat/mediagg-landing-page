@@ -4,6 +4,7 @@
 # in your browser.
 #
 #   curl -fsSL https://mediagg.app/install.sh | sh
+#   curl -fsSL https://mediagg.app/install.sh | sh -s -- --uninstall
 #
 # Running it again is safe: it restarts the manager on the newest version and keeps everything.
 # macOS only for now; Linux and Windows follow.
@@ -18,6 +19,42 @@ say() { printf '\033[1m%s\033[0m\n' "$*"; }
 fail() { printf '\033[31m%s\033[0m\n' "$*" >&2; exit 1; }
 
 [ "$(uname -s)" = "Darwin" ] || fail "This installer is for macOS for now."
+PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
+
+# ---------------------------------------------------------------- removing it
+# Everything the stack put on this Mac: its containers and network, its two login items, and — only
+# when asked, and only from a terminal that can answer — its folder. The films and series are asked
+# about on their own, and only when they are inside that folder: one elsewhere is never touched.
+ask() { printf '%s [y/N] ' "$1"; read -r answer </dev/tty 2>/dev/null || answer=""; [ "$answer" = "y" ] || [ "$answer" = "Y" ]; }
+if [ "${1:-}" = "--uninstall" ]; then
+    say "Removing Mediagg Arr Stack…"
+    if docker info >/dev/null 2>&1; then
+        ids="$(docker ps -aq --filter label=app.mediagg.stack)"
+        [ -n "$ids" ] && docker rm -f $ids >/dev/null
+        docker network rm "$NETWORK" >/dev/null 2>&1 || true
+    fi
+    for item in app.mediagg.arrstack app.mediagg.arrstack.awake; do
+        launchctl bootout "gui/$(id -u)" "$HOME/Library/LaunchAgents/$item.plist" 2>/dev/null || true
+        rm -f "$HOME/Library/LaunchAgents/$item.plist"
+    done
+    if [ -d "$STACK_HOME" ]; then
+        media="$(sed -n 's/.*"mediaFolder": "\(.*\)".*/\1/p' "$STACK_HOME/manager/state.json" 2>/dev/null | head -1)"
+        if ask "Delete $STACK_HOME — the stack's settings, keys and passwords?"; then
+            case "$media/" in
+                "$STACK_HOME"/*)
+                    if ask "Delete your films and series in $media too?"; then
+                        rm -rf "$STACK_HOME"
+                    else
+                        find "$STACK_HOME" -mindepth 1 -maxdepth 1 ! -path "$media" -exec rm -rf {} +
+                    fi
+                    ;;
+                *) rm -rf "$STACK_HOME" ;;
+            esac
+        fi
+    fi
+    say "Mediagg Arr Stack is removed. Docker Desktop stays; remove it from Applications if nothing else uses it."
+    exit 0
+fi
 
 # ---------------------------------------------------------------- where the media goes
 # Asked first, with the ordinary macOS folder picker, so the manager is only ever given this folder
@@ -54,8 +91,6 @@ if ! command -v docker >/dev/null 2>&1 && [ ! -d /Applications/Docker.app ]; the
     sudo hdiutil detach -quiet /Volumes/Docker
     rm -f "$dmg"
 fi
-PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
-
 if ! docker info >/dev/null 2>&1; then
     say "Starting Docker Desktop…"
     open -a Docker
@@ -96,6 +131,45 @@ PLIST
 launchctl bootout "gui/$(id -u)" "$agent" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$agent" 2>/dev/null || true
 
+# ---------------------------------------------------------------- keeping the Mac awake
+# The dashboard's "Keep this Mac awake" switch. The manager is in Docker's Linux VM and cannot ask
+# macOS for anything, so it only creates or deletes a file; this login item runs macOS's own
+# caffeinate while that file exists — launchd starts it when the file appears, and it ends within
+# 20 seconds of the file going. -i stops idle sleep; -s stops system sleep, only on mains power.
+awake_flag="$STACK_HOME/manager/keep-awake"
+awake_agent="$HOME/Library/LaunchAgents/app.mediagg.arrstack.awake.plist"
+awake_xml="$(printf '%s' "$awake_flag" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
+cat >"$awake_agent" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>app.mediagg.arrstack.awake</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/caffeinate</string>
+        <string>-i</string>
+        <string>-s</string>
+        <string>/bin/sh</string>
+        <string>-c</string>
+        <string>while [ -e "\$0" ]; do sleep 20; done</string>
+        <string>$awake_xml</string>
+    </array>
+    <key>KeepAlive</key>
+    <dict>
+        <key>PathState</key>
+        <dict>
+            <key>$awake_xml</key>
+            <true/>
+        </dict>
+    </dict>
+</dict>
+</plist>
+PLIST
+launchctl bootout "gui/$(id -u)" "$awake_agent" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$awake_agent" 2>/dev/null || true
+
 # ---------------------------------------------------------------- the manager
 mkdir -p "$STACK_HOME/manager"
 docker network inspect "$NETWORK" >/dev/null 2>&1 || docker network create "$NETWORK" >/dev/null
@@ -117,12 +191,6 @@ while lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1 && ! docker port "$NAM
 done
 
 zone="$(readlink /etc/localtime | sed 's#.*/zoneinfo/##')"
-# The media folder gets its own mount unless it is inside the stack's folder already. Kept in the
-# argument list rather than a variable, so a folder whose name has a space in it survives.
-case "$media/" in
-    "$STACK_HOME"/*) set -- ;;
-    *) set -- -v "$media:$media" ;;
-esac
 # A container cannot see the computer's own addresses, so they are found here and handed in.
 addresses="$(for i in $(ifconfig -l); do ipconfig getifaddr "$i" 2>/dev/null || true; done | grep -E '^(192\.168|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)' | paste -sd, -)"
 computer="$(scutil --get ComputerName 2>/dev/null || hostname)"
@@ -136,7 +204,6 @@ docker run -d --name "$NAME" --restart unless-stopped \
     -p "$bind:$port:7979" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "$STACK_HOME:$STACK_HOME" \
-    "$@" \
     -e STACK_HOME="$STACK_HOME" \
     -e HOST_USER="$(id -un)" \
     -e PUID="$(id -u)" -e PGID="$(id -g)" \
