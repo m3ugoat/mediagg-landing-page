@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Using it day to day — Mediagg documentation</title>
-<meta name="description" content="Adding films and series, the stack&#x27;s page, updates, keeping the Mac awake and the password.">
+<meta name="description" content="Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/arr-stack/everyday">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="Using it day to day — Mediagg documentation">
-<meta property="og:description" content="Adding films and series, the stack&#x27;s page, updates, keeping the Mac awake and the password.">
+<meta property="og:description" content="Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -65,23 +65,24 @@
 <article class="doc">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/arr-stack">Mediagg Arr Stack</a><i>/</i><span>Using it day to day</span></nav>
 <h1>Using it day to day</h1>
-<p class="sub">Adding films and series, the stack&#x27;s page, updates, keeping the Mac awake and the password.</p>
+<p class="sub">Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.</p>
 <h2 id="adding-a-film-or-a-series">Adding a film or a series</h2>
 <ul><li><strong>The easy way:</strong> open Seerr, search, and press Request. Family members can do the same, and you approve.</li><li><strong>The direct way:</strong> open Radarr (films) or Sonarr (series), search, and press Add.</li></ul>
 <p>Either way it is downloaded, moved into your library, and appears in Jellyfin and Mediagg by itself. It needs sites in Prowlarr first — see <a href="/documentation/arr-stack/set-up">Setting it up</a>.</p>
 <h2 id="the-stack-s-page">The stack's page</h2>
-<p>Open it from the Mac at the address the install command printed — <code>http://localhost:7979</code> — and sign in with your stack's login.</p>
+<p>Open it at the address the install command printed — <code>http://localhost:7979</code> on the computer itself, or its network address for one with no screen — and sign in with your stack's login.</p>
 <ul><li><strong>A tile per service</strong>, with <code>Open</code>, <code>Reinstall</code> and <code>Remove</code> — <code>Remove, keep its settings</code> or <code>Remove and delete its settings</code>. A service you did not choose at first has <code>Install</code> on its tile; paired phones and TVs pick it up by themselves.</li><li><strong>Connections</strong>, every link between the services, each tested as the page opens.</li><li><strong><code>Repair everything</code></strong> starts anything that stopped, sets each service up again and remakes every connection — without resetting anything that already works. It is the answer to most problems.</li></ul>
 <h2 id="updates">Updates</h2>
 <p>When a new version is out, the page says so — <code>Mediagg Arr Stack 0.5.0 is out</code> — with an <code>Update to 0.5.0</code> button. Updating restarts the page; the services keep running and nothing you have changes. If the new version runs newer, tested versions of the services, an <code>Updates for</code> card follows, naming them, with <code>Update services</code>. Each restarts, and its settings stay.</p>
 <p>Running the install command again does the same.</p>
-<h2 id="keep-this-mac-awake">Keep this Mac awake</h2>
-<p>A sleeping Mac serves nothing: your phone and TV cannot play, and downloads stop. Under <code>This Mac</code>, <code>Keep this Mac awake</code> stops the Mac going to sleep by itself — the screen still turns off, so it costs little. Turn it off whenever you like.</p>
-<p>It cannot stop everything: on battery the Mac may still sleep to save power, and closing a laptop's lid sleeps it unless it is plugged in with a display attached.</p>
-<p>When the Mac restarts, Docker Desktop and every service start again by themselves once you sign in.</p>
+<h2 id="keep-this-computer-awake">Keep this computer awake</h2>
+<p>A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch at the bottom of the stack's page — <code>Keep this Mac awake</code>, or <code>Keep this computer awake</code> on Linux — stops it going to sleep by itself — the screen still turns off, so it costs little. Turn it off whenever you like.</p>
+<p>It cannot stop everything: on battery it may still sleep to save power, and closing a laptop's lid sleeps it unless it is plugged in with a display attached.</p>
+<p>A computer that never sleeps, like most home servers, does not need it.</p>
+<p>After a restart every service starts again by itself — on a Mac once you sign in, when Docker Desktop starts; on Linux with the computer, before anyone signs in.</p>
 <h2 id="change-the-password">Change the password</h2>
 <p><code>Change the password</code> changes it for the stack's page and every service at once. Paired phones and TVs pick it up by themselves.</p>
-<p>Forgotten it? It is in <code>MediaggStack/manager/state.json</code> in your home folder, which only your Mac account can read. That file also holds every service's API key.</p>
+<p>Forgotten it? It is in <code>MediaggStack/manager/state.json</code> in your home folder, which only your account can read. That file also holds every service's API key.</p>
 <h2 id="watching-away-from-home">Watching away from home</h2>
 <p>Not yet. The stack is reachable on your home network only; remote access is planned.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/arr-stack/phone-and-tv"><b>Previous</b>Your phone and TV</a><a class="pn next" href="/documentation/arr-stack/problems"><b>Next</b>Problems and removing it</a></div>

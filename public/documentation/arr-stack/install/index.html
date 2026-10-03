@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Installing it — Mediagg documentation</title>
-<meta name="description" content="One command in Terminal, a folder for your films, and a link to open.">
+<meta name="description" content="One command in a terminal, a folder for your films, and a link to open.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/arr-stack/install">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="Installing it — Mediagg documentation">
-<meta property="og:description" content="One command in Terminal, a folder for your films, and a link to open.">
+<meta property="og:description" content="One command in a terminal, a folder for your films, and a link to open.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -65,16 +65,22 @@
 <article class="doc">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/arr-stack">Mediagg Arr Stack</a><i>/</i><span>Installing it</span></nav>
 <h1>Installing it</h1>
-<p class="sub">One command in Terminal, a folder for your films, and a link to open.</p>
-<p>Open <strong>Terminal</strong> (in Applications → Utilities) and paste:</p>
+<p class="sub">One command in a terminal, a folder for your films, and a link to open.</p>
+<p>The same command installs it on a Mac and on Linux. Open a terminal — on a Mac, <strong>Terminal</strong>, in Applications → Utilities — and paste:</p>
 <pre><code>curl -fsSL https://mediagg.app/install.sh | sh</code></pre>
-<p>That is the whole install. What happens next, in order:</p>
+<p>That is the whole install. Run it as yourself, not with <code>sudo</code>: it asks for your password when it needs it.</p>
+<h2 id="on-a-mac">On a Mac</h2>
 <ol class="steps"><li><strong>You choose a folder for your films and series.</strong> The ordinary macOS folder picker opens, asking <code>Where should your films and series go?</code> Pick a folder in your home folder or on an external drive. The stack will only ever see this folder and its own — not your Desktop, Documents, Dropbox or anything else — so macOS has nothing else to ask about.</li><li><strong>Docker Desktop is installed, if it is not already.</strong> Your Mac asks for your password once.</li><li><strong>Docker Desktop starts</strong>, and the stack's own page is downloaded and started inside it.</li><li><strong>Terminal prints a link</strong> — <code>Open this link to set it up (it works once, for 30 minutes)</code> — and opens it in your browser.</li></ol>
-<p>The last lines say where everything went:</p>
-<ul><li><code>Your films and series go in:</code> the folder you picked.</li><li><code>Your password and every service's API key are kept in:</code> a file in <code>MediaggStack</code> in your home folder, readable only by your Mac account.</li></ul>
 <p>If your folder is on an external drive, macOS asks once whether Docker may use it. That is the folder you just chose — say yes.</p>
+<h2 id="on-linux">On Linux</h2>
+<ol class="steps"><li><strong>You choose a folder for your films and series.</strong> On a desktop a folder picker opens; otherwise the terminal asks, and Enter takes <code>MediaggStack/media</code> in your home folder. For an external drive, give its folder under <code>/media</code> or <code>/mnt</code> — and keep it mounted there.</li><li><strong>Docker is installed, if it is not already</strong>, with Docker's own install script, and set to start with the computer — so the stack is back after a restart even with nobody signed in.</li><li><strong>The stack's own page is downloaded and started</strong>, and a link is printed.</li></ol>
+<p><strong>Setting up a computer with no screen</strong> — a Raspberry Pi or a server you reach over SSH — works the same way. The link printed is the computer's address on your network, such as <code>http://192.168.1.20:7979/setup?token=…</code>: open it on any computer or phone on the same network.</p>
+<p>Your Linux computer needs to be 64-bit. On a Raspberry Pi that is the 64-bit Raspberry Pi OS.</p>
+<h2 id="where-everything-goes">Where everything goes</h2>
+<p>The last lines say:</p>
+<ul><li><code>Your films and series go in:</code> the folder you picked.</li><li><code>Your password and every service's API key are kept in:</code> a file in <code>MediaggStack</code> in your home folder, readable only by your account.</li></ul>
 <h2 id="the-setup-link">The setup link</h2>
-<p>The link holds a one-time code, so only the person at the Mac can set the stack up. If it has expired, run the install command again for a new one; nothing you have is lost.</p>
+<p>The link holds a one-time code, so only the person who ran the command can set the stack up. If it has expired, run the install command again for a new one; nothing you have is lost.</p>
 <p>Next: <a href="/documentation/arr-stack/set-up">Setting it up</a>.</p>
 <h2 id="running-it-again">Running it again</h2>
 <p>The same command updates the stack when a new version is out, and repairs an install that went wrong. It keeps your folder, your password and everything you have set up.</p>

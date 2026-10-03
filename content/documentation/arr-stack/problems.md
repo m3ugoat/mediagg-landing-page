@@ -17,11 +17,11 @@ in, with the same name, then press `Repair everything`. The stack's page keeps w
 
 ## My phone cannot reach the stack
 
-- Is the Mac awake? See `Keep this Mac awake` in
+- Is the computer awake? See `Keep this computer awake` in
   [Using it day to day](/documentation/arr-stack/everyday).
-- Are the phone and the Mac on the same Wi-Fi?
+- Are the phone and the computer on the same network?
 - Did you press `Let my phone and TV in`?
-- Did the Mac's address change? A paired phone or TV finds it again the next time Mediagg starts.
+- Did the computer's address change? A paired phone or TV finds it again the next time Mediagg starts.
 
 ## Why does it say my drive cannot link files?
 
@@ -44,13 +44,14 @@ Your phone and TV never need the stack's own page — the code does it.
 
 **Everything:** at the bottom of the stack's page, `Remove everything`. It removes every service,
 their settings and keys, and the page itself. **Your films and series stay**, unless you tick
-`Delete my films and series too`. Then, to remove the two small login items it added to the Mac —
-one starts Docker Desktop when you sign in, the other keeps the Mac awake — run:
+`Delete my films and series too`. Then, to remove what the install command added to the computer —
+on a Mac two small login items, one starting Docker Desktop when you sign in and one keeping the Mac
+awake; on Linux the small service that keeps it awake — run:
 
 ```
 curl -fsSL https://mediagg.app/install.sh | sh -s -- --uninstall
 ```
 
 That command on its own also removes everything, if the page is not there any more, and asks before it
-deletes any folder. Docker Desktop stays installed; remove it from Applications if nothing else uses
-it.
+deletes any folder. Docker stays installed: on a Mac remove Docker Desktop from Applications if nothing
+else uses it.

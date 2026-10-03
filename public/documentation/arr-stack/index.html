@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mediagg Arr Stack — Mediagg documentation</title>
-<meta name="description" content="A home media server on your Mac, set up for you, and handed to Mediagg with one code.">
+<meta name="description" content="A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/arr-stack">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="Mediagg Arr Stack — Mediagg documentation">
-<meta property="og:description" content="A home media server on your Mac, set up for you, and handed to Mediagg with one code.">
+<meta property="og:description" content="A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -65,16 +65,16 @@
 <article class="doc">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><span>Mediagg Arr Stack</span></nav>
 <h1>Mediagg Arr Stack</h1>
-<p class="sub">A home media server on your Mac, set up for you, and handed to Mediagg with one code.</p>
-<p><strong>Mediagg Arr Stack</strong> turns a Mac into a home media server. One command installs it, three questions in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.</p>
+<p class="sub">A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.</p>
+<p><strong>Mediagg Arr Stack</strong> turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.</p>
 <p>It installs a handful of free programs, sets each one up and connects them to each other — the part that usually means eight web pages and a dozen keys copied from one to another:</p>
 <div class="tablewrap"><table><thead><tr><th>Service</th><th>What it does</th></tr></thead><tbody><tr><td><code>Jellyfin</code></td><td>Plays your films and series, on every screen</td></tr><tr><td><code>Sonarr</code></td><td>Finds and fetches series</td></tr><tr><td><code>Radarr</code></td><td>Finds and fetches films</td></tr><tr><td><code>Prowlarr</code></td><td>Keeps the list of sites Sonarr and Radarr search</td></tr><tr><td><code>FlareSolverr</code></td><td>Gets Prowlarr past sites that check for a browser</td></tr><tr><td><code>qBittorrent</code></td><td>Downloads</td></tr><tr><td><code>Seerr</code></td><td>Lets your family ask for films and series</td></tr><tr><td><code>Bazarr</code></td><td>Fetches subtitles</td></tr></tbody></table></div>
-<p>Only what your answers need is installed: Jellyfin always, the rest when you ask for films, series, subtitles or requests from family. Each runs in its own container in <strong>Docker Desktop</strong>, so none of it is mixed into your system, and all of it can be removed again in one go.</p>
+<p>Only what your answers need is installed: Jellyfin always, the rest when you ask for films, series, subtitles or requests from family. Each runs in its own container in <strong>Docker</strong>, so none of it is mixed into your system, and all of it can be removed again in one go.</p>
 <h2 id="what-you-need">What you need</h2>
-<ul><li><strong>A Mac</strong>, Apple silicon or Intel, on a macOS release Docker Desktop supports — the current one and the two before it. The installer adds Docker Desktop if it is not there.</li><li><strong>Space.</strong> About 1.4 GB to download and 4 GB on disk for every service, plus your films and series. An external drive is fine.</li><li><strong>Your phone or TV on the same Wi-Fi</strong> as the Mac.</li></ul>
-<p>Everything in the stack is free and open source. Docker Desktop is free for personal use, education and small businesses.</p>
-<div class="note"><p><strong>Linux and Windows are on the way.</strong> For now the stack installs on macOS only. Mediagg itself connects to a stack from Android and iOS.</p></div>
-<div class="cards"><a class="card" href="/documentation/arr-stack/install"><span class="ct">Installing it</span><span class="cs">One command in Terminal, a folder for your films, and a link to open.</span></a><a class="card" href="/documentation/arr-stack/set-up"><span class="ct">Setting it up</span><span class="cs">Three questions, one Install button, and the one thing left to you.</span></a><a class="card" href="/documentation/arr-stack/phone-and-tv"><span class="ct">Your phone and TV</span><span class="cs">Let them in, scan or type one code, and Mediagg adds Jellyfin and every service.</span></a><a class="card" href="/documentation/arr-stack/everyday"><span class="ct">Using it day to day</span><span class="cs">Adding films and series, the stack&#x27;s page, updates, keeping the Mac awake and the password.</span></a><a class="card" href="/documentation/arr-stack/problems"><span class="ct">Problems and removing it</span><span class="cs">A step that failed, a missing drive, a phone that cannot reach it, and taking it all away.</span></a></div>
+<ul><li><strong>A Mac</strong>, Apple silicon or Intel, on a macOS release Docker Desktop supports — the current one and the two before it. The installer adds Docker Desktop if it is not there.</li><li><strong>Or a 64-bit Linux computer</strong> — Debian, Ubuntu, Raspberry Pi OS (64-bit), Fedora and the like, on Intel/AMD or ARM. A Raspberry Pi 4 or 5 with 4 GB or more is enough. The installer adds Docker if it is not there.</li><li><strong>Space.</strong> About 1.4 GB to download and 4 GB on disk for every service, plus your films and series. An external drive is fine.</li><li><strong>Your phone or TV on the same network</strong> as the computer.</li></ul>
+<p>Everything in the stack is free and open source, and so is Docker on Linux. Docker Desktop, on a Mac, is free for personal use, education and small businesses.</p>
+<div class="note"><p><strong>Windows is on the way.</strong> For now the stack installs on macOS and Linux. Mediagg itself connects to a stack from Android and iOS.</p></div>
+<div class="cards"><a class="card" href="/documentation/arr-stack/install"><span class="ct">Installing it</span><span class="cs">One command in a terminal, a folder for your films, and a link to open.</span></a><a class="card" href="/documentation/arr-stack/set-up"><span class="ct">Setting it up</span><span class="cs">Three questions, one Install button, and the one thing left to you.</span></a><a class="card" href="/documentation/arr-stack/phone-and-tv"><span class="ct">Your phone and TV</span><span class="cs">Let them in, scan or type one code, and Mediagg adds Jellyfin and every service.</span></a><a class="card" href="/documentation/arr-stack/everyday"><span class="ct">Using it day to day</span><span class="cs">Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.</span></a><a class="card" href="/documentation/arr-stack/problems"><span class="ct">Problems and removing it</span><span class="cs">A step that failed, a missing drive, a phone that cannot reach it, and taking it all away.</span></a></div>
 <div class="pnav"><a class="pn prev" href="/documentation/media-servers/reading-a-book"><b>Previous</b>Reading a book</a><a class="pn next" href="/documentation/arr-stack/install"><b>Next</b>Installing it</a></div>
 </article>
 </main>

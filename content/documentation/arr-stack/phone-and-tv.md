@@ -8,11 +8,11 @@ order: 30
 Once the stack is set up, Mediagg can take everything it installed — Jellyfin and every service, with
 their keys — in one go. Nothing is typed but a six-digit code.
 
-## On the Mac
+## On the computer
 
 Under `Watch it on your phone and TV`, press `Let my phone and TV in`. Until then the stack answers
-the Mac only; afterwards it answers your home network — not the internet. Every service still asks
-for your password, and FlareSolverr, which has none, stays on the Mac.
+the computer only; afterwards it answers your home network — not the internet. Every service still asks
+for your password, and FlareSolverr, which has none, stays on the computer.
 
 The page then shows a **QR code** and a **six-digit code**. Each code works once, for ten minutes;
 `New code` gives another.
@@ -31,7 +31,7 @@ in the `Computer address`. Type the `Code` and press `Add everything`.
 
 ## On your TV
 
-In Mediagg, open `Add` and choose `Mediagg Arr Stack`. It finds the Mac by itself; type the code
+In Mediagg, open `Add` and choose `Mediagg Arr Stack`. It finds the computer by itself; type the code
 with the remote and confirm.
 
 ## What you get
@@ -40,7 +40,7 @@ with the remote and confirm.
   in the Library like any other server's.
 - **Sonarr, Radarr and the rest** appear under `Mediarr` in `Media servers`, already connected.
 
-When it is done Mediagg says `Added everything from` and your Mac's name. If one service could not be
+When it is done Mediagg says `Added everything from` and your computer's name. If one service could not be
 added, it says which, and why; the others are kept.
 
 ## Paired
@@ -48,7 +48,7 @@ added, it says which, and why; the others are kept.
 The first code a phone or TV takes **pairs** it: the stack gives it a pairing token, which Mediagg
 keeps in the device's secure storage. With it, Mediagg keeps up by itself:
 
-- **When the Mac's address changes** — routers sometimes hand out a new one — Mediagg looks for the
+- **When the computer's address changes** — routers sometimes hand out a new one — Mediagg looks for the
   stack on your network the next time it starts, recognises it, and moves every service to the new
   address.
 - **When you install a service later**, or reinstall one with new keys, Mediagg picks it up. It checks
@@ -57,7 +57,7 @@ keeps in the device's secure storage. With it, Mediagg keeps up by itself:
 The stack's page shows how many phones and TVs are paired. `Forget my phones and TVs` stops every
 token working; a device keeps what it has until something moves, and then needs a new code.
 
-To stop the address changing at all, reserve the Mac's address in your router.
+To stop the address changing at all, reserve the computer's address in your router.
 
 ## If it does not work
 

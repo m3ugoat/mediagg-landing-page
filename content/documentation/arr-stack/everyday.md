@@ -1,6 +1,6 @@
 ---
 title: Using it day to day
-summary: Adding films and series, the stack's page, updates, keeping the Mac awake and the password.
+summary: Adding films and series, the stack's page, updates, keeping the computer awake and the password.
 order: 40
 ---
 
@@ -16,7 +16,8 @@ It needs sites in Prowlarr first — see
 
 ## The stack's page
 
-Open it from the Mac at the address the install command printed — `http://localhost:7979` — and
+Open it at the address the install command printed — `http://localhost:7979` on the computer itself,
+or its network address for one with no screen — and
 sign in with your stack's login.
 
 - **A tile per service**, with `Open`, `Reinstall` and `Remove` — `Remove, keep its settings` or
@@ -35,23 +36,27 @@ naming them, with `Update services`. Each restarts, and its settings stay.
 
 Running the install command again does the same.
 
-## Keep this Mac awake
+## Keep this computer awake
 
-A sleeping Mac serves nothing: your phone and TV cannot play, and downloads stop. Under `This Mac`,
-`Keep this Mac awake` stops the Mac going to sleep by itself — the screen still turns off, so it costs
+A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch at
+the bottom of the stack's page — `Keep this Mac awake`, or `Keep this computer awake` on Linux — stops
+it going to sleep by itself — the screen still turns off, so it costs
 little. Turn it off whenever you like.
 
-It cannot stop everything: on battery the Mac may still sleep to save power, and closing a laptop's
+It cannot stop everything: on battery it may still sleep to save power, and closing a laptop's
 lid sleeps it unless it is plugged in with a display attached.
 
-When the Mac restarts, Docker Desktop and every service start again by themselves once you sign in.
+A computer that never sleeps, like most home servers, does not need it.
+
+After a restart every service starts again by itself — on a Mac once you sign in, when Docker Desktop
+starts; on Linux with the computer, before anyone signs in.
 
 ## Change the password
 
 `Change the password` changes it for the stack's page and every service at once. Paired phones and
 TVs pick it up by themselves.
 
-Forgotten it? It is in `MediaggStack/manager/state.json` in your home folder, which only your Mac
+Forgotten it? It is in `MediaggStack/manager/state.json` in your home folder, which only your
 account can read. That file also holds every service's API key.
 
 ## Watching away from home

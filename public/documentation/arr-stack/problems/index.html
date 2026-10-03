@@ -71,7 +71,7 @@
 <h2 id="your-media-folder-is-not-there"><code>Your media folder is not there</code></h2>
 <p>The folder for your films and series cannot be reached — usually because it is on an external drive that is not plugged in, or was renamed. The services that use it stop until it is back. Plug the drive in, with the same name, then press <code>Repair everything</code>. The stack's page keeps working either way.</p>
 <h2 id="my-phone-cannot-reach-the-stack">My phone cannot reach the stack</h2>
-<ul><li>Is the Mac awake? See <code>Keep this Mac awake</code> in <a href="/documentation/arr-stack/everyday">Using it day to day</a>.</li><li>Are the phone and the Mac on the same Wi-Fi?</li><li>Did you press <code>Let my phone and TV in</code>?</li><li>Did the Mac's address change? A paired phone or TV finds it again the next time Mediagg starts.</li></ul>
+<ul><li>Is the computer awake? See <code>Keep this computer awake</code> in <a href="/documentation/arr-stack/everyday">Using it day to day</a>.</li><li>Are the phone and the computer on the same network?</li><li>Did you press <code>Let my phone and TV in</code>?</li><li>Did the computer's address change? A paired phone or TV finds it again the next time Mediagg starts.</li></ul>
 <h2 id="why-does-it-say-my-drive-cannot-link-files">Why does it say my drive cannot link files?</h2>
 <p>A finished download is normally linked into your library: one file in two places, using its space once. Drives formatted as exFAT, and network drives, cannot do that, so each download is copied and takes its space twice. Everything still works; a drive formatted as APFS avoids it.</p>
 <h2 id="is-letting-my-phone-and-tv-in-safe">Is letting my phone and TV in safe?</h2>
@@ -79,9 +79,9 @@
 <p>Your phone and TV never need the stack's own page — the code does it.</p>
 <h2 id="removing-it">Removing it</h2>
 <p><strong>One service:</strong> on its tile, <code>Remove</code> — keeping its settings, or deleting them.</p>
-<p><strong>Everything:</strong> at the bottom of the stack's page, <code>Remove everything</code>. It removes every service, their settings and keys, and the page itself. <strong>Your films and series stay</strong>, unless you tick <code>Delete my films and series too</code>. Then, to remove the two small login items it added to the Mac — one starts Docker Desktop when you sign in, the other keeps the Mac awake — run:</p>
+<p><strong>Everything:</strong> at the bottom of the stack's page, <code>Remove everything</code>. It removes every service, their settings and keys, and the page itself. <strong>Your films and series stay</strong>, unless you tick <code>Delete my films and series too</code>. Then, to remove what the install command added to the computer — on a Mac two small login items, one starting Docker Desktop when you sign in and one keeping the Mac awake; on Linux the small service that keeps it awake — run:</p>
 <pre><code>curl -fsSL https://mediagg.app/install.sh | sh -s -- --uninstall</code></pre>
-<p>That command on its own also removes everything, if the page is not there any more, and asks before it deletes any folder. Docker Desktop stays installed; remove it from Applications if nothing else uses it.</p>
+<p>That command on its own also removes everything, if the page is not there any more, and asks before it deletes any folder. Docker stays installed: on a Mac remove Docker Desktop from Applications if nothing else uses it.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/arr-stack/everyday"><b>Previous</b>Using it day to day</a><a class="pn next" href="/documentation/playback"><b>Next</b>Playback</a></div>
 </article>
 </main>
