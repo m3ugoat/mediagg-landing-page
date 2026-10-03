@@ -8,22 +8,25 @@ order: 45
 **Mediagg Arr Stack** turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions
 in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.
 
-It installs a handful of free programs, sets each one up and connects them to each other — the part
-that usually means eight web pages and a dozen keys copied from one to another:
+It installs a handful of programs — the ones you choose — sets each one up and connects them to each
+other, the part that usually means a dozen web pages and keys copied from one to another:
 
 | Service | What it does |
 |---|---|
-| `Jellyfin` | Plays your films and series, on every screen |
+| `Jellyfin`, `Emby` or `Plex` | Plays your films and series, on every screen |
+| `Navidrome` | Plays your music |
+| `Audiobookshelf` | Plays your audiobooks and podcasts |
 | `Sonarr` | Finds and fetches series |
 | `Radarr` | Finds and fetches films |
+| `Lidarr` | Finds and fetches music |
 | `Prowlarr` | Keeps the list of sites Sonarr and Radarr search |
 | `FlareSolverr` | Gets Prowlarr past sites that check for a browser |
 | `qBittorrent` | Downloads |
 | `Seerr` | Lets your family ask for films and series |
 | `Bazarr` | Fetches subtitles |
 
-Only what your answers need is installed: Jellyfin always, the rest when you ask for films, series,
-subtitles or requests from family. Each runs in its own container in **Docker**, so none of
+Only what you choose is installed: at least one place to watch or listen, and whatever finds and
+fetches more if you want it. Everyone in the house can have [a login of their own](/documentation/arr-stack/people). Each runs in its own container in **Docker**, so none of
 it is mixed into your system, and all of it can be removed again in one go.
 
 ## What you need

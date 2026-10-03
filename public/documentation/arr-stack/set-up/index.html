@@ -44,7 +44,7 @@
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/arr-stack">Mediagg Arr Stack</a>
-<ul><li><a class="" href="/documentation/arr-stack/install">Installing it</a></li><li><a class="on" href="/documentation/arr-stack/set-up">Setting it up</a></li><li><a class="" href="/documentation/arr-stack/phone-and-tv">Your phone and TV</a></li><li><a class="" href="/documentation/arr-stack/films-you-already-have">Films and series you already have</a></li><li><a class="" href="/documentation/arr-stack/everyday">Using it day to day</a></li><li><a class="" href="/documentation/arr-stack/problems">Problems and removing it</a></li></ul>
+<ul><li><a class="" href="/documentation/arr-stack/install">Installing it</a></li><li><a class="on" href="/documentation/arr-stack/set-up">Setting it up</a></li><li><a class="" href="/documentation/arr-stack/phone-and-tv">Your phone and TV</a></li><li><a class="" href="/documentation/arr-stack/people">People</a></li><li><a class="" href="/documentation/arr-stack/films-you-already-have">Films and series you already have</a></li><li><a class="" href="/documentation/arr-stack/everyday">Using it day to day</a></li><li><a class="" href="/documentation/arr-stack/problems">Problems and removing it</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -68,10 +68,14 @@
 <p class="sub">Three questions, one Install button, and the one thing left to you.</p>
 <p>The setup link opens <code>Set up your media server</code>. It asks three things.</p>
 <h2 id="what-do-you-want">What do you want?</h2>
-<div class="tablewrap"><table><thead><tr><th>Choice</th><th>What it adds</th></tr></thead><tbody><tr><td><code>Films</code></td><td>Radarr finds them, qBittorrent fetches them</td></tr><tr><td><code>Series</code></td><td>Sonarr follows them and fetches each new episode</td></tr><tr><td><code>Subtitles</code></td><td>Bazarr adds them to what you have</td></tr><tr><td><code>Requests from family</code></td><td>Seerr lets people ask, and you approve</td></tr></tbody></table></div>
-<p>Jellyfin, which plays it all on your phone, TV and computer, always comes with it. Each choice shows how much it adds to the download.</p>
+<p>Two kinds of choice. <strong>Where you watch and listen</strong> — at least one:</p>
+<div class="tablewrap"><table><thead><tr><th>Choice</th><th>What it is</th></tr></thead><tbody><tr><td><code>Jellyfin</code></td><td>Plays your films and series on every screen. Free and open, nothing to sign up for</td></tr><tr><td><code>Emby</code></td><td>The same, with paid extras if you want them</td></tr><tr><td><code>Plex</code></td><td>The same, with a free plex.tv account you sign in to once</td></tr><tr><td><code>Music</code></td><td>Navidrome plays your music library</td></tr><tr><td><code>Audiobooks and podcasts</code></td><td>Audiobookshelf plays them and remembers where you were</td></tr></tbody></table></div>
+<p>For films and series one of Jellyfin, Emby and Plex is plenty: each keeps its own library of the same files, and Mediagg plays from every one.</p>
+<p><strong>What finds and fetches more</strong> — all optional; leave them out to serve only what you have:</p>
+<div class="tablewrap"><table><thead><tr><th>Choice</th><th>What it adds</th></tr></thead><tbody><tr><td><code>Films</code></td><td>Radarr finds them, qBittorrent fetches them</td></tr><tr><td><code>Series</code></td><td>Sonarr follows them and fetches each new episode</td></tr><tr><td><code>Albums</code></td><td>Lidarr finds the music you follow, qBittorrent fetches it</td></tr><tr><td><code>Subtitles</code></td><td>Bazarr adds them to your films and series</td></tr><tr><td><code>Requests from family</code></td><td>Seerr lets people ask for films and series, and you approve</td></tr></tbody></table></div>
+<p>Each choice shows how much it adds to the download. Requests need a video server and Films or Series; subtitles need Films or Series — the page says so if one is missing.</p>
 <h2 id="where-your-films-and-series-go">Where your films and series go</h2>
-<p>The folder you picked when you installed, shown for you to check. Under it the stack makes <code>media/movies</code>, <code>media/tv</code> and <code>torrents</code>. To use another folder, run the install command again before you press Install.</p>
+<p>The folder you picked when you installed, shown for you to check. Under it the stack makes <code>media/movies</code>, <code>media/tv</code>, <code>media/music</code>, <code>media/audiobooks</code>, <code>media/podcasts</code> and <code>torrents</code>. To use another folder, run the install command again before you press Install.</p>
 <p>The page also checks the drive: how much space is free, and whether it can <strong>link</strong> files. A drive formatted as exFAT, or a network drive, cannot — each finished download is then copied into your library and takes its space twice. Everything still works.</p>
 <h2 id="one-login-for-everything">One login for everything</h2>
 <p>A name and a password. <strong>The same login opens the stack's page and every service in it</strong> — Jellyfin, Sonarr, Radarr, Prowlarr, qBittorrent and Bazarr; Seerr signs in through Jellyfin. Write them down.</p>
@@ -81,6 +85,8 @@
 <h2 id="one-thing-left-choose-the-sites-to-search">One thing left: choose the sites to search</h2>
 <p>Sonarr and Radarr find films and series through sites — indexers — that you add to <strong>Prowlarr</strong>. Which sites to use is your decision, and depends on where you are and what you have the right to download, so the stack does not choose any for you.</p>
 <p>Press <code>Open Prowlarr</code>, then <strong>Indexers → Add Indexer</strong>. Prowlarr passes each one to Sonarr and Radarr by itself.</p>
+<h2 id="plex-one-sign-in">Plex: one sign-in</h2>
+<p>Plex belongs to a plex.tv account, so after installing it the stack's page shows <code>Sign Plex in to your plex.tv account</code>. Press <code>Sign in to Plex</code>: a short code appears. Open <strong>plex.tv/link</strong> on any computer or phone, sign in, and enter the code. The stack claims Plex for your account, makes its Films and Series libraries and connects Seerr — your plex.tv password is never typed into the stack.</p>
 <p>Next: <a href="/documentation/arr-stack/phone-and-tv">Your phone and TV</a>.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/arr-stack/install"><b>Previous</b>Installing it</a><a class="pn next" href="/documentation/arr-stack/phone-and-tv"><b>Next</b>Your phone and TV</a></div>
 </article>

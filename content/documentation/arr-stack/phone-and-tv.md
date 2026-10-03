@@ -17,6 +17,12 @@ for your password, and FlareSolverr, which has none, stays on the computer.
 The page then shows a **QR code** and a **six-digit code**. Each code works once, for ten minutes;
 `New code` gives another.
 
+## Whose phone or TV it is
+
+If you have added [people](/documentation/arr-stack/people), the card asks `Who is this phone or TV
+for?` Choose them before showing the code: the device signs in as them, to what is theirs, and nothing
+else.
+
 ## On your phone
 
 Either:
@@ -36,9 +42,12 @@ with the remote and confirm.
 
 ## What you get
 
-- **Jellyfin** joins your media servers, signed in with your stack's login. Your films and series are
-  in the Library like any other server's.
-- **Sonarr, Radarr and the rest** appear under `Mediarr` in `Media servers`, already connected.
+- **Your media servers** — Jellyfin, Emby, Navidrome, Audiobookshelf — join `Media servers`, signed in.
+  Each phone or TV gets **a sign-in of its own** to Jellyfin, Emby and Audiobookshelf, under its own
+  name, rather than your password; you can see them in those servers' lists of devices.
+- **Plex** asks you to sign in with your plex.tv account: its sign-in opens next, with the address
+  already filled in.
+- **Sonarr, Radarr, Lidarr and the rest** appear under `Mediarr` in `Media servers`, already connected.
 
 When it is done Mediagg says `Added everything from` and your computer's name. If one service could not be
 added, it says which, and why; the others are kept.
@@ -55,7 +64,8 @@ keeps in the device's secure storage. With it, Mediagg keeps up by itself:
   at most twice a day.
 
 The stack's page shows how many phones and TVs are paired. `Forget my phones and TVs` stops every
-token working; a device keeps what it has until something moves, and then needs a new code.
+token working and ends every sign-in made for each device; each then needs a new code. One device can
+be forgotten on its own under People.
 
 To stop the address changing at all, reserve the computer's address in your router.
 

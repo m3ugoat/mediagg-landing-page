@@ -44,7 +44,7 @@
 </div>
 <div class="sbsec open">
 <a class="sbtitle" href="/documentation/arr-stack">Mediagg Arr Stack</a>
-<ul><li><a class="" href="/documentation/arr-stack/install">Installing it</a></li><li><a class="" href="/documentation/arr-stack/set-up">Setting it up</a></li><li><a class="on" href="/documentation/arr-stack/phone-and-tv">Your phone and TV</a></li><li><a class="" href="/documentation/arr-stack/films-you-already-have">Films and series you already have</a></li><li><a class="" href="/documentation/arr-stack/everyday">Using it day to day</a></li><li><a class="" href="/documentation/arr-stack/problems">Problems and removing it</a></li></ul>
+<ul><li><a class="" href="/documentation/arr-stack/install">Installing it</a></li><li><a class="" href="/documentation/arr-stack/set-up">Setting it up</a></li><li><a class="on" href="/documentation/arr-stack/phone-and-tv">Your phone and TV</a></li><li><a class="" href="/documentation/arr-stack/people">People</a></li><li><a class="" href="/documentation/arr-stack/films-you-already-have">Films and series you already have</a></li><li><a class="" href="/documentation/arr-stack/everyday">Using it day to day</a></li><li><a class="" href="/documentation/arr-stack/problems">Problems and removing it</a></li></ul>
 </div>
 <div class="sbsec">
 <a class="sbtitle" href="/documentation/playback">Playback</a>
@@ -71,6 +71,8 @@
 <h2 id="on-the-computer">On the computer</h2>
 <p>Under <code>Watch it on your phone and TV</code>, press <code>Let my phone and TV in</code>. Until then the stack answers the computer only; afterwards it answers your home network — not the internet. Every service still asks for your password, and FlareSolverr, which has none, stays on the computer.</p>
 <p>The page then shows a <strong>QR code</strong> and a <strong>six-digit code</strong>. Each code works once, for ten minutes; <code>New code</code> gives another.</p>
+<h2 id="whose-phone-or-tv-it-is">Whose phone or TV it is</h2>
+<p>If you have added <a href="/documentation/arr-stack/people">people</a>, the card asks <code>Who is this phone or TV for?</code> Choose them before showing the code: the device signs in as them, to what is theirs, and nothing else.</p>
 <h2 id="on-your-phone">On your phone</h2>
 <p>Either:</p>
 <ul><li><strong>Scan it.</strong> Point the phone's camera app at the QR code and tap <code>Open in Mediagg</code>. Mediagg opens with the code already filled in.</li><li><strong>Type it.</strong> In Mediagg, open <code>Media servers</code> in the Library and press <code>Add a server</code>. The first choice is <code>Mediagg Arr Stack</code> — <code>Everything your stack installed, added in one go</code>.</li></ul>
@@ -78,16 +80,16 @@
 <h2 id="on-your-tv">On your TV</h2>
 <p>In Mediagg, open <code>Add</code> and choose <code>Mediagg Arr Stack</code>. It finds the computer by itself; type the code with the remote and confirm.</p>
 <h2 id="what-you-get">What you get</h2>
-<ul><li><strong>Jellyfin</strong> joins your media servers, signed in with your stack's login. Your films and series are in the Library like any other server's.</li><li><strong>Sonarr, Radarr and the rest</strong> appear under <code>Mediarr</code> in <code>Media servers</code>, already connected.</li></ul>
+<ul><li><strong>Your media servers</strong> — Jellyfin, Emby, Navidrome, Audiobookshelf — join <code>Media servers</code>, signed in. Each phone or TV gets <strong>a sign-in of its own</strong> to Jellyfin, Emby and Audiobookshelf, under its own name, rather than your password; you can see them in those servers' lists of devices.</li><li><strong>Plex</strong> asks you to sign in with your plex.tv account: its sign-in opens next, with the address already filled in.</li><li><strong>Sonarr, Radarr, Lidarr and the rest</strong> appear under <code>Mediarr</code> in <code>Media servers</code>, already connected.</li></ul>
 <p>When it is done Mediagg says <code>Added everything from</code> and your computer's name. If one service could not be added, it says which, and why; the others are kept.</p>
 <h2 id="paired">Paired</h2>
 <p>The first code a phone or TV takes <strong>pairs</strong> it: the stack gives it a pairing token, which Mediagg keeps in the device's secure storage. With it, Mediagg keeps up by itself:</p>
 <ul><li><strong>When the computer's address changes</strong> — routers sometimes hand out a new one — Mediagg looks for the stack on your network the next time it starts, recognises it, and moves every service to the new address.</li><li><strong>When you install a service later</strong>, or reinstall one with new keys, Mediagg picks it up. It checks at most twice a day.</li></ul>
-<p>The stack's page shows how many phones and TVs are paired. <code>Forget my phones and TVs</code> stops every token working; a device keeps what it has until something moves, and then needs a new code.</p>
+<p>The stack's page shows how many phones and TVs are paired. <code>Forget my phones and TVs</code> stops every token working and ends every sign-in made for each device; each then needs a new code. One device can be forgotten on its own under People.</p>
 <p>To stop the address changing at all, reserve the computer's address in your router.</p>
 <h2 id="if-it-does-not-work">If it does not work</h2>
 <ul><li><code>No stack answered on this network.</code> — the phone is on another Wi-Fi, or the stack has not been let in. Type the address the stack's page shows, or press <code>Look again</code>.</li><li><code>That code was not accepted.</code> — it was mistyped, used already or more than ten minutes old. Show a new one on the stack's page.</li><li><code>This stack is newer than this version of Mediagg.</code> — update Mediagg, then try again.</li></ul>
-<div class="pnav"><a class="pn prev" href="/documentation/arr-stack/set-up"><b>Previous</b>Setting it up</a><a class="pn next" href="/documentation/arr-stack/films-you-already-have"><b>Next</b>Films and series you already have</a></div>
+<div class="pnav"><a class="pn prev" href="/documentation/arr-stack/set-up"><b>Previous</b>Setting it up</a><a class="pn next" href="/documentation/arr-stack/people"><b>Next</b>People</a></div>
 </article>
 </main>
 

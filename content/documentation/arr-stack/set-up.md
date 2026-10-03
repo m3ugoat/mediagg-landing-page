@@ -8,20 +8,36 @@ The setup link opens `Set up your media server`. It asks three things.
 
 ## What do you want?
 
+Two kinds of choice. **Where you watch and listen** — at least one:
+
+| Choice | What it is |
+|---|---|
+| `Jellyfin` | Plays your films and series on every screen. Free and open, nothing to sign up for |
+| `Emby` | The same, with paid extras if you want them |
+| `Plex` | The same, with a free plex.tv account you sign in to once |
+| `Music` | Navidrome plays your music library |
+| `Audiobooks and podcasts` | Audiobookshelf plays them and remembers where you were |
+
+For films and series one of Jellyfin, Emby and Plex is plenty: each keeps its own library of the same
+files, and Mediagg plays from every one.
+
+**What finds and fetches more** — all optional; leave them out to serve only what you have:
+
 | Choice | What it adds |
 |---|---|
 | `Films` | Radarr finds them, qBittorrent fetches them |
 | `Series` | Sonarr follows them and fetches each new episode |
-| `Subtitles` | Bazarr adds them to what you have |
-| `Requests from family` | Seerr lets people ask, and you approve |
+| `Albums` | Lidarr finds the music you follow, qBittorrent fetches it |
+| `Subtitles` | Bazarr adds them to your films and series |
+| `Requests from family` | Seerr lets people ask for films and series, and you approve |
 
-Jellyfin, which plays it all on your phone, TV and computer, always comes with it. Each choice shows
-how much it adds to the download.
+Each choice shows how much it adds to the download. Requests need a video server and Films or Series;
+subtitles need Films or Series — the page says so if one is missing.
 
 ## Where your films and series go
 
 The folder you picked when you installed, shown for you to check. Under it the stack makes
-`media/movies`, `media/tv` and `torrents`. To use another folder, run the install command again
+`media/movies`, `media/tv`, `media/music`, `media/audiobooks`, `media/podcasts` and `torrents`. To use another folder, run the install command again
 before you press Install.
 
 The page also checks the drive: how much space is free, and whether it can **link** files. A drive
@@ -49,5 +65,12 @@ download, so the stack does not choose any for you.
 
 Press `Open Prowlarr`, then **Indexers → Add Indexer**. Prowlarr passes each one to Sonarr and Radarr
 by itself.
+
+## Plex: one sign-in
+
+Plex belongs to a plex.tv account, so after installing it the stack's page shows `Sign Plex in to your
+plex.tv account`. Press `Sign in to Plex`: a short code appears. Open **plex.tv/link** on any computer
+or phone, sign in, and enter the code. The stack claims Plex for your account, makes its Films and
+Series libraries and connects Seerr — your plex.tv password is never typed into the stack.
 
 Next: [Your phone and TV](/documentation/arr-stack/phone-and-tv).
