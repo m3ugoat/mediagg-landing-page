@@ -118,15 +118,15 @@ fi
 # Asked first, so the manager is only ever given this folder and its own — never the whole home
 # folder, which made macOS ask about Dropbox, Desktop and drives the user never pointed it at. Kept
 # from the last run once the stack is set up.
-QUESTION="Where should your films and series go? Mediagg Arr Stack will only ever see this folder."
+QUESTION="Where are your films, series and music — or where should they go? Mediagg Arr Stack will only ever see this folder."
 pick_folder_macos() {
     if [ -n "${SSH_CONNECTION:-}" ] || ! command -v osascript >/dev/null 2>&1; then return 0; fi
-    say "Choose where your films and series will go. Mediagg Arr Stack will only ever see that folder." >&2
+    say "Choose the folder your films, series and music are in — or a new one for them. Mediagg Arr Stack will only ever see that folder." >&2
     osascript -e "POSIX path of (choose folder with prompt \"$QUESTION\" default location (path to movies folder))" 2>/dev/null || true
 }
 pick_folder_linux() {
     if [ "$headless" = false ] && command -v zenity >/dev/null 2>&1; then
-        say "Choose where your films and series will go. Mediagg Arr Stack will only ever see that folder." >&2
+        say "Choose the folder your films, series and music are in — or a new one for them. Mediagg Arr Stack will only ever see that folder." >&2
         zenity --file-selection --directory --title="$QUESTION" --filename="$HOME/Videos/" 2>/dev/null || true
         return 0
     fi
