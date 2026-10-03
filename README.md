@@ -199,6 +199,13 @@ interstitial the visitor cannot click through.
 nothing here should be read as deploying anywhere else. Pages cannot set response headers, which is
 why `public/robots.txt` keeps `/play/` out of search results.
 
+**Mediagg Arr Stack** has a section on the home page (`#arr-stack`) and in the documentation
+(`content/documentation/arr-stack/`). Its pages quote two sources: the stack's own page and installer
+in mediagg-arr-stack (`server/.../Pages.kt`, `Help.kt`, `install.sh`), and the app's hand-off panel
+(`ui/.../mediarr/ArrStackHandOff.kt` and the `arr_stack_*` strings in `:i18n`, which unlike the
+inherited strings are what the screen shows). They mention Mediagg on a TV because the stack's page
+tells people to use it there. Say macOS only until another installer ships.
+
 `public/install.sh` is **Mediagg Arr Stack's installer**, served at `https://mediagg.app/install.sh`
 for `curl -fsSL https://mediagg.app/install.sh | sh`. It is a copy: the source is `install.sh` in
 mediagg-arr-stack, and a change is made there and copied here — never edited here first.
