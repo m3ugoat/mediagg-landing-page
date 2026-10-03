@@ -2,7 +2,7 @@
 """Render content/documentation/*.md into public/documentation/.
 
 Why this exists, and why it is not a static-site generator: this repository has no build step and
-nothing to install, and both the README and netlify.toml say so. That stays true. What ships is
+nothing to install, and the README says so. That stays true. What ships is
 still plain HTML under public/ -- this script only writes it, and its output is committed, so the
 Pages workflow is untouched and a clone needs nothing but a browser.
 

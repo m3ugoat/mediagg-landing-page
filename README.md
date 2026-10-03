@@ -195,9 +195,13 @@ reasserts the custom domain.
 not: there is no HTTP fallback, and a browser that cannot validate the certificate shows an
 interstitial the visitor cannot click through.
 
-`netlify.toml` is still present and still correct. Netlify was the original host and publishes the
-same `public/` directory with no build command, so it remains a working fallback — but DNS points at
-GitHub Pages, so only one of the two is actually serving the domain at any time.
+**GitHub Pages is the only host.** Netlify was the original one; its `netlify.toml` is gone, so
+nothing here should be read as deploying anywhere else. Pages cannot set response headers, which is
+why `public/robots.txt` keeps `/play/` out of search results.
+
+`public/install.sh` is **Mediagg Arr Stack's installer**, served at `https://mediagg.app/install.sh`
+for `curl -fsSL https://mediagg.app/install.sh | sh`. It is a copy: the source is `install.sh` in
+mediagg-arr-stack, and a change is made there and copied here — never edited here first.
 
 ## Credits
 

@@ -12,8 +12,6 @@ yarn-error.log
 
 # macOS Finder metadata
 .DS_Store
-# Local Netlify folder
-.netlify
 
 # Retired Jekyll/webpack toolchain lives in legacy/ and is not built
 node_modules/

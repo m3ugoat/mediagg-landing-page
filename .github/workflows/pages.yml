@@ -1,13 +1,13 @@
 # Publishes the static site to GitHub Pages.
 #
-# There is no build step, for the same reason netlify.toml has none: the three pages are plain HTML
-# with their CSS inline, and the only assets are the screenshots in public/screens/. The job just
-# uploads public/ and hands it to Pages.
+# This is the only deploy: mediagg.app is served by GitHub Pages. There is no build step — the pages
+# are plain HTML with their CSS inline, the documentation is generated and committed, and the job
+# just uploads public/ and hands it to Pages.
 #
 # Deploying through Actions rather than the "deploy from a branch" setting matters here. Branch
 # deploys can only serve the repository root or /docs, and neither is the site — the root holds the
-# retired Jekyll sources and /docs holds design files. Actions can publish any directory, so public/
-# stays where netlify.toml already expects it and the two hosts serve the same files.
+# retired Jekyll sources and /docs holds design files. Actions can publish any directory, so the site
+# lives in public/.
 name: Deploy to GitHub Pages
 
 on:
