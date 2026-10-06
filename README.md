@@ -218,3 +218,14 @@ template's Jekyll structure has since been retired to `legacy/` and the pages re
 licence and attribution stand.
 
 This repository started as a fork of an unrelated app's site. Nothing here describes that app.
+
+## Part of the Mediagg ecosystem
+
+This repository is one of several that make up Mediagg. **[mediagg-bible](https://github.com/m3ugoat/mediagg-bible)**
+is the maintenance handbook for all of them: every repository and how they depend on each other,
+how to run and release each one, the checks that keep them at par, and one changelog for the
+whole ecosystem. This repository's page there is
+[`docs/repos/mediagg-landing-page.md`](https://github.com/m3ugoat/mediagg-bible/blob/main/docs/repos/mediagg-landing-page.md).
+
+Every push to `master` and every `v*` tag is reported to the bible by
+`.github/workflows/report-to-bible.yml`. Before a release, run the bible's `scripts/check.sh`.

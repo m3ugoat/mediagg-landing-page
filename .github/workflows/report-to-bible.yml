@@ -1,0 +1,49 @@
+# Reports every change to this repository to the Mediagg bible — github.com/m3ugoat/mediagg-bible —
+# which keeps one changelog for the whole ecosystem. Installed by the bible's
+# scripts/onboard-repo.sh; edit the copy there, not here, and re-run it.
+#
+# Each push to the trunk sends its commits; each v* tag sends a release. Both go as a
+# repository_dispatch, which needs the BIBLE_TOKEN secret: a fine-grained token with Contents
+# read/write on mediagg-bible only. Without it this job warns and passes — the bible's nightly sweep
+# reads this repository directly and records the change a day later, so nothing is lost.
+name: report-to-bible
+
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send this push to the bible
+        env:
+          GH_TOKEN: ${{ secrets.BIBLE_TOKEN }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::BIBLE_TOKEN is not set; the bible's nightly sweep will record this push instead."
+            exit 0
+          fi
+          # At most ten top-level keys and a modest size: the last 50 commits, subjects only. A
+          # longer push is completed by the sweep.
+          jq --arg repo "$REPO" --arg ref "$GITHUB_REF" '{
+              event_type: "ecosystem-change",
+              client_payload: {
+                repo: $repo,
+                branch: (if ($ref | startswith("refs/heads/")) then ($ref | ltrimstr("refs/heads/")) else null end),
+                tag: (if ($ref | startswith("refs/tags/")) then ($ref | ltrimstr("refs/tags/")) else null end),
+                sha: .after,
+                actor: .sender.login,
+                date: (.head_commit.timestamp // null),
+                url: (.compare // .repository.html_url),
+                tag_subject: (if ($ref | startswith("refs/tags/")) then (.head_commit.message // "" | split("\n")[0]) else null end),
+                commits: [(.commits // [])[-50:][] | {id, timestamp, author: .author.name, message: (.message | split("\n")[0]), url}]
+              }
+            }' "$GITHUB_EVENT_PATH" > dispatch.json
+          gh api repos/m3ugoat/mediagg-bible/dispatches --method POST --input dispatch.json
+          echo "Reported $(jq '.client_payload.commits | length' dispatch.json) commit(s) to mediagg-bible."
