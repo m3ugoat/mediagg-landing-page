@@ -47,7 +47,12 @@ At the bottom of the stack's page, open `Your media`, choose the kind, give the 
   or with an id, `Inception (2010) [tmdbid-27205]`, matches surely; anything less certain is left for
   you rather than guessed. The progress card says how many were recognised and names the rest —
   finish those in Radarr → Movies → Library Import, or Sonarr → Series → Library Import.
-- **Films** come in as already had, so nothing is searched for. **Series** follow new episodes.
+- **Films** come in as already had, so nothing is searched for. **Series** in your first series
+  folder follow new episodes.
+- **New things go only into the first folder of each kind** — the first one you gave in the wizard.
+  Folders added beside it are played as they are: Radarr, Sonarr and Lidarr know what is in them but
+  never look for anything missing there or download into them. A music folder added this way is
+  played by Navidrome and not given to Lidarr at all.
 - **Bazarr**, if you have it, can add subtitles to them.
 
 `Repair everything` looks at the folder again and adds anything new, without adding anything twice.

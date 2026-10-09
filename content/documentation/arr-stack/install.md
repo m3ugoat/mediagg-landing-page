@@ -40,7 +40,9 @@ you just chose — say yes.
 
 **Setting up a computer with no screen** — a Raspberry Pi or a server you reach over SSH — works the
 same way. The link printed is the computer's address on your network, such as
-`http://192.168.1.20:7979/setup?token=…`: open it on any computer or phone on the same network.
+`http://192.168.1.20:7979/setup?token=…` (its wired address, where it has one): open it on any
+computer or phone on the same network. Because you set it up from another computer, its services are
+on your network from the start, so every service the page links to opens from where you are.
 
 Your Linux computer needs to be 64-bit. On a Raspberry Pi that is the 64-bit Raspberry Pi OS.
 

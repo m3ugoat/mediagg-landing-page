@@ -12,7 +12,8 @@ their keys — in one go. Nothing is typed but a six-digit code.
 
 Under `Watch it on your phone and TV`, press `Let my phone and TV in`. Until then the stack answers
 the computer only; afterwards it answers your home network — not the internet. Every service still asks
-for your password, and FlareSolverr, which has none, stays on the computer.
+for your password, and FlareSolverr, which has none, stays on the computer. (A computer with no
+screen, set up from another one, is on your network from the start.)
 
 The page then shows a **QR code** and a **six-digit code**. Each code works once, for ten minutes;
 `New code` gives another.

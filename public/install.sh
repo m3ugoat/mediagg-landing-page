@@ -343,21 +343,27 @@ UNIT
 # and handed in.
 facts_macos() {
     zone="$(readlink /etc/localtime | sed 's#.*/zoneinfo/##')"
-    addresses="$(for i in $(ifconfig -l); do ipconfig getifaddr "$i" 2>/dev/null || true; done)"
+    # The interface the default route leaves by comes first: the address a phone is handed is the first one.
+    primary="$(route -n get default 2>/dev/null | awk '/interface:/ {print $2}')"
+    addresses="$(for i in ${primary:+$primary} $(ifconfig -l); do ipconfig getifaddr "$i" 2>/dev/null || true; done)"
     computer="$(scutil --get ComputerName 2>/dev/null || hostname)"
 }
 facts_linux() {
     zone="$(timedatectl show -p Timezone --value 2>/dev/null || true)"
     if [ -z "$zone" ]; then zone="$(cat /etc/timezone 2>/dev/null || true)"; fi
     # Docker's own bridges are private addresses too, and no phone can reach them.
-    addresses="$(ip -4 -o addr show scope global 2>/dev/null | awk '$2 !~ /^(docker|br-|veth|virbr|cni|flannel)/ {print $4}' | cut -d/ -f1)"
+    # The default route's source address comes first: the address a phone is handed is the first one,
+    # and interface order alone puts Wi-Fi ahead of a wired address on a bridge (a Proxmox vmbr0).
+    primary="$(ip -4 route get 1.1.1.1 2>/dev/null | awk '{for (i = 1; i < NF; i++) if ($i == "src") print $(i + 1)}')"
+    addresses="$primary
+$(ip -4 -o addr show scope global 2>/dev/null | awk '$2 !~ /^(docker|br-|veth|virbr|cni|flannel)/ {print $4}' | cut -d/ -f1)"
     computer="$(hostnamectl --pretty 2>/dev/null || true)"
     if [ -z "$computer" ]; then computer="$(hostname)"; fi
 }
 port_taken_macos() { lsof -nP -iTCP:"$1" -sTCP:LISTEN >/dev/null 2>&1; }
 port_taken_linux() { ss -Hltn "sport = :$1" 2>/dev/null | grep -q .; }
 "facts_$OS"
-addresses="$(printf '%s\n' $addresses | grep -E '^(192\.168|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)' | paste -sd, - || true)"
+addresses="$(printf '%s\n' $addresses | awk '!seen[$0]++' | grep -E '^(192\.168|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)' | paste -sd, - || true)"
 
 # ---------------------------------------------------------------- the manager
 mkdir -p "$STACK_HOME/manager"
