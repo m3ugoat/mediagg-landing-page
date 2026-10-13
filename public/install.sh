@@ -1,5 +1,5 @@
 #!/bin/sh
-# Mediagg Arr Stack — installs Docker if it is missing, then starts the manager, which does the rest
+# Mediagg Server — installs Docker if it is missing, then starts the manager, which does the rest
 # in your browser.
 #
 #   curl -fsSL https://mediagg.app/install.sh | sh
@@ -22,7 +22,7 @@ ask() { printf '%s [y/N] ' "$1"; read -r answer </dev/tty 2>/dev/null || answer=
 case "$(uname -s)" in
     Darwin) OS=macos ;;
     Linux) OS=linux ;;
-    *) fail "Mediagg Arr Stack installs on macOS and Linux for now." ;;
+    *) fail "Mediagg Server installs on macOS and Linux for now." ;;
 esac
 
 # On Linux, Docker is the system's: the script asks sudo for what needs it, and runs `docker` itself
@@ -63,7 +63,7 @@ remove_added_linux() {
     fi
 }
 if [ "${1:-}" = "--uninstall" ]; then
-    say "Removing Mediagg Arr Stack…"
+    say "Removing Mediagg Server…"
     if $DOCKER info >/dev/null 2>&1; then
         ids="$($DOCKER ps -aq --filter label=app.mediagg.stack)"
         if [ -n "$ids" ]; then $DOCKER rm -f $ids >/dev/null; fi
@@ -89,9 +89,9 @@ if [ "${1:-}" = "--uninstall" ]; then
         fi
     fi
     if [ "$OS" = macos ]; then
-        say "Mediagg Arr Stack is removed. Docker Desktop stays; remove it from Applications if nothing else uses it."
+        say "Mediagg Server is removed. Docker Desktop stays; remove it from Applications if nothing else uses it."
     else
-        say "Mediagg Arr Stack is removed. Docker stays installed; other things may use it."
+        say "Mediagg Server is removed. Docker stays installed; other things may use it."
     fi
     exit 0
 fi
@@ -103,7 +103,7 @@ if [ "$OS" = linux ]; then
     arch="$(dpkg --print-architecture 2>/dev/null || uname -m)"
     case "$arch" in
         amd64 | x86_64 | arm64 | aarch64) ;;
-        *) fail "Mediagg Arr Stack needs a 64-bit system ($arch here). On a Raspberry Pi, that is the 64-bit Raspberry Pi OS." ;;
+        *) fail "Mediagg Server needs a 64-bit system ($arch here). On a Raspberry Pi, that is the 64-bit Raspberry Pi OS." ;;
     esac
 fi
 
@@ -118,15 +118,15 @@ fi
 # Asked first, so the manager is only ever given this folder and its own — never the whole home
 # folder, which made macOS ask about Dropbox, Desktop and drives the user never pointed it at. Kept
 # from the last run once the stack is set up.
-QUESTION="Which drive or folder may Mediagg Arr Stack use? Your media goes in it, or already is. It will only ever see this folder."
+QUESTION="Which drive or folder may Mediagg Server use? Your media goes in it, or already is. It will only ever see this folder."
 pick_folder_macos() {
     if [ -n "${SSH_CONNECTION:-}" ] || ! command -v osascript >/dev/null 2>&1; then ask_folder; return 0; fi
-    say "Choose the drive or folder Mediagg Arr Stack may use — your media goes in it, or already is. It will only ever see that one." >&2
+    say "Choose the drive or folder Mediagg Server may use — your media goes in it, or already is. It will only ever see that one." >&2
     osascript -e "POSIX path of (choose folder with prompt \"$QUESTION\" default location (path to movies folder))" 2>/dev/null || true
 }
 pick_folder_linux() {
     if [ "$headless" = false ] && command -v zenity >/dev/null 2>&1; then
-        say "Choose the drive or folder Mediagg Arr Stack may use — your media goes in it, or already is. It will only ever see that one." >&2
+        say "Choose the drive or folder Mediagg Server may use — your media goes in it, or already is. It will only ever see that one." >&2
         zenity --file-selection --directory --title="$QUESTION" --filename="$HOME/Videos/" 2>/dev/null || true
         return 0
     fi
@@ -176,7 +176,7 @@ esac
 install_docker_macos() {
     if command -v docker >/dev/null 2>&1 || [ -d /Applications/Docker.app ]; then return 0; fi
     case "$(uname -m)" in arm64) arch=arm64 ;; *) arch=amd64 ;; esac
-    say "Mediagg Arr Stack runs on Docker Desktop, which is not installed. Installing it now."
+    say "Mediagg Server runs on Docker Desktop, which is not installed. Installing it now."
     say "Your Mac will ask for your password once."
     dmg="$(mktemp -d)/Docker.dmg"
     curl -fL --progress-bar "https://desktop.docker.com/mac/main/$arch/Docker.dmg" -o "$dmg"
@@ -187,6 +187,13 @@ install_docker_macos() {
 }
 start_docker_macos() {
     if docker info >/dev/null 2>&1; then return 0; fi
+    # Mediagg's own engine (the desktop app's choice): start its VM, not Docker Desktop.
+    if [ -n "${MEDIAGG_ENGINE_LIMACTL:-}" ]; then
+        say "Starting Mediagg's engine…"
+        LIMA_HOME="${MEDIAGG_ENGINE_HOME:?}" "$MEDIAGG_ENGINE_LIMACTL" start engine --tty=false >/dev/null 2>&1 ||
+            fail "Mediagg's engine did not start. Open Mediagg Server, or choose Docker Desktop in it."
+        return 0
+    fi
     say "Starting Docker Desktop…"
     open -a Docker
     i=0
@@ -201,7 +208,7 @@ start_docker_macos() {
 # nobody signed in.
 install_docker_linux() {
     if command -v docker >/dev/null 2>&1; then return 0; fi
-    say "Mediagg Arr Stack runs on Docker, which is not installed. Installing it now with Docker's own install script."
+    say "Mediagg Server runs on Docker, which is not installed. Installing it now with Docker's own install script."
     if [ -n "$SUDO" ]; then say "It needs your password for sudo."; fi
     # Its own output is pages of versions and advice; kept, and shown only if it fails.
     log="$(mktemp)"
@@ -225,7 +232,7 @@ start_docker_linux() {
     done
     # The manager drives Docker through its socket, where a system Docker keeps it. Rootless Docker
     # and Docker Desktop for Linux keep theirs elsewhere.
-    [ -S /var/run/docker.sock ] || fail "Mediagg Arr Stack needs Docker Engine's socket at /var/run/docker.sock. Rootless Docker and Docker Desktop for Linux are not supported yet."
+    [ -S /var/run/docker.sock ] || fail "Mediagg Server needs Docker Engine's socket at /var/run/docker.sock. Rootless Docker and Docker Desktop for Linux are not supported yet."
 }
 "install_docker_$OS"
 "start_docker_$OS"
@@ -235,13 +242,27 @@ start_docker_linux() {
 # the computer for anything, so it only creates or deletes a file, and what is added here keeps the
 # computer awake while that file exists.
 awake_flag="$STACK_HOME/manager/keep-awake"
+# Stopped in the Mediagg Server app: nothing starts it at login until it is started again. Running this
+# script starts it, so the file goes.
+stopped_flag="$STACK_HOME/stopped"
+no_start_flag="$STACK_HOME/manager/no-start-at-login"
+rm -f "$stopped_flag"
 add_items_macos() {
     # Docker Desktop does not start at sign-in unless told to, and its own setting lives in a file
     # macOS will not let a script touch. So a login item of ours opens it, hidden; every container is
     # `restart: unless-stopped`, so once Docker is up the whole stack is back without anyone asking.
+    # With Mediagg's own engine (the desktop app passes MEDIAGG_ENGINE_LIMACTL and MEDIAGG_ENGINE_HOME),
+    # the login item starts that engine instead.
+    # Not when the server was stopped in the Mediagg Server app (until it is started there), nor when
+    # "Start with this Mac" is off — the app's menu and the stack's Settings make or remove that file.
     agent="$HOME/Library/LaunchAgents/app.mediagg.arrstack.plist"
     mkdir -p "$HOME/Library/LaunchAgents"
-    cat >"$agent" <<'PLIST'
+    stopped_xml="$(printf '%s' "$stopped_flag" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
+    no_start_xml="$(printf '%s' "$no_start_flag" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
+    if [ -n "${MEDIAGG_ENGINE_LIMACTL:-}" ]; then
+        engine_xml="$(printf '%s' "$MEDIAGG_ENGINE_LIMACTL" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
+        home_xml="$(printf '%s' "${MEDIAGG_ENGINE_HOME:?}" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
+        cat >"$agent" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -250,17 +271,45 @@ add_items_macos() {
     <string>app.mediagg.arrstack</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/open</string>
-        <string>-g</string>
-        <string>-j</string>
-        <string>-a</string>
-        <string>Docker</string>
+        <string>/bin/sh</string>
+        <string>-c</string>
+        <string>[ -e "\$0" ] || [ -e "\$1" ] || exec "\$2" start engine --tty=false</string>
+        <string>$stopped_xml</string>
+        <string>$no_start_xml</string>
+        <string>$engine_xml</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>LIMA_HOME</key>
+        <string>$home_xml</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+PLIST
+    else
+        cat >"$agent" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>app.mediagg.arrstack</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/sh</string>
+        <string>-c</string>
+        <string>[ -e "\$0" ] || [ -e "\$1" ] || exec /usr/bin/open -g -j -a Docker</string>
+        <string>$stopped_xml</string>
+        <string>$no_start_xml</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
 </dict>
 </plist>
 PLIST
+    fi
     launchctl bootout "gui/$(id -u)" "$agent" 2>/dev/null || true
     launchctl bootstrap "gui/$(id -u)" "$agent" 2>/dev/null || true
 
@@ -317,7 +366,7 @@ add_items_linux() {
     esac
     $SUDO tee /etc/systemd/system/mediagg-awake.path >/dev/null <<UNIT
 [Unit]
-Description=Mediagg Arr Stack: keep this computer awake while its page asks
+Description=Mediagg Server: keep this computer awake while its page asks
 
 [Path]
 PathExists=$awake_flag
@@ -328,10 +377,10 @@ WantedBy=multi-user.target
 UNIT
     $SUDO tee /etc/systemd/system/mediagg-awake.service >/dev/null <<UNIT
 [Unit]
-Description=Mediagg Arr Stack: keeping this computer awake
+Description=Mediagg Server: keeping this computer awake
 
 [Service]
-ExecStart=$inhibit --what=sleep:idle --who="Mediagg Arr Stack" --why="Serving films and series" --mode=block /bin/sh -c 'while [ -e "\$\$1" ]; do sleep 20; done' mediagg-awake "$awake_flag"
+ExecStart=$inhibit --what=sleep:idle --who="Mediagg Server" --why="Serving films and series" --mode=block /bin/sh -c 'while [ -e "\$\$1" ]; do sleep 20; done' mediagg-awake "$awake_flag"
 UNIT
     $SUDO systemctl daemon-reload
     $SUDO systemctl enable --now mediagg-awake.path >/dev/null 2>&1 || say "Could not start the keep-awake service; see: systemctl status mediagg-awake.path"
@@ -347,6 +396,9 @@ facts_macos() {
     primary="$(route -n get default 2>/dev/null | awk '/interface:/ {print $2}')"
     addresses="$(for i in ${primary:+$primary} $(ifconfig -l); do ipconfig getifaddr "$i" 2>/dev/null || true; done)"
     computer="$(scutil --get ComputerName 2>/dev/null || hostname)"
+    # Bonjour announces every Mac by this name; any computer or iPhone on the network resolves it.
+    local_name="${MEDIAGG_LOCAL_NAME:-$(scutil --get LocalHostName 2>/dev/null || true)}"
+    case "$local_name" in "" | *.local) ;; *) local_name="$local_name.local" ;; esac
 }
 facts_linux() {
     zone="$(timedatectl show -p Timezone --value 2>/dev/null || true)"
@@ -359,6 +411,10 @@ facts_linux() {
 $(ip -4 -o addr show scope global 2>/dev/null | awk '$2 !~ /^(docker|br-|veth|virbr|cni|flannel)/ {print $4}' | cut -d/ -f1)"
     computer="$(hostnamectl --pretty 2>/dev/null || true)"
     if [ -z "$computer" ]; then computer="$(hostname)"; fi
+    # The name Avahi actually announces, from Avahi itself: it renames on a clash (raspberrypi-2.local).
+    # None without Avahi running, and then nothing is promised.
+    local_name="${MEDIAGG_LOCAL_NAME:-$(busctl --system call org.freedesktop.Avahi / org.freedesktop.Avahi.Server GetHostNameFqdn 2>/dev/null \
+        | awk '{gsub(/"/, "", $2); print $2}' || true)}"
 }
 port_taken_macos() { lsof -nP -iTCP:"$1" -sTCP:LISTEN >/dev/null 2>&1; }
 port_taken_linux() { ss -Hltn "sport = :$1" 2>/dev/null | grep -q .; }
@@ -370,7 +426,7 @@ mkdir -p "$STACK_HOME/manager"
 $DOCKER network inspect "$NETWORK" >/dev/null 2>&1 || $DOCKER network create "$NETWORK" >/dev/null
 
 if [ -z "${MEDIAGG_NO_PULL:-}" ]; then
-    say "Downloading Mediagg Arr Stack…"
+    say "Downloading Mediagg Server…"
     $DOCKER pull --quiet "$IMAGE" >/dev/null
 fi
 
@@ -380,14 +436,27 @@ if ! grep -q '"dashboardPasswordHash": "[^"]' "$state" 2>/dev/null; then
     token="$(LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom | head -c 20)"
 fi
 
+# With Mediagg's own engine, ports other programs on this Mac listen on — Docker Desktop's, say: inside
+# the engine's VM they look free, and a service put there would never be reached. Lima's own (limactl)
+# are the stack's, and left out.
+busy_ports=""
+if [ "$OS" = macos ] && [ -n "${MEDIAGG_ENGINE_LIMACTL:-}" ]; then
+    busy_ports="$(lsof -nP -iTCP -sTCP:LISTEN 2>/dev/null | awk 'NR > 1 && $1 != "limactl" { n = split($9, a, ":"); print a[n] }' | sort -un | paste -sd, - || true)"
+fi
+
 port=7979
 while "port_taken_$OS" "$port" && ! $DOCKER port "$NAME" 2>/dev/null | grep -q ":$port\$"; do
     port=$((port + 1))
 done
 
+# Set up from another computer once, it stays reached that way, whichever session runs this again:
+# its links are all at the network address.
+page_on_network="$headless"
+if grep -q '"pageOnNetwork": true' "$state" 2>/dev/null; then page_on_network=true; fi
+
 # Phones and TVs keep reaching it after a re-run if they were let in before.
 bind=127.0.0.1
-if grep -q '"network": true' "$state" 2>/dev/null || [ "$headless" = true ]; then bind=0.0.0.0; fi
+if grep -q '"network": true' "$state" 2>/dev/null || [ "$page_on_network" = true ]; then bind=0.0.0.0; fi
 $DOCKER rm -f "$NAME" >/dev/null 2>&1 || true
 $DOCKER run -d --name "$NAME" --restart unless-stopped \
     --network "$NETWORK" \
@@ -405,8 +474,10 @@ $DOCKER run -d --name "$NAME" --restart unless-stopped \
     -e SETUP_TOKEN="$token" \
     -e HOST_ADDRESSES="$addresses" \
     -e HOST_NAME="$computer" \
+    -e HOST_LOCAL_NAME="${local_name:-}" \
     -e MANAGER_PORT="$port" \
-    -e PAGE_ON_NETWORK="$headless" \
+    -e PAGE_ON_NETWORK="$page_on_network" \
+    -e HOST_BUSY_PORTS="$busy_ports" \
     "$IMAGE" >/dev/null
 
 i=0
@@ -417,24 +488,33 @@ until curl -fs -o /dev/null "http://127.0.0.1:$port/login"; do
 done
 
 host=localhost
-if [ "$headless" = true ]; then
+also=""
+if [ "$page_on_network" = true ]; then
     host="${addresses%%,*}"
+    # A name reads better than a number, and survives the router handing out a new address; the
+    # number is printed too, for a phone or network that does not resolve .local names.
+    if [ -n "${local_name:-}" ]; then
+        if [ -n "$host" ]; then also="$host"; fi
+        host="$local_name"
+    fi
     if [ -z "$host" ]; then host="$(hostname).local"; fi
 fi
 say ""
 if [ -n "$token" ]; then
     url="http://$host:$port/setup?token=$token"
     if [ "$headless" = true ]; then
-        say "Mediagg Arr Stack is running. On a computer or phone on the same network, open this link to set it up"
+        say "Mediagg Server is running. On a computer or phone on the same network, open this link to set it up"
         say "(it works once, for 30 minutes):"
     else
-        say "Mediagg Arr Stack is running. Open this link to set it up (it works once, for 30 minutes):"
+        say "Mediagg Server is running. Open this link to set it up (it works once, for 30 minutes):"
     fi
 else
     url="http://$host:$port/"
-    say "Mediagg Arr Stack is running:"
+    say "Mediagg Server is running:"
 fi
-printf '\n    %s\n\n' "$url"
+printf '\n    %s\n' "$url"
+if [ -n "$also" ]; then printf '    (or %s)\n' "$(printf '%s' "$url" | sed "s#//$host:#//$also:#")"; fi
+printf '\n'
 say "Your films and series go in: $media"
 say "Your password and every service's API key are kept in: $state (only your account can read it)"
 if [ "$DOCKER" = "sudo docker" ]; then
