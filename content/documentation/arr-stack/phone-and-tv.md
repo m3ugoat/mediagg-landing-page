@@ -1,28 +1,35 @@
 ---
 title: Your phone and TV
-summary: Let them in, scan or type one code, and Mediagg adds Jellyfin and every service.
+summary: Open the server to your home network, scan or type one code, and Mediagg adds Jellyfin and every service.
 platforms: android, ios
 order: 30
 ---
 
-Once the stack is set up, Mediagg can take everything it installed — Jellyfin and every service, with
+Once the server is set up, Mediagg can take everything it installed — Jellyfin and every service, with
 their keys — in one go. Nothing is typed but a six-digit code.
 
 ## On the computer
 
-Under `Watch it on your phone and TV`, press `Let my phone and TV in`. Until then the stack answers
-the computer only; afterwards it answers your home network — not the internet. Every service still asks
-for your password, and FlareSolverr, which has none, stays on the computer. (A computer with no
-screen, set up from another one, is on your network from the start.)
+On the dashboard, open `Devices` — or press `Pair a phone or TV`. Under
+`Watch it on your phone and TV`, press `Open to my home network` and confirm: each service restarts,
+and so does the dashboard, back in a few seconds. Until then the server answers the computer only;
+afterwards it answers your home network — not the internet. Every service still asks for your
+password, and FlareSolverr, which has none, stays on the computer. (A computer with no screen, set up
+from another one, is on your network from the start.)
 
-The page then shows a **QR code** and a **six-digit code**. Each code works once, for ten minutes;
-`New code` gives another.
+The card then shows a **QR code** and a **six-digit code**. Each code works once, for ten minutes;
+`New pairing code` gives another.
 
 ## Whose phone or TV it is
 
-If you have added [people](/documentation/arr-stack/people), the card asks `Who is this phone or TV
-for?` Choose them before showing the code: the device signs in as them, to what is theirs, and nothing
-else.
+The card asks `Who is this phone or TV for?`, and a new code appears for whoever you choose:
+
+- **`You`** — the usual answer. Your phone and TV sign in as a user of yours with every library, who
+  cannot change the media servers' settings, so a lost phone never carries your administrator account.
+- **Someone under [People](/documentation/arr-stack/people)** — the device signs in as them, to what is
+  theirs, and nothing else.
+- **`You, as the administrator`**, with your name — your own login, which can change the media
+  servers' settings.
 
 ## On your phone
 
@@ -33,7 +40,7 @@ Either:
 - **Type it.** In Mediagg, open `Media servers` in the Library and press `Add a server`. The first
   choice is `Mediagg Arr Stack` — `Everything your stack installed, added in one go`.
 
-Mediagg looks for the stack on your network by itself (`Looking for it on your network…`) and fills
+Mediagg looks for the server on your network by itself (`Looking for it on your network…`) and fills
 in the `Computer address`. Type the `Code` and press `Add everything`.
 
 ## On your TV
@@ -55,25 +62,25 @@ added, it says which, and why; the others are kept.
 
 ## Paired
 
-The first code a phone or TV takes **pairs** it: the stack gives it a pairing token, which Mediagg
+The first code a phone or TV takes **pairs** it: the server gives it a pairing token, which Mediagg
 keeps in the device's secure storage. With it, Mediagg keeps up by itself:
 
 - **When the computer's address changes** — routers sometimes hand out a new one — Mediagg looks for the
-  stack on your network the next time it starts, recognises it, and moves every service to the new
+  server on your network the next time it starts, recognises it, and moves every service to the new
   address.
 - **When you install a service later**, or reinstall one with new keys, Mediagg picks it up. It checks
   at most twice a day.
 
-The stack's page shows how many phones and TVs are paired. `Forget my phones and TVs` stops every
-token working and ends every sign-in made for each device; each then needs a new code. One device can
-be forgotten on its own under People.
+`Paired devices`, under `Devices`, lists each one — whose it is, and when it paired — with `Unpair`:
+its token stops working and the sign-ins made for it end, so it needs a new pairing code.
+`Unpair all phones and TVs` does that to every one.
 
 To stop the address changing at all, reserve the computer's address in your router.
 
 ## If it does not work
 
-- `No stack answered on this network.` — the phone is on another Wi-Fi, or the stack has not been
-  let in. Type the address the stack's page shows, or press `Look again`.
-- `That code was not accepted.` — it was mistyped, used already or more than ten minutes old. Show a
-  new one on the stack's page.
+- `No stack answered on this network.` — the phone is on another Wi-Fi, or the server has not been
+  opened to your home network. Type the address the `Devices` card shows, or press `Look again`.
+- `That code was not accepted.` — it was mistyped, used already or more than ten minutes old. Press
+  `New pairing code` on the dashboard.
 - `This stack is newer than this version of Mediagg.` — update Mediagg, then try again.

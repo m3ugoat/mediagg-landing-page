@@ -10,40 +10,49 @@ Nobody types a password on a phone or a TV.
 
 ## Adding someone
 
-On the stack's page, under `People`, open `Add someone`:
+On the dashboard, open `People`, and under `Add someone`:
 
-- **`Name`** — the stack makes their login from it (`Sam O'Neill` → `samoneill`) and a password for
+- **`Name`** — the server makes their login from it (`Sam O'Neill` → `samoneill`) and a password for
   them.
-- **`Can change the servers' settings (an administrator)`** — leave it off for most people.
-- **`Their own user in`** — tick each server they should have. Under each, `All libraries, and any made
-  later`, or untick it and choose: `Films` but not `Series` for a child, one music library and not
-  another.
+- **`Can change the media servers' settings (an administrator)`** — leave it off for most people.
+- **`Their own user in`** — tick each server they should have. Under each,
+  `All libraries, and any made later`, or untick it and choose: `Films` but not `Series` for a child,
+  one music library and not another.
+- **`Maximum age rating`**, with Jellyfin — `No limit`, or `U — all ages`, `PG — 8 and over`,
+  `12 — 12 and over`, `15 — 15 and over` or `18 — adults`. In Jellyfin they see only films and series
+  rated for that age or younger; with a limit, anything with no rating is hidden too.
 - **`Also on their phones and TVs`** — Sonarr, Radarr, Lidarr, Prowlarr, qBittorrent, Seerr, Bazarr
-  and Plex. These have no users of their own: a device given one has the stack's own key to it, and
-  can change anything there. Leave them out for children and guests; give them `Seerr` and they can
-  still ask for films and series.
+  and Plex. These have no users of their own: a device given one has its API key, and can change
+  anything there. Leave them out for children and guests. **Seerr is the exception** — they ask as
+  themselves, and you choose `Their requests wait for my approval` or
+  `Their requests are approved automatically` — waiting, to start with. Waiting ones are under `Requests` on the dashboard, as
+  `Pending approval`.
 
-Press `Add`. The stack makes their users, with the libraries you chose.
+Press `Add`. The server makes their users, with the libraries you chose.
 
 ## Letting their phone or TV in
 
-Under `Watch it on your phone and TV`, choose them in `Who is this phone or TV for?` — a new code
-appears for them — and use it as usual. Their device is given only what is theirs, signed in as them:
-their Jellyfin or Emby, their Navidrome and Audiobookshelf, and the services you ticked.
+Under `Devices`, choose them in `Who is this phone or TV for?` — a new code appears for them — and use
+it as usual. Their device is given only what is theirs, signed in as them: their Jellyfin or Emby,
+their Navidrome and Audiobookshelf, and the services you ticked.
 
 ## Changing, and removing
 
 Each person has, under their name:
 
-- **`Their password`** — shown, for their own use of each server's page. `Give … a new password`
-  changes it in every server at once; their phones and TVs keep their own sign-ins.
-- **`Change`** — their name, administrator or not, their servers and libraries. A server taken away
-  deletes their user there and ends their devices' sign-ins to it.
-- **Their phones and TVs**, each with `Forget`.
-- **`Remove`** — their users are deleted, with their favourites, progress and history, and their
-  phones and TVs are signed out. Your films and series stay.
+- **What they have** — each service, with the user they are in it.
+- **Their phones and TVs**, each with `Unpair`.
+- **`Their password`** — shown, for their own use of each server's page.
+  `Give … a new password` changes it in every server at once; their phones and TVs keep their own
+  sign-ins.
+- **`Edit name and access`** — their name, administrator or not, their servers, libraries, age rating
+  and requests. A server taken away deletes their user there and ends their devices' sign-ins to it.
+- **`Remove person`** — their users are deleted, with their favourites, progress and history, and
+  their phones and TVs are signed out. Your films and series stay.
 
-**You** are always first in the list: the stack's own login, with everything.
+**`You`** are always first in the list: the server's own login, with everything. Your phones and TVs
+sign in as a user of yours that has every library but cannot change the media servers' settings, so a
+lost phone never carries your administrator account.
 
 > **Plex** has no users of its own on the server — its people are plex.tv accounts — so it is not in
 > `Their own user in`. Everyone signs in to Plex with their own plex.tv account.

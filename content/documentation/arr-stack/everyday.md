@@ -1,64 +1,115 @@
 ---
 title: Using it day to day
-summary: Adding films and series, the stack's page, updates, keeping the computer awake and the password.
+summary: The dashboard, adding films and series, requests, downloads, updates, keeping the computer awake and the password.
 order: 40
 ---
 
 ## Adding a film or a series
 
 - **The easy way:** open Seerr, search, and press Request. Family members can do the same, and you
-  approve.
+  approve under [Requests](#requests).
 - **The direct way:** open Radarr (films) or Sonarr (series), search, and press Add.
 
 Either way it is downloaded, moved into your library, and appears in Jellyfin and Mediagg by itself.
-It needs sites in Prowlarr first — see
+It needs indexers in Prowlarr first — see
 [Setting it up](/documentation/arr-stack/set-up).
 
-## The stack's page
+## The dashboard
 
 Open it at the address the install command printed — `http://localhost:7979` on the computer itself,
-or its network address for one with no screen — and
-sign in with your stack's login.
+or its network address for one with no screen — and sign in with your server's name and password.
 
-- **A tile per service**, with `Open`, `Reinstall` and `Remove` — `Remove, keep its settings` or
-  `Remove and delete its settings`. A service you did not choose at first has `Install` on its tile;
-  paired phones and TVs pick it up by themselves.
-- **Connections**, every link between the services, each tested as the page opens.
-- **`Repair everything`** starts anything that stopped, sets each service up again and remakes every
-  connection — without resetting anything that already works. It is the answer to most problems.
+The sidebar has `Home` and `How to use`; under **Library**, `Films & Series`, `Music` and
+`Audiobooks & Podcasts`; under **Server**, `Downloads`, `Requests`, `Indexers`, `Media folders`,
+`People`, `Devices` and `Settings`; and `Pair a phone or TV`. The bar above every page says how the
+services stand — `All 9 running`, say — and has the dashboard's address with `Copy`, `Help` and
+`Sign out`.
+
+- **`Home`** shows **Get started** until it is done — get Mediagg, pair it with this server, add
+  indexers if anything fetches, then search and watch — each step ticked as you do it. No phone to
+  hand? `Watch in the browser` and `Request in the browser` open your media server and Seerr now.
+  Below are the free space, paired devices, downloads and version, and **Your library**: each part
+  with its switches, and `Turn on · 150 MB`, say, on those that are off.
+- **`How to use`** is the guide to this server: three ways in, easiest first — Mediagg, your browser,
+  each service's own page — then `What happens when…` you ask for a film, follow a series, add files
+  yourself or add someone; `Each service`, with what was set up for you and when you would open it;
+  and `How they are connected`.
+
+## Turning things on and off
+
+Each part of your library has its own page, with its switches — for Films & Series `Watch`,
+`New episodes`, `New films`, `Requests` and `Subtitles`; for Music `Listen`, `New albums` and
+`Requests for music`. A switch that is on has `Open`, for the service behind it. Turning one on installs what it needs, and
+asks first when that brings something else along. Turning one off asks too, says what goes with it,
+and keeps its settings for when you turn it on again — its `•••` has
+`Turn off and delete its settings`. The last place to watch or listen cannot be turned off.
+
+Paired phones and TVs pick up what you turn on by themselves.
+
+## Downloads
+
+What is coming in, newest first, with how far each has got and the time left. Each one moves into
+your library by itself when it is done.
+
+- **`Pause`** and **`Resume`**.
+- **`Cancel and find another release`** — a bad or stuck release: what has downloaded is deleted, and
+  Radarr, Sonarr or Lidarr never takes that release again but looks for a different one.
+- **`Cancel request`** — you no longer want it: the download is deleted, it is no longer looked for,
+  and its request is removed. For an album it is `Stop wanting this album`.
+- **`Remove download`** — for one that Radarr, Sonarr and Lidarr are not waiting for; what has come
+  so far is deleted.
+- **`Stop seeding`**, once it has finished. A finished download goes on seeding — uploading to others
+  — with no limit, until you stop it. The copy in your library stays.
+
+## Requests
+
+With Requests on, `Requests` lists what has been asked for and where each one is — `Pending approval`,
+`Searching`, `Downloading 40%`, `Available`. It shows yours; `Asked for by` switches to `Everyone`,
+or to one person. The sidebar says how many are pending.
+
+- **`Approve`** or **`Decline`** one that is waiting. Approved, it is looked for and downloaded by
+  itself, then appears in Mediagg.
+- **`Search again`** one still being looked for, or **`Cancel request`** — its download is deleted,
+  it is no longer looked for, and the person who asked sees it as Cancelled in Mediagg.
+- **`Remove request`** one that was declined or failed.
+
+Whether someone's requests wait for you is set for each person under
+[People](/documentation/arr-stack/people).
 
 ## Updates
 
-When a new version is out, the page says so — `Mediagg Arr Stack 0.5.0 is out` — with an
-`Update to 0.5.0` button. Updating restarts the page; the services keep running and nothing you have
-changes. If the new version runs newer, tested versions of the services, an `Updates for` card follows,
-naming them, with `Update services`. Each restarts, and its settings stay.
+When a new version is out, the dashboard says so — `Mediagg Server 0.12.0 is out` — with an
+`Update to 0.12.0` button. Updating restarts the dashboard; the services keep running and nothing you
+have changes. Whatever an older version did not set up is put right as the new one starts, with no
+need to repair. If the new version runs newer, tested versions of the services, an `Updates for` card
+follows, naming them, with `Update services`. Each restarts, and its settings stay.
 
-Running the install command again does the same.
+It looks for a new version by itself every six hours; `Check for updates`, under `Settings`, looks
+now. Running the install command again does the same as updating.
 
 ## Keep this computer awake
 
-A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch at
-the bottom of the stack's page — `Keep this Mac awake`, or `Keep this computer awake` on Linux — stops
-it going to sleep by itself — the screen still turns off, so it costs
-little. Turn it off whenever you like.
+A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch
+under `Settings` — `Keep this Mac awake`, or `Keep this computer awake` on Linux — stops it going to
+sleep by itself; the screen still turns off, so it costs little. Turn it off whenever you like.
 
-It cannot stop everything: on battery it may still sleep to save power, and closing a laptop's
-lid sleeps it unless it is plugged in with a display attached.
+It cannot stop everything: on battery it may still sleep to save power, and closing a laptop's lid
+may sleep it anyway.
 
 A computer that never sleeps, like most home servers, does not need it.
 
 After a restart every service starts again by itself — on a Mac once you sign in, when Docker Desktop
-starts; on Linux with the computer, before anyone signs in.
+starts; on Linux with the computer, before anyone signs in. On a Mac, **`Start with this Mac`**,
+under `Settings`, turns that off: Docker Desktop is then no longer opened for it when you sign in.
 
 ## Change the password
 
-`Change the password` changes it for the stack's page and every service at once. Paired phones and
-TVs pick it up by themselves.
+`Change password`, under `Settings`, changes it for the dashboard and every service at once. Paired
+phones and TVs pick it up by themselves.
 
 Forgotten it? It is in `MediaggStack/manager/state.json` in your home folder, which only your
 account can read. That file also holds every service's API key.
 
 ## Watching away from home
 
-Not yet. The stack is reachable on your home network only; remote access is planned.
+Not yet. The server is reachable on your home network only; remote access is planned.

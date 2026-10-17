@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Using it day to day — Mediagg documentation</title>
-<meta name="description" content="Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.">
+<meta name="description" content="The dashboard, adding films and series, requests, downloads, updates, keeping the computer awake and the password.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/arr-stack/everyday">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <meta property="og:title" content="Using it day to day — Mediagg documentation">
-<meta property="og:description" content="Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.">
+<meta property="og:description" content="The dashboard, adding films and series, requests, downloads, updates, keeping the computer awake and the password.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
      inline, which is right for five hand-written pages and wrong for fifty generated ones: the
@@ -65,26 +65,37 @@
 <article class="doc">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><a href="/documentation/arr-stack">Mediagg Arr Stack</a><i>/</i><span>Using it day to day</span></nav>
 <h1>Using it day to day</h1>
-<p class="sub">Adding films and series, the stack&#x27;s page, updates, keeping the computer awake and the password.</p>
+<p class="sub">The dashboard, adding films and series, requests, downloads, updates, keeping the computer awake and the password.</p>
 <h2 id="adding-a-film-or-a-series">Adding a film or a series</h2>
-<ul><li><strong>The easy way:</strong> open Seerr, search, and press Request. Family members can do the same, and you approve.</li><li><strong>The direct way:</strong> open Radarr (films) or Sonarr (series), search, and press Add.</li></ul>
-<p>Either way it is downloaded, moved into your library, and appears in Jellyfin and Mediagg by itself. It needs sites in Prowlarr first — see <a href="/documentation/arr-stack/set-up">Setting it up</a>.</p>
-<h2 id="the-stack-s-page">The stack's page</h2>
-<p>Open it at the address the install command printed — <code>http://localhost:7979</code> on the computer itself, or its network address for one with no screen — and sign in with your stack's login.</p>
-<ul><li><strong>A tile per service</strong>, with <code>Open</code>, <code>Reinstall</code> and <code>Remove</code> — <code>Remove, keep its settings</code> or <code>Remove and delete its settings</code>. A service you did not choose at first has <code>Install</code> on its tile; paired phones and TVs pick it up by themselves.</li><li><strong>Connections</strong>, every link between the services, each tested as the page opens.</li><li><strong><code>Repair everything</code></strong> starts anything that stopped, sets each service up again and remakes every connection — without resetting anything that already works. It is the answer to most problems.</li></ul>
+<ul><li><strong>The easy way:</strong> open Seerr, search, and press Request. Family members can do the same, and you approve under <a href="#requests">Requests</a>.</li><li><strong>The direct way:</strong> open Radarr (films) or Sonarr (series), search, and press Add.</li></ul>
+<p>Either way it is downloaded, moved into your library, and appears in Jellyfin and Mediagg by itself. It needs indexers in Prowlarr first — see <a href="/documentation/arr-stack/set-up">Setting it up</a>.</p>
+<h2 id="the-dashboard">The dashboard</h2>
+<p>Open it at the address the install command printed — <code>http://localhost:7979</code> on the computer itself, or its network address for one with no screen — and sign in with your server's name and password.</p>
+<p>The sidebar has <code>Home</code> and <code>How to use</code>; under <strong>Library</strong>, <code>Films &amp; Series</code>, <code>Music</code> and <code>Audiobooks &amp; Podcasts</code>; under <strong>Server</strong>, <code>Downloads</code>, <code>Requests</code>, <code>Indexers</code>, <code>Media folders</code>, <code>People</code>, <code>Devices</code> and <code>Settings</code>; and <code>Pair a phone or TV</code>. The bar above every page says how the services stand — <code>All 9 running</code>, say — and has the dashboard's address with <code>Copy</code>, <code>Help</code> and <code>Sign out</code>.</p>
+<ul><li><strong><code>Home</code></strong> shows <strong>Get started</strong> until it is done — get Mediagg, pair it with this server, add indexers if anything fetches, then search and watch — each step ticked as you do it. No phone to hand? <code>Watch in the browser</code> and <code>Request in the browser</code> open your media server and Seerr now. Below are the free space, paired devices, downloads and version, and <strong>Your library</strong>: each part with its switches, and <code>Turn on · 150 MB</code>, say, on those that are off.</li><li><strong><code>How to use</code></strong> is the guide to this server: three ways in, easiest first — Mediagg, your browser, each service's own page — then <code>What happens when…</code> you ask for a film, follow a series, add files yourself or add someone; <code>Each service</code>, with what was set up for you and when you would open it; and <code>How they are connected</code>.</li></ul>
+<h2 id="turning-things-on-and-off">Turning things on and off</h2>
+<p>Each part of your library has its own page, with its switches — for Films &amp; Series <code>Watch</code>, <code>New episodes</code>, <code>New films</code>, <code>Requests</code> and <code>Subtitles</code>; for Music <code>Listen</code>, <code>New albums</code> and <code>Requests for music</code>. A switch that is on has <code>Open</code>, for the service behind it. Turning one on installs what it needs, and asks first when that brings something else along. Turning one off asks too, says what goes with it, and keeps its settings for when you turn it on again — its <code>•••</code> has <code>Turn off and delete its settings</code>. The last place to watch or listen cannot be turned off.</p>
+<p>Paired phones and TVs pick up what you turn on by themselves.</p>
+<h2 id="downloads">Downloads</h2>
+<p>What is coming in, newest first, with how far each has got and the time left. Each one moves into your library by itself when it is done.</p>
+<ul><li><strong><code>Pause</code></strong> and <strong><code>Resume</code></strong>.</li><li><strong><code>Cancel and find another release</code></strong> — a bad or stuck release: what has downloaded is deleted, and Radarr, Sonarr or Lidarr never takes that release again but looks for a different one.</li><li><strong><code>Cancel request</code></strong> — you no longer want it: the download is deleted, it is no longer looked for, and its request is removed. For an album it is <code>Stop wanting this album</code>.</li><li><strong><code>Remove download</code></strong> — for one that Radarr, Sonarr and Lidarr are not waiting for; what has come so far is deleted.</li><li><strong><code>Stop seeding</code></strong>, once it has finished. A finished download goes on seeding — uploading to others — with no limit, until you stop it. The copy in your library stays.</li></ul>
+<h2 id="requests">Requests</h2>
+<p>With Requests on, <code>Requests</code> lists what has been asked for and where each one is — <code>Pending approval</code>, <code>Searching</code>, <code>Downloading 40%</code>, <code>Available</code>. It shows yours; <code>Asked for by</code> switches to <code>Everyone</code>, or to one person. The sidebar says how many are pending.</p>
+<ul><li><strong><code>Approve</code></strong> or <strong><code>Decline</code></strong> one that is waiting. Approved, it is looked for and downloaded by itself, then appears in Mediagg.</li><li><strong><code>Search again</code></strong> one still being looked for, or <strong><code>Cancel request</code></strong> — its download is deleted, it is no longer looked for, and the person who asked sees it as Cancelled in Mediagg.</li><li><strong><code>Remove request</code></strong> one that was declined or failed.</li></ul>
+<p>Whether someone's requests wait for you is set for each person under <a href="/documentation/arr-stack/people">People</a>.</p>
 <h2 id="updates">Updates</h2>
-<p>When a new version is out, the page says so — <code>Mediagg Arr Stack 0.5.0 is out</code> — with an <code>Update to 0.5.0</code> button. Updating restarts the page; the services keep running and nothing you have changes. If the new version runs newer, tested versions of the services, an <code>Updates for</code> card follows, naming them, with <code>Update services</code>. Each restarts, and its settings stay.</p>
-<p>Running the install command again does the same.</p>
+<p>When a new version is out, the dashboard says so — <code>Mediagg Server 0.12.0 is out</code> — with an <code>Update to 0.12.0</code> button. Updating restarts the dashboard; the services keep running and nothing you have changes. Whatever an older version did not set up is put right as the new one starts, with no need to repair. If the new version runs newer, tested versions of the services, an <code>Updates for</code> card follows, naming them, with <code>Update services</code>. Each restarts, and its settings stay.</p>
+<p>It looks for a new version by itself every six hours; <code>Check for updates</code>, under <code>Settings</code>, looks now. Running the install command again does the same as updating.</p>
 <h2 id="keep-this-computer-awake">Keep this computer awake</h2>
-<p>A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch at the bottom of the stack's page — <code>Keep this Mac awake</code>, or <code>Keep this computer awake</code> on Linux — stops it going to sleep by itself — the screen still turns off, so it costs little. Turn it off whenever you like.</p>
-<p>It cannot stop everything: on battery it may still sleep to save power, and closing a laptop's lid sleeps it unless it is plugged in with a display attached.</p>
+<p>A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch under <code>Settings</code> — <code>Keep this Mac awake</code>, or <code>Keep this computer awake</code> on Linux — stops it going to sleep by itself; the screen still turns off, so it costs little. Turn it off whenever you like.</p>
+<p>It cannot stop everything: on battery it may still sleep to save power, and closing a laptop's lid may sleep it anyway.</p>
 <p>A computer that never sleeps, like most home servers, does not need it.</p>
-<p>After a restart every service starts again by itself — on a Mac once you sign in, when Docker Desktop starts; on Linux with the computer, before anyone signs in.</p>
+<p>After a restart every service starts again by itself — on a Mac once you sign in, when Docker Desktop starts; on Linux with the computer, before anyone signs in. On a Mac, <strong><code>Start with this Mac</code></strong>, under <code>Settings</code>, turns that off: Docker Desktop is then no longer opened for it when you sign in.</p>
 <h2 id="change-the-password">Change the password</h2>
-<p><code>Change the password</code> changes it for the stack's page and every service at once. Paired phones and TVs pick it up by themselves.</p>
+<p><code>Change password</code>, under <code>Settings</code>, changes it for the dashboard and every service at once. Paired phones and TVs pick it up by themselves.</p>
 <p>Forgotten it? It is in <code>MediaggStack/manager/state.json</code> in your home folder, which only your account can read. That file also holds every service's API key.</p>
 <h2 id="watching-away-from-home">Watching away from home</h2>
-<p>Not yet. The stack is reachable on your home network only; remote access is planned.</p>
+<p>Not yet. The server is reachable on your home network only; remote access is planned.</p>
 <div class="pnav"><a class="pn prev" href="/documentation/arr-stack/films-you-already-have"><b>Previous</b>Films and series you already have</a><a class="pn next" href="/documentation/arr-stack/problems"><b>Next</b>Problems and removing it</a></div>
 </article>
 </main>

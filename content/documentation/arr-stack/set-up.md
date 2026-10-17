@@ -1,85 +1,99 @@
 ---
 title: Setting it up
-summary: Three questions, one Install button, and the one thing left to you.
+summary: Three questions, one button, and the one thing left to you.
 order: 20
 ---
 
-The setup link opens `Set up your media server`. It asks three things.
+The setup link opens the first of the questions, one to a screen. The dots at the top count them —
+`01 WHERE`, `02 WHAT`, `03 ACCOUNT` — and the first is already answered: it is the folder you chose
+when you installed.
 
-## What do you want?
+## What do you want to watch and hear?
 
-Two kinds of choice. **Where you watch and listen** — at least one:
+A card for each part of your library. Pick one or more:
 
-| Choice | What it is |
+| Card | What it is |
 |---|---|
-| `Jellyfin` | Plays your films and series on every screen. Free and open, nothing to sign up for |
-| `Emby` | The same, with paid extras if you want them |
-| `Plex` | The same, with a free plex.tv account you sign in to once |
-| `Music` | Navidrome plays your music library |
-| `Audiobooks and podcasts` | Audiobookshelf plays them and remembers where you were |
+| `Films & Series` | `Watch on every screen. New episodes and films arrive by themselves.` |
+| `Music` | `Your music library, streamed to every device.` Navidrome plays it |
+| `Audiobooks & Podcasts` | `Listen anywhere, and pick up where you left off.` Audiobookshelf plays them |
+
+Each card shows about how much it downloads.
+
+**`Customise Films & Series`** opens what Films & Series comes with. It plays them with Jellyfin unless
+you choose `Watch with Emby` or `Watch with Plex`, and it has four switches:
+
+| Switch | What it does |
+|---|---|
+| `New episodes` | Sonarr follows a series and fetches each new episode |
+| `New films` | Radarr finds a film you add, and fetches it when it is out |
+| `Requests` | Seerr lets family ask for films and series, and you approve |
+| `Subtitles` | Bazarr adds them to your films and series |
+
+`New episodes`, `New films` and `Requests` are on to start with; `Subtitles` is off. Requests and
+Subtitles need New episodes or New films — leave both off and the next screen says
+`Also on, because what you chose needs them:` and turns them on.
 
 For films and series one of Jellyfin, Emby and Plex is plenty: each keeps its own library of the same
-files, and Mediagg plays from every one.
+files, and Mediagg plays from every one. Anything here can be turned on or off later, from the
+dashboard — New albums for music among them.
 
-**What finds and fetches more** — all optional; leave them out to serve only what you have:
+Press `Continue`.
 
-| Choice | What it adds |
-|---|---|
-| `Films` | Radarr finds them, qBittorrent fetches them |
-| `Series` | Sonarr follows them and fetches each new episode |
-| `Albums` | Lidarr finds the music you follow, qBittorrent fetches it |
-| `Subtitles` | Bazarr adds them to your films and series |
-| `Requests from family` | Seerr lets people ask for films and series, and you approve |
+## One account for everything
 
-Each choice shows how much it adds to the download. Requests need a video server and Films or Series;
-subtitles need Films or Series — the page says so if one is missing.
+A `Name` and a `Password · 10 characters or more` — `Show the password` shows it as you type. **The
+same name and password open the dashboard and every service in it** — Jellyfin, Emby, Navidrome,
+Audiobookshelf, Sonarr, Radarr, Lidarr, Prowlarr and Bazarr; Seerr signs in through Jellyfin, Emby or
+Plex. qBittorrent has a password of its own, shown under Settings, because every phone and TV is
+given it. Write them down.
 
-## Your media
+Under the boxes, the page says how much your choices download and take on disk, and checks the drive:
+how much space is free, and whether it can **link** files. A drive formatted as exFAT, or a network
+drive, cannot — each finished download is then copied into your library and takes its space twice.
+Everything still works.
 
-For each kind — `Films`, `Series`, `Music`, `Audiobooks`, `Podcasts` — the folder it is in, and
-where `Downloads` go. Everything is inside the folder you chose when you installed.
+Press `Set up my server`.
 
-- **A folder that is there** is used as it is: nothing is moved, and what is in your films and series
-  folders is added to Radarr and Sonarr where it is.
-- **A folder that is not there yet** is made.
-- **Left empty**, the stack makes a new folder for it — never one already there: if `music` is taken,
-  it makes `music-2`. The page says which, under the box.
-- **`+ another`** adds more folders of the same kind, each a library of its own — music spread over
-  several folders, say.
+## Where it all goes
 
-Someone with no library leaves every box empty and gets a new folder for each.
+Inside the folder you chose, the server makes a folder for each kind — `movies`, `tv`, `music`,
+`audiobooks`, `podcasts` — and `downloads`. A name already taken is never reused: if `music` is there,
+it makes `music-2`. New films, episodes and albums go into these.
 
-The page also checks the drive: how much space is free, and whether it can **link** files. A drive
-formatted as exFAT, or a network drive, cannot — each finished download is then copied into your
-library and takes its space twice. Everything still works.
+Films, series or music you already have are added once it is set up, under `Media folders` — see
+[Films and series you already have](/documentation/arr-stack/films-you-already-have).
 
-## One login for everything
+## Setting up
 
-A name and a password. **The same login opens the stack's page and every service in it** — Jellyfin,
-Sonarr, Radarr, Prowlarr, qBittorrent and Bazarr; Seerr signs in through Jellyfin. Write them down.
+`Setting up your server.` shows each download on a line of its own, then
+`Setting each one up, with your account` and
+`Connecting them to each other, and testing each connection`, with how long it has taken. `Details`
+lists every step. You can close the window — it carries on, and opens where it left off.
 
-## Install
+When it is done the page says `Your server is ready.`, with **Get started** — the steps left to watch
+it on your phone and TV — `Open dashboard`, and `Pair your phone or TV`.
 
-Press `Install`. A progress bar shows how far it has got, with real download sizes, and `Details`
-lists every step. You can close the page — it carries on — and come back.
+If a step fails, it says `That did not work.` and where. `Try again` picks up where it failed;
+nothing that worked is undone.
 
-When it is done, `Your stack` shows a tile for each service with `Open`, and `Connections` shows
-every link the stack made between them, each with a ✓.
+## One thing left: add indexers
 
-## One thing left: choose the sites to search
+New episodes, New films and New albums are found through indexers — the sites **Prowlarr** searches.
+Which ones to use is your decision, and depends on where you are and what you have the right to
+download, so none are added for you. Until there is one, the dashboard's `Indexers` says
+`No indexers`.
 
-Sonarr and Radarr find films and series through sites — indexers — that you add to **Prowlarr**.
-Which sites to use is your decision, and depends on where you are and what you have the right to
-download, so the stack does not choose any for you.
+Open `Indexers` and press `Add indexers`: Prowlarr opens on its Indexers page — press **Add Indexer**.
+Prowlarr passes each one to Sonarr, Radarr and Lidarr by itself. Some indexers check for a browser
+first; FlareSolverr gets Prowlarr past them, and is already connected.
 
-Press `Open Prowlarr`, then **Indexers → Add Indexer**. Prowlarr passes each one to Sonarr and Radarr
-by itself.
+## Plex: one claim
 
-## Plex: one sign-in
-
-Plex belongs to a plex.tv account, so after installing it the stack's page shows `Sign Plex in to your
-plex.tv account`. Press `Sign in to Plex`: a short code appears. Open **plex.tv/link** on any computer
-or phone, sign in, and enter the code. The stack claims Plex for your account, makes its Films and
-Series libraries and connects Seerr — your plex.tv password is never typed into the stack.
+Plex belongs to a plex.tv account, so after installing it the dashboard shows
+`Claim Plex with your plex.tv account`. Press `Claim Plex`: a short code appears. Press
+`Open plex.tv/link` — or open **plex.tv/link** on any computer or phone — sign in, and enter the code.
+The server claims Plex for your account, makes its Films and Series libraries and connects Seerr —
+your plex.tv password is never typed into the server.
 
 Next: [Your phone and TV](/documentation/arr-stack/phone-and-tv).
