@@ -38,14 +38,14 @@ Either:
 - **Scan it.** Point the phone's camera app at the QR code and tap `Open in Mediagg`. Mediagg opens
   with the code already filled in.
 - **Type it.** In Mediagg, open `Media servers` in the Library and press `Add a server`. The first
-  choice is `Mediagg Arr Stack` — `Everything your stack installed, added in one go`.
+  choice is `Mediagg Server` — `Everything your Mediagg Server installed, added in one go`.
 
 Mediagg looks for the server on your network by itself (`Looking for it on your network…`) and fills
 in the `Computer address`. Type the `Code` and press `Add everything`.
 
 ## On your TV
 
-In Mediagg, open `Add` and choose `Mediagg Arr Stack`. It finds the computer by itself; type the code
+In Mediagg, open `Add` and choose `Mediagg Server`. It finds the computer by itself; type the code
 with the remote and confirm.
 
 ## What you get

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mediagg Arr Stack — Mediagg documentation</title>
+<title>Mediagg Server — Mediagg documentation</title>
 <meta name="description" content="A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0b0d10">
 <link rel="canonical" href="https://mediagg.app/documentation/arr-stack">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
-<meta property="og:title" content="Mediagg Arr Stack — Mediagg documentation">
+<meta property="og:title" content="Mediagg Server — Mediagg documentation">
 <meta property="og:description" content="A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.">
 <meta property="og:image" content="/icons/og.png">
 <!-- The one place on this site with an external stylesheet. Every other page carries its CSS
@@ -43,7 +43,7 @@
 <ul><li><a class="" href="/documentation/media-servers/add-a-server">Adding a server</a></li><li><a class="" href="/documentation/media-servers/try-a-demo-server">Trying a demo server</a></li><li><a class="" href="/documentation/media-servers/browsing-a-server">Browsing a server</a></li><li><a class="" href="/documentation/media-servers/one-library-many-servers">One library, several servers</a></li><li><a class="" href="/documentation/media-servers/mixes">Mixes</a></li><li><a class="" href="/documentation/media-servers/reading-a-book">Reading a book</a></li></ul>
 </div>
 <div class="sbsec open">
-<a class="sbtitle on" href="/documentation/arr-stack">Mediagg Arr Stack</a>
+<a class="sbtitle on" href="/documentation/arr-stack">Mediagg Server</a>
 <ul><li><a class="" href="/documentation/arr-stack/install">Installing it</a></li><li><a class="" href="/documentation/arr-stack/set-up">Setting it up</a></li><li><a class="" href="/documentation/arr-stack/phone-and-tv">Your phone and TV</a></li><li><a class="" href="/documentation/arr-stack/people">People</a></li><li><a class="" href="/documentation/arr-stack/films-you-already-have">Films and series you already have</a></li><li><a class="" href="/documentation/arr-stack/everyday">Using it day to day</a></li><li><a class="" href="/documentation/arr-stack/problems">Problems and removing it</a></li></ul>
 </div>
 <div class="sbsec">
@@ -63,10 +63,10 @@
 <ul><li><a class="" href="/documentation/help/nothing-plays">Something will not play</a></li><li><a class="" href="/documentation/help/a-feed-will-not-refresh">A subscription will not refresh</a></li><li><a class="" href="/documentation/help/episodes-are-missing">Episodes have disappeared</a></li><li><a class="" href="/documentation/help/a-server-will-not-sign-in">A server will not sign in</a></li><li><a class="" href="/documentation/help/downloads-do-not-start">Downloads will not start</a></li><li><a class="" href="/documentation/help/report-a-problem">Reporting a problem</a></li></ul>
 </div></div></details></nav>
 <article class="doc">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><span>Mediagg Arr Stack</span></nav>
-<h1>Mediagg Arr Stack</h1>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/documentation">Documentation</a><i>/</i><span>Mediagg Server</span></nav>
+<h1>Mediagg Server</h1>
 <p class="sub">A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.</p>
-<p><strong>Mediagg Arr Stack</strong> turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.</p>
+<p><strong>Mediagg Server</strong> turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.</p>
 <p>It installs a handful of programs — the ones you choose — sets each one up and connects them to each other, the part that usually means a dozen web pages and keys copied from one to another:</p>
 <div class="tablewrap"><table><thead><tr><th>Service</th><th>What it does</th></tr></thead><tbody><tr><td><code>Jellyfin</code>, <code>Emby</code> or <code>Plex</code></td><td>Plays your films and series, on every screen</td></tr><tr><td><code>Navidrome</code></td><td>Plays your music</td></tr><tr><td><code>Audiobookshelf</code></td><td>Plays your audiobooks and podcasts</td></tr><tr><td><code>Sonarr</code></td><td>Finds and fetches series</td></tr><tr><td><code>Radarr</code></td><td>Finds and fetches films</td></tr><tr><td><code>Lidarr</code></td><td>Finds and fetches music</td></tr><tr><td><code>Prowlarr</code></td><td>Keeps the list of sites Sonarr and Radarr search</td></tr><tr><td><code>FlareSolverr</code></td><td>Gets Prowlarr past sites that check for a browser</td></tr><tr><td><code>qBittorrent</code></td><td>Downloads</td></tr><tr><td><code>Seerr</code></td><td>Lets your family ask for films and series</td></tr><tr><td><code>Bazarr</code></td><td>Fetches subtitles</td></tr></tbody></table></div>
 <p>Only what you choose is installed: at least one place to watch or listen, and whatever finds and fetches more if you want it. Everyone in the house can have <a href="/documentation/arr-stack/people">a login of their own</a>. Each runs in its own container in <strong>Docker</strong>, so none of it is mixed into your system, and all of it can be removed again in one go.</p>

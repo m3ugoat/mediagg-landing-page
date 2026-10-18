@@ -1,11 +1,11 @@
 ---
-title: Mediagg Arr Stack
+title: Mediagg Server
 summary: A home media server on your Mac or Linux computer, set up for you, and handed to Mediagg with one code.
 icon: computer
 order: 45
 ---
 
-**Mediagg Arr Stack** turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions
+**Mediagg Server** turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions
 in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.
 
 It installs a handful of programs — the ones you choose — sets each one up and connects them to each

@@ -4,7 +4,7 @@ summary: One command in a terminal, a folder for your films, and a link to open.
 order: 10
 ---
 
-The server calls itself **Mediagg Server**; in the Mediagg app it is still `Mediagg Arr Stack`. The
+It is called **Mediagg Server**, on the computer and in the Mediagg app alike. The
 same command installs it on a Mac and on Linux. Open a terminal — on a Mac, **Terminal**, in
 Applications → Utilities — and paste:
 
