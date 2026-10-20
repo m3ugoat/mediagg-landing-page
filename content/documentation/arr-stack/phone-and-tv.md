@@ -1,9 +1,14 @@
 ---
 title: Your phone and TV
-summary: Open the server to your home network, scan or type one code, and Mediagg adds Jellyfin and every service.
+summary: Coming soon to the Mediagg apps — open the server to your home network, scan or type one code, and Mediagg adds Jellyfin and every service.
 platforms: android, ios
 order: 30
 ---
+
+> **Coming soon to the Mediagg apps.** Pairing is not in the Mediagg apps on Google Play and the App
+> Store yet. Until it is, add each server and service in Mediagg with its address (and its API key, for
+> Sonarr, Radarr and the rest). The server side below is ready, so nothing changes on the computer when
+> pairing arrives.
 
 Once the server is set up, Mediagg can take everything it installed — Jellyfin and every service, with
 their keys — in one go. Nothing is typed but a six-digit code.

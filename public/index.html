@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mediagg — music, podcasts and video in one player</title>
-<meta name="description" content="Mediagg plays music, podcasts and video from your device, your media servers and podcast feeds, and casts to Chromecast and DLNA devices. Free to use.">
+<title>Mediagg — music, podcasts and video on your phone and TV</title>
+<meta name="description" content="Mediagg plays music, podcasts and video from your device, your media servers and podcast feeds, on your phone and your TV, and casts to Chromecast and DLNA devices. On Google Play for Android phones and Android TV. Free to use.">
 <link rel="canonical" href="https://mediagg.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mediagg — music, podcasts and video in one player">
-<meta property="og:description" content="Play music, podcasts and video from your device and from Subsonic, Jellyfin, Plex, Emby or Audiobookshelf servers, and cast to Chromecast and DLNA devices.">
+<meta property="og:title" content="Mediagg — music, podcasts and video on your phone and TV">
+<meta property="og:description" content="Play music, podcasts and video from your device and from Subsonic, Jellyfin, Plex, Emby or Audiobookshelf servers on your phone and your TV, and cast to Chromecast and DLNA devices.">
 <meta property="og:url" content="https://mediagg.app/">
 <meta property="og:image" content="https://mediagg.app/icons/og.png">
 <meta property="og:image:width" content="1200">
@@ -73,6 +73,7 @@ nav.stuck{border-bottom-color:var(--line);background:rgba(11,13,16,.9)}
 .navlinks{display:flex;gap:26px;margin-left:auto;align-items:center}
 .navlinks a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
 .navlinks a:hover{color:var(--ink)}
+.navlinks a.btn-p{color:#fff}
 .btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:12px 22px;
   font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s,background .25s;white-space:nowrap}
 .btn-p{background:linear-gradient(120deg,var(--red),#ff7a2f);color:#fff;box-shadow:0 10px 34px rgba(255,61,61,.32)}
@@ -88,44 +89,56 @@ nav.stuck{border-bottom-color:var(--line);background:rgba(11,13,16,.9)}
   -webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:shine 7s linear infinite}
 @keyframes shine{to{background-position:-220% 0}}
 .hero p.lede{max-width:660px;margin:26px auto 0;font-size:clamp(1.02rem,2.1vw,1.24rem);color:var(--muted)}
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.cta{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:38px}
+/* Google's own badge, as Google supplies it: the artwork carries its own clear space, so the image is
+   drawn at its natural shape and given no border, background or shadow of ours. */
+.play{display:block;line-height:0;margin:-12px -6px;border-radius:12px;transition:transform .25s var(--ease)}
+.play:hover{transform:translateY(-2px)}
+.play:focus-visible{outline:2px solid var(--red);outline-offset:-8px}
+.play img{display:block;width:194px;height:auto}
 .trust{margin-top:20px;font-size:13.5px;color:var(--dim)}
 .trust b{color:var(--muted);font-weight:600}
 
 /* ---------- floating cards ---------- */
-/* The stage is shorter than the shot on purpose — the render oversails the hero's bottom padding
-   and meets the marquee. Its height tracks the shot's: a 560px landscape render is 464px tall, so
-   390 keeps the same 74px overhang the drawn mockup had. */
-.stage{position:relative;height:390px;margin-top:56px;perspective:1400px}
+/* The stage is shorter than the phones on purpose — they oversail the hero's bottom padding and
+   meet the marquee. Its height tracks the middle phone's: a 240px capture is 534px tall, so 460
+   keeps a 74px overhang. */
+.stage{position:relative;height:460px;margin-top:56px;perspective:1400px}
 .card3d{position:absolute;width:150px;height:150px;border-radius:20px;overflow:hidden;
   box-shadow:0 26px 70px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);
   animation:float 7.5s ease-in-out infinite;will-change:transform}
 .card3d span{position:absolute;inset:0;display:grid;place-items:center;font-size:44px}
-/* Pushed out to the margins: a landscape render is far wider than the portrait phone that used to
-   stand here, so cards at 22% would sit on top of the screenshot instead of floating beside it. */
+/* Pushed out to the margins: three phones side by side are about 600px wide, so cards at 22% would
+   sit on top of them instead of floating beside them. */
 .c1{left:1%;top:28%;transform:rotate(-13deg);animation-delay:-.4s;background:linear-gradient(140deg,#ff1616,#7a0000)}
-.c2{left:11%;top:6%;transform:rotate(7deg);animation-delay:-2.1s;background:linear-gradient(140deg,#8b7bff,#2a1e6b)}
-.c3{right:11%;top:9%;transform:rotate(-6deg);animation-delay:-3.4s;background:linear-gradient(140deg,#3ddad7,#0d4f4d)}
+.c2{left:8%;top:6%;transform:rotate(7deg);animation-delay:-2.1s;background:linear-gradient(140deg,#8b7bff,#2a1e6b)}
+.c3{right:8%;top:9%;transform:rotate(-6deg);animation-delay:-3.4s;background:linear-gradient(140deg,#3ddad7,#0d4f4d)}
 .c4{right:1%;top:31%;transform:rotate(12deg);animation-delay:-1.3s;background:linear-gradient(140deg,#ffb443,#7a4a00)}
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 -26px}}
-/* Each step keeps the shot's 74px-ish overhang and drops whichever cards the wider picture has run
-   out of room for. */
-@media(max-width:1000px){.stage{height:315px}}
-@media(max-width:860px){.c1,.c4{display:none}.c2{left:2%}.c3{right:2%}.stage{height:250px}}
-@media(max-width:560px){.c2,.c3{display:none}.stage{height:200px}}
+/* Each step keeps the middle phone's 74px-ish overhang and drops whichever cards the phones have
+   run out of room for. */
+@media(max-width:1000px){.stage{height:416px}}
+@media(max-width:860px){.c1,.c4{display:none}.c2{left:2%}.c3{right:2%}.stage{height:372px}}
+@media(max-width:560px){.c2,.c3{display:none}.stage{height:304px}}
 
 /* hero shot */
-/* The screenshots are landscape renders of two devices cut out on a transparent background, so
-   this draws no card of its own. The shadow is a drop-shadow on the image, not a box-shadow, so it
-   follows the phones' outline instead of the picture's rectangle. */
-.shotcard{position:absolute;left:50%;top:0;translate:-50% 0;width:560px}
-/* aspect-ratio, not just height:auto — it reserves the height the render will occupy before it
+/* Three phone captures, the middle one in front: full-screen Android captures with an opaque
+   background, so each gets a phone's outline — rounded corners, a dark bezel and a box-shadow —
+   the same .phone look the carousel and the TV section's Add from phone use. */
+.shotcard{position:absolute;left:50%;top:0;translate:-50% 0;display:flex;align-items:flex-start;justify-content:center}
+.phone{display:block;flex:none;overflow:hidden;border-radius:26px;border:5px solid #05070a;background:#05070a;
+  box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.14)}
+/* aspect-ratio, not just height:auto — it reserves the height the capture will occupy before it
    loads, so the hero does not reflow the marquee and everything below it on arrival. */
-.shotcard img{display:block;width:100%;height:auto;aspect-ratio:2238/1854;
-  filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
-@media(max-width:1000px){.shotcard{width:470px}}
-@media(max-width:860px){.shotcard{width:390px}}
-@media(max-width:560px){.shotcard{width:min(330px,92%)}}
+.phone img{display:block;width:100%;height:auto;aspect-ratio:540/1202}
+.shotcard .phone{width:205px;margin-top:48px}
+.shotcard .mid{width:240px;margin-top:0;position:relative;z-index:2}
+.shotcard .l{margin-right:-28px;rotate:-5deg}
+.shotcard .r{margin-left:-28px;rotate:5deg}
+@media(max-width:1000px){.shotcard .mid{width:220px}.shotcard .phone:not(.mid){width:185px}}
+@media(max-width:860px){.shotcard .mid{width:200px}.shotcard .phone:not(.mid){width:165px}}
+@media(max-width:560px){.shotcard .mid{width:170px}.shotcard .phone:not(.mid){width:118px;margin-top:36px}
+  .shotcard .l{margin-right:-24px}.shotcard .r{margin-left:-24px}.phone{border-width:3px;border-radius:18px}}
 
 /* ---------- sections ---------- */
 section{padding:104px 0;position:relative}
@@ -148,11 +161,9 @@ section{padding:104px 0;position:relative}
 .f li{margin:6px 0}
 .f li b{color:var(--muted);font-weight:600}
 /* ---------- screenshot carousel ---------- */
-/* Slide width lives in one variable, --shot. The screenshots are landscape 2238x1854 renders, each
-   holding the same screen on two devices, so a 520px slide is 431px tall and two fit across a
-   1132px rail. Two wide slides rather than four narrow ones: half of a 520px slide is one phone at
-   about 230px, which is the smallest a screen can be and still read as one. */
-.shots{position:relative; --shot:520px}
+/* Slide width lives in one variable, --shot. The screenshots are portrait phone captures, 540x1202,
+   so a 236px slide is 525px tall and four fit across a 1132px rail. */
+.shots{position:relative; --shot:236px}
 .rail{
   position:relative; /* the offsetParent for the slides, so offsetLeft matches scrollLeft */
   display:flex; gap:26px; overflow-x:auto; overscroll-behavior-x:contain;
@@ -167,15 +178,13 @@ section{padding:104px 0;position:relative}
 .rail:focus-visible{outline:2px solid rgba(255,61,61,.6);outline-offset:6px;border-radius:8px}
 /* start, not centre: with four slides visible at once the leading edge is what "current" means,
    and centre-snap leaves the first and last slide unable to reach the position the dots imply. */
-/* margin-inline:0 kills the 40px a <figure> carries by default. With 236px slides that padded the
-   26px gap out to 106px and looked deliberate; with a 520px landscape slide it is the difference
-   between two fitting across the rail and one, which would give the carousel a dot per slide. */
+/* margin-inline:0 kills the 40px a <figure> carries by default, which padded the 26px gap out to
+   106px and cost the rail a slide per page. */
 .shot{flex:none;width:var(--shot);scroll-snap-align:start;text-align:center;margin:16px 0}
-/* Same construction as the hero's .shotcard, so the two read alike: no bezel and no card, because
-   the render is its two devices on a transparent background. A button rather than a div: it opens the
-   enlarged view, so it has to be reachable by keyboard and announce itself as something to press. */
-.frame{display:block;width:100%;font:inherit;color:inherit;-webkit-appearance:none;cursor:zoom-in;
-  border-radius:18px;padding:0;background:none;border:0;
+/* The same phone outline as the hero (.phone on the button), so the two read alike. A button rather
+   than a div: it opens the enlarged view, so it has to be reachable by keyboard and announce itself
+   as something to press. */
+.frame{width:100%;font:inherit;color:inherit;-webkit-appearance:none;cursor:zoom-in;padding:0;
   transition:transform .45s var(--ease)}
 .frame:focus-visible{outline:2px solid var(--red);outline-offset:4px}
 .shot:hover .frame{transform:translateY(-7px)}
@@ -197,7 +206,7 @@ section{padding:104px 0;position:relative}
 .dots button:hover{background:rgba(255,255,255,.34)}
 .dots button.on{width:26px;background:linear-gradient(90deg,var(--red),var(--amber))}
 @media(max-width:640px){
-  .shots{--shot:88vw}
+  .shots{--shot:62vw}
   .rail{gap:18px}
   .arw{display:none}
 }
@@ -215,8 +224,8 @@ section{padding:104px 0;position:relative}
 .lb.on .lbshell{transform:none}
 /* Both maxima with auto on both axes, so the picture is fitted rather than stretched: a fixed
    height plus a max-width would squash it on a narrow screen. */
-.lbshell img{display:block;max-height:76vh;max-width:92vw;width:auto;height:auto;
-  filter:drop-shadow(0 30px 50px rgba(0,0,0,.7))}
+.lbshell img{display:block;max-height:80vh;max-width:92vw;width:auto;height:auto;
+  border-radius:22px;border:5px solid #05070a;box-shadow:0 30px 60px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.14)}
 .lbfig figcaption{text-align:center;font-size:14px;font-weight:700;color:var(--ink);max-width:min(90vw,420px)}
 .lbfig figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
 .lbfig figcaption .lbnum{margin-top:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
@@ -231,7 +240,7 @@ section{padding:104px 0;position:relative}
 .lbnext{right:20px;top:50%;translate:0 -50%}
 @media(max-width:640px){
   .lb{padding:16px}
-  .lbshell img{max-height:66vh;max-width:82vw}
+  .lbshell img{max-height:70vh;max-width:82vw;border-width:3px;border-radius:16px}
   .lbbtn{width:40px;height:40px;font-size:22px}
   .lbprev{left:6px}
   .lbnext{right:6px}
@@ -241,6 +250,9 @@ section{padding:104px 0;position:relative}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:104px}
 .row:last-child{margin-bottom:0}
 .row.rev .txt{order:2}
+/* min-width:0 on both columns: a grid item's minimum is its content's by default, so the install
+   command's unwrapped line widened its column past a phone's screen and pushed the whole row off it. */
+.row>*{min-width:0}
 .row h3{font-size:clamp(1.5rem,3.1vw,2.15rem);margin:18px 0 16px}
 .row p{color:var(--muted);font-size:1.03rem}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
@@ -297,16 +309,47 @@ section{padding:104px 0;position:relative}
 /* download */
 .dl{border:1px solid var(--line);border-radius:26px;padding:60px 34px;text-align:center;
   background:radial-gradient(900px circle at 50% 0,rgba(255,61,61,.16),transparent 62%),rgba(255,255,255,.028)}
-.soon{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:100px;
-  padding:12px 24px;color:var(--ink);background:rgba(0,0,0,.28);cursor:default;text-align:left}
-.soon img{flex:none;border-radius:7px}
-.soon b{display:block;font-weight:700;font-size:15px;line-height:1.25}
-.soon small{display:block;color:var(--dim);font-size:11.5px;letter-spacing:.02em}
 
 footer{border-top:1px solid var(--line);padding:52px 0;color:var(--dim);font-size:14px}
 .fin{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
 footer a{color:var(--muted);text-decoration:none;margin-left:22px}
+.tm{width:100%;font-size:12px;color:var(--dim)}
 footer a:hover{color:var(--ink)}
+
+/* ---------- TV ---------- */
+/* The TV captures are full-screen 16:9 frames with an opaque background, unlike the cut-out phone
+   renders, so here the page does draw the set: a thin bezel and a stand, nothing more. */
+.tvset{position:relative;margin:0 auto;max-width:980px}
+.tvscreen{border-radius:14px;padding:8px;background:#05070a;border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.6) inset}
+.tvscreen img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:7px}
+.tvset .tvscreen{position:relative}
+.tvset .tvscreen::after{content:"";position:absolute;left:37%;right:37%;top:100%;height:9px;border-radius:0 0 10px 10px;
+  background:linear-gradient(180deg,#1b2129,#0d1116)}
+.tvset figcaption,.tvthumb figcaption{margin-top:24px;text-align:center;font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.tvset figcaption span,.tvthumb figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
+.tvpair{position:relative;padding-right:13%}
+.tvpair .tvscreen{padding:6px}
+/* The phone half of Add from phone, standing in front of the TV's corner the way a phone is held up
+   to it. A real capture of the phone's checklist, so it gets a phone's rounded corners and no more. */
+.tvpair .phone{position:absolute;right:0;bottom:-22px;width:20%;border-radius:18px}
+.tvpair .phone img{aspect-ratio:539/1200}
+.visual.tvvis{padding:30px 26px 40px;display:grid;align-items:center}
+.tvthumbs{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:70px}
+.tvthumb{margin:0}
+.tvthumb .tvscreen{padding:5px;border-radius:11px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.tvthumb .tvscreen img{border-radius:6px}
+.plats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:860px;margin:34px auto 0;text-align:left}
+.plat{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:16px;padding:14px 16px;
+  background:rgba(0,0,0,.28);text-decoration:none;color:var(--ink);transition:border-color .25s,transform .25s var(--ease)}
+a.plat:hover{border-color:rgba(255,61,61,.5);transform:translateY(-2px)}
+.plat .pi{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px;
+  background:rgba(255,61,61,.13);border:1px solid rgba(255,61,61,.26)}
+.plat.later{opacity:.72}
+.plat.later .pi{background:rgba(255,255,255,.05);border-color:var(--line)}
+.plat b{display:block;font-size:14.5px;line-height:1.25}
+.plat small{display:block;color:var(--dim);font-size:12px}
+@media(max-width:560px){.tvpair .phone{border-width:3px;border-radius:12px}}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
@@ -330,36 +373,41 @@ footer a:hover{color:var(--ink)}
   <div class="navlinks">
     <a href="#features">Features</a>
     <a href="#screens">Screens</a>
+    <a href="#tv">TV</a>
     <a href="#servers">Your server</a>
     <a href="#arr-stack">Mediagg Server</a>
     <a href="#cast">Casting</a>
     <a href="#discover">Discover</a>
     <a href="/m3ugoat">m3ugoat</a>
     <a href="/documentation">Docs</a>
-    <a class="btn btn-p" href="#download">Coming soon</a>
+    <a class="btn btn-p" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener">Google Play</a>
   </div>
 </div></nav>
 
 <header class="hero wrap" id="top">
-  <span class="eyebrow rv"><b>●</b> Free · Coming to Google Play · iOS to follow</span>
-  <h1 class="rv">Your media library,<br><span class="shine">in one player.</span></h1>
-  <p class="lede rv">Mediagg plays music, podcasts and video from your device, your own media servers and podcast feeds, and casts to Chromecast and DLNA devices.</p>
+  <span class="eyebrow rv"><b>●</b> Free · On Google Play for Android phone and TV</span>
+  <h1 class="rv">Your media library,<br><span class="shine">on every screen.</span></h1>
+  <p class="lede rv">Mediagg plays music, podcasts and video from your device, your own media servers and podcast feeds — on your phone and on your TV — and casts to Chromecast and DLNA devices.</p>
   <div class="cta rv">
-    <a class="btn btn-p" href="#download">Coming soon to Google&nbsp;Play</a>
-    <a class="btn btn-g" href="#features">View features</a>
+    <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener"><img src="/icons/google-play-badge.png" width="194" height="75" alt="Get it on Google Play"></a>
+    <a class="btn btn-g" href="#tv">On your TV</a>
   </div>
-  <p class="trust rv"><b>Offline playback</b> · <b>Self-hosted servers</b> · <b>Chromecast and DLNA</b></p>
+  <p class="trust rv"><b>Phone and TV</b> · <b>Offline playback</b> · <b>Self-hosted servers</b> · <b>Chromecast and DLNA</b></p>
 
   <div class="stage rv">
     <div class="card3d c1"><span>🎧</span></div>
     <div class="card3d c2"><span>🎙️</span></div>
     <div class="card3d c3"><span>📺</span></div>
     <div class="card3d c4"><span>💿</span></div>
+    <!-- Three current phone captures from the store set (mediagg_store_screenshots/2026-10-14/phone),
+         the same files as carousel slides 4, 2 and 8. There is no current capture of the Home tab,
+         so the middle phone is the Media servers screen on its Activity tab. Eager, not lazy like
+         the carousel: these are in the first screenful. -->
     <div class="shotcard">
-      <!-- eager, and not lazy like the carousel: this one is in the first screenful, so deferring it
-           only delays the largest thing the hero has to paint. -->
-      <img src="/screens/hero-home.webp" width="1119" height="927" decoding="async"
-           alt="The Mediagg home screen on two phones side by side — an iPhone in the light theme, an Android phone in the dark — each showing a Mix row offering Track mix and Audiobook mix, a Continue row holding the 1942 Jungle Book, a Surprise me list mixing a reading from Aesop's Fables, a Podcasting 2.0 episode and the 1931 Dracula, and a Subscriptions row below, with a mini player across the bottom and tabs for Library, Home, Search and Settings.">
+      <span class="phone l"><img src="/screens/04-film.webp" width="540" height="1202" decoding="async" alt="Mediagg on an Android phone: the details page for the short film Sintel."></span>
+      <span class="phone mid"><img src="/screens/02-server-activity.webp" width="540" height="1202" decoding="async"
+           alt="Mediagg on an Android phone, Media servers on its Activity tab: a Mix row with Audiobook mix and Track mix, Continue watching with Sintel and an episode of Bonanza, Continue listening with the audiobooks Pride and Prejudice, The Adventures of Sherlock Holmes and Dracula, and Latest films below, over a bottom bar of Home, Library, Search, Mediarr and Settings."></span>
+      <span class="phone r"><img src="/screens/08-music-player.webp" width="540" height="1202" decoding="async" alt="Mediagg on an Android phone: the music player playing Spring Mvt 1 Allegro from The Four Seasons."></span>
     </div>
   </div>
 </header>
@@ -443,110 +491,166 @@ footer a:hover{color:var(--ink)}
 <section id="screens"><div class="wrap">
   <div class="head rv">
     <span class="eyebrow">Screenshots</span>
-    <h2>Light and dark themes</h2>
-    <p>Each screen is shown in both the light and the dark theme. Use the arrows or swipe to browse, and select a screenshot to view it at full size.</p>
+    <h2>The app, screen by screen</h2>
+    <p>Captured from the current Android app. Use the arrows or swipe to browse, and select a screenshot to view it at full size.</p>
   </div>
 
-  <!-- SCREENSHOT SET. The renders as they were supplied: one landscape picture per screen, each
-       holding the same screen twice — an iPhone in the light theme on the left, an Android phone
-       in the dark on the right — so every slide says both platforms at once. Nothing is cropped
-       out of them, but their background is cut away, so each is two phones on transparency and
-       .frame draws neither bezel nor card around them. All from the shipping build — the bottom
-       bar is Library, Home, Search and Settings, with no Explore tab. To change the set, drop .webp files into /screens at
-       1119px wide with 2238px twins under the same names in /screens/large, then add or remove
-       <figure class="shot"> blocks — the carousel counts them itself, so nothing else needs
+  <!-- SCREENSHOT SET. Clean captures of the current Android app, from the store set in
+       mediagg_store_screenshots/2026-10-14/phone (1344x2992, no marketing text), each a full screen
+       with its own opaque background, so .frame draws a phone outline (.phone) round it. The bottom
+       bar is Home, Library, Search, Mediarr and Settings. To change the set, drop .webp files into
+       /screens at 540x1202 with full-size twins under the same names in /screens/large, then add or
+       remove <figure class="shot"> blocks — the carousel counts them itself, so nothing else needs
        touching. -->
   <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mediagg">
     <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
     <div class="rail" id="rail" tabindex="0">
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/01-servers.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media servers screen with navidrome, Jellyfin and AudioBookShelf already added and each server&rsquo;s address beneath its name, and a Choose a provider sheet open over it offering Subsonic &mdash; described as Navidrome, Airsonic, Gonic and other Subsonic servers &mdash; Jellyfin, Audiobookshelf, Plex and Emby."></button>
-        <figcaption>Media servers<span>Subsonic, Jellyfin, Plex, Emby and Audiobookshelf</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/01-add-server.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: Choose a provider over the Media servers screen: Subsonic for Navidrome, Airsonic, Gonic and other Subsonic servers, Jellyfin, Audiobookshelf, Plex, Emby, Kodi for a Kodi 19 or later library, WebDAV for a folder on a NAS, Nextcloud or any WebDAV share, and SMB for a shared folder on a NAS, a Windows PC or a Samba server &mdash; then, under Mediarr, Sonarr, Radarr, Lidarr, Readarr, Prowlarr, Bazarr and Seerr, each with a line saying what it is for."></button>
+        <figcaption>Add a server<span>Media servers, shares and the Mediarr services</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/02-server-home.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media Servers screen on its Activity tab, with a Mix row offering Track mix and Artist mix, a Continue watching row of film posters &mdash; The Great Train Robbery from 1903, Jungle Book from 1942, Night of the Living Dead from 1968 &mdash; and a Recently added row of album covers under it."></button>
-        <figcaption>Server home<span>Continue watching, recently added and most played</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/02-server-activity.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The Media servers screen on its Activity tab, with Library and Mediarr tabs beside it: a Mix row offering Audiobook mix and Track mix, Continue watching with Sintel from 2010 and S1 E20 The Fear Merchants from Bonanza, Continue listening with Pride and Prejudice by Jane Austen, The Adventures of Sherlock Holmes by Arthur Conan Doyle and Dracula by Bram Stoker, and Latest films starting below."></button>
+        <figcaption>Server activity<span>Mixes, continue watching and continue listening</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/03-film.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the details page for Jungle Book, with the 1942 poster, the year, a running time of 1:44:54, an NR certificate and a 6.3 rating, a Play button, the full synopsis, then genres, director Zoltan Korda, writers Rudyard Kipling and Laurence Stallings, the studio, a More like this row and a Cast row."></button>
-        <figcaption>Film details<span>Synopsis, cast, genres and recommendations</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/03-latest.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: Further down the Activity tab: the three audiobooks part-listened, then Latest films &mdash; Agent 327: Operation Barbershop from 2017, Cosmos Laundromat from 2015, Night of the Living Dead from 1968 &mdash; and Latest shows with The Beverly Hillbillies from 1962 and Bonanza from 1959, with Next up beginning underneath."></button>
+        <figcaption>Latest films and shows<span>What is new on every server</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/04-series.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the details page for the web series Pioneer One, running 2010 to 2011, with its description, genres of Sci-Fi &amp; Fantasy, War &amp; Politics and Drama, a Next up card showing series 1 episode 3 with a still from it, and a Seasons row beneath."></button>
-        <figcaption>Series details<span>Next episode and season list</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/04-film.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The details page for Sintel: its picture across the top, the poster, 2010, 14 minutes, rated PG and 7.3, a progress bar and a Resume button, a Manage on Radarr button, the synopsis with Show more, the genres Animation and Fantasy, director Colin Levy, writer Esther Wouda, the studio Blender Foundation, and a More like this row."></button>
+        <figcaption>Film details<span>Resume, synopsis, credits and more like this</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/05-music.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Media Servers screen showing a music library: a Mix row with Track mix and Artist mix, then rows of album artwork under Recently added, Most played and Recently played, each cover captioned with its album title and artist."></button>
-        <figcaption>Music library<span>Mixes, recently added, most played and recently played</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/05-server-library.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The Media servers screen on its Library tab: under Music, Albums, Compilations, Artists, Album artists and Genres; under Watch, Films and Shows; under Listen, two more tiles; with the audiobook Dracula, Chapter 11, in the mini player above the bottom bar."></button>
+        <figcaption>Server library<span>Music, films, shows and audiobooks by kind</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/06-player.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the full player showing the LibriVox cover of Aesop&rsquo;s Fables Volume 6, the whole screen tinted to match it. Below the artwork: a Chapters button, the title The Prophet, the file details MP3 at 64 kb/s and 24 kHz, a scrubber at 7:22 of 31:17, transport controls, and buttons for 1.0x speed, Sleep and More."></button>
+        <button class="frame phone" type="button"><img src="/screens/06-albums.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The Albums screen in a three-column grid sorted by Default, 11 albums, each with its cover: Audionautix: Acoustic&hellip; by Jason Shaw, Break North by Deadman &amp; Digi Hartatak, Classical Sampler by Kevin MacLeod, Cosmic Lullabies by Doc &amp; Lena Selyanina, Elevator Music by Digi Hartatak, The Four Seasons by John Harrison, Geo-Sync Deluxe by BLUnderwood, Grab Bag by Jahzzar and Nicolas Falcon."></button>
+        <figcaption>Albums<span>Your server&rsquo;s albums, with artwork</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame phone" type="button"><img src="/screens/07-album.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The album The Four Seasons (Vivaldi) by John Harrison with the Wichita State University Chamber Players: its cover, 12 tracks and 40 minutes, Play and Shuffle buttons, and the track list from Spring Mvt 1 Allegro at 3:35, Spring Mvt 2 Largo and Spring Mvt 3 Allegro pastorale to Summer Mvt 1 Allegro non molto."></button>
+        <figcaption>Album<span>Play, shuffle or pick a track</span></figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="frame phone" type="button"><img src="/screens/08-music-player.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The full player playing Spring Mvt 1 Allegro from The Four Seasons, the screen tinted to match the cover: a Lyrics button, the file details MP3 at 177 kb/s and 48 kHz, a scrubber at 1:01 of 3:35, transport controls, and buttons for 1x speed, Sleep and More."></button>
         <figcaption>Player<span>Colours adapt to the artwork</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/07-chapters.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player with its chapter list open over the artwork: The Prophet at 6:26 highlighted as the chapter playing, then The Hound and The Hare, The Lion, The Mouse, and The Fox, The Trumpeter Taken Prisoner, The Wolf and The Crane, and The Eagle, The Cat, and The Wild Sow &mdash; each with its length."></button>
-        <figcaption>Chapters<span>Jump to any chapter in a long recording</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/09-audiobook.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The audiobook Dracula by Bram Stoker from LibriVox: 27 chapters, 16 hours 31 minutes, Resume and Download buttons, and its chapter list &mdash; Chapter 01 at 36 minutes from 0:00, Chapter 02 from 36:57, Chapter 03 from 1:06:54 and on."></button>
+        <figcaption>Audiobooks<span>Every chapter, with where it starts</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/08-transcript.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player on its Transcript tab for Episode 271: Foot Terminal from Podcasting 2.0, with the line currently being spoken highlighted in a box as the transcript scrolls, and Chapters, Transcript and Notes tabs below it."></button>
-        <figcaption>Transcripts<span>The current line is highlighted during playback</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/10-audiobook-player.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The player on Chapter 11 of Dracula by Bram Stoker, MP3 at 64 kb/s and 24 kHz, with Chapters and Bookmarks buttons above the title, a scrubber marked in chapters at 5:57:00 of 16:31:20, transport controls, and 1x, Sleep and More."></button>
+        <figcaption>Audiobook player<span>Chapters and bookmarks in a long recording</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/09-video.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the player with a scene from Jungle Book playing in it and the screen tinted to match the picture. Underneath: the title, the year 1942, the file details AAC at 129 kb/s and 44.1 kHz, a progress bar at 1:29:11 of 1:44:54 and a pause button, with full-screen and cast buttons at the top."></button>
-        <figcaption>Video playback<span>Uses the same player, with casting to your TV</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/11-video.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The player with the animated short Caminandes: Llamigos from 2016 playing in it, AAC at 112 kb/s and 44.1 kHz, a progress bar at 0:44 of 2:30, transport controls, and buttons for 1x speed, Sleep and More, with full-screen and cast buttons at the top."></button>
+        <figcaption>Video playback<span>The same player, with casting to your TV</span></figcaption>
       </figure>
 
       <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/10-playlist.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: a playlist called Seamless Playlist holding 4 items, its cover a mosaic of the four, with Play and Shuffle buttons. The items are The Prophet from Aesop&rsquo;s Fables Volume 6, the 1942 Jungle Book film, the track Footsteps by Jeff Kaale, and Episode 271: Foot Terminal from Podcasting 2.0 &mdash; each with a small icon saying which kind it is."></button>
-        <figcaption>Mixed playlists<span>Audiobooks, films, tracks and podcast episodes in one list</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/11-search.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Search screen with dracula typed into it and a Library and Discover toggle underneath, the results grouped by source: a Videos heading with the 1931 Dracula held on the phone, and a Jellyfin heading with the 1931 Dracula held on the server."></button>
-        <figcaption>Search<span>Results from your device and servers, grouped by source</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/12-subscribe.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Add subscription screen listing Add from providers, Add from synchronisation server for keeping subscriptions and positions in step with your other devices, Add a local folder, Browse top podcasts by country and category, Add a podcast by address for an RSS feed you already have, and Import subscriptions from a file for OPML exported from another app &mdash; with a Search every directory box below it."></button>
-        <figcaption>Adding podcasts<span>RSS feed, OPML import, top charts or a local folder</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/13-favourites.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Favourites screen with filter chips for All, Playlists, Local media, Subscriptions and Media servers, above a list of favourited tracks: Time Lines by Pete Lund, Feij&atilde;o by Dr. Quandary, He Was (Clementine) and Fairytale by Natasha Beller, Rain by Ugress, 999,999 by Nine Inch Nails, Footsteps by Jeff Kaale and Seasons by Aso."></button>
-        <figcaption>Favourites<span>Filter by playlists, local media, podcasts or servers</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame" type="button"><img src="/screens/14-downloads.webp" width="1119" height="927" loading="lazy" decoding="async"
-          alt="The same screen on two phones side by side, an iPhone in the light theme and an Android phone in the dark: the Downloads screen with Subscriptions and Media servers chips to filter by source, listing the downloaded track Footsteps by Jeff Kaale with a download tick beside its name."></button>
-        <figcaption>Downloads<span>Saved for offline playback</span></figcaption>
+        <button class="frame phone" type="button"><img src="/screens/12-podcasts.webp" width="540" height="1202" loading="lazy" decoding="async"
+          alt="Mediagg on an Android phone in the dark theme: The Subscriptions screen on its Podcasts tab, with Episodes, New and Providers tabs beside it: a grid of podcast artwork for Escape Pod, Hacker Public Radio, Late Night Linux, the LibriVox Community Podcast, PseudoPod and the Software Freedom Podcast."></button>
+        <figcaption>Podcasts<span>Subscriptions, episodes and what is new</span></figcaption>
       </figure>
 
     </div>
     <button class="arw next" id="shotNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
     <div class="dots" id="shotDots"></div>
+  </div>
+</div></section>
+
+<!-- TV. The Android TV and Apple TV apps. The captures are Android TV's own, full-screen at 3840x2160,
+     scaled to 1600x900 WebP in /screens/tv — unlike the phone renders they are opaque 16:9 frames,
+     so .tvscreen draws a set around them. The Apple TV app is SwiftUI over the same shared state and
+     carries the same features (every TV change ships on both), but it is not on the App Store yet,
+     so nothing here offers it for install. -->
+<section id="tv"><div class="wrap">
+  <div class="head rv">
+    <span class="eyebrow"><b>●</b> Android TV · Apple TV</span>
+    <h2>On your TV, too</h2>
+    <p>Mediagg has a TV app for Android TV and for Apple TV, built from the same code as the phone app and made for the remote. Android TV is on Google Play now, in the same listing as the phone app. Apple TV is on the way.</p>
+  </div>
+
+  <figure class="tvset rv">
+    <div class="tvscreen"><img src="/screens/tv/01-media-servers.webp" width="1600" height="900" loading="lazy" decoding="async"
+      alt="Mediagg on Android TV: the Media servers tab selected in a bar that also holds Subscriptions, Playlists, Favourites, Downloads and History, with buttons for Showing: All servers, Mediarr and Servers and services. Below, a Library row of Albums, Compilations, Artists, Album artists, Genres, Films, Shows and Internet radio, and a Continue watching row of wide pictures: Sintel from 2010, S1 E20 The Fear Merchants from Bonanza, Tears of Steel from 2012 and His Girl Friday."></div>
+    <figcaption>Media servers on Android TV<span>Continue watching from every server you have added</span></figcaption>
+  </figure>
+
+  <div class="row" style="margin-top:104px">
+    <div class="txt rv">
+      <span class="eyebrow">Add from phone</span>
+      <h3>Set up the TV from your phone</h3>
+      <p>No typing addresses and passwords with a remote. On the TV, open Add and choose Add from phone, and it shows a QR code. Point your phone&rsquo;s camera at it: Mediagg opens on the phone with everything it has set up. Tick what the TV should take and press Send to the TV. The TV adds each one and says how each went.</p>
+      <p style="margin-top:14px">Where a server allows it, the TV gets a sign-in of its own, approved from the phone, rather than your password. Works on Android TV and Apple TV, from an Android phone or an iPhone.</p>
+      <div class="chips">
+        <span class="chip">Media servers</span><span class="chip">Mediarr services</span><span class="chip">Sync accounts</span>
+        <span class="chip">Providers</span><span class="chip">Library</span><span class="chip">Settings</span>
+      </div>
+    </div>
+    <div class="visual tvvis rv">
+      <div class="tvpair">
+        <div class="tvscreen"><img src="/screens/tv/add-from-phone-code.webp" width="1600" height="900" loading="lazy" decoding="async"
+          alt="The Add from phone screen on Android TV: a phone icon, the heading Add from phone, the words Point your phone&rsquo;s camera at this code. Mediagg opens on the phone with everything it has set up: tick what this TV should take. Beside them a QR code, with a Back button under it."></div>
+        <div class="phone"><img src="/screens/tv/add-from-phone-checklist.webp" width="539" height="1200" loading="lazy" decoding="async"
+          alt="The phone after scanning the code: a sheet headed Add to Living room TV saying Tick what Living room TV should take. Each one is checked by Living room TV before it is kept. Under Media servers, the Jellyfin demo server, marked Already on the TV, The TV gets a sign-in of its own, from this phone. Under Library, Replace this TV&rsquo;s whole library. Under Settings, Settings &mdash; theme, colours, the Home layout and how mixes are shown &mdash; ticked. Cancel and Send to the TV buttons at the foot."></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:104px">
+    <div class="f rv"><div class="ic">▶️</div><h3>Watch next</h3>
+      <p>Home opens on Watch next: the show you watched last with its next episode, then what you left part-way and what is new on your servers. When it leads Home, the focused film&rsquo;s picture fills the top of the screen. The phone apps open on it too.</p>
+    </div>
+    <div class="f rv"><div class="ic">📀</div><h3>Coming to digital &amp; disc</h3>
+      <p>Films coming to digital and to disc, week by week — last week, this week and the weeks ahead — read through your Overseerr or Jellyseerr. A film nobody has yet opens its request page.</p>
+    </div>
+    <div class="f rv"><div class="ic">📨</div><h3>Requests</h3>
+      <p>Every request in the house on the TV, filtered by Pending approval, Processing, Available, Declined or Cancelled, and a film or series asked for from the sofa — through the same Seerr your phone uses.</p>
+    </div>
+  </div>
+
+  <div class="tvthumbs">
+    <figure class="tvthumb rv">
+      <div class="tvscreen"><img src="/screens/tv/02-latest-films.webp" width="1600" height="900" loading="lazy" decoding="async"
+        alt="Android TV, further down the Media servers page: audiobooks part-listened &mdash; Dracula by Bram Stoker, Pride and Prejudice by Jane Austen, The Adventures of Sherlock Holmes by Arthur Conan Doyle &mdash; then a Latest films row of posters with Agent 327 focused, followed by Cosmos Laundromat, Night of the Living Dead, Nosferatu, The General, His Girl Friday and Tears of Steel, and a Latest shows row beginning."></div>
+      <figcaption>Latest films<span>Rows of posters, made for the remote</span></figcaption>
+    </figure>
+    <figure class="tvthumb rv">
+      <div class="tvscreen"><img src="/screens/tv/03-film-details.webp" width="1600" height="900" loading="lazy" decoding="async"
+        alt="Android TV: the details page for Cosmos Laundromat &mdash; 2015, 12 minutes, rated 6.3, genres Animation and Fantasy, director Mathieu Auvray, cast Pierre Bokma and Reinout Scholten van Aschat &mdash; with its synopsis, Play and More buttons, a Manage on Radarr button and a More like this row."></div>
+      <figcaption>Film details<span>Play, manage it on Radarr, and more like this</span></figcaption>
+    </figure>
+    <figure class="tvthumb rv">
+      <div class="tvscreen"><img src="/screens/tv/mediarr-dashboard.webp" width="1600" height="900" loading="lazy" decoding="async"
+        alt="Android TV: the Mediarr page with buttons for Search films and series, Activity, Calendar, Discover films and series, Requests and Arrange; counts of 0 in queue, 0 issues, 1 missing and 91 GB free; and Sonarr, Radarr, qBittorrent and Seerr each shown as connected, with qBittorrent listed again under Download clients."></div>
+      <figcaption>Mediarr<span>Requests, queue and downloads at a glance</span></figcaption>
+    </figure>
   </div>
 </div></section>
 
@@ -560,7 +664,8 @@ footer a:hover{color:var(--ink)}
       <div class="chips">
         <span class="chip">Subsonic</span><span class="chip">Navidrome</span><span class="chip">Airsonic</span>
         <span class="chip">OpenSubsonic</span><span class="chip">Jellyfin</span><span class="chip">Plex</span>
-        <span class="chip">Emby</span><span class="chip">Audiobookshelf</span>
+        <span class="chip">Emby</span><span class="chip">Audiobookshelf</span><span class="chip">Kodi</span>
+        <span class="chip">WebDAV</span><span class="chip">SMB</span>
       </div>
       <div class="chips" style="margin-top:12px">
         <span class="chip">Recently added</span><span class="chip">Most played</span><span class="chip">Continue watching</span>
@@ -600,7 +705,7 @@ footer a:hover{color:var(--ink)}
     <div class="txt rv">
       <span class="eyebrow">Mediagg Server · macOS and Linux</span>
       <h3>No server yet? Make one in three questions</h3>
-      <p>Mediagg Server turns a Mac, a Raspberry Pi or any Linux computer into a home media server. One command installs what you choose — Jellyfin, Emby or Plex, Navidrome for music, Audiobookshelf for audiobooks, and the services that find and fetch more — sets each one up and connects them to each other. Everyone in the house gets a login of their own, and one six-digit code hands the lot to Mediagg on each phone and TV.</p>
+      <p>Mediagg Server turns a Mac, a Raspberry Pi or any Linux computer into a home media server. One command installs what you choose — Jellyfin, Emby or Plex, Navidrome for music, Audiobookshelf for audiobooks, and the services that find and fetch more — sets each one up and connects them to each other. Everyone in the house gets a login of their own. Pairing — one six-digit code that hands the lot to Mediagg on each phone and TV — is coming soon to the Mediagg apps; until then, add each server in the app with its address.</p>
       <div class="term"><b>$</b>curl -fsSL https://mediagg.app/install.sh | sh</div>
       <p style="font-size:.9rem;color:var(--dim);margin-top:6px">Paste it into a terminal — on the computer itself, or over SSH. Free and open source, runs in Docker, removable in one go. Windows to follow.</p>
       <div class="chips">
@@ -615,7 +720,7 @@ footer a:hover{color:var(--ink)}
         <li><span class="n">1</span><div><b>Run one command</b><small>Choose a folder for your films. Docker is added if it is missing.</small></div></li>
         <li><span class="n">2</span><div><b>Answer three questions</b><small>Where you watch and listen, what fetches more — and a login for everyone in the house.</small></div></li>
         <li><span class="n">3</span><div><b>Press Install</b><small>Each service is set up and connected for you, with a real progress bar.</small></div></li>
-        <li><span class="n">4</span><div><b>Type one code in Mediagg</b><small>Or scan it. Every server is added at once, signed in as that person, and follows the computer if its address changes.</small></div></li>
+        <li><span class="n">4</span><div><b>Pair Mediagg — coming soon</b><small>One code, typed or scanned, will add every server at once, signed in as that person. Until it reaches the apps, add each server in Mediagg with its address.</small></div></li>
       </ol>
     </div>
   </div>
@@ -661,35 +766,42 @@ footer a:hover{color:var(--ink)}
 <!-- NUMBERS -->
 <section><div class="wrap">
   <div class="nums">
-    <div class="num rv"><b>5</b><small>Supported media server types</small></div>
+    <div class="num rv"><b>8</b><small>Kinds of media server and share</small></div>
     <div class="num rv"><b>2</b><small>Casting protocols</small></div>
     <div class="num rv"><b>3</b><small>Media types in one library</small></div>
-    <div class="num rv"><b>1</b><small>App for Android, with iOS to follow</small></div>
+    <div class="num rv"><b>4</b><small>Platforms from one codebase: Android phone and TV, iPhone, Apple TV</small></div>
   </div>
 </div></section>
 
 <!-- DOWNLOAD -->
+<!-- One Play listing, app.mediagg, carries both Android builds: the phone app (playFull) and the
+     Android TV app (:app-android-tv, versionCode from 1000) share the applicationId, so there is one
+     link and Play offers whichever build fits the device. The Apple apps are stated as intent and
+     nothing more: no date and no link until an App Store page exists. -->
 <section id="download"><div class="wrap">
   <div class="dl rv">
-    <span class="eyebrow"><b>●</b> Coming soon</span>
-    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Coming soon</h2>
-    <p style="color:var(--muted);max-width:560px;margin:18px auto 0">Mediagg will be available on Google Play soon. A download link will be added here when it is released.</p>
-    <div class="cta" style="margin-top:32px">
-      <span class="soon">
-        <img src="/icons/mediagg.png" width="24" height="24" alt="">
-        <b>Android</b><small>Google Play · coming soon</small>
+    <span class="eyebrow"><b>●</b> Free on Google Play</span>
+    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Get Mediagg</h2>
+    <p style="color:var(--muted);max-width:580px;margin:18px auto 0">One Google Play listing for your Android phone and your Android TV: install it on the phone, then find Mediagg in Google Play on the TV — or choose the TV from Google Play on the web.</p>
+    <div class="cta" style="margin-top:30px">
+      <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener"><img src="/icons/google-play-badge.png" width="194" height="75" alt="Get it on Google Play"></a>
+    </div>
+    <div class="plats">
+      <a class="plat" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener">
+        <span class="pi">📱</span><span><b>Android phone</b><small>Google Play</small></span>
+      </a>
+      <a class="plat" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener">
+        <span class="pi">📺</span><span><b>Android TV</b><small>Google Play, same listing</small></span>
+      </a>
+      <span class="plat later">
+        <span class="pi">📱</span><span><b>iPhone</b><small>On the way</small></span>
       </span>
-      <!-- iOS is stated as intent and nothing more. There is no date here on purpose: the app is
-           built on Compose Multiplatform and the iOS target is being worked towards, but Android is
-           what is built and shipped today. A date on this page is a promise the app then has to
-           keep. -->
-      <span class="soon" style="opacity:.72">
-        <img src="/icons/mediagg.png" width="24" height="24" alt="">
-        <b>iOS</b><small>To follow</small>
+      <span class="plat later">
+        <span class="pi">📺</span><span><b>Apple TV</b><small>On the way</small></span>
       </span>
     </div>
-    <p style="color:var(--dim);max-width:560px;margin:22px auto 0;font-size:14px">Android is the first
-    release. An iOS version will follow; it does not yet have a release date.</p>
+    <p style="color:var(--dim);max-width:560px;margin:22px auto 0;font-size:14px">The iPhone and Apple TV apps
+    are built from the same code and will follow on the App Store. They do not yet have a release date.</p>
   </div>
 </div></section>
 
@@ -702,6 +814,7 @@ footer a:hover{color:var(--ink)}
     <a href="/documentation">Docs</a>
     <a href="/privacy">Privacy</a>
   </div>
+  <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
 </div></footer>
 
 <!-- The enlarged view, filled in from whichever screenshot was clicked. A child of body, not of
@@ -711,8 +824,8 @@ footer a:hover{color:var(--ink)}
   <button class="lbbtn lbx" id="lbClose" type="button" aria-label="Close">&times;</button>
   <button class="lbbtn lbprev" id="lbPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
   <figure class="lbfig">
-    <!-- every large screenshot is 2238x1854, so the box is the right shape before the file lands -->
-    <div class="lbshell"><img id="lbImg" width="2238" height="1854" alt=""></div>
+    <!-- every large screenshot is 1344x2992, so the box is the right shape before the file lands -->
+    <div class="lbshell"><img id="lbImg" width="1344" height="2992" alt=""></div>
     <figcaption id="lbCap"></figcaption>
   </figure>
   <button class="lbbtn lbnext" id="lbNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
@@ -725,7 +838,7 @@ footer a:hover{color:var(--ink)}
   // marquee, duplicated so the loop is seamless
   var items=['Subsonic','Navidrome','Airsonic','OpenSubsonic','Jellyfin','Plex','Emby',
              'Audiobookshelf','Chromecast','DLNA','UPnP','Podcasts','Video','gpodder.net',
-             'Nextcloud','Offline'];
+             'Nextcloud','Offline','Android TV','Apple TV'];
   var track=document.getElementById('track'), html='';
   for (var d=0;d<2;d++){ items.forEach(function(t){ html+='<span>'+t+' ✦</span>'; }); }
   track.innerHTML=html;
@@ -770,7 +883,7 @@ footer a:hover{color:var(--ink)}
     // the screenful rather than by the slide is what keeps the dots honest: eleven dots against a
     // rail showing four at a time can never all be reachable, because the last four share a
     // scroll position. Everything below is measured from the DOM, so the media query that widens
-    // a slide to 70vw needs no matching change here.
+    // a slide to 62vw needs no matching change here.
     function step(){
       return shots.length>1 ? shots[1].offsetLeft-shots[0].offsetLeft : rail.clientWidth;
     }
@@ -820,11 +933,10 @@ footer a:hover{color:var(--ink)}
 
     // ----- enlarged view -----
     //
-    // The rail carries 1119px-wide screenshots, which are the right weight for a 520px slide and
-    // too soft blown up — a render enlarged to 92vw wants more than that. Each has a 2238px twin
-    // under /screens/large/, the size the renders were supplied at, fetched only when someone
-    // actually opens one — the address is derived from the thumbnail rather than repeated in an
-    // attribute on all fourteen slides.
+    // The rail carries 540px-wide screenshots, the right weight for a 236px slide and too soft
+    // blown up to 80vh. Each has a 1344px twin under /screens/large/, the size it was captured at,
+    // fetched only when someone actually opens one — the address is derived from the thumbnail
+    // rather than repeated in an attribute on every slide.
     var lb=document.getElementById('lb'),
         lbImg=document.getElementById('lbImg'),
         lbCap=document.getElementById('lbCap'),

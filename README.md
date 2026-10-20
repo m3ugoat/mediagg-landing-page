@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/screens/hero-home.webp" width="200" alt="The Mediagg home screen">
+  <img src="public/screens/02-server-activity.webp" width="200" alt="Mediagg on an Android phone: Media servers on its Activity tab">
 </p>
 
 <h1 align="center">Mediagg — landing page</h1>
@@ -8,25 +8,31 @@
   <a href="https://mediagg.app">mediagg.app</a>
 </p>
 
-The marketing site for Mediagg, an app that plays the music, podcasts and video on your phone, on
-your own media server, and across the web — and casts any of it to Chromecast or DLNA. Free to use.
+The marketing site for Mediagg, an app that plays the music, podcasts and video on your phone and
+your TV, from your own media server and across the web — and casts any of it to Chromecast or DLNA.
+Free to use.
 
-**Android is what ships.** The app is a Compose Multiplatform codebase. An iOS app exists — it
-builds and runs on an iPhone — but it is not on the App Store, so the site calls it on the way, with
-no date, and never tells anyone they can install it. Anything firmer would be the site promising a
-listing that does not exist.
+**Android ships, on the phone and on the TV.** The app is one Kotlin Multiplatform codebase with four
+shells: Android phone, Android TV, iPhone and Apple TV. Both Android apps are on Google Play under
+one listing, `app.mediagg` (the phone's `playFull` build and `:app-android-tv` share the
+applicationId; the TV's versionCode counts from 1000), so the site has one install link:
+https://play.google.com/store/apps/details?id=app.mediagg. It is a new listing, not the old
+`com.mbogimusic` one. The iPhone and Apple TV apps build and run but are not on the App Store, so the
+site calls them on the way, with no date, and never tells anyone they can install them. Anything
+firmer would be the site promising a listing that does not exist.
 
 **This repository holds the website, not the app.** The app is not open source and its source is not
-here. The site no longer links APK downloads: it says the app is coming soon to Google Play, and
-carries no install link until that listing is public. The listing, `app.mediagg`, is in closed
-testing; it is a new listing, not the old `com.mbogimusic` one.
+here, and the site links no APK downloads — Google Play is the only install link. The badge is
+Google's own (`public/icons/google-play-badge.png`, unaltered), and the footer carries Google's
+trademark line wherever it appears.
 
 ## What is here
 
 | Path | |
 |---|---|
 | `public/` | The site. Home, privacy, `m3ugoat/`, 404, three `deeplink/` pages for links the old app generated (the current app has no `/deeplink/` intent filter, so these links always land here, and the pages say so), and two redirect stubs at `/full` and `/personal` — plus the screenshots and icons. This is what gets deployed. |
-| `public/screens/` | The fourteen carousel screenshots at 1119px, with full-size 2238px twins in `large/` for the enlarged view, plus `hero-home.webp` — the one at the top of the home page, which is not part of the carousel and so has no twin. Landscape renders, two phones each, from the shipping build; see below. |
+| `public/screens/tv/` | The TV section's captures: Android TV screens at 1600×900 (scaled from the 3840×2160 store captures in `../mediagg_store_screenshots/2026-10-14/story-source/img/v/`) and the phone's Add from phone checklist at 539×1200 (from `img/p/`). Opaque frames, so the page draws a TV set around them — unlike the cut-out phone renders. |
+| `public/screens/` | The twelve carousel screenshots at 540×1202, with full-size 1344×2992 twins in `large/` for the enlarged view; the hero reuses three of them. Captures of the current Android app; see below. |
 | `public/icons/` | `mediagg.png`, the launcher icon, and `og.png` for link previews. `mediagg-personal.png` is the retired Personal edition's icon, kept but no longer used by any page. |
 | `content/` | The documentation sources: Markdown with front matter, plus `_shell.html` and `docs.css`. Edited by hand; never deployed. |
 | `scripts/build-docs.py` | Renders `content/documentation/` into `public/documentation/`. Stdlib-only Python, no dependencies. |
@@ -62,62 +68,30 @@ crash-reporting SDK is ever added, every such statement on the site goes with it
 
 ### The screenshots, and where they come from
 
-**They are from the shipping build.** Every shot on the site was replaced in September 2026 with a
-capture of the build the app repository calls `playFull`: the bottom bar reads Library, Home,
-Search, Settings, there is no **Explore** tab, and no slide shows a radio station. The eleven
-Xtended-build shots that used to be here — Explore tab in the navigation, station search, an Explore
-slide — are gone, along with the warning that said not to deploy.
+**They are captures of the current Android app**, taken for the Play listing in October 2026 and
+kept in `../mediagg_store_screenshots/2026-10-14/phone/` — the clean 1344×2992 captures, not the
+`play-story-*` slides, which have marketing text drawn on them. The bottom bar in them reads Home,
+Library, Search, Mediarr, Settings. They replaced the September two-phone renders (an iPhone in the
+light theme beside an Android phone in the dark), which showed the old four-tab bar.
 
-Fourteen carousel slides and the hero. The sources are **landscape mock-up renders** — one picture
-per screen, each holding the same screen twice: an iPhone in the light theme on the left, an Android
-phone in the dark on the right. The renders came on a grey background; that has been **cut away to
-transparency**, so each picture is the two devices and nothing else. The source PNGs in
-`../mediagg_screenshots/` are the cut-out versions, and the untouched renders are kept alongside in
-`../mediagg_screenshots_originals/`. Nothing else is cropped out of them, so every slide shows both
-platforms and both themes at once. They are 2238×1854; the carousel gets an exact half at 1119×927
-and the enlarged view gets the full size, so **nothing is upscaled**. The WebPs keep the alpha
-channel, so re-encode with transparency if you regenerate them.
+Twelve carousel slides, in `public/screens/` at 540×1202 with full-size 1344×2992 twins under the
+same names in `public/screens/large/` for the enlarged view, so **nothing is upscaled**. The hero is
+three of the same files (slides 4, 2 and 8): there is no current capture of the Home tab, so the
+middle phone is Media servers on its Activity tab. A capture is a full screen on an opaque
+background, so the page draws a phone outline round each — `.phone`: rounded corners, a dark bezel,
+a box-shadow — in the hero, the carousel, the enlarged view and the TV section's Add from phone.
 
-Two layout consequences, both already handled, and both easy to undo by accident:
+Screens the old set had and the new one has no capture of, so the carousel no longer shows them:
+series details, transcripts, mixed playlists, search, adding a podcast, favourites, downloads. Capture
+them from an emulator (never a personal device) and add them back as slides when they exist.
 
-- **Nothing here draws a bezel or a card.** `.frame`, the hero's `.shotcard` and the enlarged
-  view's `.lbshell` have no border, background or box-shadow — the pictures are transparent around
-  the phones, so any of those would draw a rectangle round two phone shapes. The hero and the
-  enlarged view put a `drop-shadow` filter on the image instead, which follows the phones' outline.
-  The carousel has none: headless Chrome did not paint the slides with one.
-- **`.shot` sets `margin:16px 0`.** A `<figure>` carries `margin: 1em 40px` by default, which padded
-  the rail's 26px gap out to 106px. That looked deliberate behind 236px portrait slides; behind a
-  520px landscape slide it is the difference between two fitting across the rail and one, and one
-  per page gives the carousel a dot per slide.
-
-The hero's floating cards moved out to 1% and 11% for the same reason: a landscape render is more
-than twice the width of the portrait phone that used to stand there, and cards at 22% would sit on
-top of it. `.stage` heights are per breakpoint, each keeping the render's ~74px overhang into the
-marquee.
-
-**iOS is in every picture, and the copy must not follow it there.** The renders show an iPhone
-because that is how they were supplied and what was asked for. The iOS app runs but is not
-published — see the top of this file — so the page says "Android now · iOS on the way" in the hero eyebrow and nowhere
-claims you can install it on an iPhone today. The screenshots section is headed "Real screens, both
-themes", not anything about iOS, and that wording is load-bearing: it is also why it no longer says
-"no mock-ups", which these renders plainly are.
-
-To change the set: drop `.webp` files into `public/screens/` at 1119px wide with 2238px twins under
+To change the set: drop `.webp` files into `public/screens/` at 540×1202 with full-size twins under
 the same names in `public/screens/large/`, then add or remove `<figure class="shot">` blocks in
 `public/index.html` to match — the carousel counts its own slides, so the dots, arrows and enlarged
-view need no other change. The hero is `hero-home.webp`, is not part of the carousel, and so has no
-twin. There is a comment above the rail saying the same thing.
+view need no other change. There is a comment above the rail saying the same thing.
 
 Captions and `alt` describe what is actually on screen, down to the titles, timings and bitrates, so
 a caption cannot drift from its picture without someone noticing. Keep that when swapping a shot.
-
-The other nineteen renders in the set — `arrange_navbar`, `library`, `queue`, `podcast`,
-`podcast_synchronization`, `subscriptions`, `subscriptions_episodes`, `media_servers_manage`,
-`media_servers_filter`, `media_servers_home_audiobookshelf`, `player_2`, `player_more_details`,
-`search_2`, `media_server_albums`, `media_server_combined`, `media_server_combined_2`,
-`media_servers_home_jellyfin_2` and `player_video_fullscreen` — are not on the site. They are not
-rejects; there was no slot. `player_video_fullscreen` is the one that could not be used as-is: its
-phones are landscape, so it does not share the others' shape.
 
 ## The m3ugoat page
 
