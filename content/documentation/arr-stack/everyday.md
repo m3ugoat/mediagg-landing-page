@@ -28,8 +28,10 @@ services stand — `All 9 running`, say — and has the dashboard's address with
 - **`Home`** shows **Get started** until it is done — get Mediagg, pair it with this server, add
   indexers if anything fetches, then search and watch — each step ticked as you do it. No phone to
   hand? `Watch in the browser` and `Request in the browser` open your media server and Seerr now.
-  Below are the free space, paired devices, downloads and version, and **Your library**: each part
-  with its switches, and `Turn on · 150 MB`, say, on those that are off.
+  Below are the free space, paired devices, downloads and version; **`Open Mediagg in the browser`** —
+  the Mediagg app in a tab of its own, on this computer or any other on your network, signed in as you
+  are here, with nothing to install; and **Services by media**: each part with its switches. A switch
+  that is on opens its service's own page in a new tab; one that is off has `Turn on · 150 MB`, say.
 - **`How to use`** is the guide to this server: three ways in, easiest first — Mediagg, your browser,
   each service's own page — then `What happens when…` you ask for a film, follow a series, add files
   yourself or add someone; `Each service`, with what was set up for you and when you would open it;
