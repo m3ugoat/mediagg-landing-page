@@ -1,1009 +1,250 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mediagg — music, podcasts and video on your phone and TV</title>
-<meta name="description" content="Mediagg plays music, podcasts and video from your device, your media servers and podcast feeds, on your phone and your TV, and casts to Chromecast and DLNA devices. On Google Play for Android phones and Android TV. Free to use.">
+<title>Mediagg — your media, from your own servers, on every screen</title>
+<meta name="description" content="Mediagg plays music, podcasts, films, shows and audiobooks from your device, your media servers and podcast feeds, on Android phones, Android TV and in your browser. Mediagg Server sets up a home media server for you.">
 <link rel="canonical" href="https://mediagg.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mediagg — music, podcasts and video on your phone and TV">
-<meta property="og:description" content="Play music, podcasts and video from your device and from Subsonic, Jellyfin, Plex, Emby or Audiobookshelf servers on your phone and your TV, and cast to Chromecast and DLNA devices.">
+<meta property="og:title" content="Mediagg — your media, from your own servers, on every screen">
+<meta property="og:description" content="Mediagg plays music, podcasts, films, shows and audiobooks from your device, your media servers and podcast feeds, on Android phones, Android TV and in your browser. Mediagg Server sets up a home media server for you.">
 <meta property="og:url" content="https://mediagg.app/">
 <meta property="og:image" content="https://mediagg.app/icons/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0b0d10">
+<meta name="theme-color" content="#0F0E13">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
 <link rel="apple-touch-icon" href="/icons/mediagg.png">
 <style>
-:root{
-  --bg:#0b0d10; --bg2:#11151b; --card:#151a21; --line:rgba(255,255,255,.09);
-  --ink:#f2f5f8; --muted:#93a1b0; --dim:#6c7a89;
-  --red:#ff3d3d; --red2:#c20000; --amber:#ffb443; --cyan:#3ddad7; --violet:#8b7bff;
-  --r:18px; --max:1180px;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
+/* Mediagg's own dark theme, the app's colours. System fonts only: the site loads nothing from
+   anyone but GitHub Pages, which is what the privacy policy says. */
+:root{--bg:#0F0E13;--bg2:#141218;--card:#19181E;--card2:#1D1B26;--line:#2B2930;--edge:#49454F;
+  --ink:#E6E0E9;--mute:#CAC4D0;--dim:#938F99;--accent:#D0BCFF;--accent2:#EADDFF;--on-accent:#381E72;
+  --chip:#4A4458;--chip-ink:#E8DEF8;--way:#3A2E1E;--way-ink:#FFD8A8;--self:#1E3540;--self-ink:#B6E3F5;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0; background:var(--bg); color:var(--ink);
-  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
-h1,h2,h3{line-height:1.1; margin:0; letter-spacing:-.028em; font-weight:800}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}
+img{max-width:100%}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;margin:0}
 p{margin:0}
-a{color:inherit}
-.wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
-.eyebrow{
-  display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:700;
-  letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
-  border:1px solid var(--line); border-radius:100px; padding:7px 15px; background:rgba(255,255,255,.03);
-}
-.eyebrow b{color:var(--red); font-weight:700}
-
-/* ---------- animated aurora backdrop ---------- */
-.aurora{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
-.blob{position:absolute; border-radius:50%; filter:blur(90px); opacity:.5; will-change:transform}
-.b1{width:640px;height:640px;background:radial-gradient(circle,#ff1616,transparent 62%);top:-260px;left:-180px;animation:drift1 26s var(--ease) infinite alternate}
-.b2{width:560px;height:560px;background:radial-gradient(circle,#8b7bff,transparent 62%);top:8%;right:-220px;animation:drift2 32s var(--ease) infinite alternate}
-.b3{width:600px;height:600px;background:radial-gradient(circle,#3ddad7,transparent 65%);bottom:-260px;left:22%;animation:drift3 29s var(--ease) infinite alternate;opacity:.32}
-@keyframes drift1{to{transform:translate3d(160px,120px,0) scale(1.18)}}
-@keyframes drift2{to{transform:translate3d(-150px,190px,0) scale(1.12)}}
-@keyframes drift3{to{transform:translate3d(120px,-140px,0) scale(1.22)}}
-.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-main,header,footer{position:relative;z-index:2}
-
-/* ---------- nav ---------- */
-nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(16px);
-  background:rgba(11,13,16,.7);border-bottom:1px solid transparent;transition:border-color .3s, background .3s}
-nav.stuck{border-bottom-color:var(--line);background:rgba(11,13,16,.9)}
-.navin{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
-.mark{border-radius:8px;display:block}
-.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em;font-size:17px;text-decoration:none}
-.eq{display:flex;align-items:flex-end;gap:2.5px;height:20px}
-.eq i{width:3.5px;background:linear-gradient(180deg,var(--red),var(--amber));border-radius:2px;animation:bounce 1.05s ease-in-out infinite}
-.eq i:nth-child(1){height:40%;animation-delay:-.5s}
-.eq i:nth-child(2){height:85%;animation-delay:-.25s}
-.eq i:nth-child(3){height:60%;animation-delay:-.75s}
-.eq i:nth-child(4){height:100%;animation-delay:0s}
-@keyframes bounce{0%,100%{transform:scaleY(.32)}50%{transform:scaleY(1)}}
-.navlinks{display:flex;gap:26px;margin-left:auto;align-items:center}
-.navlinks a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600;transition:color .2s}
-.navlinks a:hover{color:var(--ink)}
-.navlinks a.btn-p{color:#fff}
-.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:12px 22px;
-  font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s,background .25s;white-space:nowrap}
-.btn-p{background:linear-gradient(120deg,var(--red),#ff7a2f);color:#fff;box-shadow:0 10px 34px rgba(255,61,61,.32)}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(255,61,61,.45)}
-.btn-g{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.04)}
-.btn-g:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
-@media(max-width:820px){.navlinks a:not(.btn){display:none}}
-
-/* ---------- hero ---------- */
-.hero{padding:96px 0 70px;text-align:center}
-.hero h1{font-size:clamp(2.7rem,7.2vw,5.1rem);margin:26px 0 0}
-.shine{background:linear-gradient(100deg,#fff 12%,var(--red) 34%,var(--amber) 48%,#fff 66%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:shine 7s linear infinite}
-@keyframes shine{to{background-position:-220% 0}}
-.hero p.lede{max-width:660px;margin:26px auto 0;font-size:clamp(1.02rem,2.1vw,1.24rem);color:var(--muted)}
-.cta{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:38px}
-/* Google's own badge, as Google supplies it: the artwork carries its own clear space, so the image is
-   drawn at its natural shape and given no border, background or shadow of ours. */
-.play{display:block;line-height:0;margin:-12px -6px;border-radius:12px;transition:transform .25s var(--ease)}
-.play:hover{transform:translateY(-2px)}
-.play:focus-visible{outline:2px solid var(--red);outline-offset:-8px}
-.play img{display:block;width:194px;height:auto}
-.trust{margin-top:20px;font-size:13.5px;color:var(--dim)}
-.trust b{color:var(--muted);font-weight:600}
-
-/* ---------- floating cards ---------- */
-/* The stage is shorter than the phones on purpose — they oversail the hero's bottom padding and
-   meet the marquee. Its height tracks the middle phone's: a 240px capture is 534px tall, so 460
-   keeps a 74px overhang. */
-.stage{position:relative;height:460px;margin-top:56px;perspective:1400px}
-.card3d{position:absolute;width:150px;height:150px;border-radius:20px;overflow:hidden;
-  box-shadow:0 26px 70px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);
-  animation:float 7.5s ease-in-out infinite;will-change:transform}
-.card3d span{position:absolute;inset:0;display:grid;place-items:center;font-size:44px}
-/* Pushed out to the margins: three phones side by side are about 600px wide, so cards at 22% would
-   sit on top of them instead of floating beside them. */
-.c1{left:1%;top:28%;transform:rotate(-13deg);animation-delay:-.4s;background:linear-gradient(140deg,#ff1616,#7a0000)}
-.c2{left:8%;top:6%;transform:rotate(7deg);animation-delay:-2.1s;background:linear-gradient(140deg,#8b7bff,#2a1e6b)}
-.c3{right:8%;top:9%;transform:rotate(-6deg);animation-delay:-3.4s;background:linear-gradient(140deg,#3ddad7,#0d4f4d)}
-.c4{right:1%;top:31%;transform:rotate(12deg);animation-delay:-1.3s;background:linear-gradient(140deg,#ffb443,#7a4a00)}
-@keyframes float{0%,100%{translate:0 0}50%{translate:0 -26px}}
-/* Each step keeps the middle phone's 74px-ish overhang and drops whichever cards the phones have
-   run out of room for. */
-@media(max-width:1000px){.stage{height:416px}}
-@media(max-width:860px){.c1,.c4{display:none}.c2{left:2%}.c3{right:2%}.stage{height:372px}}
-@media(max-width:560px){.c2,.c3{display:none}.stage{height:304px}}
-
-/* hero shot */
-/* Three phone captures, the middle one in front: full-screen Android captures with an opaque
-   background, so each gets a phone's outline — rounded corners, a dark bezel and a box-shadow —
-   the same .phone look the carousel and the TV section's Add from phone use. */
-.shotcard{position:absolute;left:50%;top:0;translate:-50% 0;display:flex;align-items:flex-start;justify-content:center}
-.phone{display:block;flex:none;overflow:hidden;border-radius:26px;border:5px solid #05070a;background:#05070a;
-  box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.14)}
-/* aspect-ratio, not just height:auto — it reserves the height the capture will occupy before it
-   loads, so the hero does not reflow the marquee and everything below it on arrival. */
-.phone img{display:block;width:100%;height:auto;aspect-ratio:540/1202}
-.shotcard .phone{width:205px;margin-top:48px}
-.shotcard .mid{width:240px;margin-top:0;position:relative;z-index:2}
-.shotcard .l{margin-right:-28px;rotate:-5deg}
-.shotcard .r{margin-left:-28px;rotate:5deg}
-@media(max-width:1000px){.shotcard .mid{width:220px}.shotcard .phone:not(.mid){width:185px}}
-@media(max-width:860px){.shotcard .mid{width:200px}.shotcard .phone:not(.mid){width:165px}}
-@media(max-width:560px){.shotcard .mid{width:170px}.shotcard .phone:not(.mid){width:118px;margin-top:36px}
-  .shotcard .l{margin-right:-24px}.shotcard .r{margin-left:-24px}.phone{border-width:3px;border-radius:18px}}
-
-/* ---------- sections ---------- */
-section{padding:104px 0;position:relative}
-.head{text-align:center;max-width:720px;margin:0 auto 62px}
-.head h2{font-size:clamp(1.95rem,4.4vw,3.1rem);margin:20px 0 0}
-.head p{color:var(--muted);margin-top:18px;font-size:1.06rem}
-
-.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
-.f{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.017));
-  border:1px solid var(--line);border-radius:var(--r);padding:30px;position:relative;overflow:hidden;
-  transition:transform .4s var(--ease),border-color .4s,background .4s}
-.f:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.2);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
-.f::after{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,61,61,.13),transparent 42%);opacity:0;transition:opacity .4s;pointer-events:none}
-.f:hover::after{opacity:1}
-.ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:18px;
-  background:rgba(255,61,61,.13);border:1px solid rgba(255,61,61,.26)}
-.f h3{font-size:1.16rem;margin-bottom:10px}
-.f p{color:var(--muted);font-size:.945rem}
-.f ul{margin:15px 0 0;padding-left:18px;color:var(--dim);font-size:.885rem}
-.f li{margin:6px 0}
-.f li b{color:var(--muted);font-weight:600}
-/* ---------- screenshot carousel ---------- */
-/* Slide width lives in one variable, --shot. The screenshots are portrait phone captures, 540x1202,
-   so a 236px slide is 525px tall and four fit across a 1132px rail. */
-.shots{position:relative; --shot:236px}
-.rail{
-  position:relative; /* the offsetParent for the slides, so offsetLeft matches scrollLeft */
-  display:flex; gap:26px; overflow-x:auto; overscroll-behavior-x:contain;
-  /* proximity, not mandatory: the last page stops at the scroll limit, which is not a slide
-     boundary, and mandatory snapping drags it back to the previous one — taking the final
-     screenshots out of reach. Proximity tidies up a near miss and otherwise keeps out of the way. */
-  scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
-  padding:8px 0 4px; scrollbar-width:none;
-  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
-}
-.rail::-webkit-scrollbar{display:none}
-.rail:focus-visible{outline:2px solid rgba(255,61,61,.6);outline-offset:6px;border-radius:8px}
-/* start, not centre: with four slides visible at once the leading edge is what "current" means,
-   and centre-snap leaves the first and last slide unable to reach the position the dots imply. */
-/* margin-inline:0 kills the 40px a <figure> carries by default, which padded the 26px gap out to
-   106px and cost the rail a slide per page. */
-.shot{flex:none;width:var(--shot);scroll-snap-align:start;text-align:center;margin:16px 0}
-/* The same phone outline as the hero (.phone on the button), so the two read alike. A button rather
-   than a div: it opens the enlarged view, so it has to be reachable by keyboard and announce itself
-   as something to press. */
-.frame{width:100%;font:inherit;color:inherit;-webkit-appearance:none;cursor:zoom-in;padding:0;
-  transition:transform .45s var(--ease)}
-.frame:focus-visible{outline:2px solid var(--red);outline-offset:4px}
-.shot:hover .frame{transform:translateY(-7px)}
-.frame img{display:block;width:100%;height:auto}
-.shot figcaption{margin-top:18px;font-size:13.5px;font-weight:700;color:var(--ink);padding:0 4px;line-height:1.45}
-.shot figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
-.arw{position:absolute;top:50%;translate:0 calc(-50% - 30px);z-index:5;
-  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
-  font:400 26px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);
-  padding:0 0 3px;background:rgba(11,13,16,.74);border:1px solid var(--line);backdrop-filter:blur(10px);
-  transition:background .25s,border-color .25s,transform .25s var(--ease),opacity .25s}
-.arw:hover{background:rgba(255,61,61,.22);border-color:rgba(255,61,61,.55);transform:scale(1.08)}
-.arw:disabled{opacity:.22;pointer-events:none}
-.arw.prev{left:-6px}
-.arw.next{right:-6px}
-.dots{display:flex;gap:8px;justify-content:center;margin-top:32px}
-.dots button{width:8px;height:8px;padding:0;border:0;border-radius:100px;cursor:pointer;
-  background:rgba(255,255,255,.18);transition:width .35s var(--ease),background .35s}
-.dots button:hover{background:rgba(255,255,255,.34)}
-.dots button.on{width:26px;background:linear-gradient(90deg,var(--red),var(--amber))}
-@media(max-width:640px){
-  .shots{--shot:62vw}
-  .rail{gap:18px}
-  .arw{display:none}
-}
-
-/* ---------- enlarged screenshot ---------- */
-/* Kept in the document rather than created on demand, and hidden with visibility so it can be
-   transitioned — and so nothing inside it is focusable while it is closed. */
-.lb{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:26px;
-  background:rgba(5,7,9,.88);backdrop-filter:blur(16px);
-  opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
-.lb.on{opacity:1;visibility:visible}
-.lbfig{margin:0;display:grid;justify-items:center;gap:18px;max-height:100%}
-.lbshell{padding:0;
-  transform:scale(.94);transition:transform .35s var(--ease);line-height:0}
-.lb.on .lbshell{transform:none}
-/* Both maxima with auto on both axes, so the picture is fitted rather than stretched: a fixed
-   height plus a max-width would squash it on a narrow screen. */
-.lbshell img{display:block;max-height:80vh;max-width:92vw;width:auto;height:auto;
-  border-radius:22px;border:5px solid #05070a;box-shadow:0 30px 60px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.14)}
-.lbfig figcaption{text-align:center;font-size:14px;font-weight:700;color:var(--ink);max-width:min(90vw,420px)}
-.lbfig figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
-.lbfig figcaption .lbnum{margin-top:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
-.lbbtn{position:absolute;z-index:2;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
-  cursor:pointer;color:var(--ink);background:rgba(255,255,255,.07);border:1px solid var(--line);
-  font:400 26px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:0 0 3px;
-  transition:background .25s,border-color .25s,transform .25s var(--ease)}
-.lbbtn:hover{background:rgba(255,61,61,.24);border-color:rgba(255,61,61,.55);transform:scale(1.08)}
-.lbbtn:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.lbx{top:20px;right:22px;font-size:22px;padding:0}
-.lbprev{left:20px;top:50%;translate:0 -50%}
-.lbnext{right:20px;top:50%;translate:0 -50%}
-@media(max-width:640px){
-  .lb{padding:16px}
-  .lbshell img{max-height:70vh;max-width:82vw;border-width:3px;border-radius:16px}
-  .lbbtn{width:40px;height:40px;font-size:22px}
-  .lbprev{left:6px}
-  .lbnext{right:6px}
-}
-
-/* alternating detail rows */
-.row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:104px}
-.row:last-child{margin-bottom:0}
-.row.rev .txt{order:2}
-/* min-width:0 on both columns: a grid item's minimum is its content's by default, so the install
-   command's unwrapped line widened its column past a phone's screen and pushed the whole row off it. */
-.row>*{min-width:0}
-.row h3{font-size:clamp(1.5rem,3.1vw,2.15rem);margin:18px 0 16px}
-.row p{color:var(--muted);font-size:1.03rem}
-.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
-.chip{font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:100px;border:1px solid var(--line);
-  color:var(--muted);background:rgba(255,255,255,.03);transition:.25s}
-.chip:hover{color:var(--ink);border-color:rgba(255,61,61,.5);transform:translateY(-2px)}
-.visual{border:1px solid var(--line);border-radius:22px;padding:26px;min-height:290px;
-  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.012));position:relative;overflow:hidden}
-@media(max-width:900px){.row{grid-template-columns:1fr;gap:30px;margin-bottom:70px}.row.rev .txt{order:0}}
-
-/* server list mock */
-.srv{display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.045);
-  border:1px solid var(--line);margin-bottom:10px;transition:.35s var(--ease)}
-.srv:hover{transform:translateX(7px);border-color:rgba(255,61,61,.42)}
-.srv .dot{width:9px;height:9px;border-radius:50%;background:#39d98a;box-shadow:0 0 0 4px rgba(57,217,138,.16);flex:none}
-.srv b{font-size:14px;display:block}
-.srv small{color:var(--dim);font-size:11.5px}
-.term{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:rgba(0,0,0,.35);
-  border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin:18px 0 6px;overflow-x:auto;white-space:nowrap}
-.term b{color:var(--red);font-weight:700;margin-right:8px}
-.steps{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.steps li{display:flex;gap:13px;align-items:flex-start;padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.045);border:1px solid var(--line)}
-.steps .n{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;
-  background:linear-gradient(120deg,var(--red),#ff7a2f);color:#fff}
-.steps b{display:block;font-size:14px}
-.steps small{color:var(--dim);font-size:12px}
-.srv .tag{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
-
-/* cast animation */
-.cast{display:grid;place-items:center;height:100%;gap:10px}
-.wave{position:relative;width:120px;height:120px;display:grid;place-items:center}
-.wave span{position:absolute;border:2px solid rgba(255,61,61,.55);border-radius:50%;width:100%;height:100%;
-  animation:ripple 2.6s ease-out infinite}
-.wave span:nth-child(2){animation-delay:.85s}
-.wave span:nth-child(3){animation-delay:1.7s}
-@keyframes ripple{from{transform:scale(.32);opacity:1}to{transform:scale(1.35);opacity:0}}
-.wave svg{width:44px;height:44px;fill:var(--ink);z-index:2}
-
-/* marquee */
-.marq{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;
-  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.track{display:flex;gap:52px;width:max-content;animation:slide 34s linear infinite}
-.track span{font-size:15px;font-weight:700;color:var(--dim);white-space:nowrap;letter-spacing:.02em}
-@keyframes slide{to{transform:translateX(-50%)}}
-
-/* stats */
-.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;text-align:center}
-.num{border:1px solid var(--line);border-radius:var(--r);padding:32px 18px;background:rgba(255,255,255,.028)}
-.num b{display:block;font-size:2.5rem;font-weight:800;letter-spacing:-.04em;
-  background:linear-gradient(120deg,var(--red),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
-.num small{color:var(--muted);font-size:.88rem}
-
-/* download */
-.dl{border:1px solid var(--line);border-radius:26px;padding:60px 34px;text-align:center;
-  background:radial-gradient(900px circle at 50% 0,rgba(255,61,61,.16),transparent 62%),rgba(255,255,255,.028)}
-
-footer{border-top:1px solid var(--line);padding:52px 0;color:var(--dim);font-size:14px}
-.fin{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-footer a{color:var(--muted);text-decoration:none;margin-left:22px}
-.tm{width:100%;font-size:12px;color:var(--dim)}
-footer a:hover{color:var(--ink)}
-
-/* ---------- TV ---------- */
-/* The TV captures are full-screen 16:9 frames with an opaque background, unlike the cut-out phone
-   renders, so here the page does draw the set: a thin bezel and a stand, nothing more. */
-.tvset{position:relative;margin:0 auto;max-width:980px}
-.tvscreen{border-radius:14px;padding:8px;background:#05070a;border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.6) inset}
-.tvscreen img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:7px}
-.tvset .tvscreen{position:relative}
-.tvset .tvscreen::after{content:"";position:absolute;left:37%;right:37%;top:100%;height:9px;border-radius:0 0 10px 10px;
-  background:linear-gradient(180deg,#1b2129,#0d1116)}
-.tvset figcaption,.tvthumb figcaption{margin-top:24px;text-align:center;font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.45}
-.tvset figcaption span,.tvthumb figcaption span{display:block;margin-top:5px;font-size:12.5px;font-weight:500;color:var(--dim)}
-.tvpair{position:relative;padding-right:13%}
-.tvpair .tvscreen{padding:6px}
-/* The phone half of Add from phone, standing in front of the TV's corner the way a phone is held up
-   to it. A real capture of the phone's checklist, so it gets a phone's rounded corners and no more. */
-.tvpair .phone{position:absolute;right:0;bottom:-22px;width:20%;border-radius:18px}
-.tvpair .phone img{aspect-ratio:539/1200}
-.visual.tvvis{padding:30px 26px 40px;display:grid;align-items:center}
-.tvthumbs{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:70px}
-.tvthumb{margin:0}
-.tvthumb .tvscreen{padding:5px;border-radius:11px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.tvthumb .tvscreen img{border-radius:6px}
-.plats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:860px;margin:34px auto 0;text-align:left}
-.plat{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:16px;padding:14px 16px;
-  background:rgba(0,0,0,.28);text-decoration:none;color:var(--ink);transition:border-color .25s,transform .25s var(--ease)}
-a.plat:hover{border-color:rgba(255,61,61,.5);transform:translateY(-2px)}
-.plat .pi{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px;
-  background:rgba(255,61,61,.13);border:1px solid rgba(255,61,61,.26)}
-.plat.later{opacity:.72}
-.plat.later .pi{background:rgba(255,255,255,.05);border-color:var(--line)}
-.plat b{display:block;font-size:14.5px;line-height:1.25}
-.plat small{display:block;color:var(--dim);font-size:12px}
-@media(max-width:560px){.tvpair .phone{border-width:3px;border-radius:12px}}
-
-/* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rv{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.mute{color:var(--mute)}
+.small{font-size:15px}
+.lbl{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:24px;font-weight:600;font-size:16px;white-space:nowrap}
+.btn.p{background:var(--accent);color:var(--on-accent)}.btn.p:hover{background:var(--accent2);color:var(--on-accent)}
+.btn.o{border:1px solid var(--dim);color:var(--ink)}.btn.o:hover{background:var(--line);color:var(--ink)}
+.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;font-size:12px;font-weight:600;white-space:nowrap}
+.on{background:var(--chip);color:var(--chip-ink)}.way{background:var(--way);color:var(--way-ink)}.self{background:var(--self);color:var(--self-ink)}
+.card{background:var(--card);border-radius:24px;padding:24px}
+.pill{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:16px;background:var(--line);color:var(--ink);font-size:14px;font-weight:500}
+.cmd{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--edge);border-radius:14px;padding:12px 14px;max-width:640px}
+.cmd code{flex:1;min-width:0;font:15px var(--mono);color:var(--ink);overflow-x:auto;white-space:nowrap}
+.cmd button{flex:none;height:36px;padding:0 14px;border-radius:18px;border:0;background:var(--chip);color:var(--chip-ink);font:600 14px var(--sans);cursor:pointer}
+.play{display:block;line-height:0;margin:-10px -6px}
+.top{position:sticky;top:0;z-index:5;background:rgba(15,14,19,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px 28px;min-height:64px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:20px;font-weight:700}
+.brand:hover{color:var(--ink)}
+.brand img{border-radius:8px}
+.nav{display:flex;align-items:center;gap:4px 22px;margin-left:auto;font-size:15px;font-weight:500}
+.nav a{color:var(--mute)}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.nav .btn,.nav .btn[aria-current]{height:40px;padding:0 18px;font-size:15px;color:var(--on-accent)}
+.sec{padding:80px 0}
+.head{display:flex;flex-direction:column;gap:14px;max-width:760px}
+.head h2{font-size:clamp(30px,4vw,44px);line-height:1.08}
+footer{border-top:1px solid var(--line);padding:40px 0 56px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-start}
+footer .who{flex:1 1 260px;display:flex;flex-direction:column;gap:10px}
+footer nav{display:flex;flex-direction:column;gap:8px;font-size:15px}
+footer .lbl{font-size:12px}
+.tm{font-size:13px;color:var(--mute)}
+@media (max-width:720px){.wrap{padding:0 20px}.nav .opt{display:none}.sec{padding:56px 0}}
+.hero{background:radial-gradient(ellipse 55% 70% at 78% 30%,rgba(120,70,200,.28),rgba(15,14,19,0) 70%)}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding-top:80px;padding-bottom:80px}
+.hero .text{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.hero h1{font-size:clamp(40px,6vw,64px);line-height:1.03}
+.hero .lead{font-size:20px;max-width:560px}
+.hero .shots{flex:1 1 420px;min-width:0;display:flex;justify-content:center;align-items:flex-end;gap:20px}
+.shot{display:block;border-radius:28px;border:6px solid var(--line);background:#1D1B20;height:auto}
+.places{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.places a{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:20px;color:var(--ink)}
+.places a:hover{background:var(--card2);color:var(--ink)}
+.places strong{font-size:19px;font-weight:600}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.grid4 .card{display:flex;flex-direction:column;gap:14px}
+.grid4 img{width:100%;height:300px;object-fit:cover;object-position:top;border-radius:16px}
+.grid4 h3{font-size:22px;font-weight:600}
+.grid4 p{font-size:15px}
+.split{display:flex;flex-wrap:wrap;align-items:center;gap:48px}
+.split .text{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.two .card{display:flex;flex-direction:column;gap:14px;padding:28px}
+.two h3{font-size:24px;font-weight:600}
+.two .btn,.two .chip{align-self:flex-start}
+.also{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 32px}
+.also h3{font-size:19px;font-weight:600;margin-bottom:6px}
+@media (max-width:720px){.hero .wrap{padding-top:44px;padding-bottom:44px;gap:32px}.hero .lead{font-size:18px}
+.hero .shots .shot:first-child{display:none}.places{grid-template-columns:repeat(2,minmax(0,1fr))}#arr-stack .card{padding:24px !important}.grid4 img{height:260px}.two{grid-template-columns:1fr}.two .btn{white-space:normal;height:auto;min-height:48px;padding:10px 22px}}
 </style>
 </head>
 <body>
 
-<div class="aurora"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
-<div class="grain"></div>
-
-<nav id="nav"><div class="navin">
-  <a class="brand" href="#top">
-    <img class="mark" src="/icons/mediagg.png" width="28" height="28" alt=""> Mediagg
-  </a>
-  <div class="navlinks">
-    <a href="#features">Features</a>
-    <a href="#screens">Screens</a>
-    <a href="#tv">TV</a>
-    <a href="#servers">Your server</a>
-    <a href="#arr-stack">Mediagg Server</a>
-    <a href="#cast">Casting</a>
-    <a href="#discover">Discover</a>
-    <a href="/m3ugoat">m3ugoat</a>
-    <a href="/documentation">Docs</a>
-    <a class="btn btn-p" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener">Google Play</a>
-  </div>
-</div></nav>
-
-<header class="hero wrap" id="top">
-  <span class="eyebrow rv"><b>●</b> Free · On Google Play for Android phone and TV</span>
-  <h1 class="rv">Your media library,<br><span class="shine">on every screen.</span></h1>
-  <p class="lede rv">Mediagg plays music, podcasts and video from your device, your own media servers and podcast feeds — on your phone and on your TV — and casts to Chromecast and DLNA devices.</p>
-  <div class="cta rv">
-    <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener"><img src="/icons/google-play-badge.png" width="194" height="75" alt="Get it on Google Play"></a>
-    <a class="btn btn-g" href="#tv">On your TV</a>
-  </div>
-  <p class="trust rv"><b>Phone and TV</b> · <b>Offline playback</b> · <b>Self-hosted servers</b> · <b>Chromecast and DLNA</b></p>
-
-  <div class="stage rv">
-    <div class="card3d c1"><span>🎧</span></div>
-    <div class="card3d c2"><span>🎙️</span></div>
-    <div class="card3d c3"><span>📺</span></div>
-    <div class="card3d c4"><span>💿</span></div>
-    <!-- Three current phone captures from the store set (mediagg_store_screenshots/2026-10-14/phone),
-         the same files as carousel slides 4, 2 and 8. There is no current capture of the Home tab,
-         so the middle phone is the Media servers screen on its Activity tab. Eager, not lazy like
-         the carousel: these are in the first screenful. -->
-    <div class="shotcard">
-      <span class="phone l"><img src="/screens/04-film.webp" width="540" height="1202" decoding="async" alt="Mediagg on an Android phone: the details page for the short film Sintel."></span>
-      <span class="phone mid"><img src="/screens/02-server-activity.webp" width="540" height="1202" decoding="async"
-           alt="Mediagg on an Android phone, Media servers on its Activity tab: a Mix row with Audiobook mix and Track mix, Continue watching with Sintel and an episode of Bonanza, Continue listening with the audiobooks Pride and Prejudice, The Adventures of Sherlock Holmes and Dracula, and Latest films below, over a bottom bar of Home, Library, Search, Mediarr and Settings."></span>
-      <span class="phone r"><img src="/screens/08-music-player.webp" width="540" height="1202" decoding="async" alt="Mediagg on an Android phone: the music player playing Spring Mvt 1 Allegro from The Four Seasons."></span>
-    </div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/icons/mediagg.png" alt="" width="32" height="32">Mediagg</a>
+    <nav class="nav" aria-label="Site">
+      <a class="opt" href="#plays">What it plays</a>
+      <a class="opt" href="#tv">On your TV</a>
+      <a class="opt" href="#browser">In your browser</a>
+      <a class="opt" href="/server/">Mediagg Server</a>
+      <a class="opt" href="/documentation">Documentation</a>
+      <a class="btn p" href="/get/">Get Mediagg</a>
+    </nav>
   </div>
 </header>
 
-<div class="marq"><div class="track" id="track"></div></div>
-
-<main>
-
-<!-- FEATURES -->
-<section id="features"><div class="wrap">
-  <div class="head rv">
-    <span class="eyebrow">Features</span>
-    <h2>Built for your own media collection</h2>
-    <p>Mediagg plays the media you own, the podcasts you follow and the content on the servers you run. No subscription is required.</p>
-  </div>
-
-  <div class="grid">
-    <div class="f rv"><div class="ic">🎵</div><h3>Local media</h3>
-      <p>Music, video and files on your device, organised into separate views.</p>
-      <ul>
-        <li><b>Songs</b> — sort by name, date added or length</li>
-        <li><b>Albums</b>, artists, genres and years, built from your file tags</li>
-        <li><b>Videos</b> — full-screen video player</li>
-        <li><b>Filesystem</b> — file browser with support for multiple storage volumes</li>
-      </ul>
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="text">
+      <div class="lbl">Android phone and TV · your browser</div>
+      <h1>Your media, from your own servers, on every screen.</h1>
+      <p class="lead mute">Mediagg plays music, podcasts, films, shows and audiobooks from your device, your media servers and the podcasts you follow. On your phone, your TV and in your browser.</p>
+      <div id="download" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px">
+        <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg"><img src="/icons/google-play-badge.png" alt="Get it on Google Play" width="194" height="75"></a>
+        <a class="btn o" href="/web/">Open Mediagg in your browser</a>
+      </div>
+      <p class="small mute">iPhone and Apple TV are on the way. No server yet? <a href="/server/">Set one up with Mediagg Server</a>.</p>
     </div>
-
-    <div class="f rv"><div class="ic">📚</div><h3>Playlists</h3>
-      <p>Create playlists in the app or import existing ones.</p>
-      <ul>
-        <li>Create, rename, pin and add cover images</li>
-        <li><b>Import M3U</b> playlists from device storage</li>
-        <li>Add items to a playlist from any screen</li>
-        <li>Play or shuffle any list</li>
-      </ul>
-    </div>
-
-    <div class="f rv"><div class="ic">🎙️</div><h3>Podcasts</h3>
-      <p>A complete podcast player with subscriptions, downloads and sync.</p>
-      <ul>
-        <li>Subscriptions, queue, inbox and downloads</li>
-        <li><b>Chapters</b> and <b>transcripts</b> that follow playback</li>
-        <li>Automatic downloads that free up space as needed</li>
-        <li><b>OPML import</b> and sync with gpodder.net or Nextcloud</li>
-      </ul>
-    </div>
-
-    <div class="f rv"><div class="ic">🎬</div><h3>Video</h3>
-      <p>Play films and shows from your device and your media servers.</p>
-      <ul>
-        <li>Local video playback</li>
-        <li><b>Films and shows</b> from Jellyfin, Plex and Emby</li>
-        <li><b>Continue watching</b> resumes where you left off</li>
-        <li>Cast to your TV</li>
-      </ul>
-    </div>
-
-    <div class="f rv"><div class="ic">🎚️</div><h3>Playback controls</h3>
-      <p>Control how your media plays.</p>
-      <ul>
-        <li>Variable playback speed and <b>sleep timer</b></li>
-        <li><b>Synchronised lyrics</b> from your files or LrcLib</li>
-        <li>Queue with drag-to-reorder, search and sorting</li>
-        <li>Lock-screen and notification controls</li>
-      </ul>
-    </div>
-
-    <div class="f rv"><div class="ic">🎨</div><h3>Customisation</h3>
-      <p>Adjust the layout to suit how you use the app.</p>
-      <ul>
-        <li>Reorder the home-screen sections</li>
-        <li>Choose the tabs in the bottom bar</li>
-        <li>Grid or list view, saved per screen</li>
-        <li>Light, dark and true-black themes, with colours taken from the artwork</li>
-      </ul>
+    <div class="shots" id="screens">
+      <img class="shot" src="/screens/02-server-activity.webp" width="540" height="1202" alt="A server's activity: mixes, continue watching and continue listening" style="width:230px;margin-bottom:48px">
+      <img class="shot" src="/screens/07-album.webp" width="540" height="1202" alt="An album: play, shuffle or pick a track" style="width:250px">
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- SCREENSHOTS -->
-<section id="screens"><div class="wrap">
-  <div class="head rv">
-    <span class="eyebrow">Screenshots</span>
-    <h2>The app, screen by screen</h2>
-    <p>Captured from the current Android app. Use the arrows or swipe to browse, and select a screenshot to view it at full size.</p>
+<section aria-label="Where Mediagg runs" style="padding:8px 0 64px">
+  <div class="wrap places">
+    <a class="card" href="/get/"><span class="chip on">Google Play</span><strong>Android phone and tablet</strong></a>
+    <a class="card" href="/get/"><span class="chip on">Google Play</span><strong>Android TV</strong></a>
+    <a class="card" href="/web/"><span class="chip on">mediagg.app/web</span><strong>Your browser</strong></a>
+    <a class="card" href="/server/"><span class="chip self">macOS · Linux</span><strong>Mediagg Server</strong></a>
+    <a class="card" href="/get/"><span class="chip way">On the way</span><strong>iPhone and iPad</strong></a>
+    <a class="card" href="/get/"><span class="chip way">On the way</span><strong>Apple TV</strong></a>
   </div>
+</section>
 
-  <!-- SCREENSHOT SET. Clean captures of the current Android app, from the store set in
-       mediagg_store_screenshots/2026-10-14/phone (1344x2992, no marketing text), each a full screen
-       with its own opaque background, so .frame draws a phone outline (.phone) round it. The bottom
-       bar is Home, Library, Search, Mediarr and Settings. To change the set, drop .webp files into
-       /screens at 540x1202 with full-size twins under the same names in /screens/large, then add or
-       remove <figure class="shot"> blocks — the carousel counts them itself, so nothing else needs
-       touching. -->
-  <div class="shots rv" role="group" aria-roledescription="carousel" aria-label="Screenshots of Mediagg">
-    <button class="arw prev" id="shotPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
-    <div class="rail" id="rail" tabindex="0">
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/01-add-server.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: Choose a provider over the Media servers screen: Subsonic for Navidrome, Airsonic, Gonic and other Subsonic servers, Jellyfin, Audiobookshelf, Plex, Emby, Kodi for a Kodi 19 or later library, WebDAV for a folder on a NAS, Nextcloud or any WebDAV share, and SMB for a shared folder on a NAS, a Windows PC or a Samba server &mdash; then, under Mediarr, Sonarr, Radarr, Lidarr, Readarr, Prowlarr, Bazarr and Seerr, each with a line saying what it is for."></button>
-        <figcaption>Add a server<span>Media servers, shares and the Mediarr services</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/02-server-activity.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The Media servers screen on its Activity tab, with Library and Mediarr tabs beside it: a Mix row offering Audiobook mix and Track mix, Continue watching with Sintel from 2010 and S1 E20 The Fear Merchants from Bonanza, Continue listening with Pride and Prejudice by Jane Austen, The Adventures of Sherlock Holmes by Arthur Conan Doyle and Dracula by Bram Stoker, and Latest films starting below."></button>
-        <figcaption>Server activity<span>Mixes, continue watching and continue listening</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/03-latest.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: Further down the Activity tab: the three audiobooks part-listened, then Latest films &mdash; Agent 327: Operation Barbershop from 2017, Cosmos Laundromat from 2015, Night of the Living Dead from 1968 &mdash; and Latest shows with The Beverly Hillbillies from 1962 and Bonanza from 1959, with Next up beginning underneath."></button>
-        <figcaption>Latest films and shows<span>What is new on every server</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/04-film.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The details page for Sintel: its picture across the top, the poster, 2010, 14 minutes, rated PG and 7.3, a progress bar and a Resume button, a Manage on Radarr button, the synopsis with Show more, the genres Animation and Fantasy, director Colin Levy, writer Esther Wouda, the studio Blender Foundation, and a More like this row."></button>
-        <figcaption>Film details<span>Resume, synopsis, credits and more like this</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/05-server-library.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The Media servers screen on its Library tab: under Music, Albums, Compilations, Artists, Album artists and Genres; under Watch, Films and Shows; under Listen, two more tiles; with the audiobook Dracula, Chapter 11, in the mini player above the bottom bar."></button>
-        <figcaption>Server library<span>Music, films, shows and audiobooks by kind</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/06-albums.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The Albums screen in a three-column grid sorted by Default, 11 albums, each with its cover: Audionautix: Acoustic&hellip; by Jason Shaw, Break North by Deadman &amp; Digi Hartatak, Classical Sampler by Kevin MacLeod, Cosmic Lullabies by Doc &amp; Lena Selyanina, Elevator Music by Digi Hartatak, The Four Seasons by John Harrison, Geo-Sync Deluxe by BLUnderwood, Grab Bag by Jahzzar and Nicolas Falcon."></button>
-        <figcaption>Albums<span>Your server&rsquo;s albums, with artwork</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/07-album.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The album The Four Seasons (Vivaldi) by John Harrison with the Wichita State University Chamber Players: its cover, 12 tracks and 40 minutes, Play and Shuffle buttons, and the track list from Spring Mvt 1 Allegro at 3:35, Spring Mvt 2 Largo and Spring Mvt 3 Allegro pastorale to Summer Mvt 1 Allegro non molto."></button>
-        <figcaption>Album<span>Play, shuffle or pick a track</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/08-music-player.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The full player playing Spring Mvt 1 Allegro from The Four Seasons, the screen tinted to match the cover: a Lyrics button, the file details MP3 at 177 kb/s and 48 kHz, a scrubber at 1:01 of 3:35, transport controls, and buttons for 1x speed, Sleep and More."></button>
-        <figcaption>Player<span>Colours adapt to the artwork</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/09-audiobook.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The audiobook Dracula by Bram Stoker from LibriVox: 27 chapters, 16 hours 31 minutes, Resume and Download buttons, and its chapter list &mdash; Chapter 01 at 36 minutes from 0:00, Chapter 02 from 36:57, Chapter 03 from 1:06:54 and on."></button>
-        <figcaption>Audiobooks<span>Every chapter, with where it starts</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/10-audiobook-player.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The player on Chapter 11 of Dracula by Bram Stoker, MP3 at 64 kb/s and 24 kHz, with Chapters and Bookmarks buttons above the title, a scrubber marked in chapters at 5:57:00 of 16:31:20, transport controls, and 1x, Sleep and More."></button>
-        <figcaption>Audiobook player<span>Chapters and bookmarks in a long recording</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/11-video.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The player with the animated short Caminandes: Llamigos from 2016 playing in it, AAC at 112 kb/s and 44.1 kHz, a progress bar at 0:44 of 2:30, transport controls, and buttons for 1x speed, Sleep and More, with full-screen and cast buttons at the top."></button>
-        <figcaption>Video playback<span>The same player, with casting to your TV</span></figcaption>
-      </figure>
-
-      <figure class="shot">
-        <button class="frame phone" type="button"><img src="/screens/12-podcasts.webp" width="540" height="1202" loading="lazy" decoding="async"
-          alt="Mediagg on an Android phone in the dark theme: The Subscriptions screen on its Podcasts tab, with Episodes, New and Providers tabs beside it: a grid of podcast artwork for Escape Pod, Hacker Public Radio, Late Night Linux, the LibriVox Community Podcast, PseudoPod and the Software Freedom Podcast."></button>
-        <figcaption>Podcasts<span>Subscriptions, episodes and what is new</span></figcaption>
-      </figure>
-
-    </div>
-    <button class="arw next" id="shotNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
-    <div class="dots" id="shotDots"></div>
-  </div>
-</div></section>
-
-<!-- TV. The Android TV and Apple TV apps. The captures are Android TV's own, full-screen at 3840x2160,
-     scaled to 1600x900 WebP in /screens/tv — unlike the phone renders they are opaque 16:9 frames,
-     so .tvscreen draws a set around them. The Apple TV app is SwiftUI over the same shared state and
-     carries the same features (every TV change ships on both), but it is not on the App Store yet,
-     so nothing here offers it for install. -->
-<section id="tv"><div class="wrap">
-  <div class="head rv">
-    <span class="eyebrow"><b>●</b> Android TV · Apple TV</span>
-    <h2>On your TV, too</h2>
-    <p>Mediagg has a TV app for Android TV and for Apple TV, built from the same code as the phone app and made for the remote. Android TV is on Google Play now, in the same listing as the phone app. Apple TV is on the way.</p>
-  </div>
-
-  <figure class="tvset rv">
-    <div class="tvscreen"><img src="/screens/tv/01-media-servers.webp" width="1600" height="900" loading="lazy" decoding="async"
-      alt="Mediagg on Android TV: the Media servers tab selected in a bar that also holds Subscriptions, Playlists, Favourites, Downloads and History, with buttons for Showing: All servers, Mediarr and Servers and services. Below, a Library row of Albums, Compilations, Artists, Album artists, Genres, Films, Shows and Internet radio, and a Continue watching row of wide pictures: Sintel from 2010, S1 E20 The Fear Merchants from Bonanza, Tears of Steel from 2012 and His Girl Friday."></div>
-    <figcaption>Media servers on Android TV<span>Continue watching from every server you have added</span></figcaption>
-  </figure>
-
-  <div class="row" style="margin-top:104px">
-    <div class="txt rv">
-      <span class="eyebrow">Add from phone</span>
-      <h3>Set up the TV from your phone</h3>
-      <p>No typing addresses and passwords with a remote. On the TV, open Add and choose Add from phone, and it shows a QR code. Point your phone&rsquo;s camera at it: Mediagg opens on the phone with everything it has set up. Tick what the TV should take and press Send to the TV. The TV adds each one and says how each went.</p>
-      <p style="margin-top:14px">Where a server allows it, the TV gets a sign-in of its own, approved from the phone, rather than your password. Works on Android TV and Apple TV, from an Android phone or an iPhone.</p>
-      <div class="chips">
-        <span class="chip">Media servers</span><span class="chip">Mediarr services</span><span class="chip">Sync accounts</span>
-        <span class="chip">Providers</span><span class="chip">Library</span><span class="chip">Settings</span>
+<section class="sec" id="plays" style="padding-top:40px">
+  <div class="wrap" id="features" style="display:flex;flex-direction:column;gap:40px">
+    <div class="head" id="servers">
+      <div class="lbl">What it plays</div>
+      <h2>One library for what you own, run and follow.</h2>
+      <p class="mute">Sign in to several servers at once and browse them together.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span class="pill">Subsonic · Navidrome</span><span class="pill">Jellyfin</span><span class="pill">Plex</span><span class="pill">Emby</span><span class="pill">Audiobookshelf</span><span class="pill">Kodi</span><span class="pill">WebDAV</span><span class="pill">SMB</span><span class="pill">Podcast feeds</span><span class="pill">Station playlists</span><span class="pill">Your device</span>
       </div>
     </div>
-    <div class="visual tvvis rv">
-      <div class="tvpair">
-        <div class="tvscreen"><img src="/screens/tv/add-from-phone-code.webp" width="1600" height="900" loading="lazy" decoding="async"
-          alt="The Add from phone screen on Android TV: a phone icon, the heading Add from phone, the words Point your phone&rsquo;s camera at this code. Mediagg opens on the phone with everything it has set up: tick what this TV should take. Beside them a QR code, with a Back button under it."></div>
-        <div class="phone"><img src="/screens/tv/add-from-phone-checklist.webp" width="539" height="1200" loading="lazy" decoding="async"
-          alt="The phone after scanning the code: a sheet headed Add to Living room TV saying Tick what Living room TV should take. Each one is checked by Living room TV before it is kept. Under Media servers, the Jellyfin demo server, marked Already on the TV, The TV gets a sign-in of its own, from this phone. Under Library, Replace this TV&rsquo;s whole library. Under Settings, Settings &mdash; theme, colours, the Home layout and how mixes are shown &mdash; ticked. Cancel and Send to the TV buttons at the foot."></div>
+    <div class="grid4">
+      <article class="card"><img src="/screens/04-film.webp" width="540" height="1202" alt="A film's details" loading="lazy"><h3>Films and shows</h3><p class="mute">From Jellyfin, Plex and Emby. Continue watching picks up where you stopped.</p></article>
+      <article class="card"><img src="/screens/08-music-player.webp" width="540" height="1202" alt="The music player" loading="lazy"><h3>Music</h3><p class="mute">Albums, artists and mixes, synced lyrics, and favourites saved on your server too.</p></article>
+      <article class="card"><img src="/screens/09-audiobook.webp" width="540" height="1202" alt="An audiobook's chapters" loading="lazy"><h3>Audiobooks</h3><p class="mute">Every chapter with where it starts, bookmarks and a sleep timer.</p></article>
+      <article class="card" id="discover"><img src="/screens/12-podcasts.webp" width="540" height="1202" alt="Podcast subscriptions" loading="lazy"><h3>Podcasts</h3><p class="mute">Subscriptions, downloads, chapters and transcripts. OPML import, and sync with gpodder.net or Nextcloud.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tv" style="background:var(--bg2)">
+  <div class="wrap split">
+    <div class="text">
+      <div class="lbl">Android TV · Apple TV</div>
+      <h2 style="font-size:clamp(30px,4vw,44px);line-height:1.08">Made for the remote.</h2>
+      <p class="mute">Android TV is on Google Play now, in the same listing as the phone app. Apple TV is on the way.</p>
+      <p class="mute"><strong style="color:var(--ink)">Add from phone.</strong> The TV shows a QR code. Scan it with your phone, tick what the TV should have, and press Send to the TV. No typing addresses and passwords with a remote.</p>
+    </div>
+    <div style="flex:2 1 560px;min-width:0">
+      <img src="/screens/tv/02-latest-films.webp" width="1600" height="900" alt="Latest films on Android TV" loading="lazy" style="display:block;width:100%;height:auto;border-radius:20px;border:1px solid var(--line)">
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="browser">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+    <div class="head">
+      <div class="lbl">In your browser</div>
+      <h2>Nothing to install. Open it and sign in.</h2>
+      <p class="mute">The same Mediagg in a browser tab. Your sign-ins stay in that browser.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <span class="chip on">mediagg.app/web</span>
+        <h3>From any browser</h3>
+        <p class="small mute">Jellyfin and Navidrome (and other Subsonic servers) on an https:// address. Browsers block web pages from the other kinds of server; the app reaches them all.</p>
+        <a class="btn p" href="/web/">Open Mediagg in your browser</a>
+      </div>
+      <div class="card">
+        <span class="chip self">On your Mediagg Server</span>
+        <h3>From your own server</h3>
+        <p class="small mute">Every service the server set up, already signed in. Open it from the server's Home with Stream in Mediagg Web App. Podcasts and pictures a browser blocks come through the server.</p>
+        <a class="btn o" href="/server/">About Mediagg Server</a>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="grid" style="margin-top:104px">
-    <div class="f rv"><div class="ic">▶️</div><h3>Watch next</h3>
-      <p>Home opens on Watch next: the show you watched last with its next episode, then what you left part-way and what is new on your servers. When it leads Home, the focused film&rsquo;s picture fills the top of the screen. The phone apps open on it too.</p>
-    </div>
-    <div class="f rv"><div class="ic">📀</div><h3>Coming to digital &amp; disc</h3>
-      <p>Films coming to digital and to disc, week by week — last week, this week and the weeks ahead — read through your Overseerr or Jellyseerr. A film nobody has yet opens its request page.</p>
-    </div>
-    <div class="f rv"><div class="ic">📨</div><h3>Requests</h3>
-      <p>Every request in the house on the TV, filtered by Pending approval, Processing, Available, Declined or Cancelled, and a film or series asked for from the sofa — through the same Seerr your phone uses.</p>
-    </div>
-  </div>
-
-  <div class="tvthumbs">
-    <figure class="tvthumb rv">
-      <div class="tvscreen"><img src="/screens/tv/02-latest-films.webp" width="1600" height="900" loading="lazy" decoding="async"
-        alt="Android TV, further down the Media servers page: audiobooks part-listened &mdash; Dracula by Bram Stoker, Pride and Prejudice by Jane Austen, The Adventures of Sherlock Holmes by Arthur Conan Doyle &mdash; then a Latest films row of posters with Agent 327 focused, followed by Cosmos Laundromat, Night of the Living Dead, Nosferatu, The General, His Girl Friday and Tears of Steel, and a Latest shows row beginning."></div>
-      <figcaption>Latest films<span>Rows of posters, made for the remote</span></figcaption>
-    </figure>
-    <figure class="tvthumb rv">
-      <div class="tvscreen"><img src="/screens/tv/03-film-details.webp" width="1600" height="900" loading="lazy" decoding="async"
-        alt="Android TV: the details page for Cosmos Laundromat &mdash; 2015, 12 minutes, rated 6.3, genres Animation and Fantasy, director Mathieu Auvray, cast Pierre Bokma and Reinout Scholten van Aschat &mdash; with its synopsis, Play and More buttons, a Manage on Radarr button and a More like this row."></div>
-      <figcaption>Film details<span>Play, manage it on Radarr, and more like this</span></figcaption>
-    </figure>
-    <figure class="tvthumb rv">
-      <div class="tvscreen"><img src="/screens/tv/mediarr-dashboard.webp" width="1600" height="900" loading="lazy" decoding="async"
-        alt="Android TV: the Mediarr page with buttons for Search films and series, Activity, Calendar, Discover films and series, Requests and Arrange; counts of 0 in queue, 0 issues, 1 missing and 91 GB free; and Sonarr, Radarr, qBittorrent and Seerr each shown as connected, with qBittorrent listed again under Download clients."></div>
-      <figcaption>Mediarr<span>Requests, queue and downloads at a glance</span></figcaption>
-    </figure>
-  </div>
-</div></section>
-
-<!-- SERVERS -->
-<section id="servers"><div class="wrap">
-  <div class="row">
-    <div class="txt rv">
-      <span class="eyebrow">Media servers</span>
-      <h3>Connect your media server</h3>
-      <p>Sign in to your media server to browse its albums, artists, playlists, films, shows and audiobooks, with artwork, search and offline downloads. You can connect several servers at the same time.</p>
-      <div class="chips">
-        <span class="chip">Subsonic</span><span class="chip">Navidrome</span><span class="chip">Airsonic</span>
-        <span class="chip">OpenSubsonic</span><span class="chip">Jellyfin</span><span class="chip">Plex</span>
-        <span class="chip">Emby</span><span class="chip">Audiobookshelf</span><span class="chip">Kodi</span>
-        <span class="chip">WebDAV</span><span class="chip">SMB</span>
+<section aria-label="Mediagg Server" id="arr-stack" style="padding:0 0 80px">
+  <div class="wrap">
+    <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;gap:32px;padding:40px;background:var(--card2)">
+      <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:12px">
+        <div class="lbl">Mediagg Server · macOS and Linux</div>
+        <h2 style="font-size:clamp(26px,3vw,36px);line-height:1.1">No server yet? Mediagg Server sets one up.</h2>
+        <p class="small mute">A Mac, a Raspberry Pi or a Linux computer becomes a home media server: Jellyfin, Navidrome, Audiobookshelf and the services that find more, each set up and connected for you.</p>
       </div>
-      <div class="chips" style="margin-top:12px">
-        <span class="chip">Recently added</span><span class="chip">Most played</span><span class="chip">Continue watching</span>
-        <span class="chip">Folder browsing</span><span class="chip">Star &amp; rate</span><span class="chip">Server-side search</span>
-      </div>
-    </div>
-    <div class="visual rv">
-      <div class="srv"><i class="dot"></i><div><b>Living room</b><small>Navidrome · 12,480 tracks</small></div><span class="tag">Subsonic</span></div>
-      <div class="srv"><i class="dot"></i><div><b>Home cinema</b><small>Jellyfin · 940 films, 62 shows</small></div><span class="tag">Jellyfin</span></div>
-      <div class="srv"><i class="dot"></i><div><b>Studio archive</b><small>Airsonic · 3,102 tracks</small></div><span class="tag">Subsonic</span></div>
-      <div class="srv" style="opacity:.55"><i class="dot" style="background:#6c7a89;box-shadow:none"></i><div><b>Add a server</b><small>Sign in with a URL and password</small></div><span class="tag">+</span></div>
-    </div>
-  </div>
-
-  <div class="row rev">
-    <div class="txt rv">
-      <h3>Cached browsing</h3>
-      <p>Mediagg stores server responses on your device. Screens you have visited before open immediately from the cache and update when the server responds. If the connection drops, your library remains available to browse.</p>
-      <div class="chips">
-        <span class="chip">Cached responses</span><span class="chip">Background refresh</span><span class="chip">Offline browsing</span>
-        <span class="chip">No blank screens on errors</span>
-      </div>
-    </div>
-    <div class="visual rv" style="display:grid;place-items:center">
-      <div style="text-align:center">
-        <div style="font-size:60px;margin-bottom:14px">⚡</div>
-        <div style="font-weight:800;font-size:1.28rem">Cache first, then refresh</div>
-        <p style="color:var(--muted);margin-top:10px;font-size:.94rem;max-width:290px">Screens load from the cache and update when the server responds.</p>
+      <div style="flex:1 1 470px;min-width:0;display:flex;flex-direction:column;gap:12px">
+        <div class="cmd"><code>curl -fsSL https://mediagg.app/install.sh | sh</code><button type="button" data-copy="curl -fsSL https://mediagg.app/install.sh | sh" aria-label="Copy the install command">Copy</button></div>
+        <a href="/server/" style="font-weight:600">How Mediagg Server works</a>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- ARR STACK -->
-<section id="arr-stack"><div class="wrap">
-  <div class="row">
-    <div class="txt rv">
-      <span class="eyebrow">Mediagg Server · macOS and Linux</span>
-      <h3>No server yet? Make one in three questions</h3>
-      <p>Mediagg Server turns a Mac, a Raspberry Pi or any Linux computer into a home media server. One command installs what you choose — Jellyfin, Emby or Plex, Navidrome for music, Audiobookshelf for audiobooks, and the services that find and fetch more — sets each one up and connects them to each other. Everyone in the house gets a login of their own. Pairing — one six-digit code that hands the lot to Mediagg on each phone and TV — is coming soon to the Mediagg apps; until then, add each server in the app with its address.</p>
-      <div class="term"><b>$</b>curl -fsSL https://mediagg.app/install.sh | sh</div>
-      <p style="font-size:.9rem;color:var(--dim);margin-top:6px">Paste it into a terminal — on the computer itself, or over SSH. Free and open source, runs in Docker, removable in one go. Windows to follow.</p>
-      <div class="chips">
-        <span class="chip">Jellyfin</span><span class="chip">Emby</span><span class="chip">Plex</span><span class="chip">Navidrome</span><span class="chip">Audiobookshelf</span>
-        <span class="chip">Sonarr</span><span class="chip">Radarr</span><span class="chip">Lidarr</span><span class="chip">Prowlarr</span>
-        <span class="chip">qBittorrent</span><span class="chip">Seerr</span><span class="chip">Bazarr</span><span class="chip">FlareSolverr</span>
-      </div>
-      <p style="margin-top:18px"><a class="btn btn-p" href="/documentation/arr-stack">How it works</a></p>
-    </div>
-    <div class="visual rv">
-      <ol class="steps">
-        <li><span class="n">1</span><div><b>Run one command</b><small>Choose a folder for your films. Docker is added if it is missing.</small></div></li>
-        <li><span class="n">2</span><div><b>Answer three questions</b><small>Where you watch and listen, what fetches more — and a login for everyone in the house.</small></div></li>
-        <li><span class="n">3</span><div><b>Press Install</b><small>Each service is set up and connected for you, with a real progress bar.</small></div></li>
-        <li><span class="n">4</span><div><b>Pair Mediagg — coming soon</b><small>One code, typed or scanned, will add every server at once, signed in as that person. Until it reaches the apps, add each server in Mediagg with its address.</small></div></li>
-      </ol>
-    </div>
+<section aria-label="Also in Mediagg" style="padding:0 0 80px">
+  <div class="wrap also">
+    <div id="cast"><h3>Chromecast and DLNA</h3><p class="small mute">Cast to Chromecast and to DLNA/UPnP players, including files on your phone.</p></div>
+    <div><h3>One search</h3><p class="small mute">Your device, your podcasts and every server at once. Discover searches podcast directories.</p></div>
+    <div><h3>Downloads</h3><p class="small mute">Keep albums, films and episodes on the phone for when there is no connection.</p></div>
+    <div><h3>Station playlists</h3><p class="small mute">Radio and TV stations from m3u playlists, kept up to date, from a public directory or an <a href="/m3ugoat">m3ugoat</a> server.</p></div>
   </div>
-</div></section>
-
-<!-- CAST -->
-<section id="cast"><div class="wrap">
-  <div class="row">
-    <div class="visual rv"><div class="cast">
-      <div class="wave"><span></span><span></span><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/></svg></div>
-      <div style="font-weight:800;margin-top:8px">Searching for devices…</div>
-      <small style="color:var(--dim)">Chromecast · DLNA · UPnP renderers</small>
-    </div></div>
-    <div class="txt rv">
-      <span class="eyebrow">Casting</span>
-      <h3>Chromecast and DLNA casting</h3>
-      <p>Cast to Chromecast devices and to DLNA/UPnP renderers on your network, including smart TVs, AV receivers and networked speakers. While casting, Mediagg runs a built-in media relay, so files on your device can be played as well as streams from your servers.</p>
-      <div class="chips">
-        <span class="chip">Google Cast</span><span class="chip">DLNA / UPnP</span><span class="chip">Built-in media relay</span>
-        <span class="chip">Local files</span><span class="chip">Server streams</span><span class="chip">Video &amp; audio</span>
-      </div>
-    </div>
-  </div>
-</div></section>
-
-<!-- DISCOVER -->
-<section id="discover"><div class="wrap">
-  <div class="head rv">
-    <span class="eyebrow">Search and discovery</span>
-    <h2>Search across all your sources</h2>
-    <p>A single search covers your device, your podcast subscriptions and every connected server. Switch to Discover to search podcast directories instead.</p>
-  </div>
-  <div class="grid">
-    <div class="f rv"><div class="ic">🔍</div><h3>Unified search</h3><p>Search local files, podcasts and all connected servers at once, with results grouped by source.</p></div>
-    <div class="f rv"><div class="ic">🌍</div><h3>Top podcasts</h3><p>Browse the Apple Podcasts charts by country and category, starting with your region. Directory search also includes PodcastIndex.</p></div>
-    <div class="f rv"><div class="ic">⭐</div><h3>Synced favourites</h3><p>Starring a track in Mediagg also stars it on your server.</p></div>
-    <div class="f rv"><div class="ic">📊</div><h3>Listening statistics</h3><p>View your listening history by show, with monthly charts.</p></div>
-    <div class="f rv"><div class="ic">📺</div><h3>Playlist subscriptions</h3><p>Subscribe to station and channel playlists from a public GitHub directory or an <a href="/m3ugoat" style="color:var(--red)">m3ugoat server</a>. Subscribed playlists are refreshed to stay up to date.</p></div>
-    <div class="f rv"><div class="ic">🎲</div><h3>Mixes</h3><p>Track, artist, album, film and show mixes generated by your server, plus a Surprise me section on Home with a random selection from your library.</p></div>
-  </div>
-</div></section>
-
-<!-- NUMBERS -->
-<section><div class="wrap">
-  <div class="nums">
-    <div class="num rv"><b>8</b><small>Kinds of media server and share</small></div>
-    <div class="num rv"><b>2</b><small>Casting protocols</small></div>
-    <div class="num rv"><b>3</b><small>Media types in one library</small></div>
-    <div class="num rv"><b>4</b><small>Platforms from one codebase: Android phone and TV, iPhone, Apple TV</small></div>
-  </div>
-</div></section>
-
-<!-- DOWNLOAD -->
-<!-- One Play listing, app.mediagg, carries both Android builds: the phone app (playFull) and the
-     Android TV app (:app-android-tv, versionCode from 1000) share the applicationId, so there is one
-     link and Play offers whichever build fits the device. The Apple apps are stated as intent and
-     nothing more: no date and no link until an App Store page exists. -->
-<section id="download"><div class="wrap">
-  <div class="dl rv">
-    <span class="eyebrow"><b>●</b> Free on Google Play</span>
-    <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem);margin:20px 0 0">Get Mediagg</h2>
-    <p style="color:var(--muted);max-width:580px;margin:18px auto 0">One Google Play listing for your Android phone and your Android TV: install it on the phone, then find Mediagg in Google Play on the TV — or choose the TV from Google Play on the web.</p>
-    <div class="cta" style="margin-top:30px">
-      <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener"><img src="/icons/google-play-badge.png" width="194" height="75" alt="Get it on Google Play"></a>
-    </div>
-    <div class="plats">
-      <a class="plat" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener">
-        <span class="pi">📱</span><span><b>Android phone</b><small>Google Play</small></span>
-      </a>
-      <a class="plat" href="https://play.google.com/store/apps/details?id=app.mediagg" rel="noopener">
-        <span class="pi">📺</span><span><b>Android TV</b><small>Google Play, same listing</small></span>
-      </a>
-      <span class="plat later">
-        <span class="pi">📱</span><span><b>iPhone</b><small>On the way</small></span>
-      </span>
-      <span class="plat later">
-        <span class="pi">📺</span><span><b>Apple TV</b><small>On the way</small></span>
-      </span>
-    </div>
-    <p style="color:var(--dim);max-width:560px;margin:22px auto 0;font-size:14px">The iPhone and Apple TV apps
-    are built from the same code and will follow on the App Store. They do not yet have a release date.</p>
-  </div>
-</div></section>
-
+</section>
 </main>
 
-<footer><div class="wrap fin">
-  <div>© <span id="yr"></span> Mediagg</div>
-  <div>
-    <a href="/m3ugoat">m3ugoat</a>
-    <a href="/documentation">Docs</a>
-    <a href="/privacy">Privacy</a>
-    <a href="https://buymeacoffee.com/m3ugoat" rel="noopener">Buy me a coffee</a>
+<footer>
+  <div class="wrap">
+    <div class="who">
+      <a class="brand" href="/" style="font-size:18px"><img src="/icons/mediagg.png" alt="" width="28" height="28">Mediagg</a>
+      <p class="tm">&copy; <span id="yr"></span> Mediagg. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+    </div>
+    <nav aria-label="Get Mediagg"><div class="lbl">Get Mediagg</div><a href="/get/">Every platform</a><a href="/web/">In your browser</a><a href="/server/">Mediagg Server</a></nav>
+    <nav aria-label="Help"><div class="lbl">Help</div><a href="/documentation">Docs</a><a href="/documentation/arr-stack/">Mediagg Server guide</a><a href="https://github.com/m3ugoat/mediagg-releases/issues">Report an issue</a></nav>
+    <nav aria-label="About"><div class="lbl">About</div><a href="/privacy">Privacy</a><a href="/m3ugoat">m3ugoat</a><a href="https://buymeacoffee.com/m3ugoat" rel="noopener">Buy me a coffee</a></nav>
   </div>
-  <p class="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
-</div></footer>
-
-<!-- The enlarged view, filled in from whichever screenshot was clicked. A child of body, not of
-     main: main sets a z-index, which makes it a stacking context, and inside one no z-index can
-     lift this above the sticky nav. -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screenshot, enlarged" aria-hidden="true">
-  <button class="lbbtn lbx" id="lbClose" type="button" aria-label="Close">&times;</button>
-  <button class="lbbtn lbprev" id="lbPrev" type="button" aria-label="Previous screenshot">&lsaquo;</button>
-  <figure class="lbfig">
-    <!-- every large screenshot is 1344x2992, so the box is the right shape before the file lands -->
-    <div class="lbshell"><img id="lbImg" width="1344" height="2992" alt=""></div>
-    <figcaption id="lbCap"></figcaption>
-  </figure>
-  <button class="lbbtn lbnext" id="lbNext" type="button" aria-label="Next screenshot">&rsaquo;</button>
-</div>
+</footer>
 
 <script>
-(function(){
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // marquee, duplicated so the loop is seamless
-  var items=['Subsonic','Navidrome','Airsonic','OpenSubsonic','Jellyfin','Plex','Emby',
-             'Audiobookshelf','Chromecast','DLNA','UPnP','Podcasts','Video','gpodder.net',
-             'Nextcloud','Offline','Android TV','Apple TV'];
-  var track=document.getElementById('track'), html='';
-  for (var d=0;d<2;d++){ items.forEach(function(t){ html+='<span>'+t+' ✦</span>'; }); }
-  track.innerHTML=html;
-
-  // scroll reveals
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e,i){
-      if(e.isIntersecting){
-        setTimeout(function(){ e.target.classList.add('in'); }, (i%6)*80);
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:.12, rootMargin:'0px 0px -60px 0px'});
-  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
-
-  // sticky nav border
-  var nav=document.getElementById('nav');
-  addEventListener('scroll',function(){ nav.classList.toggle('stuck', scrollY>10); },{passive:true});
-
-  // cursor glow on feature cards
-  document.querySelectorAll('.f').forEach(function(c){
-    c.addEventListener('mousemove',function(e){
-      var r=c.getBoundingClientRect();
-      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
-      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    navigator.clipboard.writeText(b.dataset.copy).then(function () {
+      b.textContent = 'Copied';
+      setTimeout(function () { b.textContent = 'Copy'; }, 1500);
     });
   });
-
-  // screenshot carousel
-  //
-  // The scrolling is the browser's own — scroll-snap on the rail — so swipe, trackpad, drag and the
-  // arrow keys all work without a line of code. The arrows and dots only ever call scrollTo, and
-  // read their state back out of scrollLeft, so however the rail was moved they stay in step.
-  var rail=document.getElementById('rail');
-  if (rail){
-    var shots=[].slice.call(rail.querySelectorAll('.shot')),
-        dotbox=document.getElementById('shotDots'),
-        prevBtn=document.getElementById('shotPrev'),
-        nextBtn=document.getElementById('shotNext');
-
-    // A page is however many slides fit at once — four on a wide screen, one on a phone. Paging by
-    // the screenful rather than by the slide is what keeps the dots honest: eleven dots against a
-    // rail showing four at a time can never all be reachable, because the last four share a
-    // scroll position. Everything below is measured from the DOM, so the media query that widens
-    // a slide to 62vw needs no matching change here.
-    function step(){
-      return shots.length>1 ? shots[1].offsetLeft-shots[0].offsetLeft : rail.clientWidth;
-    }
-    function perPage(){
-      var s=step();
-      // + the gap: the last slide on a page needs no gap after it to count as fitting.
-      return Math.max(1, Math.floor((rail.clientWidth + (s-shots[0].offsetWidth)) / s));
-    }
-    function pages(){ return Math.ceil(shots.length/perPage()); }
-    function end(){ return rail.scrollWidth-rail.clientWidth; }
-    function current(){
-      var width=perPage()*step();
-      // The final page is short — it stops at the scroll limit, well before its nominal offset —
-      // so it is recognised by position rather than by arithmetic.
-      if (rail.scrollLeft>=end()-1) return pages()-1;
-      return Math.min(pages()-1, Math.round(rail.scrollLeft/width));
-    }
-    function go(p){
-      var width=perPage()*step();
-      rail.scrollTo({left:Math.max(0,Math.min(p,pages()-1))*width, behavior:'smooth'});
-    }
-    function dots(){
-      dotbox.innerHTML='';
-      var n=pages();
-      if (n<2) return;                            // one page, nothing to page through
-      for (var i=0;i<n;i++){
-        var d=document.createElement('button');
-        d.type='button';
-        d.setAttribute('aria-label','Screenshots, page '+(i+1)+' of '+n);
-        d.addEventListener('click',(function(p){ return function(){ go(p); }; })(i));
-        dotbox.appendChild(d);
-      }
-    }
-    function sync(){
-      var i=current();
-      [].slice.call(dotbox.children).forEach(function(d,n){ d.classList.toggle('on', n===i); });
-      prevBtn.disabled = rail.scrollLeft<=1;
-      nextBtn.disabled = rail.scrollLeft>=end()-1;
-    }
-
-    prevBtn.addEventListener('click',function(){ go(current()-1); });
-    nextBtn.addEventListener('click',function(){ go(current()+1); });
-    rail.addEventListener('scroll',sync,{passive:true});
-    // A resize can change how many slides fit, so the dots are rebuilt, not just re-lit.
-    addEventListener('resize',function(){ dots(); sync(); });
-    dots(); sync();
-
-    // ----- enlarged view -----
-    //
-    // The rail carries 540px-wide screenshots, the right weight for a 236px slide and too soft
-    // blown up to 80vh. Each has a 1344px twin under /screens/large/, the size it was captured at,
-    // fetched only when someone actually opens one — the address is derived from the thumbnail
-    // rather than repeated in an attribute on every slide.
-    var lb=document.getElementById('lb'),
-        lbImg=document.getElementById('lbImg'),
-        lbCap=document.getElementById('lbCap'),
-        lbClose=document.getElementById('lbClose'),
-        lbPrev=document.getElementById('lbPrev'),
-        lbNext=document.getElementById('lbNext'),
-        opener=null, showing=0;
-
-    function bigOf(i){ return shots[i].querySelector('img').src.replace('/screens/','/screens/large/'); }
-
-    function show(i){
-      showing=(i+shots.length)%shots.length;     // wraps, so neither end is a dead stop
-      var img=shots[showing].querySelector('img');
-      lbImg.src=bigOf(showing);
-      lbImg.alt=img.alt;
-      lbCap.innerHTML=shots[showing].querySelector('figcaption').innerHTML
-        + '<span class="lbnum">'+(showing+1)+' of '+shots.length+'</span>';
-      // The neighbours, so stepping through is instant. Dropped on the floor deliberately: these
-      // are only ever wanted in the browser's cache.
-      new Image().src=bigOf((showing+1)%shots.length);
-      new Image().src=bigOf((showing-1+shots.length)%shots.length);
-    }
-    function openLb(i){
-      opener=document.activeElement;
-      show(i);
-      lb.classList.add('on');
-      lb.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';     // the page must not scroll behind the overlay
-      lbClose.focus();
-    }
-    function closeLb(){
-      lb.classList.remove('on');
-      lb.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
-      // Bring the rail to the page holding whatever was last enlarged, so closing does not lose
-      // the reader's place, then hand focus back to where it came from.
-      go(Math.floor(showing/perPage()));
-      if (opener && opener.focus) opener.focus();
-    }
-
-    shots.forEach(function(s,i){
-      s.querySelector('.frame').addEventListener('click',function(){ openLb(i); });
-    });
-    lbClose.addEventListener('click',closeLb);
-    lbPrev.addEventListener('click',function(){ show(showing-1); });
-    lbNext.addEventListener('click',function(){ show(showing+1); });
-    // Only the backdrop itself closes — a click that lands on the picture or a button is not a
-    // click on the way out.
-    lb.addEventListener('click',function(e){ if (e.target===lb) closeLb(); });
-    addEventListener('keydown',function(e){
-      if (!lb.classList.contains('on')) return;
-      if (e.key==='Escape'){ closeLb(); }
-      else if (e.key==='ArrowRight'){ show(showing+1); }
-      else if (e.key==='ArrowLeft'){ show(showing-1); }
-    });
-  }
-
-  // gentle parallax on the floating cards
-  var cards=[].slice.call(document.querySelectorAll('.card3d'));
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    addEventListener('scroll',function(){
-      var y=scrollY;
-      cards.forEach(function(c,i){ c.style.translate='0 '+(y*(0.03+i*0.018)*-1)+'px'; });
-    },{passive:true});
-  }
-})();
+});
 </script>
 </body>
 </html>

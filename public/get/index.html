@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Mediagg — Android, Android TV, your browser and Mediagg Server</title>
+<meta name="description" content="Where Mediagg runs and how to get it: Google Play for Android phones and Android TV, mediagg.app/web in your browser, Mediagg Server on macOS and Linux. iPhone and Apple TV are on the way.">
+<link rel="canonical" href="https://mediagg.app/get/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Get Mediagg — Android, Android TV, your browser and Mediagg Server">
+<meta property="og:description" content="Where Mediagg runs and how to get it: Google Play for Android phones and Android TV, mediagg.app/web in your browser, Mediagg Server on macOS and Linux. iPhone and Apple TV are on the way.">
+<meta property="og:url" content="https://mediagg.app/get/">
+<meta property="og:image" content="https://mediagg.app/icons/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0E13">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/mediagg.png">
+<link rel="apple-touch-icon" href="/icons/mediagg.png">
+<style>
+/* Mediagg's own dark theme, the app's colours. System fonts only: the site loads nothing from
+   anyone but GitHub Pages, which is what the privacy policy says. */
+:root{--bg:#0F0E13;--bg2:#141218;--card:#19181E;--card2:#1D1B26;--line:#2B2930;--edge:#49454F;
+  --ink:#E6E0E9;--mute:#CAC4D0;--dim:#938F99;--accent:#D0BCFF;--accent2:#EADDFF;--on-accent:#381E72;
+  --chip:#4A4458;--chip-ink:#E8DEF8;--way:#3A2E1E;--way-ink:#FFD8A8;--self:#1E3540;--self-ink:#B6E3F5;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}
+img{max-width:100%}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;margin:0}
+p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.mute{color:var(--mute)}
+.small{font-size:15px}
+.lbl{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:24px;font-weight:600;font-size:16px;white-space:nowrap}
+.btn.p{background:var(--accent);color:var(--on-accent)}.btn.p:hover{background:var(--accent2);color:var(--on-accent)}
+.btn.o{border:1px solid var(--dim);color:var(--ink)}.btn.o:hover{background:var(--line);color:var(--ink)}
+.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;font-size:12px;font-weight:600;white-space:nowrap}
+.on{background:var(--chip);color:var(--chip-ink)}.way{background:var(--way);color:var(--way-ink)}.self{background:var(--self);color:var(--self-ink)}
+.card{background:var(--card);border-radius:24px;padding:24px}
+.pill{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:16px;background:var(--line);color:var(--ink);font-size:14px;font-weight:500}
+.cmd{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--edge);border-radius:14px;padding:12px 14px;max-width:640px}
+.cmd code{flex:1;min-width:0;font:15px var(--mono);color:var(--ink);overflow-x:auto;white-space:nowrap}
+.cmd button{flex:none;height:36px;padding:0 14px;border-radius:18px;border:0;background:var(--chip);color:var(--chip-ink);font:600 14px var(--sans);cursor:pointer}
+.play{display:block;line-height:0;margin:-10px -6px}
+.top{position:sticky;top:0;z-index:5;background:rgba(15,14,19,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px 28px;min-height:64px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:20px;font-weight:700}
+.brand:hover{color:var(--ink)}
+.brand img{border-radius:8px}
+.nav{display:flex;align-items:center;gap:4px 22px;margin-left:auto;font-size:15px;font-weight:500}
+.nav a{color:var(--mute)}.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.nav .btn,.nav .btn[aria-current]{height:40px;padding:0 18px;font-size:15px;color:var(--on-accent)}
+.sec{padding:80px 0}
+.head{display:flex;flex-direction:column;gap:14px;max-width:760px}
+.head h2{font-size:clamp(30px,4vw,44px);line-height:1.08}
+footer{border-top:1px solid var(--line);padding:40px 0 56px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-start}
+footer .who{flex:1 1 260px;display:flex;flex-direction:column;gap:10px}
+footer nav{display:flex;flex-direction:column;gap:8px;font-size:15px}
+footer .lbl{font-size:12px}
+.tm{font-size:13px;color:var(--mute)}
+@media (max-width:720px){.wrap{padding:0 20px}.nav .opt{display:none}.sec{padding:56px 0}}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;background:var(--card);border-radius:24px;padding:28px 32px}
+.row .what{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.row h2{font-size:26px;font-weight:600}
+.titled{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.ico{width:56px;height:56px;border-radius:16px;background:var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.pair .row{align-items:flex-start}.pair .what{flex:1 1 200px}.pair h2{font-size:24px}
+.table{overflow-x:auto;background:var(--card);border-radius:20px;padding:8px 8px 0}
+table{width:100%;min-width:720px;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-size:13px;font-weight:600;color:var(--mute)}
+tbody th{color:var(--ink);font-weight:600}
+td.n{color:var(--dim)}
+@media (max-width:720px){.row{padding:22px 20px}.ico{display:none}.pair{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/icons/mediagg.png" alt="" width="32" height="32">Mediagg</a>
+    <nav class="nav" aria-label="Site">
+      <a class="opt" href="/">Home</a>
+      <a class="opt" href="/server/">Mediagg Server</a>
+      <a class="opt" href="/documentation">Documentation</a>
+      <a class="btn p" href="/get/" aria-current="page">Get Mediagg</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section style="padding:64px 0 36px">
+  <div class="wrap head" style="max-width:1200px">
+    <div class="lbl">Get Mediagg</div>
+    <h1 style="font-size:clamp(38px,5vw,56px);line-height:1.04">Where Mediagg runs.</h1>
+    <p class="mute" style="max-width:680px">The app on Android phones and Android TV, the same app in your browser, and Mediagg Server if you want a server of your own.</p>
+  </div>
+</section>
+
+<section aria-label="Platforms" style="padding:0 0 64px">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:12px">
+    <article class="row">
+      <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+      <div class="what">
+        <div class="titled"><h2>Android phone and tablet</h2><span class="chip on">Available</span></div>
+        <p class="small mute">Every kind of server, podcasts, downloads for when there is no connection, casting to Chromecast and DLNA.</p>
+      </div>
+      <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg"><img src="/icons/google-play-badge.png" alt="Get it on Google Play" width="194" height="75"></a>
+    </article>
+    <article class="row">
+      <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg></div>
+      <div class="what">
+        <div class="titled"><h2>Android TV</h2><span class="chip on">Available</span></div>
+        <p class="small mute">The same Google Play listing as the phone. On the TV, find Mediagg in Google Play, or pick the TV from Google Play on the web. Set it up with Add from phone.</p>
+      </div>
+      <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg"><img src="/icons/google-play-badge.png" alt="Get it on Google Play" width="194" height="75"></a>
+    </article>
+    <article class="row">
+      <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
+      <div class="what">
+        <div class="titled"><h2>In your browser</h2><span class="chip on">Available</span></div>
+        <p class="small mute">Nothing to install. Sign in to Jellyfin or Navidrome on an https:// address; your sign-ins stay in that browser. On your own Mediagg Server it opens signed in to everything the server set up.</p>
+      </div>
+      <a class="btn p" href="/web/">Open mediagg.app/web</a>
+    </article>
+    <article class="row">
+      <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="7" rx="2"/><rect x="4" y="14" width="16" height="7" rx="2"/><path d="M8 6.5h.01M8 17.5h.01"/></svg></div>
+      <div class="what">
+        <div class="titled"><h2>Mediagg Server</h2><span class="chip self">macOS · Linux</span></div>
+        <p class="small mute">A home media server, set up for you. Paste this into a terminal on a Mac, a Raspberry Pi or a Linux computer:</p>
+        <div class="cmd"><code>curl -fsSL https://mediagg.app/install.sh | sh</code><button type="button" data-copy="curl -fsSL https://mediagg.app/install.sh | sh" aria-label="Copy the install command">Copy</button></div>
+      </div>
+      <a class="btn o" href="/server/">How it works</a>
+    </article>
+    <div class="pair">
+      <article class="row">
+        <div class="ico" aria-hidden="true" style="color:var(--way-ink)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+        <div class="what"><div class="titled"><h2>iPhone and iPad</h2><span class="chip way">On the way</span></div><p class="small mute">Not on the App Store yet. Until then, use mediagg.app/web in Safari.</p></div>
+      </article>
+      <article class="row">
+        <div class="ico" aria-hidden="true" style="color:var(--way-ink)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg></div>
+        <div class="what"><div class="titled"><h2>Apple TV</h2><span class="chip way">On the way</span></div><p class="small mute">Not on the App Store yet.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section aria-label="What works where" style="padding:0 0 88px">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:18px">
+    <h2 style="font-size:clamp(28px,3.5vw,36px)">What works where</h2>
+    <p class="small mute" style="max-width:720px">A browser only lets a web page reach servers that allow it, and never an http:// server from an https:// page. The app has neither limit. Your own Mediagg Server reaches its own services for the page.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th scope="col"></th><th scope="col">The app</th><th scope="col">mediagg.app/web</th><th scope="col">Your Mediagg Server, in a browser</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Jellyfin, Navidrome</th><td>Yes</td><td>Yes, on an https:// address</td><td>Yes</td></tr>
+          <tr><th scope="row">Audiobookshelf</th><td>Yes</td><td class="n">No</td><td>The one it set up</td></tr>
+          <tr><th scope="row">Plex, Emby, Kodi, WebDAV, SMB</th><td>Yes</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr><th scope="row">Podcasts</th><td>Yes</td><td>Where the podcast's host allows web pages</td><td>Yes</td></tr>
+          <tr><th scope="row">Sonarr, Radarr and requests</th><td>Yes</td><td class="n">No</td><td>Yes</td></tr>
+          <tr><th scope="row">Downloads for offline, casting</th><td>Yes</td><td class="n">No</td><td class="n">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="who">
+      <a class="brand" href="/" style="font-size:18px"><img src="/icons/mediagg.png" alt="" width="28" height="28">Mediagg</a>
+      <p class="tm">&copy; <span id="yr"></span> Mediagg. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+    </div>
+    <nav aria-label="Get Mediagg"><div class="lbl">Get Mediagg</div><a href="/get/">Every platform</a><a href="/web/">In your browser</a><a href="/server/">Mediagg Server</a></nav>
+    <nav aria-label="Help"><div class="lbl">Help</div><a href="/documentation">Docs</a><a href="/documentation/arr-stack/">Mediagg Server guide</a><a href="https://github.com/m3ugoat/mediagg-releases/issues">Report an issue</a></nav>
+    <nav aria-label="About"><div class="lbl">About</div><a href="/privacy">Privacy</a><a href="/m3ugoat">m3ugoat</a><a href="https://buymeacoffee.com/m3ugoat" rel="noopener">Buy me a coffee</a></nav>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    navigator.clipboard.writeText(b.dataset.copy).then(function () {
+      b.textContent = 'Copied';
+      setTimeout(function () { b.textContent = 'Copy'; }, 1500);
+    });
+  });
+});
+</script>
+</body>
+</html>
