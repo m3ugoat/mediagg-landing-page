@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Opening in Mediagg</title>
+<meta name="theme-color" content="#121212">
+<!--
+  A link into Mediagg: /open?url=<address>[&title=…] (mediagg-kmp DEEPLINKS.md). With the app installed,
+  Android opens it there and this page is never seen. Without it, this sends the address on to Mediagg
+  in the browser, which opens it — and on Android offers the app first.
+-->
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var url = params.get('url');
+    location.replace('/web/' + (url ? '?open=' + encodeURIComponent(url) : ''));
+  })();
+</script>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #121212; color: #e6e1e5;
+         font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 24px; }
+  a { color: #d0bcff; }
+</style>
+</head>
+<body>
+  <p>Opening in Mediagg… <noscript><br><a href="/web/">Open Mediagg in your browser</a></noscript></p>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.mediagg",
+      "sha256_cert_fingerprints": [
+        "49:84:E5:5A:72:EC:F9:A5:E3:2B:29:44:3C:4B:C9:6F:C1:85:FD:D5:04:F8:17:2B:28:6D:F0:3F:EE:F8:AC:90",
+        "4A:40:9D:6A:15:F4:AA:1C:E1:36:02:DF:C8:FE:99:7A:FE:E4:7A:7E:6D:B1:D6:DE:DE:B2:A3:B3:2A:71:7B:FB",
+        "D8:97:99:73:B4:E8:70:EC:53:27:4A:6A:D4:5C:72:B5:9E:66:01:E4:4B:0E:0B:CA:8E:2A:74:03:57:A2:A5:E7"
+      ]
+    }
+  }
+]
