@@ -1,4 +1,4 @@
 # Which build of Mediagg in the browser mediagg.app/web/ serves: a release of m3ugoat/mediagg-releases
 # and its web-client.tar.gz's sha256. mediagg-arr-stack's web-client.sh makes the release and prints
 # this line; changing it is a deploy (.github/workflows/pages.yml).
-web-client-1bc1d629e94b d76583377b62a00c5b7ea1b22351e817a02b588c045f89ca2c914db6ef96ce0c
+web-client-3925a1af675f 16e846b4b32a24ce032dd32b497087532d40e9705b5236e6d02b9f7db92af363
