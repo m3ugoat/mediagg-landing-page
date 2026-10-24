@@ -15,3 +15,6 @@ yarn-error.log
 
 # Retired Jekyll/webpack toolchain lives in legacy/ and is not built
 node_modules/
+
+# Mediagg in the browser: put here by pages.yml from mediagg-releases, never committed.
+public/web/

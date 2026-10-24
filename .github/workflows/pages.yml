@@ -23,6 +23,8 @@ on:
       # check below would never get the chance to fail.
       - 'content/**'
       - 'scripts/**'
+      # Which build of Mediagg in the browser /web/ serves: moving it is a deploy.
+      - 'web-client.release'
   # Lets a deploy be re-run from the Actions tab without an empty commit.
   workflow_dispatch:
 
@@ -53,6 +55,22 @@ jobs:
       # It installs nothing: the generator is stdlib-only and ubuntu-latest already has python3.
       - name: Documentation is up to date
         run: python3 scripts/build-docs.py --check
+
+      # **Mediagg in the browser, at /web/** — mediagg-kmp's `:webApp`, the build web-client.release
+      # names, from mediagg-releases (public). Not committed here: it is tens of megabytes of .wasm
+      # each release, and the site's history would carry every one. Checked against the sum the file
+      # gives, and the deploy stops rather than publish a site without it.
+      - name: Mediagg in the browser
+        run: |
+          set -eu
+          tag="$(grep -v '^#' web-client.release | awk 'NF{print $1; exit}')"
+          sum="$(grep -v '^#' web-client.release | awk 'NF{print $2; exit}')"
+          curl -fsSL -o web-client.tar.gz \
+            "https://github.com/m3ugoat/mediagg-releases/releases/download/$tag/web-client.tar.gz"
+          echo "$sum  web-client.tar.gz" | sha256sum -c -
+          mkdir -p public/web
+          tar -xzf web-client.tar.gz -C public/web
+          test -f public/web/index.html
 
       - uses: actions/configure-pages@v5
 
