@@ -12,10 +12,17 @@
   in the browser, which opens it — and on Android offers the app first.
 -->
 <script>
+  // The address is everything after url= where it is written plainly (url=https://host/feed?id=4&x=1),
+  // and the one parameter, decoded, where it was escaped — mediagg-kmp DeepLinks' rule.
   (function () {
-    var params = new URLSearchParams(location.search);
-    var url = params.get('url');
-    location.replace('/web/' + (url ? '?open=' + encodeURIComponent(url) : ''));
+    var q = location.search.replace(/^\?/, '');
+    var at = q.indexOf('url=') === 0 ? 0 : (q.indexOf('&url=') >= 0 ? q.indexOf('&url=') + 1 : -1);
+    var url = at < 0 ? '' : q.substring(at + 4);
+    if (url && url.indexOf('://') < 0) {
+      url = url.split('&')[0];
+      try { url = decodeURIComponent(url.replace(/\+/g, ' ')); } catch (e) {}
+    }
+    location.replace('/web/' + (url ? '?open=' + url : ''));
   })();
 </script>
 <style>
