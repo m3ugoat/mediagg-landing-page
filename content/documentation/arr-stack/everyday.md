@@ -10,7 +10,9 @@ order: 40
   approve under [Requests](#requests).
 - **The direct way:** open Radarr (films) or Sonarr (series), search, and press Add.
 
-Either way it is downloaded, moved into your library, and appears in Jellyfin and Mediagg by itself.
+Either way it then waits for you to choose its download — its releases in Mediagg, or Interactive
+Search in Radarr or Sonarr — unless `Download automatically` is on (see [Downloads](#downloads)).
+Once downloaded it is moved into your library, and appears in Jellyfin and Mediagg by itself.
 It needs indexers in Prowlarr first — see
 [Setting it up](/documentation/arr-stack/set-up).
 
@@ -28,9 +30,10 @@ services stand — `All 9 running`, say — and has the dashboard's address with
 - **`Home`** shows **Get started** until it is done — get Mediagg, pair it with this server, add
   indexers if anything fetches, then search and watch — each step ticked as you do it. No phone to
   hand? `Watch in the browser` and `Request in the browser` open your media server and Seerr now.
-  Below are the free space, paired devices, downloads and version; **`Open Mediagg in the browser`** —
-  the Mediagg app in a tab of its own, on this computer or any other on your network, signed in as you
-  are here, with nothing to install; and **Services by media**: each part with its switches. A switch
+  At the top, under the heading, **`Stream in Mediagg Web App`** — the Mediagg app in a tab of its own,
+  on this computer or any other on your network, signed in as you are here, with nothing to install.
+  Below are the free space, paired devices, downloads and version; **Downloads**, how films and series
+  are fetched (see [Downloads](#downloads)); and **Services by media**: each part with its switches. A switch
   that is on opens its service's own page in a new tab; one that is off has `Turn on · 150 MB`, say.
 - **`How to use`** is the guide to this server: three ways in, easiest first — Mediagg, your browser,
   each service's own page — then `What happens when…` you ask for a film, follow a series, add files
@@ -50,8 +53,23 @@ Paired phones and TVs pick up what you turn on by themselves.
 
 ## Downloads
 
-What is coming in, newest first, with how far each has got and the time left. Each one moves into
-your library by itself when it is done.
+**On `Home`, how films and series are fetched:**
+
+- **`Download automatically`** — off to start with: a request, or a new episode of a series you
+  follow, waits for you to choose its download (its releases in Mediagg, or Interactive Search in
+  Radarr or Sonarr), so nothing large arrives unasked. On, they download the first release that fits
+  as soon as it is out.
+- **`Films quality`** and **`Series quality`** — the quality profile Radarr and Sonarr fetch at:
+  their own profiles, so one you add or change there is offered here.
+- **`Largest film download`** and **`Largest series download`** — `No limit` to start with, or a size
+  in GB. Radarr and Sonarr never take a larger release by themselves; you can still choose one in
+  Interactive Search. For series a season pack counts whole.
+
+Either way a finished download is not seeded: once it is in your library it is removed from
+qBittorrent and the downloads folder, and only the library's copy is left.
+
+**`Downloads`** in the sidebar lists what is coming in, newest first, with how far each has got and
+the time left. Each one moves into your library by itself when it is done.
 
 - **`Pause`** and **`Resume`**.
 - **`Cancel and find another release`** — a bad or stuck release: what has downloaded is deleted, and
@@ -60,8 +78,8 @@ your library by itself when it is done.
   and its request is removed. For an album it is `Stop wanting this album`.
 - **`Remove download`** — for one that Radarr, Sonarr and Lidarr are not waiting for; what has come
   so far is deleted.
-- **`Stop seeding`**, once it has finished. A finished download goes on seeding — uploading to others
-  — with no limit, until you stop it. The copy in your library stays.
+- **`Stop seeding`**, for one still uploading to others — added in qBittorrent yourself, say. The copy
+  in your library stays.
 
 ## Requests
 
@@ -69,8 +87,9 @@ With Requests on, `Requests` lists what has been asked for and where each one is
 `Searching`, `Downloading 40%`, `Available`. It shows yours; `Asked for by` switches to `Everyone`,
 or to one person. The sidebar says how many are pending.
 
-- **`Approve`** or **`Decline`** one that is waiting. Approved, it is looked for and downloaded by
-  itself, then appears in Mediagg.
+- **`Approve`** or **`Decline`** one that is waiting. Approved, it waits for you to choose its
+  download — or, with `Download automatically` on, is looked for and downloaded by itself — then
+  appears in Mediagg.
 - **`Search again`** one still being looked for, or **`Cancel request`** — its download is deleted,
   it is no longer looked for, and the person who asked sees it as Cancelled in Mediagg.
 - **`Remove request`** one that was declined or failed.
