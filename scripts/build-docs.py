@@ -41,7 +41,7 @@ SITE = "https://mediagg.app"
 
 # Platform keys to the label shown on the badge. Framed as what a page *is* for, never as what it is
 # not: the site README forbids describing the app by what it lacks, and that applies here too.
-PLATFORMS = {"android": "Android", "ios": "iOS"}
+PLATFORMS = {"android": "Android", "ios": "iOS", "web": "Web"}
 
 # One line icon per section, drawn on the hub cards. 24x24, stroke-only, currentColor, so they take
 # the card's own colour and need no asset files.
@@ -57,7 +57,7 @@ ICONS = {
     "aid": "M12 3a9 9 0 1 0 .01 0M9.6 9.3a2.5 2.5 0 1 1 2.9 3.3c-.6.2-.9.7-.9 1.4M12 16.9h.01",
 }
 
-BADGE_ORDER = ["android", "ios"]
+BADGE_ORDER = ["android", "ios", "web"]
 
 
 class DocError(Exception):

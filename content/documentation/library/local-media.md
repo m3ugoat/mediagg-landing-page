@@ -1,7 +1,7 @@
 ---
 title: Local media
 summary: The music and video on your device, and the chips that cut it different ways.
-platforms: android, ios
+platforms: android, ios, web
 order: 30
 ---
 
@@ -68,6 +68,45 @@ fills the chips above — the folder itself is listed under `Folders`, as there 
 on iOS. Choosing it *is* the permission — there is no separate grant to give.
 
 `Scan for media` re-walks the folders you picked, to catch anything added since.
+
+**In the browser** — at [mediagg.app/web](/web/) or on your own Mediagg Server — local media is the
+folders you choose, as on iOS. Add one with `Local media folder` under `Add to library`, or with the
+`+` on Local media. What happens next depends on the browser, because only some can keep a folder
+between visits:
+
+| Browser | Adding | On your next visit |
+|---|---|---|
+| Chrome and Edge, on a computer | `Local media folder` picks a folder | Kept. Press `Allow` once and Mediagg reads it again; Chrome can also allow it on every visit |
+| Chrome, on Android | `Local media folder` picks a folder | Kept. Press `Allow` once and Mediagg reads it again |
+| Safari and Firefox, on a computer | `Local media folder` picks a folder for this visit | Not kept: pick it again |
+| Every browser on iPhone, and Firefox on Android | `Add files` picks files for this visit | Not kept: pick them again |
+
+Where a browser cannot keep a folder, Local media says so: `This browser can't keep a folder. Pick
+it again next visit.` Its `ⓘ` lists the browsers that can.
+
+The browser plays what it can play itself. MP3, AAC (`.m4a`) and FLAC play everywhere; OGG and Opus
+do not play in Safari, nor in any browser on iPhone and iPad. A file the browser cannot play is
+still listed, and says so. The apps play all of them.
+
+`Settings` → `Local media` → `Folders` lists the folders you added, with `Remove` on each and
+`Rescan` to read them all again for what was added or taken out.
+
+## Nothing is copied
+
+**On every platform, Mediagg reads your files where they are.** It keeps a list of what is in each
+folder — titles, artists, albums, lengths, and where each file sits — and reads the file itself only
+to play it or draw its cover. Adding a large folder costs almost no space, and nothing is ever
+uploaded: not to mediagg.app, and not to your own Mediagg Server.
+
+`Remove` takes a folder's music out of Mediagg and leaves the files where they are.
+
+The other side of it: **music plays only while its folder can be read.** When it cannot — a drive
+unplugged, a library restored onto another device, or a browser visit not yet allowed — Local media
+and Home both say so above their lists:
+
+- `1 folder is not readable on this device.` — `The music comes back if folder is added again.`,
+  with `Remove` to take such folders out.
+- In a browser that keeps folders, `Allow Mediagg to read your folders again`, with `Allow`.
 
 ## Permission
 
