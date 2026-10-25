@@ -100,7 +100,7 @@ td.n{color:var(--dim)}
   <div class="wrap head" style="max-width:1200px">
     <div class="lbl">Get Mediagg</div>
     <h1 style="font-size:clamp(38px,5vw,56px);line-height:1.04">Where Mediagg runs.</h1>
-    <p class="mute" style="max-width:680px">The app on Android phones and Android TV, the same app in your browser, and Mediagg Server if you want a server of your own.</p>
+    <p class="mute" style="max-width:680px">The app on Android phones, Android TV and the Mac, the same app in your browser, and Mediagg Server if you want a server of your own.</p>
   </div>
 </section>
 
@@ -121,6 +121,14 @@ td.n{color:var(--dim)}
         <p class="small mute">The same Google Play listing as the phone. On the TV, find Mediagg in Google Play, or pick the TV from Google Play on the web. Set it up with Add from phone.</p>
       </div>
       <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg"><img src="/icons/google-play-badge.png" alt="Get it on Google Play" width="194" height="75"></a>
+    </article>
+    <article class="row" id="mac">
+      <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M2 19h20"/></svg></div>
+      <div class="what">
+        <div class="titled"><h2>Mac</h2><span class="chip on">Available</span></div>
+        <p class="small mute">Every film as it is, through VLC: MKV, HEVC, 4K, DTS and 5.1 surround, with nothing for your server to convert. Every kind of server but SMB, on your home network or plain http, found on the network by itself. Folders of your own music kept, and radio with what is playing. macOS 13 or later, Apple silicon and Intel; signed and notarised by Apple.</p>
+      </div>
+      <a class="btn p" href="https://github.com/m3ugoat/mediagg-releases/releases/download/mediagg-for-mac/Mediagg.dmg">Download for Mac</a>
     </article>
     <article class="row">
       <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
@@ -155,17 +163,18 @@ td.n{color:var(--dim)}
 <section aria-label="What works where" style="padding:0 0 88px">
   <div class="wrap" style="display:flex;flex-direction:column;gap:18px">
     <h2 style="font-size:clamp(28px,3.5vw,36px)">What works where</h2>
-    <p class="small mute" style="max-width:720px">A browser only lets a web page reach servers that allow it, and never an http:// server from an https:// page. The app has neither limit. Your own Mediagg Server reaches its own services for the page.</p>
+    <p class="small mute" style="max-width:720px">A browser only lets a web page reach servers that allow it, and never an http:// server from an https:// page. The apps have neither limit. Your own Mediagg Server reaches its own services for the page.</p>
     <div class="table">
       <table>
-        <thead><tr><th scope="col"></th><th scope="col">The app</th><th scope="col">mediagg.app/web</th><th scope="col">Your Mediagg Server, in a browser</th></tr></thead>
+        <thead><tr><th scope="col"></th><th scope="col">Android</th><th scope="col">Mac</th><th scope="col">mediagg.app/web</th><th scope="col">Your Mediagg Server, in a browser</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Jellyfin, Navidrome</th><td>Yes</td><td>Yes, on an https:// address</td><td>Yes</td></tr>
-          <tr><th scope="row">Audiobookshelf</th><td>Yes</td><td class="n">No</td><td>The one it set up</td></tr>
-          <tr><th scope="row">Plex, Emby, Kodi, WebDAV, SMB</th><td>Yes</td><td class="n">No</td><td class="n">No</td></tr>
-          <tr><th scope="row">Podcasts</th><td>Yes</td><td>Where the podcast's host allows web pages</td><td>Yes</td></tr>
-          <tr><th scope="row">Sonarr, Radarr and requests</th><td>Yes</td><td class="n">No</td><td>Yes</td></tr>
-          <tr><th scope="row">Downloads for offline, casting</th><td>Yes</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr><th scope="row">Jellyfin, Navidrome</th><td>Yes</td><td>Yes</td><td>Yes, on an https:// address</td><td>Yes</td></tr>
+          <tr><th scope="row">Audiobookshelf</th><td>Yes</td><td>Yes</td><td class="n">No</td><td>The one it set up</td></tr>
+          <tr><th scope="row">Plex, Emby, Kodi, WebDAV, SMB</th><td>Yes</td><td>All but SMB</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr><th scope="row">Films as they are: MKV, HEVC, DTS, 5.1</th><td>Yes</td><td>Yes, through VLC</td><td class="n">What the browser plays; the server converts the rest</td><td class="n">What the browser plays; the server converts the rest</td></tr>
+          <tr><th scope="row">Podcasts</th><td>Yes</td><td>Yes</td><td>Where the podcast's host allows web pages</td><td>Yes</td></tr>
+          <tr><th scope="row">Sonarr, Radarr and requests</th><td>Yes</td><td>Yes</td><td class="n">No</td><td>Yes</td></tr>
+          <tr><th scope="row">Downloads for offline, casting</th><td>Yes</td><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
         </tbody>
       </table>
     </div>
@@ -179,7 +188,7 @@ td.n{color:var(--dim)}
       <a class="brand" href="/" style="font-size:18px"><img src="/icons/mediagg.png" alt="" width="28" height="28">Mediagg</a>
       <p class="tm">&copy; <span id="yr"></span> Mediagg. Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </div>
-    <nav aria-label="Get Mediagg"><div class="lbl">Get Mediagg</div><a href="/get/">Every platform</a><a href="/web/">In your browser</a><a href="/server/">Mediagg Server</a></nav>
+    <nav aria-label="Get Mediagg"><div class="lbl">Get Mediagg</div><a href="/get/">Every platform</a><a href="/get/#mac">Mac</a><a href="/web/">In your browser</a><a href="/server/">Mediagg Server</a></nav>
     <nav aria-label="Help"><div class="lbl">Help</div><a href="/documentation">Docs</a><a href="/documentation/arr-stack/">Mediagg Server guide</a><a href="https://github.com/m3ugoat/mediagg-releases/issues">Report an issue</a></nav>
     <nav aria-label="About"><div class="lbl">About</div><a href="/privacy">Privacy</a><a href="/m3ugoat">m3ugoat</a><a href="https://buymeacoffee.com/m3ugoat" rel="noopener">Buy me a coffee</a></nav>
   </div>

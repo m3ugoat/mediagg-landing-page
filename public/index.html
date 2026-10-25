@@ -72,7 +72,7 @@ footer .lbl{font-size:12px}
 .hero .lead{font-size:20px;max-width:560px}
 .hero .shots{flex:1 1 420px;min-width:0;display:flex;justify-content:center;align-items:flex-end;gap:20px}
 .shot{display:block;border-radius:28px;border:6px solid var(--line);background:#1D1B20;height:auto}
-.places{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.places{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .places a{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:20px;color:var(--ink)}
 .places a:hover{background:var(--card2);color:var(--ink)}
 .places strong{font-size:19px;font-weight:600}
@@ -113,11 +113,12 @@ footer .lbl{font-size:12px}
 <section class="hero">
   <div class="wrap">
     <div class="text">
-      <div class="lbl">Android phone and TV · your browser</div>
+      <div class="lbl">Android phone and TV · Mac · your browser</div>
       <h1>Your media, from your own servers, on every screen.</h1>
-      <p class="lead mute">Mediagg plays music, podcasts, films, shows and audiobooks from your device, your media servers and the podcasts you follow. On your phone, your TV and in your browser.</p>
+      <p class="lead mute">Mediagg plays music, podcasts, films, shows and audiobooks from your device, your media servers and the podcasts you follow. On your phone, your TV, your Mac and in your browser.</p>
       <div id="download" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px">
         <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg"><img src="/icons/google-play-badge.png" alt="Get it on Google Play" width="194" height="75"></a>
+        <a class="btn p" href="https://github.com/m3ugoat/mediagg-releases/releases/download/mediagg-for-mac/Mediagg.dmg">Download for Mac</a>
         <a class="btn o" href="/web/">Open Mediagg in your browser</a>
       </div>
       <p class="small mute">iPhone and Apple TV are on the way. No server yet? <a href="/server/">Set one up with Mediagg Server</a>.</p>
@@ -133,6 +134,7 @@ footer .lbl{font-size:12px}
   <div class="wrap places">
     <a class="card" href="/get/"><span class="chip on">Google Play</span><strong>Android phone and tablet</strong></a>
     <a class="card" href="/get/"><span class="chip on">Google Play</span><strong>Android TV</strong></a>
+    <a class="card" href="/get/#mac"><span class="chip on">Download</span><strong>Mac</strong></a>
     <a class="card" href="/web/"><span class="chip on">mediagg.app/web</span><strong>Your browser</strong></a>
     <a class="card" href="/server/"><span class="chip self">macOS · Linux</span><strong>Mediagg Server</strong></a>
     <a class="card" href="/get/"><span class="chip way">On the way</span><strong>iPhone and iPad</strong></a>
@@ -229,7 +231,7 @@ footer .lbl{font-size:12px}
       <a class="brand" href="/" style="font-size:18px"><img src="/icons/mediagg.png" alt="" width="28" height="28">Mediagg</a>
       <p class="tm">&copy; <span id="yr"></span> Mediagg. Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </div>
-    <nav aria-label="Get Mediagg"><div class="lbl">Get Mediagg</div><a href="/get/">Every platform</a><a href="/web/">In your browser</a><a href="/server/">Mediagg Server</a></nav>
+    <nav aria-label="Get Mediagg"><div class="lbl">Get Mediagg</div><a href="/get/">Every platform</a><a href="/get/#mac">Mac</a><a href="/web/">In your browser</a><a href="/server/">Mediagg Server</a></nav>
     <nav aria-label="Help"><div class="lbl">Help</div><a href="/documentation">Docs</a><a href="/documentation/arr-stack/">Mediagg Server guide</a><a href="https://github.com/m3ugoat/mediagg-releases/issues">Report an issue</a></nav>
     <nav aria-label="About"><div class="lbl">About</div><a href="/privacy">Privacy</a><a href="/m3ugoat">m3ugoat</a><a href="https://buymeacoffee.com/m3ugoat" rel="noopener">Buy me a coffee</a></nav>
   </div>
