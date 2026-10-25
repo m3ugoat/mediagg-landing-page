@@ -93,10 +93,16 @@ still listed, and says so. The apps play all of them.
 
 ## Nothing is copied
 
-**On every platform, Mediagg reads your files where they are.** It keeps a list of what is in each
-folder — titles, artists, albums, lengths, and where each file sits — and reads the file itself only
-to play it or draw its cover. Adding a large folder costs almost no space, and nothing is ever
-uploaded: not to mediagg.app, and not to your own Mediagg Server.
+**On every platform, Mediagg links to your files where they are.** It keeps a list of what is in
+each folder — titles, artists, albums, lengths, and where each file sits — and reads the file itself
+only to play it or draw its cover. Adding a large folder costs almost no space.
+
+**Your files never leave your device.** Nothing is copied into Mediagg and nothing is uploaded: not
+to mediagg.app, and not to your own Mediagg Server. In the browser, the page reads the folder on
+your device directly.
+
+The first time you add a folder, Mediagg says this in a short dialog, with `How folders work` to
+open this page and `Don't show this again`.
 
 `Remove` takes a folder's music out of Mediagg and leaves the files where they are.
 
