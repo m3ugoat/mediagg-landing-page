@@ -6,7 +6,7 @@ order: 45
 ---
 
 **Mediagg Server** turns a Mac or a Linux computer — a Raspberry Pi, a mini PC, a NAS — into a home media server. One command installs it, three questions
-in your browser set it up, and one code hands the whole thing to Mediagg on your phone and TV.
+in your browser set it up, and one code hands the whole thing to Mediagg on your devices.
 
 It installs a handful of programs — the ones you choose — sets each one up and connects them to each
 other, the part that usually means a dozen web pages and keys copied from one to another:
@@ -38,7 +38,7 @@ it is mixed into your system, and all of it can be removed again in one go.
   is not there.
 - **Space.** About 1.4 GB to download and 4 GB on disk for every service, plus your films and series.
   An external drive is fine.
-- **Your phone or TV on the same network** as the computer.
+- **Your device on the same network** as the computer.
 
 Everything in the stack is free and open source, and so is Docker on Linux. Docker Desktop, on a Mac, is free for personal use, education
 and small businesses.

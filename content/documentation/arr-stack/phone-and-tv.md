@@ -1,5 +1,5 @@
 ---
-title: Your phone and TV
+title: Your devices
 summary: Coming soon to the Mediagg apps — open the server to your home network, scan or type one code, and Mediagg adds Jellyfin and every service.
 platforms: android, ios
 order: 30
@@ -15,8 +15,8 @@ their keys — in one go. Nothing is typed but a six-digit code.
 
 ## On the computer
 
-On the dashboard, open `Devices` — or press `Pair a phone or TV`. Under
-`Watch it on your phone and TV`, press `Open to my home network` and confirm: each service restarts,
+On the dashboard, open `Devices` — or press `Pair a device`. Under
+`Watch it on your devices`, press `Open to my home network` and confirm: each service restarts,
 and so does the dashboard, back in a few seconds. Until then the server answers the computer only;
 afterwards it answers your home network — not the internet. Every service still asks for your
 password, and FlareSolverr, which has none, stays on the computer. (A computer with no screen, set up
@@ -25,11 +25,11 @@ from another one, is on your network from the start.)
 The card then shows a **QR code** and a **six-digit code**. Each code works once, for ten minutes;
 `New pairing code` gives another.
 
-## Whose phone or TV it is
+## Whose device it is
 
-The card asks `Who is this phone or TV for?`, and a new code appears for whoever you choose:
+The card asks `Who is this device for?`, and a new code appears for whoever you choose:
 
-- **`You`** — the usual answer. Your phone and TV sign in as a user of yours with every library, who
+- **`You`** — the usual answer. Your devices sign in as a user of yours with every library, who
   cannot change the media servers' settings, so a lost phone never carries your administrator account.
 - **Someone under [People](/documentation/arr-stack/people)** — the device signs in as them, to what is
   theirs, and nothing else.
@@ -56,7 +56,7 @@ with the remote and confirm.
 ## What you get
 
 - **Your media servers** — Jellyfin, Emby, Navidrome, Audiobookshelf — join `Media servers`, signed in.
-  Each phone or TV gets **a sign-in of its own** to Jellyfin, Emby and Audiobookshelf, under its own
+  Each device gets **a sign-in of its own** to Jellyfin, Emby and Audiobookshelf, under its own
   name, rather than your password; you can see them in those servers' lists of devices.
 - **Plex** asks you to sign in with your plex.tv account: its sign-in opens next, with the address
   already filled in.
@@ -67,7 +67,7 @@ added, it says which, and why; the others are kept.
 
 ## Paired
 
-The first code a phone or TV takes **pairs** it: the server gives it a pairing token, which Mediagg
+The first code a device takes **pairs** it: the server gives it a pairing token, which Mediagg
 keeps in the device's secure storage. With it, Mediagg keeps up by itself:
 
 - **When the computer's address changes** — routers sometimes hand out a new one — Mediagg looks for the
@@ -78,7 +78,7 @@ keeps in the device's secure storage. With it, Mediagg keeps up by itself:
 
 `Paired devices`, under `Devices`, lists each one — whose it is, and when it paired — with `Unpair`:
 its token stops working and the sign-ins made for it end, so it needs a new pairing code.
-`Unpair all phones and TVs` does that to every one.
+`Unpair all devices` does that to every one.
 
 To stop the address changing at all, reserve the computer's address in your router.
 

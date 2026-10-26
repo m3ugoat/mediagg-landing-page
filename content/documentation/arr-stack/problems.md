@@ -23,7 +23,7 @@ in, with the same name, then press `Repair everything`. The dashboard keeps work
   [Using it day to day](/documentation/arr-stack/everyday).
 - Are the phone and the computer on the same network?
 - Did you press `Open to my home network`, under `Devices`?
-- Did the computer's address change? A paired phone or TV finds it again the next time Mediagg starts.
+- Did the computer's address change? A paired device finds it again the next time Mediagg starts.
 
 ## Why does it say my drive cannot link files?
 
@@ -37,10 +37,10 @@ avoids it.
 It opens the services to your home network, not the internet, and every service asks for your
 password. Two limits to know: the pages are plain HTTP, so a password typed on your phone crosses your
 Wi-Fi unencrypted, and anyone on your network can see the sign-in pages. On a home network you trust,
-that is reasonable. `Limit to this computer`, under `Devices`, closes it again — and phones and TVs
+that is reasonable. `Limit to this computer`, under `Devices`, closes it again — and devices
 stop reaching your server.
 
-Your phone and TV never need the dashboard — the code does it.
+Your devices never need the dashboard — the code does it.
 
 ## Removing it
 

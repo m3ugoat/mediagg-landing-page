@@ -23,7 +23,7 @@ or its network address for one with no screen — and sign in with your server's
 
 The sidebar has `Home` and `How to use`; under **Library**, `Films & Series`, `Music` and
 `Audiobooks & Podcasts`; under **Server**, `Downloads`, `Requests`, `Indexers`, `Media folders`,
-`People`, `Devices` and `Settings`; and `Pair a phone or TV`. The bar above every page says how the
+`People`, `Devices` and `Settings`; and `Pair a device`. The bar above every page says how the
 services stand — `All 9 running`, say — and has the dashboard's address with `Copy`, `Help` and
 `Sign out`.
 
@@ -49,7 +49,7 @@ asks first when that brings something else along. Turning one off asks too, says
 and keeps its settings for when you turn it on again — its `•••` has
 `Turn off and delete its settings`. The last place to watch or listen cannot be turned off.
 
-Paired phones and TVs pick up what you turn on by themselves.
+Paired devices pick up what you turn on by themselves.
 
 ## Downloads
 
@@ -110,7 +110,7 @@ now. Running the install command again does the same as updating.
 
 ## Keep this computer awake
 
-A sleeping computer serves nothing: your phone and TV cannot play, and downloads stop. The switch
+A sleeping computer serves nothing: your devices cannot play, and downloads stop. The switch
 under `Settings` — `Keep this Mac awake`, or `Keep this computer awake` on Linux — stops it going to
 sleep by itself; the screen still turns off, so it costs little. Turn it off whenever you like.
 
@@ -126,7 +126,7 @@ under `Settings`, turns that off: Docker Desktop is then no longer opened for it
 ## Change the password
 
 `Change password`, under `Settings`, changes it for the dashboard and every service at once. Paired
-phones and TVs pick it up by themselves.
+devices pick it up by themselves.
 
 Forgotten it? It is in `MediaggStack/manager/state.json` in your home folder, which only your
 account can read. That file also holds every service's API key.

@@ -75,5 +75,5 @@ Your old Jellyfin's **watch history, played marks and users**. The files come ac
 starts fresh.
 
 In Mediagg, forget the old server so it does not show twice: `Media servers` → `Manage servers` → its
-menu → `Forget this server`. Then pair your phone and TV with the server, as in
-[Your phone and TV](/documentation/arr-stack/phone-and-tv).
+menu → `Forget this server`. Then pair your devices with the server, as in
+[Your devices](/documentation/arr-stack/phone-and-tv).

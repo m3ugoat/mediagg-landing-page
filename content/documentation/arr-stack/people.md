@@ -1,6 +1,6 @@
 ---
 title: People
-summary: A login of their own for everyone in the house, with the libraries you choose — and their phones and TVs let in as them.
+summary: A login of their own for everyone in the house, with the libraries you choose — and their devices let in as them.
 order: 32
 ---
 
@@ -21,7 +21,7 @@ On the dashboard, open `People`, and under `Add someone`:
 - **`Maximum age rating`**, with Jellyfin — `No limit`, or `U — all ages`, `PG — 8 and over`,
   `12 — 12 and over`, `15 — 15 and over` or `18 — adults`. In Jellyfin they see only films and series
   rated for that age or younger; with a limit, anything with no rating is hidden too.
-- **`Also on their phones and TVs`** — Sonarr, Radarr, Lidarr, Prowlarr, qBittorrent, Seerr, Bazarr
+- **`Also on their devices`** — Sonarr, Radarr, Lidarr, Prowlarr, qBittorrent, Seerr, Bazarr
   and Plex. These have no users of their own: a device given one has its API key, and can change
   anything there. Leave them out for children and guests. **Seerr is the exception** — they ask as
   themselves, and you choose `Their requests wait for my approval` or
@@ -30,9 +30,9 @@ On the dashboard, open `People`, and under `Add someone`:
 
 Press `Add`. The server makes their users, with the libraries you chose.
 
-## Letting their phone or TV in
+## Letting their device in
 
-Under `Devices`, choose them in `Who is this phone or TV for?` — a new code appears for them — and use
+Under `Devices`, choose them in `Who is this device for?` — a new code appears for them — and use
 it as usual. Their device is given only what is theirs, signed in as them: their Jellyfin or Emby,
 their Navidrome and Audiobookshelf, and the services you ticked.
 
@@ -41,16 +41,16 @@ their Navidrome and Audiobookshelf, and the services you ticked.
 Each person has, under their name:
 
 - **What they have** — each service, with the user they are in it.
-- **Their phones and TVs**, each with `Unpair`.
+- **Their devices**, each with `Unpair`.
 - **`Their password`** — shown, for their own use of each server's page.
-  `Give … a new password` changes it in every server at once; their phones and TVs keep their own
+  `Give … a new password` changes it in every server at once; their devices keep their own
   sign-ins.
 - **`Edit name and access`** — their name, administrator or not, their servers, libraries, age rating
   and requests. A server taken away deletes their user there and ends their devices' sign-ins to it.
 - **`Remove person`** — their users are deleted, with their favourites, progress and history, and
-  their phones and TVs are signed out. Your films and series stay.
+  their devices are signed out. Your films and series stay.
 
-**`You`** are always first in the list: the server's own login, with everything. Your phones and TVs
+**`You`** are always first in the list: the server's own login, with everything. Your devices
 sign in as a user of yours that has every library but cannot change the media servers' settings, so a
 lost phone never carries your administrator account.
 

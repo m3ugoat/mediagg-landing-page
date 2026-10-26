@@ -45,7 +45,7 @@ Press `Continue`.
 A `Name` and a `Password · 10 characters or more` — `Show the password` shows it as you type. **The
 same name and password open the dashboard and every service in it** — Jellyfin, Emby, Navidrome,
 Audiobookshelf, Sonarr, Radarr, Lidarr, Prowlarr and Bazarr; Seerr signs in through Jellyfin, Emby or
-Plex. qBittorrent has a password of its own, shown under Settings, because every phone and TV is
+Plex. qBittorrent has a password of its own, shown under Settings, because every device is
 given it. Write them down.
 
 Under the boxes, the page says how much your choices download and take on disk, and checks the drive:
@@ -72,7 +72,7 @@ Films, series or music you already have are added once it is set up, under `Medi
 lists every step. You can close the window — it carries on, and opens where it left off.
 
 When it is done the page says `Your server is ready.`, with **Get started** — the steps left to watch
-it on your phone and TV — `Open dashboard`, and `Pair your phone or TV`.
+it on your devices — `Open dashboard`, and `Pair a device`.
 
 If a step fails, it says `That did not work.` and where. `Try again` picks up where it failed;
 nothing that worked is undone.
@@ -96,4 +96,4 @@ Plex belongs to a plex.tv account, so after installing it the dashboard shows
 The server claims Plex for your account, makes its Films and Series libraries and connects Seerr —
 your plex.tv password is never typed into the server.
 
-Next: [Your phone and TV](/documentation/arr-stack/phone-and-tv).
+Next: [Your devices](/documentation/arr-stack/phone-and-tv).
