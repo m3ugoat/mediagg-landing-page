@@ -22,7 +22,16 @@
       url = url.split('&')[0];
       try { url = decodeURIComponent(url.replace(/\+/g, ' ')); } catch (e) {}
     }
-    location.replace('/web/' + (url ? '?open=' + url : ''));
+    var web = location.origin + '/web/' + (url ? '?open=' + url : '');
+    // **On Android, the app by name** (`intent://`, scheme mediagg, package app.mediagg): one component
+    // matches it, so Chrome neither asks "Chrome or Mediagg?" nor lists Mediagg twice (MainActivity and
+    // the catch-all .OpenAddress both take https links). Without the app, Chrome opens the web app instead.
+    if (url && /Android/i.test(navigator.userAgent)) {
+      location.replace('intent://open?url=' + encodeURIComponent(url) +
+        '#Intent;scheme=mediagg;package=app.mediagg;S.browser_fallback_url=' + encodeURIComponent(web) + ';end');
+      return;
+    }
+    location.replace(web);
   })();
 </script>
 <style>
