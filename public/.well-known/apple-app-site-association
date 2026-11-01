@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["WHH78L4D94.app.mediagg"],
+        "components": [
+          { "/": "/open", "comment": "An address to open: /open?url=<address>" },
+          { "/": "/open/*" },
+          { "/": "/deeplink/subscribe", "comment": "The old app's subscribe link" },
+          { "/": "/deeplink/subscribe/*" }
+        ]
+      }
+    ]
+  }
+}
