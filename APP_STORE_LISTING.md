@@ -41,7 +41,6 @@ Mediagg is a client for Jellyfin, Plex, Emby, Audiobookshelf, Kodi and Subsonic 
 • Sign in to several servers and browse them as one combined library
 • Mixes built from your server's own suggestions, one tap to start
 • Skip intros, recaps and credits on server video
-• Read EPUB, PDF and CBZ comics from Audiobookshelf, with your place saved to the server
 
 PLAYS WHAT OTHERS WON'T
 A second playback engine opens what Apple's player can't: MKV, several audio tracks, DTS and E-AC-3 sound, PGS and ASS subtitles.
