@@ -76,9 +76,9 @@ footer.mg-foot a:hover{color:#EADDFF}
 </div></header>
 <main class="wrap">
 <h1>Privacy policy</h1>
-<p class="sub">How Mediagg handles your data. Last updated 24 October 2026.</p>
+<p class="sub">How Mediagg handles your data. Last updated 4 November 2026.</p>
 
-<p>Mediagg is a media player for Android phones and TVs, and for your browser at
+<p>Mediagg is a media player for Android phones and TVs, iPhone and Apple TV, and for your browser at
 <a href="/web/">mediagg.app/web</a> or from your own Mediagg Server. It plays the music, podcasts
 and video on your device, on media servers you run yourself, and on the open web. There is no
 Mediagg account, and we run no server that receives your library, your listening or your settings.</p>
@@ -100,6 +100,11 @@ server passwords and access tokens are excluded from Android's backup and never 
 that way. <code>Export servers</code> writes your servers to a file you choose, without their
 passwords.</p>
 
+<p>On iPhone and Apple TV, media server passwords, access tokens and API keys are kept in the
+device's Keychain, marked for this device only: they are not included in iCloud or computer backups
+and do not sync to your other devices. The rest of the library is part of the iPhone's own backup if
+you have iCloud Backup or a computer backup switched on, under Apple's terms.</p>
+
 <p><b>Crash logs.</b> When the app crashes it writes a summary of the failure to a file on the device,
 together with the app version, the system version and the device model. It is not sent anywhere.
 You can read and copy it under Settings → Diagnostics → <code>Crash logs</code>.</p>
@@ -119,6 +124,16 @@ proxied through us. The app reports what you play and how far you got to the sam
 resume and count plays. Signing in to Plex goes through
 <a href="https://plex.tv">plex.tv</a>, which is how Plex finds your servers; Plex's policy applies to
 that.</p>
+
+<p><b>Your own home services.</b> If you connect services you run yourself — Radarr, Sonarr,
+Lidarr, Readarr, Bazarr, Prowlarr, Seerr, or a download client such as qBittorrent, Transmission,
+Deluge or SABnzbd — the app talks directly to the address and API key you entered, to show and
+manage what that service holds. Nothing is proxied through us, and Mediagg itself searches for and
+downloads nothing.</p>
+
+<p><b>Setting up a television from your phone.</b> When you scan the code a television shows, the
+server details you type on your phone are sent straight to that television over your home network,
+encrypted with a key that only the code carries. They go nowhere else.</p>
 
 <p><b>Podcasts, streams, playlists and artwork.</b> Feeds, episodes, streams, playlists and images
 are fetched from whoever hosts them, as a browser would. Those hosts see your IP address and their
@@ -152,7 +167,8 @@ how far) are sent to the account you signed in to.</p>
 
 <p><b>Casting.</b> Chromecast casting uses Google's Cast service, part of Google Play Services. DLNA
 and UPnP casting happens on your local network. Either way the device you cast to fetches the media
-itself — from where it is hosted, or from your phone over your network for a file stored on it.</p>
+itself — from where it is hosted, or from your phone over your network for a file stored on it.
+On iPhone and Apple TV, casting is AirPlay, which is Apple's and happens on your local network.</p>
 
 <p><b>Mediagg in the browser.</b> In a browser, what the list above describes is kept in that
 browser's own storage on your device, not on any server of ours. Each browser keeps its own copy, and
@@ -173,7 +189,7 @@ its terms. The app sends nothing to it.</p>
 can choose an alternative app icon and are shown a supporter badge. These purchases are made through
 Google Play, which handles the payment and your payment details — we never see them. Google Play
 tells the app which purchases your account has made, and the app keeps a record of your tips on the
-device. Google's policy applies to the payment. The browser version has no purchases.</p>
+device. Google's policy applies to the payment. The iPhone, Apple TV and browser versions have no purchases.</p>
 
 <p><b>This website.</b> mediagg.app — the documentation, this policy and Mediagg in the browser at
 /web — is hosted on GitHub Pages.</p>
@@ -181,6 +197,7 @@ device. Google's policy applies to the payment. The browser version has no purch
 <p>Policies of the third parties involved:</p>
 <ul>
 <li><a href="https://policies.google.com/privacy">Google</a> — Google Play, Google Play Services, Google Cast and Android backup</li>
+<li><a href="https://www.apple.com/legal/privacy/">Apple</a> — iCloud and computer backups, AirPlay, and the App Store</li>
 <li><a href="https://www.apple.com/legal/privacy/">Apple</a>, <a href="https://podcastindex.org">Podcast Index</a>, <a href="https://hearthis.at">hearthis.at</a> — podcast search and charts</li>
 <li><a href="https://lrclib.net">LrcLib</a> — lyrics</li>
 <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a> — providers, issue reports, and hosting this website</li>
