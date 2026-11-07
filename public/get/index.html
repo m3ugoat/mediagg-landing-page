@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get Mediagg — Android, Android TV, your browser and Mediagg Server</title>
-<meta name="description" content="Where Mediagg runs and how to get it: Google Play for Android phones and Android TV, mediagg.app/web in your browser, Mediagg Server on macOS and Linux. iPhone and Apple TV are on the way.">
+<title>Get Mediagg — Android, iPhone and iPad, Android TV, your browser and Mediagg Server</title>
+<meta name="description" content="Where Mediagg runs and how to get it: Google Play for Android phones and Android TV, the App Store for iPhone and iPad, mediagg.app/web in your browser, Mediagg Server on macOS and Linux. Apple TV is on the way.">
 <link rel="canonical" href="https://mediagg.app/get/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Get Mediagg — Android, Android TV, your browser and Mediagg Server">
-<meta property="og:description" content="Where Mediagg runs and how to get it: Google Play for Android phones and Android TV, mediagg.app/web in your browser, Mediagg Server on macOS and Linux. iPhone and Apple TV are on the way.">
+<meta property="og:title" content="Get Mediagg — Android, iPhone and iPad, Android TV, your browser and Mediagg Server">
+<meta property="og:description" content="Where Mediagg runs and how to get it: Google Play for Android phones and Android TV, the App Store for iPhone and iPad, mediagg.app/web in your browser, Mediagg Server on macOS and Linux. Apple TV is on the way.">
 <meta property="og:url" content="https://mediagg.app/get/">
 <meta property="og:image" content="https://mediagg.app/icons/og.png">
 <meta property="og:image:width" content="1200">
@@ -47,6 +47,7 @@ p{margin:0}
 .cmd code{flex:1;min-width:0;font:15px var(--mono);color:var(--ink);overflow-x:auto;white-space:nowrap}
 .cmd button{flex:none;height:36px;padding:0 14px;border-radius:18px;border:0;background:var(--chip);color:var(--chip-ink);font:600 14px var(--sans);cursor:pointer}
 .play{display:block;line-height:0;margin:-10px -6px}
+.store{display:block;line-height:0}
 .top{position:sticky;top:0;z-index:5;background:rgba(15,14,19,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:12px 28px;min-height:64px}
 .brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:20px;font-weight:700}
@@ -114,6 +115,14 @@ td.n{color:var(--dim)}
       </div>
       <a class="play" href="https://play.google.com/store/apps/details?id=app.mediagg"><img src="/icons/google-play-badge.png" alt="Get it on Google Play" width="194" height="75"></a>
     </article>
+    <article class="row" id="iphone">
+      <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+      <div class="what">
+        <div class="titled"><h2>iPhone and iPad</h2><span class="chip on">Available</span></div>
+        <p class="small mute">Your media servers, podcasts, audiobooks, radio and the files on your iPhone or iPad, in one library and one player. Casting is AirPlay.</p>
+      </div>
+      <a class="store" href="https://apps.apple.com/app/mediagg/id6816731790"><img src="/icons/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+    </article>
     <article class="row">
       <div class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg></div>
       <div class="what">
@@ -147,16 +156,10 @@ td.n{color:var(--dim)}
       </div>
       <a class="btn o" href="/server/">How it works</a>
     </article>
-    <div class="pair">
-      <article class="row">
-        <div class="ico" aria-hidden="true" style="color:var(--way-ink)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
-        <div class="what"><div class="titled"><h2>iPhone and iPad</h2><span class="chip way">On the way</span></div><p class="small mute">Not on the App Store yet. Until then, use mediagg.app/web in Safari.</p></div>
-      </article>
-      <article class="row">
-        <div class="ico" aria-hidden="true" style="color:var(--way-ink)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg></div>
-        <div class="what"><div class="titled"><h2>Apple TV</h2><span class="chip way">On the way</span></div><p class="small mute">Not on the App Store yet.</p></div>
-      </article>
-    </div>
+    <article class="row">
+      <div class="ico" aria-hidden="true" style="color:var(--way-ink)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg></div>
+      <div class="what"><div class="titled"><h2>Apple TV</h2><span class="chip way">On the way</span></div><p class="small mute">Not on the App Store yet.</p></div>
+    </article>
   </div>
 </section>
 
